@@ -1,0 +1,38 @@
+[
+  {
+    "land_type_name": "Agricultural",
+    "transactions_count": "282",
+    "total_value": "307043416.24",
+    "average_price": "1088806.4405673759"
+  },
+  {
+    "land_type_name": "Residential",
+    "transactions_count": "193",
+    "total_value": "189726118.03",
+    "average_price": "983036.8809844559"
+  },
+  {
+    "land_type_name": "Forest/Natural",
+    "transactions_count": "114",
+    "total_value": "143625584.68",
+    "average_price": "1259873.5498245615"
+  },
+  {
+    "land_type_name": "Commercial",
+    "transactions_count": "66",
+    "total_value": "59512610.81",
+    "average_price": "901706.2243939395"
+  },
+  {
+    "land_type_name": "Industrial",
+    "transactions_count": "24",
+    "total_value": "38562093.96",
+    "average_price": "1606753.915"
+  },
+  {
+    "land_type_name": "Road/Infrastructure",
+    "transactions_count": "21",
+    "total_value": "23827799.78",
+    "average_price": "1134657.1323809524"
+  }
+]

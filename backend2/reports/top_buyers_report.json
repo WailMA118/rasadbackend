@@ -1,0 +1,1857 @@
+[
+  {
+    "buyer_id": "180",
+    "buyer_name": "Omar Tamimi",
+    "purchases_count": "9",
+    "total_spent": "13749109.22",
+    "average_purchase": "1527678.8022222223"
+  },
+  {
+    "buyer_id": "269",
+    "buyer_name": "Dina Daraghmeh",
+    "purchases_count": "8",
+    "total_spent": "12223657.309999999",
+    "average_purchase": "1527957.1637499998"
+  },
+  {
+    "buyer_id": "10",
+    "buyer_name": "Rami Hamdan",
+    "purchases_count": "8",
+    "total_spent": "1026128.41",
+    "average_purchase": "128266.05125"
+  },
+  {
+    "buyer_id": "280",
+    "buyer_name": "Samer Barakat",
+    "purchases_count": "7",
+    "total_spent": "17354994.77",
+    "average_purchase": "2479284.967142857"
+  },
+  {
+    "buyer_id": "236",
+    "buyer_name": "Samer Srour",
+    "purchases_count": "7",
+    "total_spent": "16102112.44",
+    "average_purchase": "2300301.777142857"
+  },
+  {
+    "buyer_id": "111",
+    "buyer_name": "Lina Bishara",
+    "purchases_count": "7",
+    "total_spent": "10227973.200000001",
+    "average_purchase": "1461139.0285714287"
+  },
+  {
+    "buyer_id": "18",
+    "buyer_name": "Bilal Awad",
+    "purchases_count": "7",
+    "total_spent": "891422.4299999999",
+    "average_purchase": "127346.06142857143"
+  },
+  {
+    "buyer_id": "20",
+    "buyer_name": "Al-Quds Development Corp",
+    "purchases_count": "7",
+    "total_spent": "858622.48",
+    "average_purchase": "122660.35428571429"
+  },
+  {
+    "buyer_id": "14",
+    "buyer_name": "International Holdings Ltd",
+    "purchases_count": "7",
+    "total_spent": "471316.95999999996",
+    "average_purchase": "67330.99428571427"
+  },
+  {
+    "buyer_id": "220",
+    "buyer_name": "Khalil Mansour",
+    "purchases_count": "6",
+    "total_spent": "11940537.98",
+    "average_purchase": "1990089.6633333333"
+  },
+  {
+    "buyer_id": "103",
+    "buyer_name": "Mohammed Barghouti",
+    "purchases_count": "6",
+    "total_spent": "9705289.78",
+    "average_purchase": "1617548.2966666666"
+  },
+  {
+    "buyer_id": "156",
+    "buyer_name": "Nasser Saleh",
+    "purchases_count": "6",
+    "total_spent": "9271043.950000001",
+    "average_purchase": "1545173.991666667"
+  },
+  {
+    "buyer_id": "117",
+    "buyer_name": "Sara Zubaidi",
+    "purchases_count": "6",
+    "total_spent": "8870057.56",
+    "average_purchase": "1478342.9266666668"
+  },
+  {
+    "buyer_id": "99",
+    "buyer_name": "Samer Barakat",
+    "purchases_count": "6",
+    "total_spent": "4618801.26",
+    "average_purchase": "769800.21"
+  },
+  {
+    "buyer_id": "199",
+    "buyer_name": "Hana Tamimi",
+    "purchases_count": "6",
+    "total_spent": "3584518.0100000002",
+    "average_purchase": "597419.6683333333"
+  },
+  {
+    "buyer_id": "165",
+    "buyer_name": "Rami Haddad",
+    "purchases_count": "6",
+    "total_spent": "3166091.21",
+    "average_purchase": "527681.8683333333"
+  },
+  {
+    "buyer_id": "255",
+    "buyer_name": "Nour Tamimi",
+    "purchases_count": "6",
+    "total_spent": "2422383.8",
+    "average_purchase": "403730.6333333333"
+  },
+  {
+    "buyer_id": "187",
+    "buyer_name": "Lina Rimawi",
+    "purchases_count": "5",
+    "total_spent": "10276290.34",
+    "average_purchase": "2055258.068"
+  },
+  {
+    "buyer_id": "71",
+    "buyer_name": "Rana Jaber",
+    "purchases_count": "5",
+    "total_spent": "7304602.86",
+    "average_purchase": "1460920.5720000002"
+  },
+  {
+    "buyer_id": "289",
+    "buyer_name": "Ahmad Odeh",
+    "purchases_count": "5",
+    "total_spent": "7243397.29",
+    "average_purchase": "1448679.458"
+  },
+  {
+    "buyer_id": "135",
+    "buyer_name": "Wissam Zubaidi",
+    "purchases_count": "5",
+    "total_spent": "5708830.17",
+    "average_purchase": "1141766.034"
+  },
+  {
+    "buyer_id": "134",
+    "buyer_name": "Ahmad Shahin",
+    "purchases_count": "5",
+    "total_spent": "5345979.91",
+    "average_purchase": "1069195.982"
+  },
+  {
+    "buyer_id": "295",
+    "buyer_name": "Nidal Rimawi",
+    "purchases_count": "5",
+    "total_spent": "5240343.82",
+    "average_purchase": "1048068.7640000001"
+  },
+  {
+    "buyer_id": "260",
+    "buyer_name": "Walid Jaber",
+    "purchases_count": "5",
+    "total_spent": "2606596.41",
+    "average_purchase": "521319.282"
+  },
+  {
+    "buyer_id": "4",
+    "buyer_name": "Lina Bishara",
+    "purchases_count": "5",
+    "total_spent": "661015.9",
+    "average_purchase": "132203.18"
+  },
+  {
+    "buyer_id": "7",
+    "buyer_name": "Khalil Saleh",
+    "purchases_count": "5",
+    "total_spent": "509845.73",
+    "average_purchase": "101969.146"
+  },
+  {
+    "buyer_id": "3",
+    "buyer_name": "Yosef Mizrahi",
+    "purchases_count": "5",
+    "total_spent": "467316.07",
+    "average_purchase": "93463.214"
+  },
+  {
+    "buyer_id": "31",
+    "buyer_name": "Hassan Nassar",
+    "purchases_count": "5",
+    "total_spent": "466091.13",
+    "average_purchase": "93218.226"
+  },
+  {
+    "buyer_id": "15",
+    "buyer_name": "International Holdings Ltd",
+    "purchases_count": "5",
+    "total_spent": "450727.08999999997",
+    "average_purchase": "90145.41799999999"
+  },
+  {
+    "buyer_id": "22",
+    "buyer_name": "Rana Barghouti",
+    "purchases_count": "5",
+    "total_spent": "339721.12",
+    "average_purchase": "67944.224"
+  },
+  {
+    "buyer_id": "83",
+    "buyer_name": "Yousef Musleh",
+    "purchases_count": "4",
+    "total_spent": "11525197.56",
+    "average_purchase": "2881299.39"
+  },
+  {
+    "buyer_id": "200",
+    "buyer_name": "Khaled Saleh",
+    "purchases_count": "4",
+    "total_spent": "11378477.89",
+    "average_purchase": "2844619.4725"
+  },
+  {
+    "buyer_id": "148",
+    "buyer_name": "Hana Jaber",
+    "purchases_count": "4",
+    "total_spent": "9937309.22",
+    "average_purchase": "2484327.305"
+  },
+  {
+    "buyer_id": "132",
+    "buyer_name": "Abeer Srour",
+    "purchases_count": "4",
+    "total_spent": "9558922.69",
+    "average_purchase": "2389730.6725"
+  },
+  {
+    "buyer_id": "247",
+    "buyer_name": "Raed Barakat",
+    "purchases_count": "4",
+    "total_spent": "8314798.180000001",
+    "average_purchase": "2078699.5450000002"
+  },
+  {
+    "buyer_id": "90",
+    "buyer_name": "Samir Abu Hamid",
+    "purchases_count": "4",
+    "total_spent": "8188549.4799999995",
+    "average_purchase": "2047137.3699999999"
+  },
+  {
+    "buyer_id": "163",
+    "buyer_name": "Wissam Awad",
+    "purchases_count": "4",
+    "total_spent": "7896973.800000001",
+    "average_purchase": "1974243.4500000002"
+  },
+  {
+    "buyer_id": "221",
+    "buyer_name": "Hiba Odeh",
+    "purchases_count": "4",
+    "total_spent": "7751158.220000001",
+    "average_purchase": "1937789.5550000002"
+  },
+  {
+    "buyer_id": "176",
+    "buyer_name": "Lina Daraghmeh",
+    "purchases_count": "4",
+    "total_spent": "7431956.7700000005",
+    "average_purchase": "1857989.1925000001"
+  },
+  {
+    "buyer_id": "73",
+    "buyer_name": "Abeer Tamimi",
+    "purchases_count": "4",
+    "total_spent": "6870231.52",
+    "average_purchase": "1717557.88"
+  },
+  {
+    "buyer_id": "175",
+    "buyer_name": "Layla Qasim",
+    "purchases_count": "4",
+    "total_spent": "6063050.37",
+    "average_purchase": "1515762.5925"
+  },
+  {
+    "buyer_id": "261",
+    "buyer_name": "Dina Odeh",
+    "purchases_count": "4",
+    "total_spent": "5174649.84",
+    "average_purchase": "1293662.46"
+  },
+  {
+    "buyer_id": "166",
+    "buyer_name": "Bassam Musleh",
+    "purchases_count": "4",
+    "total_spent": "5027787.449999999",
+    "average_purchase": "1256946.8624999998"
+  },
+  {
+    "buyer_id": "256",
+    "buyer_name": "Abeer Zubaidi",
+    "purchases_count": "4",
+    "total_spent": "4568765.24",
+    "average_purchase": "1142191.31"
+  },
+  {
+    "buyer_id": "204",
+    "buyer_name": "Reem Tamimi",
+    "purchases_count": "4",
+    "total_spent": "4429610.73",
+    "average_purchase": "1107402.6825"
+  },
+  {
+    "buyer_id": "290",
+    "buyer_name": "Bassam Irshaid",
+    "purchases_count": "4",
+    "total_spent": "4384833.28",
+    "average_purchase": "1096208.32"
+  },
+  {
+    "buyer_id": "210",
+    "buyer_name": "Tariq Tamimi",
+    "purchases_count": "4",
+    "total_spent": "4300708.24",
+    "average_purchase": "1075177.06"
+  },
+  {
+    "buyer_id": "119",
+    "buyer_name": "Reem Bishara",
+    "purchases_count": "4",
+    "total_spent": "4281996.54",
+    "average_purchase": "1070499.135"
+  },
+  {
+    "buyer_id": "276",
+    "buyer_name": "Sana Zubaidi",
+    "purchases_count": "4",
+    "total_spent": "4244952.9",
+    "average_purchase": "1061238.225"
+  },
+  {
+    "buyer_id": "169",
+    "buyer_name": "Layla Musleh",
+    "purchases_count": "4",
+    "total_spent": "3758622.29",
+    "average_purchase": "939655.5725"
+  },
+  {
+    "buyer_id": "127",
+    "buyer_name": "Wissam Srour",
+    "purchases_count": "4",
+    "total_spent": "3434874.5",
+    "average_purchase": "858718.625"
+  },
+  {
+    "buyer_id": "95",
+    "buyer_name": "Nidal Bishara",
+    "purchases_count": "4",
+    "total_spent": "3291519.02",
+    "average_purchase": "822879.755"
+  },
+  {
+    "buyer_id": "100",
+    "buyer_name": "Amer Nassar",
+    "purchases_count": "4",
+    "total_spent": "3249797.64",
+    "average_purchase": "812449.41"
+  },
+  {
+    "buyer_id": "230",
+    "buyer_name": "Omar Qasim",
+    "purchases_count": "4",
+    "total_spent": "3162888.61",
+    "average_purchase": "790722.1525"
+  },
+  {
+    "buyer_id": "170",
+    "buyer_name": "Yousef Barakat",
+    "purchases_count": "4",
+    "total_spent": "3115979.6100000003",
+    "average_purchase": "778994.9025000001"
+  },
+  {
+    "buyer_id": "87",
+    "buyer_name": "Samer Tawil",
+    "purchases_count": "4",
+    "total_spent": "2573726.04",
+    "average_purchase": "643431.51"
+  },
+  {
+    "buyer_id": "214",
+    "buyer_name": "Hiba Odeh",
+    "purchases_count": "4",
+    "total_spent": "2285646.0",
+    "average_purchase": "571411.5"
+  },
+  {
+    "buyer_id": "171",
+    "buyer_name": "Amer Abu Ayyash",
+    "purchases_count": "4",
+    "total_spent": "2147060.43",
+    "average_purchase": "536765.1075"
+  },
+  {
+    "buyer_id": "102",
+    "buyer_name": "Ziad Rimawi",
+    "purchases_count": "4",
+    "total_spent": "1861788.85",
+    "average_purchase": "465447.2125"
+  },
+  {
+    "buyer_id": "177",
+    "buyer_name": "Rana Hamdan",
+    "purchases_count": "4",
+    "total_spent": "536226.9",
+    "average_purchase": "134056.725"
+  },
+  {
+    "buyer_id": "27",
+    "buyer_name": "Al-Quds Development Corp",
+    "purchases_count": "4",
+    "total_spent": "471578.75",
+    "average_purchase": "117894.6875"
+  },
+  {
+    "buyer_id": "33",
+    "buyer_name": "Gulf Investment Co.",
+    "purchases_count": "4",
+    "total_spent": "458777.94",
+    "average_purchase": "114694.485"
+  },
+  {
+    "buyer_id": "16",
+    "buyer_name": "Sana Haddad",
+    "purchases_count": "4",
+    "total_spent": "307839.45999999996",
+    "average_purchase": "76959.86499999999"
+  },
+  {
+    "buyer_id": "32",
+    "buyer_name": "Emirates Land Group",
+    "purchases_count": "4",
+    "total_spent": "300409.54",
+    "average_purchase": "75102.385"
+  },
+  {
+    "buyer_id": "30",
+    "buyer_name": "Yousef Abu Ayyash",
+    "purchases_count": "4",
+    "total_spent": "188731.02",
+    "average_purchase": "47182.755"
+  },
+  {
+    "buyer_id": "118",
+    "buyer_name": "Sana Bishara",
+    "purchases_count": "3",
+    "total_spent": "9503517.809999999",
+    "average_purchase": "3167839.2699999996"
+  },
+  {
+    "buyer_id": "250",
+    "buyer_name": "Nidal Abu Hamid",
+    "purchases_count": "3",
+    "total_spent": "9227127.05",
+    "average_purchase": "3075709.016666667"
+  },
+  {
+    "buyer_id": "69",
+    "buyer_name": "Raed Shahin",
+    "purchases_count": "3",
+    "total_spent": "7358267.04",
+    "average_purchase": "2452755.68"
+  },
+  {
+    "buyer_id": "76",
+    "buyer_name": "Nidal Zubaidi",
+    "purchases_count": "3",
+    "total_spent": "7147318.25",
+    "average_purchase": "2382439.4166666665"
+  },
+  {
+    "buyer_id": "211",
+    "buyer_name": "Khalil Tawil",
+    "purchases_count": "3",
+    "total_spent": "7117137.949999999",
+    "average_purchase": "2372379.3166666664"
+  },
+  {
+    "buyer_id": "79",
+    "buyer_name": "Ibrahim Srour",
+    "purchases_count": "3",
+    "total_spent": "6998817.9399999995",
+    "average_purchase": "2332939.313333333"
+  },
+  {
+    "buyer_id": "262",
+    "buyer_name": "Fatima Tawil",
+    "purchases_count": "3",
+    "total_spent": "6630089.13",
+    "average_purchase": "2210029.71"
+  },
+  {
+    "buyer_id": "278",
+    "buyer_name": "Mahmoud Daraghmeh",
+    "purchases_count": "3",
+    "total_spent": "6456932.859999999",
+    "average_purchase": "2152310.953333333"
+  },
+  {
+    "buyer_id": "147",
+    "buyer_name": "Wissam Jaber",
+    "purchases_count": "3",
+    "total_spent": "6437752.75",
+    "average_purchase": "2145917.5833333335"
+  },
+  {
+    "buyer_id": "284",
+    "buyer_name": "Wissam Rimawi",
+    "purchases_count": "3",
+    "total_spent": "6047650.220000001",
+    "average_purchase": "2015883.406666667"
+  },
+  {
+    "buyer_id": "158",
+    "buyer_name": "Hiba Rimawi",
+    "purchases_count": "3",
+    "total_spent": "5910969.4799999995",
+    "average_purchase": "1970323.16"
+  },
+  {
+    "buyer_id": "258",
+    "buyer_name": "Jad Zubaidi",
+    "purchases_count": "3",
+    "total_spent": "5745036.14",
+    "average_purchase": "1915012.0466666666"
+  },
+  {
+    "buyer_id": "182",
+    "buyer_name": "Wissam Jaber",
+    "purchases_count": "3",
+    "total_spent": "5614140.11",
+    "average_purchase": "1871380.0366666669"
+  },
+  {
+    "buyer_id": "137",
+    "buyer_name": "Dina Saleh",
+    "purchases_count": "3",
+    "total_spent": "5509882.609999999",
+    "average_purchase": "1836627.5366666664"
+  },
+  {
+    "buyer_id": "285",
+    "buyer_name": "Sara Nabulsi",
+    "purchases_count": "3",
+    "total_spent": "5271391.640000001",
+    "average_purchase": "1757130.5466666669"
+  },
+  {
+    "buyer_id": "259",
+    "buyer_name": "Nidal Musleh",
+    "purchases_count": "3",
+    "total_spent": "4947105.74",
+    "average_purchase": "1649035.2466666668"
+  },
+  {
+    "buyer_id": "233",
+    "buyer_name": "Nour Srour",
+    "purchases_count": "3",
+    "total_spent": "4751948.34",
+    "average_purchase": "1583982.78"
+  },
+  {
+    "buyer_id": "84",
+    "buyer_name": "Nidal Musleh",
+    "purchases_count": "3",
+    "total_spent": "4390807.12",
+    "average_purchase": "1463602.3733333333"
+  },
+  {
+    "buyer_id": "89",
+    "buyer_name": "Wissam Musleh",
+    "purchases_count": "3",
+    "total_spent": "3882950.11",
+    "average_purchase": "1294316.7033333334"
+  },
+  {
+    "buyer_id": "183",
+    "buyer_name": "Dina Jaber",
+    "purchases_count": "3",
+    "total_spent": "3870030.71",
+    "average_purchase": "1290010.2366666666"
+  },
+  {
+    "buyer_id": "240",
+    "buyer_name": "Rana Saleh",
+    "purchases_count": "3",
+    "total_spent": "3854111.0900000003",
+    "average_purchase": "1284703.6966666668"
+  },
+  {
+    "buyer_id": "299",
+    "buyer_name": "Wissam Awad",
+    "purchases_count": "3",
+    "total_spent": "3810980.36",
+    "average_purchase": "1270326.7866666666"
+  },
+  {
+    "buyer_id": "223",
+    "buyer_name": "Maryam Abu Hamid",
+    "purchases_count": "3",
+    "total_spent": "3252064.86",
+    "average_purchase": "1084021.6199999999"
+  },
+  {
+    "buyer_id": "108",
+    "buyer_name": "Rami Mansour",
+    "purchases_count": "3",
+    "total_spent": "3220826.28",
+    "average_purchase": "1073608.76"
+  },
+  {
+    "buyer_id": "106",
+    "buyer_name": "Hiba Rimawi",
+    "purchases_count": "3",
+    "total_spent": "3143678.73",
+    "average_purchase": "1047892.91"
+  },
+  {
+    "buyer_id": "151",
+    "buyer_name": "Omar Hamdan",
+    "purchases_count": "3",
+    "total_spent": "2956696.09",
+    "average_purchase": "985565.3633333333"
+  },
+  {
+    "buyer_id": "185",
+    "buyer_name": "Khaled Jaber",
+    "purchases_count": "3",
+    "total_spent": "2672452.1600000006",
+    "average_purchase": "890817.3866666668"
+  },
+  {
+    "buyer_id": "160",
+    "buyer_name": "Mahmoud Qasim",
+    "purchases_count": "3",
+    "total_spent": "2659483.4",
+    "average_purchase": "886494.4666666667"
+  },
+  {
+    "buyer_id": "251",
+    "buyer_name": "Mohammed Nassar",
+    "purchases_count": "3",
+    "total_spent": "2542663.31",
+    "average_purchase": "847554.4366666666"
+  },
+  {
+    "buyer_id": "159",
+    "buyer_name": "Khaled Shahin",
+    "purchases_count": "3",
+    "total_spent": "2514667.64",
+    "average_purchase": "838222.5466666667"
+  },
+  {
+    "buyer_id": "54",
+    "buyer_name": "Ibrahim Odeh",
+    "purchases_count": "3",
+    "total_spent": "2438015.88",
+    "average_purchase": "812671.96"
+  },
+  {
+    "buyer_id": "94",
+    "buyer_name": "Abeer Abu Hamid",
+    "purchases_count": "3",
+    "total_spent": "2292989.23",
+    "average_purchase": "764329.7433333333"
+  },
+  {
+    "buyer_id": "131",
+    "buyer_name": "Bilal Zubaidi",
+    "purchases_count": "3",
+    "total_spent": "2251809.87",
+    "average_purchase": "750603.29"
+  },
+  {
+    "buyer_id": "209",
+    "buyer_name": "Ahmad Srour",
+    "purchases_count": "3",
+    "total_spent": "2219539.91",
+    "average_purchase": "739846.6366666667"
+  },
+  {
+    "buyer_id": "144",
+    "buyer_name": "Mohammed Nassar",
+    "purchases_count": "3",
+    "total_spent": "2148508.46",
+    "average_purchase": "716169.4866666667"
+  },
+  {
+    "buyer_id": "168",
+    "buyer_name": "Ibrahim Shahin",
+    "purchases_count": "3",
+    "total_spent": "2027738.5899999999",
+    "average_purchase": "675912.8633333333"
+  },
+  {
+    "buyer_id": "218",
+    "buyer_name": "Yousef Awad",
+    "purchases_count": "3",
+    "total_spent": "1884301.1",
+    "average_purchase": "628100.3666666667"
+  },
+  {
+    "buyer_id": "281",
+    "buyer_name": "Raed Zubaidi",
+    "purchases_count": "3",
+    "total_spent": "1856603.56",
+    "average_purchase": "618867.8533333334"
+  },
+  {
+    "buyer_id": "72",
+    "buyer_name": "Mahmoud Tamimi",
+    "purchases_count": "3",
+    "total_spent": "1755754.05",
+    "average_purchase": "585251.35"
+  },
+  {
+    "buyer_id": "296",
+    "buyer_name": "Rami Irshaid",
+    "purchases_count": "3",
+    "total_spent": "1635024.1099999999",
+    "average_purchase": "545008.0366666666"
+  },
+  {
+    "buyer_id": "157",
+    "buyer_name": "Reem Musleh",
+    "purchases_count": "3",
+    "total_spent": "1297488.01",
+    "average_purchase": "432496.00333333336"
+  },
+  {
+    "buyer_id": "283",
+    "buyer_name": "Hana Tawil",
+    "purchases_count": "3",
+    "total_spent": "1258496.66",
+    "average_purchase": "419498.88666666666"
+  },
+  {
+    "buyer_id": "179",
+    "buyer_name": "Raed Jaber",
+    "purchases_count": "3",
+    "total_spent": "1090789.79",
+    "average_purchase": "363596.5966666667"
+  },
+  {
+    "buyer_id": "149",
+    "buyer_name": "Wissam Tamimi",
+    "purchases_count": "3",
+    "total_spent": "877978.87",
+    "average_purchase": "292659.62333333335"
+  },
+  {
+    "buyer_id": "63",
+    "buyer_name": "Hassan Awad",
+    "purchases_count": "3",
+    "total_spent": "662877.32",
+    "average_purchase": "220959.10666666666"
+  },
+  {
+    "buyer_id": "6",
+    "buyer_name": "Abeer Saleh",
+    "purchases_count": "3",
+    "total_spent": "434374.96",
+    "average_purchase": "144791.65333333335"
+  },
+  {
+    "buyer_id": "206",
+    "buyer_name": "Samer Haddad",
+    "purchases_count": "3",
+    "total_spent": "378636.82999999996",
+    "average_purchase": "126212.27666666666"
+  },
+  {
+    "buyer_id": "2",
+    "buyer_name": "Moshe Levy",
+    "purchases_count": "3",
+    "total_spent": "326004.14",
+    "average_purchase": "108668.04666666668"
+  },
+  {
+    "buyer_id": "271",
+    "buyer_name": "Sana Mansour",
+    "purchases_count": "3",
+    "total_spent": "300755.18000000005",
+    "average_purchase": "100251.72666666668"
+  },
+  {
+    "buyer_id": "104",
+    "buyer_name": "Reem Abu Hamid",
+    "purchases_count": "3",
+    "total_spent": "240393.74",
+    "average_purchase": "80131.24666666666"
+  },
+  {
+    "buyer_id": "114",
+    "buyer_name": "Hana Musleh",
+    "purchases_count": "3",
+    "total_spent": "217242.08000000002",
+    "average_purchase": "72414.02666666667"
+  },
+  {
+    "buyer_id": "24",
+    "buyer_name": "Al-Quds Development Corp",
+    "purchases_count": "3",
+    "total_spent": "185407.66",
+    "average_purchase": "61802.55333333334"
+  },
+  {
+    "buyer_id": "58",
+    "buyer_name": "Nasser Saleh",
+    "purchases_count": "2",
+    "total_spent": "9102080.54",
+    "average_purchase": "4551040.27"
+  },
+  {
+    "buyer_id": "121",
+    "buyer_name": "Lina Hamdan",
+    "purchases_count": "2",
+    "total_spent": "7690255.799999999",
+    "average_purchase": "3845127.8999999994"
+  },
+  {
+    "buyer_id": "61",
+    "buyer_name": "Maryam Musleh",
+    "purchases_count": "2",
+    "total_spent": "6359541.2",
+    "average_purchase": "3179770.6"
+  },
+  {
+    "buyer_id": "115",
+    "buyer_name": "Sana Abu Hamid",
+    "purchases_count": "2",
+    "total_spent": "5846241.34",
+    "average_purchase": "2923120.67"
+  },
+  {
+    "buyer_id": "235",
+    "buyer_name": "Ziad Odeh",
+    "purchases_count": "2",
+    "total_spent": "5417449.95",
+    "average_purchase": "2708724.975"
+  },
+  {
+    "buyer_id": "216",
+    "buyer_name": "Samir Barghouti",
+    "purchases_count": "2",
+    "total_spent": "5154335.08",
+    "average_purchase": "2577167.54"
+  },
+  {
+    "buyer_id": "297",
+    "buyer_name": "Ziad Zubaidi",
+    "purchases_count": "2",
+    "total_spent": "4976745.109999999",
+    "average_purchase": "2488372.5549999997"
+  },
+  {
+    "buyer_id": "244",
+    "buyer_name": "Hiba Odeh",
+    "purchases_count": "2",
+    "total_spent": "4927020.609999999",
+    "average_purchase": "2463510.3049999997"
+  },
+  {
+    "buyer_id": "74",
+    "buyer_name": "Hassan Abu Hamid",
+    "purchases_count": "2",
+    "total_spent": "4398079.09",
+    "average_purchase": "2199039.545"
+  },
+  {
+    "buyer_id": "59",
+    "buyer_name": "Samir Zubaidi",
+    "purchases_count": "2",
+    "total_spent": "4378796.9399999995",
+    "average_purchase": "2189398.4699999997"
+  },
+  {
+    "buyer_id": "242",
+    "buyer_name": "Nasser Nassar",
+    "purchases_count": "2",
+    "total_spent": "4303412.0200000005",
+    "average_purchase": "2151706.0100000002"
+  },
+  {
+    "buyer_id": "288",
+    "buyer_name": "Sara Tamimi",
+    "purchases_count": "2",
+    "total_spent": "4141043.7300000004",
+    "average_purchase": "2070521.8650000002"
+  },
+  {
+    "buyer_id": "86",
+    "buyer_name": "Maryam Jaber",
+    "purchases_count": "2",
+    "total_spent": "4054906.22",
+    "average_purchase": "2027453.11"
+  },
+  {
+    "buyer_id": "75",
+    "buyer_name": "Jad Nabulsi",
+    "purchases_count": "2",
+    "total_spent": "3991428.4",
+    "average_purchase": "1995714.2"
+  },
+  {
+    "buyer_id": "227",
+    "buyer_name": "Hiba Abu Hamid",
+    "purchases_count": "2",
+    "total_spent": "3940314.55",
+    "average_purchase": "1970157.275"
+  },
+  {
+    "buyer_id": "264",
+    "buyer_name": "Khaled Jaber",
+    "purchases_count": "2",
+    "total_spent": "3840296.29",
+    "average_purchase": "1920148.145"
+  },
+  {
+    "buyer_id": "152",
+    "buyer_name": "Rana Barghouti",
+    "purchases_count": "2",
+    "total_spent": "3612032.62",
+    "average_purchase": "1806016.31"
+  },
+  {
+    "buyer_id": "277",
+    "buyer_name": "Ziad Haddad",
+    "purchases_count": "2",
+    "total_spent": "3586382.94",
+    "average_purchase": "1793191.47"
+  },
+  {
+    "buyer_id": "228",
+    "buyer_name": "Hassan Rimawi",
+    "purchases_count": "2",
+    "total_spent": "3361794.94",
+    "average_purchase": "1680897.47"
+  },
+  {
+    "buyer_id": "226",
+    "buyer_name": "Abeer Zubaidi",
+    "purchases_count": "2",
+    "total_spent": "3349150.1500000004",
+    "average_purchase": "1674575.0750000002"
+  },
+  {
+    "buyer_id": "207",
+    "buyer_name": "Faris Odeh",
+    "purchases_count": "2",
+    "total_spent": "3156262.74",
+    "average_purchase": "1578131.37"
+  },
+  {
+    "buyer_id": "93",
+    "buyer_name": "Bilal Zubaidi",
+    "purchases_count": "2",
+    "total_spent": "3153201.25",
+    "average_purchase": "1576600.625"
+  },
+  {
+    "buyer_id": "225",
+    "buyer_name": "Nour Bishara",
+    "purchases_count": "2",
+    "total_spent": "3150654.8600000003",
+    "average_purchase": "1575327.4300000002"
+  },
+  {
+    "buyer_id": "55",
+    "buyer_name": "Ibrahim Shahin",
+    "purchases_count": "2",
+    "total_spent": "3075856.99",
+    "average_purchase": "1537928.495"
+  },
+  {
+    "buyer_id": "201",
+    "buyer_name": "Faris Jaber",
+    "purchases_count": "2",
+    "total_spent": "2820128.05",
+    "average_purchase": "1410064.025"
+  },
+  {
+    "buyer_id": "265",
+    "buyer_name": "Fatima Barakat",
+    "purchases_count": "2",
+    "total_spent": "2791150.9899999998",
+    "average_purchase": "1395575.4949999999"
+  },
+  {
+    "buyer_id": "112",
+    "buyer_name": "Sana Saleh",
+    "purchases_count": "2",
+    "total_spent": "2635325.96",
+    "average_purchase": "1317662.98"
+  },
+  {
+    "buyer_id": "143",
+    "buyer_name": "Abeer Irshaid",
+    "purchases_count": "2",
+    "total_spent": "2615375.79",
+    "average_purchase": "1307687.895"
+  },
+  {
+    "buyer_id": "161",
+    "buyer_name": "Hassan Irshaid",
+    "purchases_count": "2",
+    "total_spent": "2486014.13",
+    "average_purchase": "1243007.065"
+  },
+  {
+    "buyer_id": "188",
+    "buyer_name": "Rami Nabulsi",
+    "purchases_count": "2",
+    "total_spent": "2473287.21",
+    "average_purchase": "1236643.605"
+  },
+  {
+    "buyer_id": "56",
+    "buyer_name": "Rami Musleh",
+    "purchases_count": "2",
+    "total_spent": "2354161.3499999996",
+    "average_purchase": "1177080.6749999998"
+  },
+  {
+    "buyer_id": "192",
+    "buyer_name": "Mohammed Nassar",
+    "purchases_count": "2",
+    "total_spent": "2323701.09",
+    "average_purchase": "1161850.545"
+  },
+  {
+    "buyer_id": "122",
+    "buyer_name": "Rami Tamimi",
+    "purchases_count": "2",
+    "total_spent": "2220576.6399999997",
+    "average_purchase": "1110288.3199999998"
+  },
+  {
+    "buyer_id": "217",
+    "buyer_name": "Reem Haddad",
+    "purchases_count": "2",
+    "total_spent": "2138695.8099999996",
+    "average_purchase": "1069347.9049999998"
+  },
+  {
+    "buyer_id": "173",
+    "buyer_name": "Karim Daraghmeh",
+    "purchases_count": "2",
+    "total_spent": "2109443.41",
+    "average_purchase": "1054721.705"
+  },
+  {
+    "buyer_id": "292",
+    "buyer_name": "Rana Hamdan",
+    "purchases_count": "2",
+    "total_spent": "1974987.1",
+    "average_purchase": "987493.55"
+  },
+  {
+    "buyer_id": "294",
+    "buyer_name": "Rana Awad",
+    "purchases_count": "2",
+    "total_spent": "1821182.71",
+    "average_purchase": "910591.355"
+  },
+  {
+    "buyer_id": "126",
+    "buyer_name": "Tariq Mansour",
+    "purchases_count": "2",
+    "total_spent": "1779268.53",
+    "average_purchase": "889634.265"
+  },
+  {
+    "buyer_id": "268",
+    "buyer_name": "Faris Barakat",
+    "purchases_count": "2",
+    "total_spent": "1748257.6099999999",
+    "average_purchase": "874128.8049999999"
+  },
+  {
+    "buyer_id": "172",
+    "buyer_name": "Dina Haddad",
+    "purchases_count": "2",
+    "total_spent": "1731584.76",
+    "average_purchase": "865792.38"
+  },
+  {
+    "buyer_id": "254",
+    "buyer_name": "Samir Hamdan",
+    "purchases_count": "2",
+    "total_spent": "1596972.1",
+    "average_purchase": "798486.05"
+  },
+  {
+    "buyer_id": "253",
+    "buyer_name": "Raed Irshaid",
+    "purchases_count": "2",
+    "total_spent": "1532974.91",
+    "average_purchase": "766487.455"
+  },
+  {
+    "buyer_id": "272",
+    "buyer_name": "Nour Srour",
+    "purchases_count": "2",
+    "total_spent": "1504501.48",
+    "average_purchase": "752250.74"
+  },
+  {
+    "buyer_id": "189",
+    "buyer_name": "Dina Tawil",
+    "purchases_count": "2",
+    "total_spent": "1465794.06",
+    "average_purchase": "732897.03"
+  },
+  {
+    "buyer_id": "202",
+    "buyer_name": "Rana Srour",
+    "purchases_count": "2",
+    "total_spent": "1337220.94",
+    "average_purchase": "668610.47"
+  },
+  {
+    "buyer_id": "142",
+    "buyer_name": "Rana Abu Ayyash",
+    "purchases_count": "2",
+    "total_spent": "1305892.97",
+    "average_purchase": "652946.485"
+  },
+  {
+    "buyer_id": "248",
+    "buyer_name": "Dina Bishara",
+    "purchases_count": "2",
+    "total_spent": "1143178.09",
+    "average_purchase": "571589.045"
+  },
+  {
+    "buyer_id": "146",
+    "buyer_name": "Samir Barghouti",
+    "purchases_count": "2",
+    "total_spent": "1132369.29",
+    "average_purchase": "566184.645"
+  },
+  {
+    "buyer_id": "154",
+    "buyer_name": "Ibrahim Abu Ayyash",
+    "purchases_count": "2",
+    "total_spent": "1104503.7599999998",
+    "average_purchase": "552251.8799999999"
+  },
+  {
+    "buyer_id": "101",
+    "buyer_name": "Rami Musleh",
+    "purchases_count": "2",
+    "total_spent": "1085946.76",
+    "average_purchase": "542973.38"
+  },
+  {
+    "buyer_id": "145",
+    "buyer_name": "Layla Mansour",
+    "purchases_count": "2",
+    "total_spent": "777517.5",
+    "average_purchase": "388758.75"
+  },
+  {
+    "buyer_id": "239",
+    "buyer_name": "Faris Zubaidi",
+    "purchases_count": "2",
+    "total_spent": "716315.0399999999",
+    "average_purchase": "358157.51999999996"
+  },
+  {
+    "buyer_id": "82",
+    "buyer_name": "Faris Shahin",
+    "purchases_count": "2",
+    "total_spent": "708042.62",
+    "average_purchase": "354021.31"
+  },
+  {
+    "buyer_id": "195",
+    "buyer_name": "Abeer Shahin",
+    "purchases_count": "2",
+    "total_spent": "700035.61",
+    "average_purchase": "350017.805"
+  },
+  {
+    "buyer_id": "107",
+    "buyer_name": "Wissam Hamdan",
+    "purchases_count": "2",
+    "total_spent": "639956.01",
+    "average_purchase": "319978.005"
+  },
+  {
+    "buyer_id": "64",
+    "buyer_name": "Reem Saleh",
+    "purchases_count": "2",
+    "total_spent": "626833.34",
+    "average_purchase": "313416.67"
+  },
+  {
+    "buyer_id": "215",
+    "buyer_name": "Reem Bishara",
+    "purchases_count": "2",
+    "total_spent": "607960.33",
+    "average_purchase": "303980.165"
+  },
+  {
+    "buyer_id": "125",
+    "buyer_name": "Nidal Tawil",
+    "purchases_count": "2",
+    "total_spent": "497663.25",
+    "average_purchase": "248831.625"
+  },
+  {
+    "buyer_id": "25",
+    "buyer_name": "Jordan Real Estate LLC",
+    "purchases_count": "2",
+    "total_spent": "338015.16000000003",
+    "average_purchase": "169007.58000000002"
+  },
+  {
+    "buyer_id": "234",
+    "buyer_name": "Reem Odeh",
+    "purchases_count": "2",
+    "total_spent": "319470.31",
+    "average_purchase": "159735.155"
+  },
+  {
+    "buyer_id": "68",
+    "buyer_name": "Raed Nassar",
+    "purchases_count": "2",
+    "total_spent": "252115.11000000002",
+    "average_purchase": "126057.55500000001"
+  },
+  {
+    "buyer_id": "29",
+    "buyer_name": "International Holdings Ltd",
+    "purchases_count": "2",
+    "total_spent": "236015.68",
+    "average_purchase": "118007.84"
+  },
+  {
+    "buyer_id": "141",
+    "buyer_name": "Hana Mansour",
+    "purchases_count": "2",
+    "total_spent": "219129.94",
+    "average_purchase": "109564.97"
+  },
+  {
+    "buyer_id": "65",
+    "buyer_name": "Hana Shahin",
+    "purchases_count": "2",
+    "total_spent": "218347.38999999998",
+    "average_purchase": "109173.69499999999"
+  },
+  {
+    "buyer_id": "267",
+    "buyer_name": "Hana Zubaidi",
+    "purchases_count": "2",
+    "total_spent": "217418.44",
+    "average_purchase": "108709.22"
+  },
+  {
+    "buyer_id": "92",
+    "buyer_name": "Ahmad Odeh",
+    "purchases_count": "2",
+    "total_spent": "179341.86",
+    "average_purchase": "89670.93"
+  },
+  {
+    "buyer_id": "5",
+    "buyer_name": "Emirates Land Group",
+    "purchases_count": "2",
+    "total_spent": "176346.0",
+    "average_purchase": "88173.0"
+  },
+  {
+    "buyer_id": "13",
+    "buyer_name": "Amer Haddad",
+    "purchases_count": "2",
+    "total_spent": "172031.22",
+    "average_purchase": "86015.61"
+  },
+  {
+    "buyer_id": "17",
+    "buyer_name": "Omar Saleh",
+    "purchases_count": "2",
+    "total_spent": "160014.02000000002",
+    "average_purchase": "80007.01000000001"
+  },
+  {
+    "buyer_id": "9",
+    "buyer_name": "Bilal Tawil",
+    "purchases_count": "2",
+    "total_spent": "156618.14",
+    "average_purchase": "78309.07"
+  },
+  {
+    "buyer_id": "1",
+    "buyer_name": "David Cohen",
+    "purchases_count": "2",
+    "total_spent": "123305.67000000001",
+    "average_purchase": "61652.83500000001"
+  },
+  {
+    "buyer_id": "21",
+    "buyer_name": "Emirates Land Group",
+    "purchases_count": "2",
+    "total_spent": "98887.97",
+    "average_purchase": "49443.985"
+  },
+  {
+    "buyer_id": "12",
+    "buyer_name": "Khalil Musleh",
+    "purchases_count": "2",
+    "total_spent": "84720.49",
+    "average_purchase": "42360.245"
+  },
+  {
+    "buyer_id": "252",
+    "buyer_name": "Hiba Irshaid",
+    "purchases_count": "2",
+    "total_spent": "36176.97",
+    "average_purchase": "18088.485"
+  },
+  {
+    "buyer_id": "155",
+    "buyer_name": "Faris Abu Ayyash",
+    "purchases_count": "2",
+    "total_spent": "31426.59",
+    "average_purchase": "15713.295"
+  },
+  {
+    "buyer_id": "193",
+    "buyer_name": "Ziad Awad",
+    "purchases_count": "2",
+    "total_spent": "20349.87",
+    "average_purchase": "10174.935"
+  },
+  {
+    "buyer_id": "231",
+    "buyer_name": "Samir Tawil",
+    "purchases_count": "1",
+    "total_spent": "5737745.32",
+    "average_purchase": "5737745.32"
+  },
+  {
+    "buyer_id": "232",
+    "buyer_name": "Walid Abu Ayyash",
+    "purchases_count": "1",
+    "total_spent": "5323261.43",
+    "average_purchase": "5323261.43"
+  },
+  {
+    "buyer_id": "57",
+    "buyer_name": "Jad Tawil",
+    "purchases_count": "1",
+    "total_spent": "4484166.8",
+    "average_purchase": "4484166.8"
+  },
+  {
+    "buyer_id": "274",
+    "buyer_name": "Rami Srour",
+    "purchases_count": "1",
+    "total_spent": "4128740.31",
+    "average_purchase": "4128740.31"
+  },
+  {
+    "buyer_id": "128",
+    "buyer_name": "Bilal Nassar",
+    "purchases_count": "1",
+    "total_spent": "4087917.84",
+    "average_purchase": "4087917.84"
+  },
+  {
+    "buyer_id": "96",
+    "buyer_name": "Nour Musleh",
+    "purchases_count": "1",
+    "total_spent": "3798869.32",
+    "average_purchase": "3798869.32"
+  },
+  {
+    "buyer_id": "266",
+    "buyer_name": "Ahmad Musleh",
+    "purchases_count": "1",
+    "total_spent": "3354752.5",
+    "average_purchase": "3354752.5"
+  },
+  {
+    "buyer_id": "62",
+    "buyer_name": "Rami Tamimi",
+    "purchases_count": "1",
+    "total_spent": "3335172.24",
+    "average_purchase": "3335172.24"
+  },
+  {
+    "buyer_id": "162",
+    "buyer_name": "Bassam Irshaid",
+    "purchases_count": "1",
+    "total_spent": "3333892.32",
+    "average_purchase": "3333892.32"
+  },
+  {
+    "buyer_id": "181",
+    "buyer_name": "Rami Bishara",
+    "purchases_count": "1",
+    "total_spent": "3014746.97",
+    "average_purchase": "3014746.97"
+  },
+  {
+    "buyer_id": "190",
+    "buyer_name": "Rami Srour",
+    "purchases_count": "1",
+    "total_spent": "2768613.16",
+    "average_purchase": "2768613.16"
+  },
+  {
+    "buyer_id": "164",
+    "buyer_name": "Faris Nassar",
+    "purchases_count": "1",
+    "total_spent": "2722398.77",
+    "average_purchase": "2722398.77"
+  },
+  {
+    "buyer_id": "113",
+    "buyer_name": "Hana Mansour",
+    "purchases_count": "1",
+    "total_spent": "2320164.05",
+    "average_purchase": "2320164.05"
+  },
+  {
+    "buyer_id": "116",
+    "buyer_name": "Nour Abu Hamid",
+    "purchases_count": "1",
+    "total_spent": "2182195.26",
+    "average_purchase": "2182195.26"
+  },
+  {
+    "buyer_id": "98",
+    "buyer_name": "Walid Musleh",
+    "purchases_count": "1",
+    "total_spent": "2039205.22",
+    "average_purchase": "2039205.22"
+  },
+  {
+    "buyer_id": "136",
+    "buyer_name": "Rana Abu Hamid",
+    "purchases_count": "1",
+    "total_spent": "1850195.91",
+    "average_purchase": "1850195.91"
+  },
+  {
+    "buyer_id": "60",
+    "buyer_name": "Samir Nabulsi",
+    "purchases_count": "1",
+    "total_spent": "1778302.57",
+    "average_purchase": "1778302.57"
+  },
+  {
+    "buyer_id": "194",
+    "buyer_name": "Rami Odeh",
+    "purchases_count": "1",
+    "total_spent": "1533204.46",
+    "average_purchase": "1533204.46"
+  },
+  {
+    "buyer_id": "273",
+    "buyer_name": "Mahmoud Abu Ayyash",
+    "purchases_count": "1",
+    "total_spent": "1484415.83",
+    "average_purchase": "1484415.83"
+  },
+  {
+    "buyer_id": "300",
+    "buyer_name": "Nasser Hamdan",
+    "purchases_count": "1",
+    "total_spent": "1459875.65",
+    "average_purchase": "1459875.65"
+  },
+  {
+    "buyer_id": "191",
+    "buyer_name": "Dina Bishara",
+    "purchases_count": "1",
+    "total_spent": "1445152.87",
+    "average_purchase": "1445152.87"
+  },
+  {
+    "buyer_id": "129",
+    "buyer_name": "Maryam Jaber",
+    "purchases_count": "1",
+    "total_spent": "1418734.08",
+    "average_purchase": "1418734.08"
+  },
+  {
+    "buyer_id": "229",
+    "buyer_name": "Bilal Tamimi",
+    "purchases_count": "1",
+    "total_spent": "1317146.71",
+    "average_purchase": "1317146.71"
+  },
+  {
+    "buyer_id": "124",
+    "buyer_name": "Rami Tamimi",
+    "purchases_count": "1",
+    "total_spent": "1154862.4",
+    "average_purchase": "1154862.4"
+  },
+  {
+    "buyer_id": "205",
+    "buyer_name": "Abeer Barakat",
+    "purchases_count": "1",
+    "total_spent": "1016502.56",
+    "average_purchase": "1016502.56"
+  },
+  {
+    "buyer_id": "153",
+    "buyer_name": "Ziad Daraghmeh",
+    "purchases_count": "1",
+    "total_spent": "1010605.86",
+    "average_purchase": "1010605.86"
+  },
+  {
+    "buyer_id": "184",
+    "buyer_name": "Dina Rimawi",
+    "purchases_count": "1",
+    "total_spent": "994323.77",
+    "average_purchase": "994323.77"
+  },
+  {
+    "buyer_id": "249",
+    "buyer_name": "Ibrahim Zubaidi",
+    "purchases_count": "1",
+    "total_spent": "866216.15",
+    "average_purchase": "866216.15"
+  },
+  {
+    "buyer_id": "133",
+    "buyer_name": "Hiba Awad",
+    "purchases_count": "1",
+    "total_spent": "842384.58",
+    "average_purchase": "842384.58"
+  },
+  {
+    "buyer_id": "197",
+    "buyer_name": "Layla Nabulsi",
+    "purchases_count": "1",
+    "total_spent": "695650.65",
+    "average_purchase": "695650.65"
+  },
+  {
+    "buyer_id": "186",
+    "buyer_name": "Raed Tawil",
+    "purchases_count": "1",
+    "total_spent": "654371.37",
+    "average_purchase": "654371.37"
+  },
+  {
+    "buyer_id": "110",
+    "buyer_name": "Layla Saleh",
+    "purchases_count": "1",
+    "total_spent": "629482.2",
+    "average_purchase": "629482.2"
+  },
+  {
+    "buyer_id": "241",
+    "buyer_name": "Nasser Tamimi",
+    "purchases_count": "1",
+    "total_spent": "623091.7",
+    "average_purchase": "623091.7"
+  },
+  {
+    "buyer_id": "203",
+    "buyer_name": "Faris Rimawi",
+    "purchases_count": "1",
+    "total_spent": "522024.81",
+    "average_purchase": "522024.81"
+  },
+  {
+    "buyer_id": "78",
+    "buyer_name": "Hiba Rimawi",
+    "purchases_count": "1",
+    "total_spent": "485202.29",
+    "average_purchase": "485202.29"
+  },
+  {
+    "buyer_id": "174",
+    "buyer_name": "Hana Srour",
+    "purchases_count": "1",
+    "total_spent": "440093.57",
+    "average_purchase": "440093.57"
+  },
+  {
+    "buyer_id": "11",
+    "buyer_name": "International Holdings Ltd",
+    "purchases_count": "1",
+    "total_spent": "298839.41",
+    "average_purchase": "298839.41"
+  },
+  {
+    "buyer_id": "238",
+    "buyer_name": "Khaled Daraghmeh",
+    "purchases_count": "1",
+    "total_spent": "280545.11",
+    "average_purchase": "280545.11"
+  },
+  {
+    "buyer_id": "196",
+    "buyer_name": "Sana Barakat",
+    "purchases_count": "1",
+    "total_spent": "277920.27",
+    "average_purchase": "277920.27"
+  },
+  {
+    "buyer_id": "130",
+    "buyer_name": "Hana Zubaidi",
+    "purchases_count": "1",
+    "total_spent": "254449.08",
+    "average_purchase": "254449.08"
+  },
+  {
+    "buyer_id": "91",
+    "buyer_name": "Bassam Awad",
+    "purchases_count": "1",
+    "total_spent": "253330.02",
+    "average_purchase": "253330.02"
+  },
+  {
+    "buyer_id": "150",
+    "buyer_name": "Maryam Tamimi",
+    "purchases_count": "1",
+    "total_spent": "227001.41",
+    "average_purchase": "227001.41"
+  },
+  {
+    "buyer_id": "279",
+    "buyer_name": "Nasser Hamdan",
+    "purchases_count": "1",
+    "total_spent": "226208.24",
+    "average_purchase": "226208.24"
+  },
+  {
+    "buyer_id": "270",
+    "buyer_name": "Khalil Rimawi",
+    "purchases_count": "1",
+    "total_spent": "213381.97",
+    "average_purchase": "213381.97"
+  },
+  {
+    "buyer_id": "80",
+    "buyer_name": "Ahmad Barakat",
+    "purchases_count": "1",
+    "total_spent": "210670.73",
+    "average_purchase": "210670.73"
+  },
+  {
+    "buyer_id": "26",
+    "buyer_name": "Hiba Saleh",
+    "purchases_count": "1",
+    "total_spent": "201962.18",
+    "average_purchase": "201962.18"
+  },
+  {
+    "buyer_id": "208",
+    "buyer_name": "Karim Qasim",
+    "purchases_count": "1",
+    "total_spent": "166376.44",
+    "average_purchase": "166376.44"
+  },
+  {
+    "buyer_id": "88",
+    "buyer_name": "Faris Zubaidi",
+    "purchases_count": "1",
+    "total_spent": "160570.25",
+    "average_purchase": "160570.25"
+  },
+  {
+    "buyer_id": "66",
+    "buyer_name": "Ziad Saleh",
+    "purchases_count": "1",
+    "total_spent": "158409.13",
+    "average_purchase": "158409.13"
+  },
+  {
+    "buyer_id": "70",
+    "buyer_name": "Sara Awad",
+    "purchases_count": "1",
+    "total_spent": "134385.66",
+    "average_purchase": "134385.66"
+  },
+  {
+    "buyer_id": "263",
+    "buyer_name": "Hana Nassar",
+    "purchases_count": "1",
+    "total_spent": "129244.46",
+    "average_purchase": "129244.46"
+  },
+  {
+    "buyer_id": "224",
+    "buyer_name": "Ziad Barakat",
+    "purchases_count": "1",
+    "total_spent": "113699.68",
+    "average_purchase": "113699.68"
+  },
+  {
+    "buyer_id": "282",
+    "buyer_name": "Reem Hamdan",
+    "purchases_count": "1",
+    "total_spent": "103002.44",
+    "average_purchase": "103002.44"
+  },
+  {
+    "buyer_id": "123",
+    "buyer_name": "Yousef Srour",
+    "purchases_count": "1",
+    "total_spent": "83154.14",
+    "average_purchase": "83154.14"
+  },
+  {
+    "buyer_id": "167",
+    "buyer_name": "Mahmoud Irshaid",
+    "purchases_count": "1",
+    "total_spent": "81206.82",
+    "average_purchase": "81206.82"
+  },
+  {
+    "buyer_id": "213",
+    "buyer_name": "Dina Haddad",
+    "purchases_count": "1",
+    "total_spent": "77914.8",
+    "average_purchase": "77914.8"
+  },
+  {
+    "buyer_id": "291",
+    "buyer_name": "Dina Mansour",
+    "purchases_count": "1",
+    "total_spent": "76358.38",
+    "average_purchase": "76358.38"
+  },
+  {
+    "buyer_id": "8",
+    "buyer_name": "Yousef Barakat",
+    "purchases_count": "1",
+    "total_spent": "67462.44",
+    "average_purchase": "67462.44"
+  },
+  {
+    "buyer_id": "23",
+    "buyer_name": "International Holdings Ltd",
+    "purchases_count": "1",
+    "total_spent": "63547.42",
+    "average_purchase": "63547.42"
+  },
+  {
+    "buyer_id": "28",
+    "buyer_name": "Emirates Land Group",
+    "purchases_count": "1",
+    "total_spent": "41370.62",
+    "average_purchase": "41370.62"
+  },
+  {
+    "buyer_id": "237",
+    "buyer_name": "Yousef Musleh",
+    "purchases_count": "1",
+    "total_spent": "37014.32",
+    "average_purchase": "37014.32"
+  },
+  {
+    "buyer_id": "19",
+    "buyer_name": "International Holdings Ltd",
+    "purchases_count": "1",
+    "total_spent": "32492.64",
+    "average_purchase": "32492.64"
+  },
+  {
+    "buyer_id": "243",
+    "buyer_name": "Walid Odeh",
+    "purchases_count": "1",
+    "total_spent": "32215.28",
+    "average_purchase": "32215.28"
+  },
+  {
+    "buyer_id": "77",
+    "buyer_name": "Sara Haddad",
+    "purchases_count": "1",
+    "total_spent": "29497.3",
+    "average_purchase": "29497.3"
+  },
+  {
+    "buyer_id": "85",
+    "buyer_name": "Bassam Barakat",
+    "purchases_count": "1",
+    "total_spent": "18790.4",
+    "average_purchase": "18790.4"
+  },
+  {
+    "buyer_id": "120",
+    "buyer_name": "Rami Daraghmeh",
+    "purchases_count": "1",
+    "total_spent": "14598.68",
+    "average_purchase": "14598.68"
+  },
+  {
+    "buyer_id": "140",
+    "buyer_name": "Fatima Nabulsi",
+    "purchases_count": "1",
+    "total_spent": "14429.36",
+    "average_purchase": "14429.36"
+  },
+  {
+    "buyer_id": "286",
+    "buyer_name": "Yousef Tamimi",
+    "purchases_count": "1",
+    "total_spent": "10351.29",
+    "average_purchase": "10351.29"
+  },
+  {
+    "buyer_id": "81",
+    "buyer_name": "Rana Musleh",
+    "purchases_count": "1",
+    "total_spent": "9644.25",
+    "average_purchase": "9644.25"
+  },
+  {
+    "buyer_id": "293",
+    "buyer_name": "Amer Tawil",
+    "purchases_count": "1",
+    "total_spent": "9218.65",
+    "average_purchase": "9218.65"
+  },
+  {
+    "buyer_id": "219",
+    "buyer_name": "Yousef Irshaid",
+    "purchases_count": "1",
+    "total_spent": "7790.05",
+    "average_purchase": "7790.05"
+  },
+  {
+    "buyer_id": "275",
+    "buyer_name": "Bassam Tawil",
+    "purchases_count": "1",
+    "total_spent": "5613.24",
+    "average_purchase": "5613.24"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "report_type": "person",
+  "generated_at": "2026-04-16T20:39:51.096199",
+  "person": {
+    "id": 269,
+    "name": "Dina Daraghmeh"
+  },
+  "period": {
+    "from": "2026-03-17",
+    "to": "2026-04-16"
+  },
+  "summary": {
+    "total_sales": 0,
+    "total_sales_value": 0,
+    "total_purchases": 0,
+    "total_purchases_value": 0,
+    "total_area_sold": 0,
+    "total_area_purchased": 0
+  },
+  "sales": [],
+  "purchases": [],
+  "notes": "string"
+}

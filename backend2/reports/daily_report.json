@@ -1,0 +1,3950 @@
+[
+  {
+    "date": "2010-01-05",
+    "transactions_count": "1",
+    "total_value": "1962437.57",
+    "average_price": "1962437.57"
+  },
+  {
+    "date": "2010-01-07",
+    "transactions_count": "1",
+    "total_value": "892196.74",
+    "average_price": "892196.74"
+  },
+  {
+    "date": "2010-02-08",
+    "transactions_count": "1",
+    "total_value": "61680.56",
+    "average_price": "61680.56"
+  },
+  {
+    "date": "2010-02-24",
+    "transactions_count": "1",
+    "total_value": "2750380.12",
+    "average_price": "2750380.12"
+  },
+  {
+    "date": "2010-02-25",
+    "transactions_count": "1",
+    "total_value": "1254166.33",
+    "average_price": "1254166.33"
+  },
+  {
+    "date": "2010-02-28",
+    "transactions_count": "1",
+    "total_value": "145819.14",
+    "average_price": "145819.14"
+  },
+  {
+    "date": "2010-03-13",
+    "transactions_count": "1",
+    "total_value": "145042.45",
+    "average_price": "145042.45"
+  },
+  {
+    "date": "2010-03-16",
+    "transactions_count": "1",
+    "total_value": "277655.26",
+    "average_price": "277655.26"
+  },
+  {
+    "date": "2010-03-28",
+    "transactions_count": "1",
+    "total_value": "1605943.31",
+    "average_price": "1605943.31"
+  },
+  {
+    "date": "2010-04-02",
+    "transactions_count": "1",
+    "total_value": "8925.83",
+    "average_price": "8925.83"
+  },
+  {
+    "date": "2010-04-11",
+    "transactions_count": "1",
+    "total_value": "30461.65",
+    "average_price": "30461.65"
+  },
+  {
+    "date": "2010-04-22",
+    "transactions_count": "2",
+    "total_value": "264329.26",
+    "average_price": "132164.63"
+  },
+  {
+    "date": "2010-05-17",
+    "transactions_count": "1",
+    "total_value": "620189.22",
+    "average_price": "620189.22"
+  },
+  {
+    "date": "2010-05-19",
+    "transactions_count": "1",
+    "total_value": "45157.6",
+    "average_price": "45157.6"
+  },
+  {
+    "date": "2010-05-29",
+    "transactions_count": "1",
+    "total_value": "2768613.16",
+    "average_price": "2768613.16"
+  },
+  {
+    "date": "2010-06-07",
+    "transactions_count": "1",
+    "total_value": "2126582.42",
+    "average_price": "2126582.42"
+  },
+  {
+    "date": "2010-06-25",
+    "transactions_count": "1",
+    "total_value": "2305049.89",
+    "average_price": "2305049.89"
+  },
+  {
+    "date": "2010-06-27",
+    "transactions_count": "1",
+    "total_value": "56351.57",
+    "average_price": "56351.57"
+  },
+  {
+    "date": "2010-06-28",
+    "transactions_count": "1",
+    "total_value": "482918.29",
+    "average_price": "482918.29"
+  },
+  {
+    "date": "2010-07-12",
+    "transactions_count": "1",
+    "total_value": "16014.57",
+    "average_price": "16014.57"
+  },
+  {
+    "date": "2010-07-16",
+    "transactions_count": "1",
+    "total_value": "768601.83",
+    "average_price": "768601.83"
+  },
+  {
+    "date": "2010-07-21",
+    "transactions_count": "1",
+    "total_value": "4946819.73",
+    "average_price": "4946819.73"
+  },
+  {
+    "date": "2010-07-22",
+    "transactions_count": "1",
+    "total_value": "192546.77",
+    "average_price": "192546.77"
+  },
+  {
+    "date": "2010-07-27",
+    "transactions_count": "1",
+    "total_value": "832048.83",
+    "average_price": "832048.83"
+  },
+  {
+    "date": "2010-08-01",
+    "transactions_count": "1",
+    "total_value": "3335172.24",
+    "average_price": "3335172.24"
+  },
+  {
+    "date": "2010-08-12",
+    "transactions_count": "1",
+    "total_value": "62968.17",
+    "average_price": "62968.17"
+  },
+  {
+    "date": "2010-08-13",
+    "transactions_count": "1",
+    "total_value": "1991955.65",
+    "average_price": "1991955.65"
+  },
+  {
+    "date": "2010-08-21",
+    "transactions_count": "1",
+    "total_value": "1432306.2",
+    "average_price": "1432306.2"
+  },
+  {
+    "date": "2010-09-03",
+    "transactions_count": "1",
+    "total_value": "140797.38",
+    "average_price": "140797.38"
+  },
+  {
+    "date": "2010-09-11",
+    "transactions_count": "1",
+    "total_value": "1850195.91",
+    "average_price": "1850195.91"
+  },
+  {
+    "date": "2010-09-13",
+    "transactions_count": "1",
+    "total_value": "1537634.78",
+    "average_price": "1537634.78"
+  },
+  {
+    "date": "2010-10-04",
+    "transactions_count": "1",
+    "total_value": "12427.71",
+    "average_price": "12427.71"
+  },
+  {
+    "date": "2010-10-09",
+    "transactions_count": "1",
+    "total_value": "54914.31",
+    "average_price": "54914.31"
+  },
+  {
+    "date": "2010-10-14",
+    "transactions_count": "1",
+    "total_value": "351064.63",
+    "average_price": "351064.63"
+  },
+  {
+    "date": "2010-10-22",
+    "transactions_count": "1",
+    "total_value": "3521602.6",
+    "average_price": "3521602.6"
+  },
+  {
+    "date": "2010-10-25",
+    "transactions_count": "1",
+    "total_value": "74565.38",
+    "average_price": "74565.38"
+  },
+  {
+    "date": "2010-10-27",
+    "transactions_count": "1",
+    "total_value": "99626.67",
+    "average_price": "99626.67"
+  },
+  {
+    "date": "2010-11-03",
+    "transactions_count": "1",
+    "total_value": "683993.03",
+    "average_price": "683993.03"
+  },
+  {
+    "date": "2010-11-23",
+    "transactions_count": "1",
+    "total_value": "883998.94",
+    "average_price": "883998.94"
+  },
+  {
+    "date": "2010-12-09",
+    "transactions_count": "1",
+    "total_value": "4565793.56",
+    "average_price": "4565793.56"
+  },
+  {
+    "date": "2010-12-10",
+    "transactions_count": "2",
+    "total_value": "1182814.2000000002",
+    "average_price": "591407.1000000001"
+  },
+  {
+    "date": "2010-12-13",
+    "transactions_count": "1",
+    "total_value": "512232.47",
+    "average_price": "512232.47"
+  },
+  {
+    "date": "2010-12-14",
+    "transactions_count": "1",
+    "total_value": "5965.18",
+    "average_price": "5965.18"
+  },
+  {
+    "date": "2010-12-16",
+    "transactions_count": "1",
+    "total_value": "4629265.69",
+    "average_price": "4629265.69"
+  },
+  {
+    "date": "2010-12-18",
+    "transactions_count": "1",
+    "total_value": "5566152.68",
+    "average_price": "5566152.68"
+  },
+  {
+    "date": "2011-01-12",
+    "transactions_count": "1",
+    "total_value": "139240.47",
+    "average_price": "139240.47"
+  },
+  {
+    "date": "2011-01-29",
+    "transactions_count": "2",
+    "total_value": "4137658.95",
+    "average_price": "2068829.475"
+  },
+  {
+    "date": "2011-02-07",
+    "transactions_count": "1",
+    "total_value": "3327680.07",
+    "average_price": "3327680.07"
+  },
+  {
+    "date": "2011-02-08",
+    "transactions_count": "1",
+    "total_value": "119065.56",
+    "average_price": "119065.56"
+  },
+  {
+    "date": "2011-02-21",
+    "transactions_count": "1",
+    "total_value": "4477.38",
+    "average_price": "4477.38"
+  },
+  {
+    "date": "2011-02-22",
+    "transactions_count": "1",
+    "total_value": "411600.01",
+    "average_price": "411600.01"
+  },
+  {
+    "date": "2011-02-25",
+    "transactions_count": "1",
+    "total_value": "12503.73",
+    "average_price": "12503.73"
+  },
+  {
+    "date": "2011-03-15",
+    "transactions_count": "1",
+    "total_value": "81254.27",
+    "average_price": "81254.27"
+  },
+  {
+    "date": "2011-03-24",
+    "transactions_count": "1",
+    "total_value": "78957.12",
+    "average_price": "78957.12"
+  },
+  {
+    "date": "2011-04-04",
+    "transactions_count": "1",
+    "total_value": "2923234.83",
+    "average_price": "2923234.83"
+  },
+  {
+    "date": "2011-04-05",
+    "transactions_count": "1",
+    "total_value": "3278165.17",
+    "average_price": "3278165.17"
+  },
+  {
+    "date": "2011-04-28",
+    "transactions_count": "1",
+    "total_value": "4244327.56",
+    "average_price": "4244327.56"
+  },
+  {
+    "date": "2011-05-05",
+    "transactions_count": "1",
+    "total_value": "56361.16",
+    "average_price": "56361.16"
+  },
+  {
+    "date": "2011-05-23",
+    "transactions_count": "1",
+    "total_value": "166376.44",
+    "average_price": "166376.44"
+  },
+  {
+    "date": "2011-05-26",
+    "transactions_count": "1",
+    "total_value": "60016.92",
+    "average_price": "60016.92"
+  },
+  {
+    "date": "2011-05-30",
+    "transactions_count": "1",
+    "total_value": "3205693.33",
+    "average_price": "3205693.33"
+  },
+  {
+    "date": "2011-06-02",
+    "transactions_count": "1",
+    "total_value": "260283.79",
+    "average_price": "260283.79"
+  },
+  {
+    "date": "2011-06-17",
+    "transactions_count": "1",
+    "total_value": "1720000.2",
+    "average_price": "1720000.2"
+  },
+  {
+    "date": "2011-07-03",
+    "transactions_count": "2",
+    "total_value": "1439684.02",
+    "average_price": "719842.01"
+  },
+  {
+    "date": "2011-07-04",
+    "transactions_count": "1",
+    "total_value": "74108.23",
+    "average_price": "74108.23"
+  },
+  {
+    "date": "2011-07-05",
+    "transactions_count": "1",
+    "total_value": "2738924.64",
+    "average_price": "2738924.64"
+  },
+  {
+    "date": "2011-07-23",
+    "transactions_count": "1",
+    "total_value": "1412328.32",
+    "average_price": "1412328.32"
+  },
+  {
+    "date": "2011-08-05",
+    "transactions_count": "1",
+    "total_value": "1451357.12",
+    "average_price": "1451357.12"
+  },
+  {
+    "date": "2011-08-25",
+    "transactions_count": "1",
+    "total_value": "3998545.06",
+    "average_price": "3998545.06"
+  },
+  {
+    "date": "2011-09-11",
+    "transactions_count": "1",
+    "total_value": "91574.0",
+    "average_price": "91574.0"
+  },
+  {
+    "date": "2011-09-20",
+    "transactions_count": "1",
+    "total_value": "19038.91",
+    "average_price": "19038.91"
+  },
+  {
+    "date": "2011-09-30",
+    "transactions_count": "1",
+    "total_value": "125525.7",
+    "average_price": "125525.7"
+  },
+  {
+    "date": "2011-10-12",
+    "transactions_count": "1",
+    "total_value": "79635.21",
+    "average_price": "79635.21"
+  },
+  {
+    "date": "2011-10-20",
+    "transactions_count": "1",
+    "total_value": "142063.42",
+    "average_price": "142063.42"
+  },
+  {
+    "date": "2011-10-21",
+    "transactions_count": "1",
+    "total_value": "1456897.62",
+    "average_price": "1456897.62"
+  },
+  {
+    "date": "2011-11-01",
+    "transactions_count": "1",
+    "total_value": "4656635.46",
+    "average_price": "4656635.46"
+  },
+  {
+    "date": "2011-11-12",
+    "transactions_count": "1",
+    "total_value": "1459875.65",
+    "average_price": "1459875.65"
+  },
+  {
+    "date": "2011-11-24",
+    "transactions_count": "1",
+    "total_value": "237494.59",
+    "average_price": "237494.59"
+  },
+  {
+    "date": "2011-11-27",
+    "transactions_count": "1",
+    "total_value": "1091315.18",
+    "average_price": "1091315.18"
+  },
+  {
+    "date": "2011-12-06",
+    "transactions_count": "2",
+    "total_value": "672107.85",
+    "average_price": "336053.925"
+  },
+  {
+    "date": "2011-12-17",
+    "transactions_count": "1",
+    "total_value": "3054999.66",
+    "average_price": "3054999.66"
+  },
+  {
+    "date": "2011-12-30",
+    "transactions_count": "1",
+    "total_value": "1522571.44",
+    "average_price": "1522571.44"
+  },
+  {
+    "date": "2012-01-10",
+    "transactions_count": "1",
+    "total_value": "4392520.51",
+    "average_price": "4392520.51"
+  },
+  {
+    "date": "2012-01-11",
+    "transactions_count": "1",
+    "total_value": "2855352.74",
+    "average_price": "2855352.74"
+  },
+  {
+    "date": "2012-01-17",
+    "transactions_count": "1",
+    "total_value": "1316106.39",
+    "average_price": "1316106.39"
+  },
+  {
+    "date": "2012-01-23",
+    "transactions_count": "2",
+    "total_value": "147423.26",
+    "average_price": "73711.63"
+  },
+  {
+    "date": "2012-01-27",
+    "transactions_count": "1",
+    "total_value": "127296.52",
+    "average_price": "127296.52"
+  },
+  {
+    "date": "2012-02-04",
+    "transactions_count": "1",
+    "total_value": "42471.15",
+    "average_price": "42471.15"
+  },
+  {
+    "date": "2012-02-14",
+    "transactions_count": "1",
+    "total_value": "44195.59",
+    "average_price": "44195.59"
+  },
+  {
+    "date": "2012-02-22",
+    "transactions_count": "1",
+    "total_value": "4484166.8",
+    "average_price": "4484166.8"
+  },
+  {
+    "date": "2012-03-05",
+    "transactions_count": "2",
+    "total_value": "2373939.29",
+    "average_price": "1186969.645"
+  },
+  {
+    "date": "2012-03-06",
+    "transactions_count": "1",
+    "total_value": "1274191.49",
+    "average_price": "1274191.49"
+  },
+  {
+    "date": "2012-03-19",
+    "transactions_count": "1",
+    "total_value": "3282837.82",
+    "average_price": "3282837.82"
+  },
+  {
+    "date": "2012-03-25",
+    "transactions_count": "1",
+    "total_value": "137466.71",
+    "average_price": "137466.71"
+  },
+  {
+    "date": "2012-03-27",
+    "transactions_count": "2",
+    "total_value": "1527859.25",
+    "average_price": "763929.625"
+  },
+  {
+    "date": "2012-03-31",
+    "transactions_count": "1",
+    "total_value": "26327.83",
+    "average_price": "26327.83"
+  },
+  {
+    "date": "2012-04-06",
+    "transactions_count": "1",
+    "total_value": "7155.02",
+    "average_price": "7155.02"
+  },
+  {
+    "date": "2012-04-11",
+    "transactions_count": "1",
+    "total_value": "181108.22",
+    "average_price": "181108.22"
+  },
+  {
+    "date": "2012-05-02",
+    "transactions_count": "1",
+    "total_value": "465197.66",
+    "average_price": "465197.66"
+  },
+  {
+    "date": "2012-05-10",
+    "transactions_count": "1",
+    "total_value": "84863.94",
+    "average_price": "84863.94"
+  },
+  {
+    "date": "2012-05-20",
+    "transactions_count": "1",
+    "total_value": "1955246.28",
+    "average_price": "1955246.28"
+  },
+  {
+    "date": "2012-05-25",
+    "transactions_count": "1",
+    "total_value": "21144.54",
+    "average_price": "21144.54"
+  },
+  {
+    "date": "2012-05-29",
+    "transactions_count": "1",
+    "total_value": "5956.09",
+    "average_price": "5956.09"
+  },
+  {
+    "date": "2012-05-30",
+    "transactions_count": "1",
+    "total_value": "546402.6",
+    "average_price": "546402.6"
+  },
+  {
+    "date": "2012-06-03",
+    "transactions_count": "1",
+    "total_value": "2920200.77",
+    "average_price": "2920200.77"
+  },
+  {
+    "date": "2012-06-13",
+    "transactions_count": "2",
+    "total_value": "2700860.74",
+    "average_price": "1350430.37"
+  },
+  {
+    "date": "2012-06-17",
+    "transactions_count": "1",
+    "total_value": "4087917.84",
+    "average_price": "4087917.84"
+  },
+  {
+    "date": "2012-07-09",
+    "transactions_count": "1",
+    "total_value": "299100.26",
+    "average_price": "299100.26"
+  },
+  {
+    "date": "2012-07-12",
+    "transactions_count": "1",
+    "total_value": "104688.25",
+    "average_price": "104688.25"
+  },
+  {
+    "date": "2012-07-17",
+    "transactions_count": "1",
+    "total_value": "2571721.42",
+    "average_price": "2571721.42"
+  },
+  {
+    "date": "2012-07-24",
+    "transactions_count": "1",
+    "total_value": "19740.82",
+    "average_price": "19740.82"
+  },
+  {
+    "date": "2012-07-26",
+    "transactions_count": "1",
+    "total_value": "43287.24",
+    "average_price": "43287.24"
+  },
+  {
+    "date": "2012-08-06",
+    "transactions_count": "1",
+    "total_value": "78868.53",
+    "average_price": "78868.53"
+  },
+  {
+    "date": "2012-08-07",
+    "transactions_count": "1",
+    "total_value": "126477.69",
+    "average_price": "126477.69"
+  },
+  {
+    "date": "2012-08-12",
+    "transactions_count": "1",
+    "total_value": "5165254.91",
+    "average_price": "5165254.91"
+  },
+  {
+    "date": "2012-08-18",
+    "transactions_count": "1",
+    "total_value": "1394316.23",
+    "average_price": "1394316.23"
+  },
+  {
+    "date": "2012-09-05",
+    "transactions_count": "1",
+    "total_value": "1484415.83",
+    "average_price": "1484415.83"
+  },
+  {
+    "date": "2012-09-12",
+    "transactions_count": "1",
+    "total_value": "5460060.27",
+    "average_price": "5460060.27"
+  },
+  {
+    "date": "2012-09-21",
+    "transactions_count": "1",
+    "total_value": "215047.54",
+    "average_price": "215047.54"
+  },
+  {
+    "date": "2012-10-02",
+    "transactions_count": "1",
+    "total_value": "2986956.87",
+    "average_price": "2986956.87"
+  },
+  {
+    "date": "2012-10-05",
+    "transactions_count": "1",
+    "total_value": "123338.27",
+    "average_price": "123338.27"
+  },
+  {
+    "date": "2012-10-27",
+    "transactions_count": "1",
+    "total_value": "1177470.23",
+    "average_price": "1177470.23"
+  },
+  {
+    "date": "2012-10-31",
+    "transactions_count": "1",
+    "total_value": "2355717.33",
+    "average_price": "2355717.33"
+  },
+  {
+    "date": "2012-11-17",
+    "transactions_count": "1",
+    "total_value": "2858622.1",
+    "average_price": "2858622.1"
+  },
+  {
+    "date": "2012-12-16",
+    "transactions_count": "1",
+    "total_value": "2150076.13",
+    "average_price": "2150076.13"
+  },
+  {
+    "date": "2012-12-21",
+    "transactions_count": "1",
+    "total_value": "411626.82",
+    "average_price": "411626.82"
+  },
+  {
+    "date": "2012-12-23",
+    "transactions_count": "1",
+    "total_value": "91049.54",
+    "average_price": "91049.54"
+  },
+  {
+    "date": "2012-12-28",
+    "transactions_count": "1",
+    "total_value": "6778972.56",
+    "average_price": "6778972.56"
+  },
+  {
+    "date": "2013-01-07",
+    "transactions_count": "1",
+    "total_value": "280545.11",
+    "average_price": "280545.11"
+  },
+  {
+    "date": "2013-01-13",
+    "transactions_count": "1",
+    "total_value": "440093.57",
+    "average_price": "440093.57"
+  },
+  {
+    "date": "2013-01-22",
+    "transactions_count": "1",
+    "total_value": "14776.51",
+    "average_price": "14776.51"
+  },
+  {
+    "date": "2013-01-31",
+    "transactions_count": "1",
+    "total_value": "1016709.63",
+    "average_price": "1016709.63"
+  },
+  {
+    "date": "2013-02-05",
+    "transactions_count": "1",
+    "total_value": "1167683.11",
+    "average_price": "1167683.11"
+  },
+  {
+    "date": "2013-02-09",
+    "transactions_count": "1",
+    "total_value": "29497.3",
+    "average_price": "29497.3"
+  },
+  {
+    "date": "2013-02-10",
+    "transactions_count": "1",
+    "total_value": "194184.22",
+    "average_price": "194184.22"
+  },
+  {
+    "date": "2013-02-18",
+    "transactions_count": "1",
+    "total_value": "22590.24",
+    "average_price": "22590.24"
+  },
+  {
+    "date": "2013-02-23",
+    "transactions_count": "1",
+    "total_value": "716622.19",
+    "average_price": "716622.19"
+  },
+  {
+    "date": "2013-02-24",
+    "transactions_count": "1",
+    "total_value": "314944.35",
+    "average_price": "314944.35"
+  },
+  {
+    "date": "2013-02-25",
+    "transactions_count": "1",
+    "total_value": "1632954.35",
+    "average_price": "1632954.35"
+  },
+  {
+    "date": "2013-03-01",
+    "transactions_count": "1",
+    "total_value": "342289.54",
+    "average_price": "342289.54"
+  },
+  {
+    "date": "2013-03-04",
+    "transactions_count": "1",
+    "total_value": "83905.27",
+    "average_price": "83905.27"
+  },
+  {
+    "date": "2013-03-06",
+    "transactions_count": "2",
+    "total_value": "185058.33",
+    "average_price": "92529.165"
+  },
+  {
+    "date": "2013-03-15",
+    "transactions_count": "1",
+    "total_value": "482804.65",
+    "average_price": "482804.65"
+  },
+  {
+    "date": "2013-03-24",
+    "transactions_count": "1",
+    "total_value": "868438.35",
+    "average_price": "868438.35"
+  },
+  {
+    "date": "2013-03-28",
+    "transactions_count": "1",
+    "total_value": "5306384.95",
+    "average_price": "5306384.95"
+  },
+  {
+    "date": "2013-03-30",
+    "transactions_count": "1",
+    "total_value": "124905.63",
+    "average_price": "124905.63"
+  },
+  {
+    "date": "2013-04-11",
+    "transactions_count": "1",
+    "total_value": "3648248.76",
+    "average_price": "3648248.76"
+  },
+  {
+    "date": "2013-04-15",
+    "transactions_count": "1",
+    "total_value": "89953.6",
+    "average_price": "89953.6"
+  },
+  {
+    "date": "2013-04-17",
+    "transactions_count": "1",
+    "total_value": "4507073.45",
+    "average_price": "4507073.45"
+  },
+  {
+    "date": "2013-04-24",
+    "transactions_count": "1",
+    "total_value": "1852507.51",
+    "average_price": "1852507.51"
+  },
+  {
+    "date": "2013-04-27",
+    "transactions_count": "1",
+    "total_value": "245060.3",
+    "average_price": "245060.3"
+  },
+  {
+    "date": "2013-05-05",
+    "transactions_count": "1",
+    "total_value": "67462.44",
+    "average_price": "67462.44"
+  },
+  {
+    "date": "2013-05-14",
+    "transactions_count": "2",
+    "total_value": "2948160.4699999997",
+    "average_price": "1474080.2349999999"
+  },
+  {
+    "date": "2013-05-19",
+    "transactions_count": "1",
+    "total_value": "2602983.92",
+    "average_price": "2602983.92"
+  },
+  {
+    "date": "2013-05-25",
+    "transactions_count": "1",
+    "total_value": "3036671.37",
+    "average_price": "3036671.37"
+  },
+  {
+    "date": "2013-05-27",
+    "transactions_count": "1",
+    "total_value": "32492.64",
+    "average_price": "32492.64"
+  },
+  {
+    "date": "2013-06-12",
+    "transactions_count": "1",
+    "total_value": "11881.86",
+    "average_price": "11881.86"
+  },
+  {
+    "date": "2013-07-03",
+    "transactions_count": "1",
+    "total_value": "217144.13",
+    "average_price": "217144.13"
+  },
+  {
+    "date": "2013-07-12",
+    "transactions_count": "1",
+    "total_value": "1501633.57",
+    "average_price": "1501633.57"
+  },
+  {
+    "date": "2013-07-19",
+    "transactions_count": "1",
+    "total_value": "46248.28",
+    "average_price": "46248.28"
+  },
+  {
+    "date": "2013-07-20",
+    "transactions_count": "1",
+    "total_value": "94305.37",
+    "average_price": "94305.37"
+  },
+  {
+    "date": "2013-07-23",
+    "transactions_count": "1",
+    "total_value": "1478163.79",
+    "average_price": "1478163.79"
+  },
+  {
+    "date": "2013-07-28",
+    "transactions_count": "1",
+    "total_value": "1364931.43",
+    "average_price": "1364931.43"
+  },
+  {
+    "date": "2013-08-02",
+    "transactions_count": "1",
+    "total_value": "1096449.44",
+    "average_price": "1096449.44"
+  },
+  {
+    "date": "2013-08-06",
+    "transactions_count": "1",
+    "total_value": "20395.3",
+    "average_price": "20395.3"
+  },
+  {
+    "date": "2013-08-08",
+    "transactions_count": "1",
+    "total_value": "89668.5",
+    "average_price": "89668.5"
+  },
+  {
+    "date": "2013-08-24",
+    "transactions_count": "1",
+    "total_value": "3333892.32",
+    "average_price": "3333892.32"
+  },
+  {
+    "date": "2013-08-27",
+    "transactions_count": "1",
+    "total_value": "133645.28",
+    "average_price": "133645.28"
+  },
+  {
+    "date": "2013-09-07",
+    "transactions_count": "1",
+    "total_value": "1307101.23",
+    "average_price": "1307101.23"
+  },
+  {
+    "date": "2013-09-22",
+    "transactions_count": "1",
+    "total_value": "4851810.03",
+    "average_price": "4851810.03"
+  },
+  {
+    "date": "2013-09-25",
+    "transactions_count": "1",
+    "total_value": "213712.97",
+    "average_price": "213712.97"
+  },
+  {
+    "date": "2013-09-29",
+    "transactions_count": "1",
+    "total_value": "60905.56",
+    "average_price": "60905.56"
+  },
+  {
+    "date": "2013-10-07",
+    "transactions_count": "1",
+    "total_value": "1533204.46",
+    "average_price": "1533204.46"
+  },
+  {
+    "date": "2013-10-11",
+    "transactions_count": "1",
+    "total_value": "212496.93",
+    "average_price": "212496.93"
+  },
+  {
+    "date": "2013-10-16",
+    "transactions_count": "1",
+    "total_value": "89091.54",
+    "average_price": "89091.54"
+  },
+  {
+    "date": "2013-10-19",
+    "transactions_count": "1",
+    "total_value": "41370.62",
+    "average_price": "41370.62"
+  },
+  {
+    "date": "2013-11-20",
+    "transactions_count": "1",
+    "total_value": "3389667.61",
+    "average_price": "3389667.61"
+  },
+  {
+    "date": "2013-11-24",
+    "transactions_count": "1",
+    "total_value": "862709.9",
+    "average_price": "862709.9"
+  },
+  {
+    "date": "2013-11-25",
+    "transactions_count": "1",
+    "total_value": "4800257.54",
+    "average_price": "4800257.54"
+  },
+  {
+    "date": "2013-12-01",
+    "transactions_count": "1",
+    "total_value": "226208.24",
+    "average_price": "226208.24"
+  },
+  {
+    "date": "2013-12-06",
+    "transactions_count": "1",
+    "total_value": "46305.11",
+    "average_price": "46305.11"
+  },
+  {
+    "date": "2013-12-08",
+    "transactions_count": "1",
+    "total_value": "109202.82",
+    "average_price": "109202.82"
+  },
+  {
+    "date": "2013-12-17",
+    "transactions_count": "1",
+    "total_value": "177979.01",
+    "average_price": "177979.01"
+  },
+  {
+    "date": "2013-12-18",
+    "transactions_count": "1",
+    "total_value": "3373933.83",
+    "average_price": "3373933.83"
+  },
+  {
+    "date": "2013-12-20",
+    "transactions_count": "1",
+    "total_value": "3575726.87",
+    "average_price": "3575726.87"
+  },
+  {
+    "date": "2013-12-21",
+    "transactions_count": "1",
+    "total_value": "137820.4",
+    "average_price": "137820.4"
+  },
+  {
+    "date": "2013-12-25",
+    "transactions_count": "1",
+    "total_value": "3074493.57",
+    "average_price": "3074493.57"
+  },
+  {
+    "date": "2013-12-30",
+    "transactions_count": "1",
+    "total_value": "300144.23",
+    "average_price": "300144.23"
+  },
+  {
+    "date": "2014-01-04",
+    "transactions_count": "1",
+    "total_value": "3061954.49",
+    "average_price": "3061954.49"
+  },
+  {
+    "date": "2014-01-13",
+    "transactions_count": "1",
+    "total_value": "173046.49",
+    "average_price": "173046.49"
+  },
+  {
+    "date": "2014-01-24",
+    "transactions_count": "2",
+    "total_value": "2377402.79",
+    "average_price": "1188701.395"
+  },
+  {
+    "date": "2014-02-08",
+    "transactions_count": "1",
+    "total_value": "1057539.15",
+    "average_price": "1057539.15"
+  },
+  {
+    "date": "2014-03-01",
+    "transactions_count": "2",
+    "total_value": "1381533.43",
+    "average_price": "690766.715"
+  },
+  {
+    "date": "2014-03-13",
+    "transactions_count": "1",
+    "total_value": "2124037.52",
+    "average_price": "2124037.52"
+  },
+  {
+    "date": "2014-03-15",
+    "transactions_count": "1",
+    "total_value": "957650.96",
+    "average_price": "957650.96"
+  },
+  {
+    "date": "2014-03-19",
+    "transactions_count": "1",
+    "total_value": "1875782.4",
+    "average_price": "1875782.4"
+  },
+  {
+    "date": "2014-03-21",
+    "transactions_count": "1",
+    "total_value": "167499.91",
+    "average_price": "167499.91"
+  },
+  {
+    "date": "2014-03-23",
+    "transactions_count": "1",
+    "total_value": "204291.15",
+    "average_price": "204291.15"
+  },
+  {
+    "date": "2014-04-07",
+    "transactions_count": "1",
+    "total_value": "41861.6",
+    "average_price": "41861.6"
+  },
+  {
+    "date": "2014-04-09",
+    "transactions_count": "1",
+    "total_value": "27642.67",
+    "average_price": "27642.67"
+  },
+  {
+    "date": "2014-05-15",
+    "transactions_count": "1",
+    "total_value": "17935.82",
+    "average_price": "17935.82"
+  },
+  {
+    "date": "2014-06-07",
+    "transactions_count": "1",
+    "total_value": "91516.23",
+    "average_price": "91516.23"
+  },
+  {
+    "date": "2014-06-28",
+    "transactions_count": "1",
+    "total_value": "3477486.06",
+    "average_price": "3477486.06"
+  },
+  {
+    "date": "2014-07-15",
+    "transactions_count": "3",
+    "total_value": "4152637.38",
+    "average_price": "1384212.46"
+  },
+  {
+    "date": "2014-07-22",
+    "transactions_count": "1",
+    "total_value": "1297107.13",
+    "average_price": "1297107.13"
+  },
+  {
+    "date": "2014-08-04",
+    "transactions_count": "1",
+    "total_value": "37340.13",
+    "average_price": "37340.13"
+  },
+  {
+    "date": "2014-08-06",
+    "transactions_count": "2",
+    "total_value": "393629.51",
+    "average_price": "196814.755"
+  },
+  {
+    "date": "2014-08-14",
+    "transactions_count": "1",
+    "total_value": "156618.41",
+    "average_price": "156618.41"
+  },
+  {
+    "date": "2014-08-25",
+    "transactions_count": "1",
+    "total_value": "90390.74",
+    "average_price": "90390.74"
+  },
+  {
+    "date": "2014-08-27",
+    "transactions_count": "1",
+    "total_value": "137296.13",
+    "average_price": "137296.13"
+  },
+  {
+    "date": "2014-09-07",
+    "transactions_count": "1",
+    "total_value": "1526248.14",
+    "average_price": "1526248.14"
+  },
+  {
+    "date": "2014-09-20",
+    "transactions_count": "1",
+    "total_value": "1538309.65",
+    "average_price": "1538309.65"
+  },
+  {
+    "date": "2014-09-22",
+    "transactions_count": "1",
+    "total_value": "79414.6",
+    "average_price": "79414.6"
+  },
+  {
+    "date": "2014-10-10",
+    "transactions_count": "1",
+    "total_value": "31875.97",
+    "average_price": "31875.97"
+  },
+  {
+    "date": "2014-10-13",
+    "transactions_count": "1",
+    "total_value": "1310975.95",
+    "average_price": "1310975.95"
+  },
+  {
+    "date": "2014-11-01",
+    "transactions_count": "1",
+    "total_value": "70620.62",
+    "average_price": "70620.62"
+  },
+  {
+    "date": "2014-11-05",
+    "transactions_count": "1",
+    "total_value": "2776944.48",
+    "average_price": "2776944.48"
+  },
+  {
+    "date": "2014-11-08",
+    "transactions_count": "1",
+    "total_value": "67237.46",
+    "average_price": "67237.46"
+  },
+  {
+    "date": "2014-11-09",
+    "transactions_count": "1",
+    "total_value": "526792.22",
+    "average_price": "526792.22"
+  },
+  {
+    "date": "2014-11-13",
+    "transactions_count": "1",
+    "total_value": "136592.02",
+    "average_price": "136592.02"
+  },
+  {
+    "date": "2014-11-23",
+    "transactions_count": "1",
+    "total_value": "2570682.43",
+    "average_price": "2570682.43"
+  },
+  {
+    "date": "2014-11-28",
+    "transactions_count": "1",
+    "total_value": "18790.4",
+    "average_price": "18790.4"
+  },
+  {
+    "date": "2014-11-30",
+    "transactions_count": "1",
+    "total_value": "3974435.93",
+    "average_price": "3974435.93"
+  },
+  {
+    "date": "2014-12-07",
+    "transactions_count": "1",
+    "total_value": "1718831.41",
+    "average_price": "1718831.41"
+  },
+  {
+    "date": "2014-12-16",
+    "transactions_count": "1",
+    "total_value": "20874.23",
+    "average_price": "20874.23"
+  },
+  {
+    "date": "2015-01-14",
+    "transactions_count": "1",
+    "total_value": "323264.28",
+    "average_price": "323264.28"
+  },
+  {
+    "date": "2015-01-22",
+    "transactions_count": "1",
+    "total_value": "53124.51",
+    "average_price": "53124.51"
+  },
+  {
+    "date": "2015-02-04",
+    "transactions_count": "1",
+    "total_value": "63547.42",
+    "average_price": "63547.42"
+  },
+  {
+    "date": "2015-02-09",
+    "transactions_count": "1",
+    "total_value": "35444.16",
+    "average_price": "35444.16"
+  },
+  {
+    "date": "2015-02-17",
+    "transactions_count": "1",
+    "total_value": "211065.33",
+    "average_price": "211065.33"
+  },
+  {
+    "date": "2015-02-22",
+    "transactions_count": "2",
+    "total_value": "255942.90999999997",
+    "average_price": "127971.45499999999"
+  },
+  {
+    "date": "2015-03-14",
+    "transactions_count": "1",
+    "total_value": "49049.48",
+    "average_price": "49049.48"
+  },
+  {
+    "date": "2015-03-18",
+    "transactions_count": "1",
+    "total_value": "51720.83",
+    "average_price": "51720.83"
+  },
+  {
+    "date": "2015-03-22",
+    "transactions_count": "1",
+    "total_value": "588214.26",
+    "average_price": "588214.26"
+  },
+  {
+    "date": "2015-03-24",
+    "transactions_count": "1",
+    "total_value": "363420.39",
+    "average_price": "363420.39"
+  },
+  {
+    "date": "2015-03-28",
+    "transactions_count": "1",
+    "total_value": "210670.73",
+    "average_price": "210670.73"
+  },
+  {
+    "date": "2015-03-30",
+    "transactions_count": "1",
+    "total_value": "218291.15",
+    "average_price": "218291.15"
+  },
+  {
+    "date": "2015-04-04",
+    "transactions_count": "1",
+    "total_value": "1629613.55",
+    "average_price": "1629613.55"
+  },
+  {
+    "date": "2015-04-07",
+    "transactions_count": "1",
+    "total_value": "90381.59",
+    "average_price": "90381.59"
+  },
+  {
+    "date": "2015-04-08",
+    "transactions_count": "1",
+    "total_value": "122338.04",
+    "average_price": "122338.04"
+  },
+  {
+    "date": "2015-04-23",
+    "transactions_count": "1",
+    "total_value": "37026.68",
+    "average_price": "37026.68"
+  },
+  {
+    "date": "2015-05-03",
+    "transactions_count": "1",
+    "total_value": "9218.65",
+    "average_price": "9218.65"
+  },
+  {
+    "date": "2015-05-15",
+    "transactions_count": "1",
+    "total_value": "14188.29",
+    "average_price": "14188.29"
+  },
+  {
+    "date": "2015-05-25",
+    "transactions_count": "1",
+    "total_value": "457393.27",
+    "average_price": "457393.27"
+  },
+  {
+    "date": "2015-05-26",
+    "transactions_count": "1",
+    "total_value": "32003.98",
+    "average_price": "32003.98"
+  },
+  {
+    "date": "2015-05-27",
+    "transactions_count": "1",
+    "total_value": "3680634.58",
+    "average_price": "3680634.58"
+  },
+  {
+    "date": "2015-05-29",
+    "transactions_count": "1",
+    "total_value": "2320164.05",
+    "average_price": "2320164.05"
+  },
+  {
+    "date": "2015-05-31",
+    "transactions_count": "1",
+    "total_value": "207577.28",
+    "average_price": "207577.28"
+  },
+  {
+    "date": "2015-06-05",
+    "transactions_count": "2",
+    "total_value": "2307005.1199999996",
+    "average_price": "1153502.5599999998"
+  },
+  {
+    "date": "2015-06-12",
+    "transactions_count": "1",
+    "total_value": "98352.88",
+    "average_price": "98352.88"
+  },
+  {
+    "date": "2015-06-14",
+    "transactions_count": "1",
+    "total_value": "1126866.82",
+    "average_price": "1126866.82"
+  },
+  {
+    "date": "2015-06-23",
+    "transactions_count": "1",
+    "total_value": "1920618.23",
+    "average_price": "1920618.23"
+  },
+  {
+    "date": "2015-07-01",
+    "transactions_count": "1",
+    "total_value": "1137427.63",
+    "average_price": "1137427.63"
+  },
+  {
+    "date": "2015-07-03",
+    "transactions_count": "1",
+    "total_value": "1778302.57",
+    "average_price": "1778302.57"
+  },
+  {
+    "date": "2015-07-04",
+    "transactions_count": "1",
+    "total_value": "107736.6",
+    "average_price": "107736.6"
+  },
+  {
+    "date": "2015-07-06",
+    "transactions_count": "1",
+    "total_value": "277920.27",
+    "average_price": "277920.27"
+  },
+  {
+    "date": "2015-07-08",
+    "transactions_count": "2",
+    "total_value": "607635.83",
+    "average_price": "303817.915"
+  },
+  {
+    "date": "2015-07-09",
+    "transactions_count": "1",
+    "total_value": "1841919.39",
+    "average_price": "1841919.39"
+  },
+  {
+    "date": "2015-07-11",
+    "transactions_count": "1",
+    "total_value": "2281335.6",
+    "average_price": "2281335.6"
+  },
+  {
+    "date": "2015-07-27",
+    "transactions_count": "2",
+    "total_value": "4999637.09",
+    "average_price": "2499818.545"
+  },
+  {
+    "date": "2015-07-31",
+    "transactions_count": "1",
+    "total_value": "2906796.23",
+    "average_price": "2906796.23"
+  },
+  {
+    "date": "2015-08-09",
+    "transactions_count": "1",
+    "total_value": "1610441.41",
+    "average_price": "1610441.41"
+  },
+  {
+    "date": "2015-08-12",
+    "transactions_count": "1",
+    "total_value": "21370.02",
+    "average_price": "21370.02"
+  },
+  {
+    "date": "2015-08-22",
+    "transactions_count": "1",
+    "total_value": "1397031.19",
+    "average_price": "1397031.19"
+  },
+  {
+    "date": "2015-08-30",
+    "transactions_count": "1",
+    "total_value": "1889010.99",
+    "average_price": "1889010.99"
+  },
+  {
+    "date": "2015-09-01",
+    "transactions_count": "1",
+    "total_value": "177136.68",
+    "average_price": "177136.68"
+  },
+  {
+    "date": "2015-09-18",
+    "transactions_count": "1",
+    "total_value": "3672212.03",
+    "average_price": "3672212.03"
+  },
+  {
+    "date": "2015-09-23",
+    "transactions_count": "1",
+    "total_value": "1991901.99",
+    "average_price": "1991901.99"
+  },
+  {
+    "date": "2015-10-09",
+    "transactions_count": "1",
+    "total_value": "260207.18",
+    "average_price": "260207.18"
+  },
+  {
+    "date": "2015-10-10",
+    "transactions_count": "1",
+    "total_value": "584224.6",
+    "average_price": "584224.6"
+  },
+  {
+    "date": "2015-10-22",
+    "transactions_count": "1",
+    "total_value": "5015648.98",
+    "average_price": "5015648.98"
+  },
+  {
+    "date": "2015-10-26",
+    "transactions_count": "1",
+    "total_value": "4838280.79",
+    "average_price": "4838280.79"
+  },
+  {
+    "date": "2015-10-28",
+    "transactions_count": "1",
+    "total_value": "962544.56",
+    "average_price": "962544.56"
+  },
+  {
+    "date": "2015-10-31",
+    "transactions_count": "1",
+    "total_value": "431900.66",
+    "average_price": "431900.66"
+  },
+  {
+    "date": "2015-11-09",
+    "transactions_count": "1",
+    "total_value": "154828.39",
+    "average_price": "154828.39"
+  },
+  {
+    "date": "2015-11-13",
+    "transactions_count": "2",
+    "total_value": "4118425.04",
+    "average_price": "2059212.52"
+  },
+  {
+    "date": "2015-11-14",
+    "transactions_count": "1",
+    "total_value": "3258696.06",
+    "average_price": "3258696.06"
+  },
+  {
+    "date": "2015-12-07",
+    "transactions_count": "1",
+    "total_value": "28257.41",
+    "average_price": "28257.41"
+  },
+  {
+    "date": "2015-12-29",
+    "transactions_count": "1",
+    "total_value": "5613.24",
+    "average_price": "5613.24"
+  },
+  {
+    "date": "2016-01-21",
+    "transactions_count": "1",
+    "total_value": "21092.68",
+    "average_price": "21092.68"
+  },
+  {
+    "date": "2016-01-22",
+    "transactions_count": "1",
+    "total_value": "51555.27",
+    "average_price": "51555.27"
+  },
+  {
+    "date": "2016-02-18",
+    "transactions_count": "1",
+    "total_value": "5737745.32",
+    "average_price": "5737745.32"
+  },
+  {
+    "date": "2016-02-25",
+    "transactions_count": "1",
+    "total_value": "205302.47",
+    "average_price": "205302.47"
+  },
+  {
+    "date": "2016-02-28",
+    "transactions_count": "1",
+    "total_value": "1159619.57",
+    "average_price": "1159619.57"
+  },
+  {
+    "date": "2016-02-29",
+    "transactions_count": "2",
+    "total_value": "435028.02",
+    "average_price": "217514.01"
+  },
+  {
+    "date": "2016-03-01",
+    "transactions_count": "1",
+    "total_value": "280043.54",
+    "average_price": "280043.54"
+  },
+  {
+    "date": "2016-03-11",
+    "transactions_count": "1",
+    "total_value": "1918262.98",
+    "average_price": "1918262.98"
+  },
+  {
+    "date": "2016-03-22",
+    "transactions_count": "1",
+    "total_value": "2289202.06",
+    "average_price": "2289202.06"
+  },
+  {
+    "date": "2016-03-31",
+    "transactions_count": "1",
+    "total_value": "1883825.92",
+    "average_price": "1883825.92"
+  },
+  {
+    "date": "2016-04-10",
+    "transactions_count": "1",
+    "total_value": "667038.95",
+    "average_price": "667038.95"
+  },
+  {
+    "date": "2016-04-12",
+    "transactions_count": "1",
+    "total_value": "1016502.56",
+    "average_price": "1016502.56"
+  },
+  {
+    "date": "2016-04-14",
+    "transactions_count": "1",
+    "total_value": "2291733.38",
+    "average_price": "2291733.38"
+  },
+  {
+    "date": "2016-04-25",
+    "transactions_count": "1",
+    "total_value": "147552.64",
+    "average_price": "147552.64"
+  },
+  {
+    "date": "2016-05-03",
+    "transactions_count": "1",
+    "total_value": "2199569.2",
+    "average_price": "2199569.2"
+  },
+  {
+    "date": "2016-05-06",
+    "transactions_count": "1",
+    "total_value": "71769.23",
+    "average_price": "71769.23"
+  },
+  {
+    "date": "2016-05-17",
+    "transactions_count": "1",
+    "total_value": "1407508.16",
+    "average_price": "1407508.16"
+  },
+  {
+    "date": "2016-05-25",
+    "transactions_count": "1",
+    "total_value": "108371.02",
+    "average_price": "108371.02"
+  },
+  {
+    "date": "2016-06-08",
+    "transactions_count": "1",
+    "total_value": "101267.82",
+    "average_price": "101267.82"
+  },
+  {
+    "date": "2016-06-17",
+    "transactions_count": "1",
+    "total_value": "38672.88",
+    "average_price": "38672.88"
+  },
+  {
+    "date": "2016-06-25",
+    "transactions_count": "1",
+    "total_value": "25464.16",
+    "average_price": "25464.16"
+  },
+  {
+    "date": "2016-07-02",
+    "transactions_count": "1",
+    "total_value": "27525.9",
+    "average_price": "27525.9"
+  },
+  {
+    "date": "2016-07-07",
+    "transactions_count": "1",
+    "total_value": "5040.5",
+    "average_price": "5040.5"
+  },
+  {
+    "date": "2016-07-11",
+    "transactions_count": "1",
+    "total_value": "2155002.6",
+    "average_price": "2155002.6"
+  },
+  {
+    "date": "2016-07-23",
+    "transactions_count": "1",
+    "total_value": "2480.93",
+    "average_price": "2480.93"
+  },
+  {
+    "date": "2016-07-28",
+    "transactions_count": "1",
+    "total_value": "42518.28",
+    "average_price": "42518.28"
+  },
+  {
+    "date": "2016-08-11",
+    "transactions_count": "1",
+    "total_value": "750157.45",
+    "average_price": "750157.45"
+  },
+  {
+    "date": "2016-08-13",
+    "transactions_count": "1",
+    "total_value": "77914.8",
+    "average_price": "77914.8"
+  },
+  {
+    "date": "2016-08-18",
+    "transactions_count": "1",
+    "total_value": "34442.18",
+    "average_price": "34442.18"
+  },
+  {
+    "date": "2016-08-22",
+    "transactions_count": "1",
+    "total_value": "254449.08",
+    "average_price": "254449.08"
+  },
+  {
+    "date": "2016-09-10",
+    "transactions_count": "1",
+    "total_value": "2763881.46",
+    "average_price": "2763881.46"
+  },
+  {
+    "date": "2016-09-20",
+    "transactions_count": "1",
+    "total_value": "1935276.24",
+    "average_price": "1935276.24"
+  },
+  {
+    "date": "2016-09-23",
+    "transactions_count": "1",
+    "total_value": "1488.9",
+    "average_price": "1488.9"
+  },
+  {
+    "date": "2016-09-24",
+    "transactions_count": "1",
+    "total_value": "6163612.44",
+    "average_price": "6163612.44"
+  },
+  {
+    "date": "2016-10-02",
+    "transactions_count": "1",
+    "total_value": "256092.42",
+    "average_price": "256092.42"
+  },
+  {
+    "date": "2016-10-09",
+    "transactions_count": "1",
+    "total_value": "979359.33",
+    "average_price": "979359.33"
+  },
+  {
+    "date": "2016-10-19",
+    "transactions_count": "1",
+    "total_value": "4347812.99",
+    "average_price": "4347812.99"
+  },
+  {
+    "date": "2016-10-20",
+    "transactions_count": "1",
+    "total_value": "2260790.28",
+    "average_price": "2260790.28"
+  },
+  {
+    "date": "2016-10-21",
+    "transactions_count": "1",
+    "total_value": "647875.27",
+    "average_price": "647875.27"
+  },
+  {
+    "date": "2016-10-22",
+    "transactions_count": "1",
+    "total_value": "266945.46",
+    "average_price": "266945.46"
+  },
+  {
+    "date": "2016-10-23",
+    "transactions_count": "1",
+    "total_value": "2590193.23",
+    "average_price": "2590193.23"
+  },
+  {
+    "date": "2016-10-26",
+    "transactions_count": "1",
+    "total_value": "85853.95",
+    "average_price": "85853.95"
+  },
+  {
+    "date": "2016-11-06",
+    "transactions_count": "1",
+    "total_value": "978210.16",
+    "average_price": "978210.16"
+  },
+  {
+    "date": "2016-12-08",
+    "transactions_count": "1",
+    "total_value": "309723.03",
+    "average_price": "309723.03"
+  },
+  {
+    "date": "2016-12-19",
+    "transactions_count": "1",
+    "total_value": "2138457.18",
+    "average_price": "2138457.18"
+  },
+  {
+    "date": "2016-12-24",
+    "transactions_count": "1",
+    "total_value": "2039205.22",
+    "average_price": "2039205.22"
+  },
+  {
+    "date": "2016-12-26",
+    "transactions_count": "1",
+    "total_value": "1610543.88",
+    "average_price": "1610543.88"
+  },
+  {
+    "date": "2016-12-28",
+    "transactions_count": "1",
+    "total_value": "216220.88",
+    "average_price": "216220.88"
+  },
+  {
+    "date": "2016-12-29",
+    "transactions_count": "1",
+    "total_value": "209566.04",
+    "average_price": "209566.04"
+  },
+  {
+    "date": "2017-01-22",
+    "transactions_count": "1",
+    "total_value": "98201.59",
+    "average_price": "98201.59"
+  },
+  {
+    "date": "2017-01-27",
+    "transactions_count": "1",
+    "total_value": "295191.24",
+    "average_price": "295191.24"
+  },
+  {
+    "date": "2017-02-03",
+    "transactions_count": "1",
+    "total_value": "3143596.22",
+    "average_price": "3143596.22"
+  },
+  {
+    "date": "2017-02-08",
+    "transactions_count": "1",
+    "total_value": "140466.92",
+    "average_price": "140466.92"
+  },
+  {
+    "date": "2017-02-23",
+    "transactions_count": "1",
+    "total_value": "201962.18",
+    "average_price": "201962.18"
+  },
+  {
+    "date": "2017-02-25",
+    "transactions_count": "1",
+    "total_value": "38018.76",
+    "average_price": "38018.76"
+  },
+  {
+    "date": "2017-03-09",
+    "transactions_count": "1",
+    "total_value": "250735.34",
+    "average_price": "250735.34"
+  },
+  {
+    "date": "2017-03-20",
+    "transactions_count": "1",
+    "total_value": "1007594.7",
+    "average_price": "1007594.7"
+  },
+  {
+    "date": "2017-03-25",
+    "transactions_count": "1",
+    "total_value": "164542.63",
+    "average_price": "164542.63"
+  },
+  {
+    "date": "2017-04-02",
+    "transactions_count": "1",
+    "total_value": "486915.84",
+    "average_price": "486915.84"
+  },
+  {
+    "date": "2017-04-05",
+    "transactions_count": "1",
+    "total_value": "3354752.5",
+    "average_price": "3354752.5"
+  },
+  {
+    "date": "2017-04-12",
+    "transactions_count": "1",
+    "total_value": "628407.41",
+    "average_price": "628407.41"
+  },
+  {
+    "date": "2017-05-03",
+    "transactions_count": "1",
+    "total_value": "71580.83",
+    "average_price": "71580.83"
+  },
+  {
+    "date": "2017-05-04",
+    "transactions_count": "1",
+    "total_value": "1566049.05",
+    "average_price": "1566049.05"
+  },
+  {
+    "date": "2017-05-05",
+    "transactions_count": "1",
+    "total_value": "3014746.97",
+    "average_price": "3014746.97"
+  },
+  {
+    "date": "2017-05-06",
+    "transactions_count": "1",
+    "total_value": "15561.82",
+    "average_price": "15561.82"
+  },
+  {
+    "date": "2017-05-31",
+    "transactions_count": "1",
+    "total_value": "16002.8",
+    "average_price": "16002.8"
+  },
+  {
+    "date": "2017-06-06",
+    "transactions_count": "1",
+    "total_value": "2230195.53",
+    "average_price": "2230195.53"
+  },
+  {
+    "date": "2017-06-24",
+    "transactions_count": "1",
+    "total_value": "131363.23",
+    "average_price": "131363.23"
+  },
+  {
+    "date": "2017-06-29",
+    "transactions_count": "1",
+    "total_value": "10351.29",
+    "average_price": "10351.29"
+  },
+  {
+    "date": "2017-07-03",
+    "transactions_count": "1",
+    "total_value": "262998.61",
+    "average_price": "262998.61"
+  },
+  {
+    "date": "2017-07-07",
+    "transactions_count": "1",
+    "total_value": "129744.86",
+    "average_price": "129744.86"
+  },
+  {
+    "date": "2017-07-20",
+    "transactions_count": "1",
+    "total_value": "4153739.16",
+    "average_price": "4153739.16"
+  },
+  {
+    "date": "2017-07-26",
+    "transactions_count": "1",
+    "total_value": "27637.18",
+    "average_price": "27637.18"
+  },
+  {
+    "date": "2017-07-28",
+    "transactions_count": "1",
+    "total_value": "713263.23",
+    "average_price": "713263.23"
+  },
+  {
+    "date": "2017-07-30",
+    "transactions_count": "1",
+    "total_value": "1025567.69",
+    "average_price": "1025567.69"
+  },
+  {
+    "date": "2017-08-14",
+    "transactions_count": "1",
+    "total_value": "73677.8",
+    "average_price": "73677.8"
+  },
+  {
+    "date": "2017-08-15",
+    "transactions_count": "1",
+    "total_value": "150385.86",
+    "average_price": "150385.86"
+  },
+  {
+    "date": "2017-09-06",
+    "transactions_count": "2",
+    "total_value": "321573.78",
+    "average_price": "160786.89"
+  },
+  {
+    "date": "2017-09-10",
+    "transactions_count": "1",
+    "total_value": "2540649.11",
+    "average_price": "2540649.11"
+  },
+  {
+    "date": "2017-09-13",
+    "transactions_count": "1",
+    "total_value": "1350482.08",
+    "average_price": "1350482.08"
+  },
+  {
+    "date": "2017-10-11",
+    "transactions_count": "1",
+    "total_value": "560795.14",
+    "average_price": "560795.14"
+  },
+  {
+    "date": "2017-10-12",
+    "transactions_count": "1",
+    "total_value": "227349.68",
+    "average_price": "227349.68"
+  },
+  {
+    "date": "2017-10-13",
+    "transactions_count": "1",
+    "total_value": "1714387.4",
+    "average_price": "1714387.4"
+  },
+  {
+    "date": "2017-10-18",
+    "transactions_count": "2",
+    "total_value": "3015500.35",
+    "average_price": "1507750.175"
+  },
+  {
+    "date": "2017-10-28",
+    "transactions_count": "1",
+    "total_value": "380224.64",
+    "average_price": "380224.64"
+  },
+  {
+    "date": "2017-11-10",
+    "transactions_count": "1",
+    "total_value": "224302.82",
+    "average_price": "224302.82"
+  },
+  {
+    "date": "2017-11-20",
+    "transactions_count": "1",
+    "total_value": "113783.01",
+    "average_price": "113783.01"
+  },
+  {
+    "date": "2017-11-21",
+    "transactions_count": "1",
+    "total_value": "27104.16",
+    "average_price": "27104.16"
+  },
+  {
+    "date": "2017-11-23",
+    "transactions_count": "1",
+    "total_value": "84634.06",
+    "average_price": "84634.06"
+  },
+  {
+    "date": "2017-11-26",
+    "transactions_count": "1",
+    "total_value": "631698.36",
+    "average_price": "631698.36"
+  },
+  {
+    "date": "2018-01-05",
+    "transactions_count": "1",
+    "total_value": "4183366.25",
+    "average_price": "4183366.25"
+  },
+  {
+    "date": "2018-01-12",
+    "transactions_count": "1",
+    "total_value": "3089944.74",
+    "average_price": "3089944.74"
+  },
+  {
+    "date": "2018-01-23",
+    "transactions_count": "1",
+    "total_value": "14429.36",
+    "average_price": "14429.36"
+  },
+  {
+    "date": "2018-01-24",
+    "transactions_count": "1",
+    "total_value": "174114.7",
+    "average_price": "174114.7"
+  },
+  {
+    "date": "2018-02-04",
+    "transactions_count": "1",
+    "total_value": "328079.3",
+    "average_price": "328079.3"
+  },
+  {
+    "date": "2018-02-07",
+    "transactions_count": "1",
+    "total_value": "48783.46",
+    "average_price": "48783.46"
+  },
+  {
+    "date": "2018-02-09",
+    "transactions_count": "1",
+    "total_value": "2370315.49",
+    "average_price": "2370315.49"
+  },
+  {
+    "date": "2018-02-11",
+    "transactions_count": "1",
+    "total_value": "1954751.05",
+    "average_price": "1954751.05"
+  },
+  {
+    "date": "2018-02-15",
+    "transactions_count": "2",
+    "total_value": "4371629.34",
+    "average_price": "2185814.67"
+  },
+  {
+    "date": "2018-02-23",
+    "transactions_count": "1",
+    "total_value": "4248368.61",
+    "average_price": "4248368.61"
+  },
+  {
+    "date": "2018-02-28",
+    "transactions_count": "1",
+    "total_value": "3775575.13",
+    "average_price": "3775575.13"
+  },
+  {
+    "date": "2018-03-02",
+    "transactions_count": "1",
+    "total_value": "4976.04",
+    "average_price": "4976.04"
+  },
+  {
+    "date": "2018-03-06",
+    "transactions_count": "1",
+    "total_value": "312478.78",
+    "average_price": "312478.78"
+  },
+  {
+    "date": "2018-03-11",
+    "transactions_count": "1",
+    "total_value": "359409.32",
+    "average_price": "359409.32"
+  },
+  {
+    "date": "2018-03-15",
+    "transactions_count": "1",
+    "total_value": "2312800.15",
+    "average_price": "2312800.15"
+  },
+  {
+    "date": "2018-04-10",
+    "transactions_count": "1",
+    "total_value": "1771909.37",
+    "average_price": "1771909.37"
+  },
+  {
+    "date": "2018-04-12",
+    "transactions_count": "1",
+    "total_value": "2115324.58",
+    "average_price": "2115324.58"
+  },
+  {
+    "date": "2018-05-12",
+    "transactions_count": "1",
+    "total_value": "4943104.0",
+    "average_price": "4943104.0"
+  },
+  {
+    "date": "2018-05-16",
+    "transactions_count": "1",
+    "total_value": "3835818.91",
+    "average_price": "3835818.91"
+  },
+  {
+    "date": "2018-05-22",
+    "transactions_count": "1",
+    "total_value": "3477077.72",
+    "average_price": "3477077.72"
+  },
+  {
+    "date": "2018-05-31",
+    "transactions_count": "1",
+    "total_value": "3465666.6",
+    "average_price": "3465666.6"
+  },
+  {
+    "date": "2018-06-12",
+    "transactions_count": "2",
+    "total_value": "197398.73",
+    "average_price": "98699.365"
+  },
+  {
+    "date": "2018-06-17",
+    "transactions_count": "1",
+    "total_value": "80453.72",
+    "average_price": "80453.72"
+  },
+  {
+    "date": "2018-07-09",
+    "transactions_count": "1",
+    "total_value": "17138.06",
+    "average_price": "17138.06"
+  },
+  {
+    "date": "2018-07-14",
+    "transactions_count": "1",
+    "total_value": "19993.91",
+    "average_price": "19993.91"
+  },
+  {
+    "date": "2018-07-23",
+    "transactions_count": "1",
+    "total_value": "5829550.1",
+    "average_price": "5829550.1"
+  },
+  {
+    "date": "2018-07-30",
+    "transactions_count": "1",
+    "total_value": "37014.32",
+    "average_price": "37014.32"
+  },
+  {
+    "date": "2018-07-31",
+    "transactions_count": "1",
+    "total_value": "736529.17",
+    "average_price": "736529.17"
+  },
+  {
+    "date": "2018-08-01",
+    "transactions_count": "1",
+    "total_value": "1958207.18",
+    "average_price": "1958207.18"
+  },
+  {
+    "date": "2018-08-07",
+    "transactions_count": "1",
+    "total_value": "1246427.37",
+    "average_price": "1246427.37"
+  },
+  {
+    "date": "2018-08-13",
+    "transactions_count": "1",
+    "total_value": "1347719.81",
+    "average_price": "1347719.81"
+  },
+  {
+    "date": "2018-08-18",
+    "transactions_count": "1",
+    "total_value": "2984928.85",
+    "average_price": "2984928.85"
+  },
+  {
+    "date": "2018-08-21",
+    "transactions_count": "1",
+    "total_value": "4171452.41",
+    "average_price": "4171452.41"
+  },
+  {
+    "date": "2018-08-25",
+    "transactions_count": "1",
+    "total_value": "2973360.62",
+    "average_price": "2973360.62"
+  },
+  {
+    "date": "2018-09-15",
+    "transactions_count": "1",
+    "total_value": "63288.92",
+    "average_price": "63288.92"
+  },
+  {
+    "date": "2018-10-07",
+    "transactions_count": "1",
+    "total_value": "97416.69",
+    "average_price": "97416.69"
+  },
+  {
+    "date": "2018-10-09",
+    "transactions_count": "1",
+    "total_value": "134385.66",
+    "average_price": "134385.66"
+  },
+  {
+    "date": "2018-10-16",
+    "transactions_count": "1",
+    "total_value": "83154.14",
+    "average_price": "83154.14"
+  },
+  {
+    "date": "2018-10-22",
+    "transactions_count": "1",
+    "total_value": "4833.59",
+    "average_price": "4833.59"
+  },
+  {
+    "date": "2018-10-30",
+    "transactions_count": "1",
+    "total_value": "2040609.12",
+    "average_price": "2040609.12"
+  },
+  {
+    "date": "2018-10-31",
+    "transactions_count": "1",
+    "total_value": "137875.67",
+    "average_price": "137875.67"
+  },
+  {
+    "date": "2018-11-20",
+    "transactions_count": "1",
+    "total_value": "159606.71",
+    "average_price": "159606.71"
+  },
+  {
+    "date": "2018-11-25",
+    "transactions_count": "1",
+    "total_value": "253330.02",
+    "average_price": "253330.02"
+  },
+  {
+    "date": "2018-11-30",
+    "transactions_count": "1",
+    "total_value": "2134155.63",
+    "average_price": "2134155.63"
+  },
+  {
+    "date": "2018-12-01",
+    "transactions_count": "1",
+    "total_value": "180210.16",
+    "average_price": "180210.16"
+  },
+  {
+    "date": "2018-12-07",
+    "transactions_count": "1",
+    "total_value": "121289.02",
+    "average_price": "121289.02"
+  },
+  {
+    "date": "2018-12-08",
+    "transactions_count": "1",
+    "total_value": "38848.24",
+    "average_price": "38848.24"
+  },
+  {
+    "date": "2018-12-09",
+    "transactions_count": "1",
+    "total_value": "92978.17",
+    "average_price": "92978.17"
+  },
+  {
+    "date": "2018-12-16",
+    "transactions_count": "1",
+    "total_value": "324995.31",
+    "average_price": "324995.31"
+  },
+  {
+    "date": "2018-12-17",
+    "transactions_count": "1",
+    "total_value": "158409.13",
+    "average_price": "158409.13"
+  },
+  {
+    "date": "2018-12-20",
+    "transactions_count": "1",
+    "total_value": "1010605.86",
+    "average_price": "1010605.86"
+  },
+  {
+    "date": "2018-12-22",
+    "transactions_count": "1",
+    "total_value": "2093949.38",
+    "average_price": "2093949.38"
+  },
+  {
+    "date": "2018-12-24",
+    "transactions_count": "1",
+    "total_value": "238361.07",
+    "average_price": "238361.07"
+  },
+  {
+    "date": "2018-12-30",
+    "transactions_count": "1",
+    "total_value": "1979008.03",
+    "average_price": "1979008.03"
+  },
+  {
+    "date": "2019-01-22",
+    "transactions_count": "1",
+    "total_value": "10383.44",
+    "average_price": "10383.44"
+  },
+  {
+    "date": "2019-01-25",
+    "transactions_count": "1",
+    "total_value": "567584.6",
+    "average_price": "567584.6"
+  },
+  {
+    "date": "2019-02-07",
+    "transactions_count": "1",
+    "total_value": "63846.26",
+    "average_price": "63846.26"
+  },
+  {
+    "date": "2019-03-03",
+    "transactions_count": "1",
+    "total_value": "866216.15",
+    "average_price": "866216.15"
+  },
+  {
+    "date": "2019-03-09",
+    "transactions_count": "1",
+    "total_value": "295728.17",
+    "average_price": "295728.17"
+  },
+  {
+    "date": "2019-03-11",
+    "transactions_count": "1",
+    "total_value": "597731.76",
+    "average_price": "597731.76"
+  },
+  {
+    "date": "2019-03-15",
+    "transactions_count": "1",
+    "total_value": "2030274.52",
+    "average_price": "2030274.52"
+  },
+  {
+    "date": "2019-04-01",
+    "transactions_count": "1",
+    "total_value": "1024098.69",
+    "average_price": "1024098.69"
+  },
+  {
+    "date": "2019-04-02",
+    "transactions_count": "1",
+    "total_value": "45342.19",
+    "average_price": "45342.19"
+  },
+  {
+    "date": "2019-04-15",
+    "transactions_count": "1",
+    "total_value": "1560553.2",
+    "average_price": "1560553.2"
+  },
+  {
+    "date": "2019-04-18",
+    "transactions_count": "1",
+    "total_value": "2919238.58",
+    "average_price": "2919238.58"
+  },
+  {
+    "date": "2019-05-01",
+    "transactions_count": "1",
+    "total_value": "328451.87",
+    "average_price": "328451.87"
+  },
+  {
+    "date": "2019-05-04",
+    "transactions_count": "1",
+    "total_value": "19298.49",
+    "average_price": "19298.49"
+  },
+  {
+    "date": "2019-05-10",
+    "transactions_count": "1",
+    "total_value": "11851.32",
+    "average_price": "11851.32"
+  },
+  {
+    "date": "2019-05-12",
+    "transactions_count": "1",
+    "total_value": "19746.07",
+    "average_price": "19746.07"
+  },
+  {
+    "date": "2019-05-23",
+    "transactions_count": "1",
+    "total_value": "63952.74",
+    "average_price": "63952.74"
+  },
+  {
+    "date": "2019-05-31",
+    "transactions_count": "2",
+    "total_value": "1703956.3900000001",
+    "average_price": "851978.1950000001"
+  },
+  {
+    "date": "2019-06-20",
+    "transactions_count": "1",
+    "total_value": "948360.88",
+    "average_price": "948360.88"
+  },
+  {
+    "date": "2019-06-22",
+    "transactions_count": "1",
+    "total_value": "131568.8",
+    "average_price": "131568.8"
+  },
+  {
+    "date": "2019-06-24",
+    "transactions_count": "1",
+    "total_value": "1385289.18",
+    "average_price": "1385289.18"
+  },
+  {
+    "date": "2019-06-29",
+    "transactions_count": "1",
+    "total_value": "99445.94",
+    "average_price": "99445.94"
+  },
+  {
+    "date": "2019-07-07",
+    "transactions_count": "2",
+    "total_value": "525254.72",
+    "average_price": "262627.36"
+  },
+  {
+    "date": "2019-07-17",
+    "transactions_count": "1",
+    "total_value": "89642.43",
+    "average_price": "89642.43"
+  },
+  {
+    "date": "2019-08-12",
+    "transactions_count": "1",
+    "total_value": "2585094.94",
+    "average_price": "2585094.94"
+  },
+  {
+    "date": "2019-09-24",
+    "transactions_count": "1",
+    "total_value": "296007.3",
+    "average_price": "296007.3"
+  },
+  {
+    "date": "2019-10-05",
+    "transactions_count": "1",
+    "total_value": "1857167.0",
+    "average_price": "1857167.0"
+  },
+  {
+    "date": "2019-10-29",
+    "transactions_count": "1",
+    "total_value": "3798869.32",
+    "average_price": "3798869.32"
+  },
+  {
+    "date": "2019-11-14",
+    "transactions_count": "1",
+    "total_value": "1154862.4",
+    "average_price": "1154862.4"
+  },
+  {
+    "date": "2019-11-22",
+    "transactions_count": "1",
+    "total_value": "3567751.37",
+    "average_price": "3567751.37"
+  },
+  {
+    "date": "2019-12-02",
+    "transactions_count": "1",
+    "total_value": "193796.4",
+    "average_price": "193796.4"
+  },
+  {
+    "date": "2019-12-05",
+    "transactions_count": "2",
+    "total_value": "655306.98",
+    "average_price": "327653.49"
+  },
+  {
+    "date": "2019-12-12",
+    "transactions_count": "1",
+    "total_value": "30543.57",
+    "average_price": "30543.57"
+  },
+  {
+    "date": "2019-12-13",
+    "transactions_count": "1",
+    "total_value": "286278.7",
+    "average_price": "286278.7"
+  },
+  {
+    "date": "2019-12-20",
+    "transactions_count": "1",
+    "total_value": "1082370.62",
+    "average_price": "1082370.62"
+  },
+  {
+    "date": "2019-12-24",
+    "transactions_count": "1",
+    "total_value": "1420910.63",
+    "average_price": "1420910.63"
+  },
+  {
+    "date": "2020-01-02",
+    "transactions_count": "1",
+    "total_value": "13251.47",
+    "average_price": "13251.47"
+  },
+  {
+    "date": "2020-01-03",
+    "transactions_count": "2",
+    "total_value": "5693436.66",
+    "average_price": "2846718.33"
+  },
+  {
+    "date": "2020-01-08",
+    "transactions_count": "1",
+    "total_value": "3962841.38",
+    "average_price": "3962841.38"
+  },
+  {
+    "date": "2020-01-16",
+    "transactions_count": "1",
+    "total_value": "970968.83",
+    "average_price": "970968.83"
+  },
+  {
+    "date": "2020-01-26",
+    "transactions_count": "2",
+    "total_value": "1554386.16",
+    "average_price": "777193.08"
+  },
+  {
+    "date": "2020-01-31",
+    "transactions_count": "1",
+    "total_value": "406772.73",
+    "average_price": "406772.73"
+  },
+  {
+    "date": "2020-02-25",
+    "transactions_count": "1",
+    "total_value": "148120.05",
+    "average_price": "148120.05"
+  },
+  {
+    "date": "2020-03-04",
+    "transactions_count": "1",
+    "total_value": "571358.69",
+    "average_price": "571358.69"
+  },
+  {
+    "date": "2020-03-08",
+    "transactions_count": "1",
+    "total_value": "88788.02",
+    "average_price": "88788.02"
+  },
+  {
+    "date": "2020-03-09",
+    "transactions_count": "1",
+    "total_value": "120137.28",
+    "average_price": "120137.28"
+  },
+  {
+    "date": "2020-03-24",
+    "transactions_count": "1",
+    "total_value": "58097.94",
+    "average_price": "58097.94"
+  },
+  {
+    "date": "2020-04-20",
+    "transactions_count": "1",
+    "total_value": "3948958.78",
+    "average_price": "3948958.78"
+  },
+  {
+    "date": "2020-04-22",
+    "transactions_count": "1",
+    "total_value": "35108.39",
+    "average_price": "35108.39"
+  },
+  {
+    "date": "2020-04-25",
+    "transactions_count": "1",
+    "total_value": "2368558.93",
+    "average_price": "2368558.93"
+  },
+  {
+    "date": "2020-04-29",
+    "transactions_count": "1",
+    "total_value": "610025.27",
+    "average_price": "610025.27"
+  },
+  {
+    "date": "2020-05-23",
+    "transactions_count": "1",
+    "total_value": "197499.64",
+    "average_price": "197499.64"
+  },
+  {
+    "date": "2020-05-25",
+    "transactions_count": "1",
+    "total_value": "120335.24",
+    "average_price": "120335.24"
+  },
+  {
+    "date": "2020-05-26",
+    "transactions_count": "1",
+    "total_value": "1643869.02",
+    "average_price": "1643869.02"
+  },
+  {
+    "date": "2020-05-28",
+    "transactions_count": "2",
+    "total_value": "1987257.3699999999",
+    "average_price": "993628.6849999999"
+  },
+  {
+    "date": "2020-05-31",
+    "transactions_count": "1",
+    "total_value": "34474.29",
+    "average_price": "34474.29"
+  },
+  {
+    "date": "2020-06-05",
+    "transactions_count": "1",
+    "total_value": "1776881.71",
+    "average_price": "1776881.71"
+  },
+  {
+    "date": "2020-06-07",
+    "transactions_count": "1",
+    "total_value": "1418734.08",
+    "average_price": "1418734.08"
+  },
+  {
+    "date": "2020-06-08",
+    "transactions_count": "1",
+    "total_value": "15373.83",
+    "average_price": "15373.83"
+  },
+  {
+    "date": "2020-06-12",
+    "transactions_count": "1",
+    "total_value": "1375463.75",
+    "average_price": "1375463.75"
+  },
+  {
+    "date": "2020-07-02",
+    "transactions_count": "1",
+    "total_value": "4060898.1",
+    "average_price": "4060898.1"
+  },
+  {
+    "date": "2020-07-09",
+    "transactions_count": "1",
+    "total_value": "561821.32",
+    "average_price": "561821.32"
+  },
+  {
+    "date": "2020-07-19",
+    "transactions_count": "1",
+    "total_value": "14998.12",
+    "average_price": "14998.12"
+  },
+  {
+    "date": "2020-07-21",
+    "transactions_count": "1",
+    "total_value": "533255.02",
+    "average_price": "533255.02"
+  },
+  {
+    "date": "2020-07-31",
+    "transactions_count": "1",
+    "total_value": "994323.77",
+    "average_price": "994323.77"
+  },
+  {
+    "date": "2020-08-07",
+    "transactions_count": "1",
+    "total_value": "522024.81",
+    "average_price": "522024.81"
+  },
+  {
+    "date": "2020-08-09",
+    "transactions_count": "1",
+    "total_value": "108888.27",
+    "average_price": "108888.27"
+  },
+  {
+    "date": "2020-08-22",
+    "transactions_count": "1",
+    "total_value": "695650.65",
+    "average_price": "695650.65"
+  },
+  {
+    "date": "2020-08-25",
+    "transactions_count": "1",
+    "total_value": "194817.21",
+    "average_price": "194817.21"
+  },
+  {
+    "date": "2020-08-28",
+    "transactions_count": "1",
+    "total_value": "654371.37",
+    "average_price": "654371.37"
+  },
+  {
+    "date": "2020-09-01",
+    "transactions_count": "1",
+    "total_value": "51327.09",
+    "average_price": "51327.09"
+  },
+  {
+    "date": "2020-09-12",
+    "transactions_count": "1",
+    "total_value": "1963646.82",
+    "average_price": "1963646.82"
+  },
+  {
+    "date": "2020-09-20",
+    "transactions_count": "1",
+    "total_value": "65317.55",
+    "average_price": "65317.55"
+  },
+  {
+    "date": "2020-09-23",
+    "transactions_count": "1",
+    "total_value": "774393.36",
+    "average_price": "774393.36"
+  },
+  {
+    "date": "2020-09-25",
+    "transactions_count": "1",
+    "total_value": "78144.53",
+    "average_price": "78144.53"
+  },
+  {
+    "date": "2020-10-08",
+    "transactions_count": "2",
+    "total_value": "1173654.5999999999",
+    "average_price": "586827.2999999999"
+  },
+  {
+    "date": "2020-10-14",
+    "transactions_count": "1",
+    "total_value": "1740086.06",
+    "average_price": "1740086.06"
+  },
+  {
+    "date": "2020-11-03",
+    "transactions_count": "1",
+    "total_value": "105291.05",
+    "average_price": "105291.05"
+  },
+  {
+    "date": "2020-11-06",
+    "transactions_count": "2",
+    "total_value": "358756.53",
+    "average_price": "179378.265"
+  },
+  {
+    "date": "2020-11-10",
+    "transactions_count": "1",
+    "total_value": "194280.75",
+    "average_price": "194280.75"
+  },
+  {
+    "date": "2020-11-14",
+    "transactions_count": "1",
+    "total_value": "1533019.36",
+    "average_price": "1533019.36"
+  },
+  {
+    "date": "2020-11-16",
+    "transactions_count": "1",
+    "total_value": "157220.92",
+    "average_price": "157220.92"
+  },
+  {
+    "date": "2020-11-17",
+    "transactions_count": "1",
+    "total_value": "3431011.76",
+    "average_price": "3431011.76"
+  },
+  {
+    "date": "2020-11-21",
+    "transactions_count": "1",
+    "total_value": "38847.66",
+    "average_price": "38847.66"
+  },
+  {
+    "date": "2020-11-26",
+    "transactions_count": "1",
+    "total_value": "3148525.39",
+    "average_price": "3148525.39"
+  },
+  {
+    "date": "2020-11-29",
+    "transactions_count": "1",
+    "total_value": "2361602.91",
+    "average_price": "2361602.91"
+  },
+  {
+    "date": "2020-12-01",
+    "transactions_count": "1",
+    "total_value": "129244.46",
+    "average_price": "129244.46"
+  },
+  {
+    "date": "2020-12-05",
+    "transactions_count": "1",
+    "total_value": "132441.81",
+    "average_price": "132441.81"
+  },
+  {
+    "date": "2020-12-10",
+    "transactions_count": "1",
+    "total_value": "134155.82",
+    "average_price": "134155.82"
+  },
+  {
+    "date": "2020-12-14",
+    "transactions_count": "1",
+    "total_value": "37946.32",
+    "average_price": "37946.32"
+  },
+  {
+    "date": "2020-12-21",
+    "transactions_count": "1",
+    "total_value": "1317146.71",
+    "average_price": "1317146.71"
+  },
+  {
+    "date": "2020-12-24",
+    "transactions_count": "1",
+    "total_value": "37410.2",
+    "average_price": "37410.2"
+  },
+  {
+    "date": "2020-12-28",
+    "transactions_count": "1",
+    "total_value": "1561625.21",
+    "average_price": "1561625.21"
+  },
+  {
+    "date": "2021-01-01",
+    "transactions_count": "1",
+    "total_value": "417894.88",
+    "average_price": "417894.88"
+  },
+  {
+    "date": "2021-01-09",
+    "transactions_count": "1",
+    "total_value": "86882.94",
+    "average_price": "86882.94"
+  },
+  {
+    "date": "2021-01-25",
+    "transactions_count": "1",
+    "total_value": "11227.23",
+    "average_price": "11227.23"
+  },
+  {
+    "date": "2021-02-07",
+    "transactions_count": "1",
+    "total_value": "24773.2",
+    "average_price": "24773.2"
+  },
+  {
+    "date": "2021-02-09",
+    "transactions_count": "1",
+    "total_value": "1758420.77",
+    "average_price": "1758420.77"
+  },
+  {
+    "date": "2021-02-13",
+    "transactions_count": "1",
+    "total_value": "75067.8",
+    "average_price": "75067.8"
+  },
+  {
+    "date": "2021-02-20",
+    "transactions_count": "1",
+    "total_value": "568931.46",
+    "average_price": "568931.46"
+  },
+  {
+    "date": "2021-03-11",
+    "transactions_count": "1",
+    "total_value": "3107908.35",
+    "average_price": "3107908.35"
+  },
+  {
+    "date": "2021-03-17",
+    "transactions_count": "1",
+    "total_value": "407830.85",
+    "average_price": "407830.85"
+  },
+  {
+    "date": "2021-03-19",
+    "transactions_count": "1",
+    "total_value": "2310701.0",
+    "average_price": "2310701.0"
+  },
+  {
+    "date": "2021-03-27",
+    "transactions_count": "1",
+    "total_value": "1688050.86",
+    "average_price": "1688050.86"
+  },
+  {
+    "date": "2021-04-06",
+    "transactions_count": "1",
+    "total_value": "2722398.77",
+    "average_price": "2722398.77"
+  },
+  {
+    "date": "2021-04-20",
+    "transactions_count": "1",
+    "total_value": "3438235.98",
+    "average_price": "3438235.98"
+  },
+  {
+    "date": "2021-04-23",
+    "transactions_count": "1",
+    "total_value": "63913.11",
+    "average_price": "63913.11"
+  },
+  {
+    "date": "2021-04-27",
+    "transactions_count": "1",
+    "total_value": "227212.45",
+    "average_price": "227212.45"
+  },
+  {
+    "date": "2021-05-04",
+    "transactions_count": "1",
+    "total_value": "542682.44",
+    "average_price": "542682.44"
+  },
+  {
+    "date": "2021-05-09",
+    "transactions_count": "1",
+    "total_value": "4158976.54",
+    "average_price": "4158976.54"
+  },
+  {
+    "date": "2021-05-14",
+    "transactions_count": "1",
+    "total_value": "31239.7",
+    "average_price": "31239.7"
+  },
+  {
+    "date": "2021-05-15",
+    "transactions_count": "1",
+    "total_value": "61268.52",
+    "average_price": "61268.52"
+  },
+  {
+    "date": "2021-06-21",
+    "transactions_count": "1",
+    "total_value": "1439546.86",
+    "average_price": "1439546.86"
+  },
+  {
+    "date": "2021-06-30",
+    "transactions_count": "1",
+    "total_value": "672713.61",
+    "average_price": "672713.61"
+  },
+  {
+    "date": "2021-07-01",
+    "transactions_count": "1",
+    "total_value": "5323261.43",
+    "average_price": "5323261.43"
+  },
+  {
+    "date": "2021-07-07",
+    "transactions_count": "1",
+    "total_value": "4128740.31",
+    "average_price": "4128740.31"
+  },
+  {
+    "date": "2021-07-12",
+    "transactions_count": "1",
+    "total_value": "6293.02",
+    "average_price": "6293.02"
+  },
+  {
+    "date": "2021-07-31",
+    "transactions_count": "2",
+    "total_value": "2087309.99",
+    "average_price": "1043654.995"
+  },
+  {
+    "date": "2021-08-10",
+    "transactions_count": "1",
+    "total_value": "100911.59",
+    "average_price": "100911.59"
+  },
+  {
+    "date": "2021-08-14",
+    "transactions_count": "1",
+    "total_value": "721857.81",
+    "average_price": "721857.81"
+  },
+  {
+    "date": "2021-08-16",
+    "transactions_count": "1",
+    "total_value": "171585.52",
+    "average_price": "171585.52"
+  },
+  {
+    "date": "2021-08-19",
+    "transactions_count": "2",
+    "total_value": "1699000.42",
+    "average_price": "849500.21"
+  },
+  {
+    "date": "2021-08-23",
+    "transactions_count": "1",
+    "total_value": "316724.02",
+    "average_price": "316724.02"
+  },
+  {
+    "date": "2021-08-28",
+    "transactions_count": "1",
+    "total_value": "48237.87",
+    "average_price": "48237.87"
+  },
+  {
+    "date": "2021-08-29",
+    "transactions_count": "1",
+    "total_value": "670538.19",
+    "average_price": "670538.19"
+  },
+  {
+    "date": "2021-08-30",
+    "transactions_count": "1",
+    "total_value": "80430.74",
+    "average_price": "80430.74"
+  },
+  {
+    "date": "2021-09-20",
+    "transactions_count": "1",
+    "total_value": "141260.14",
+    "average_price": "141260.14"
+  },
+  {
+    "date": "2021-09-24",
+    "transactions_count": "1",
+    "total_value": "113163.79",
+    "average_price": "113163.79"
+  },
+  {
+    "date": "2021-09-27",
+    "transactions_count": "1",
+    "total_value": "1434909.74",
+    "average_price": "1434909.74"
+  },
+  {
+    "date": "2021-10-06",
+    "transactions_count": "1",
+    "total_value": "668860.67",
+    "average_price": "668860.67"
+  },
+  {
+    "date": "2021-10-13",
+    "transactions_count": "1",
+    "total_value": "196411.21",
+    "average_price": "196411.21"
+  },
+  {
+    "date": "2021-11-17",
+    "transactions_count": "1",
+    "total_value": "707294.56",
+    "average_price": "707294.56"
+  },
+  {
+    "date": "2021-12-04",
+    "transactions_count": "1",
+    "total_value": "303009.91",
+    "average_price": "303009.91"
+  },
+  {
+    "date": "2021-12-11",
+    "transactions_count": "1",
+    "total_value": "580646.32",
+    "average_price": "580646.32"
+  },
+  {
+    "date": "2021-12-16",
+    "transactions_count": "1",
+    "total_value": "85268.97",
+    "average_price": "85268.97"
+  },
+  {
+    "date": "2021-12-18",
+    "transactions_count": "1",
+    "total_value": "3377572.23",
+    "average_price": "3377572.23"
+  },
+  {
+    "date": "2021-12-23",
+    "transactions_count": "1",
+    "total_value": "50100.46",
+    "average_price": "50100.46"
+  },
+  {
+    "date": "2021-12-25",
+    "transactions_count": "1",
+    "total_value": "352614.88",
+    "average_price": "352614.88"
+  },
+  {
+    "date": "2021-12-31",
+    "transactions_count": "1",
+    "total_value": "45132.73",
+    "average_price": "45132.73"
+  },
+  {
+    "date": "2022-01-03",
+    "transactions_count": "1",
+    "total_value": "485202.29",
+    "average_price": "485202.29"
+  },
+  {
+    "date": "2022-01-22",
+    "transactions_count": "1",
+    "total_value": "42749.84",
+    "average_price": "42749.84"
+  },
+  {
+    "date": "2022-01-23",
+    "transactions_count": "1",
+    "total_value": "2616028.96",
+    "average_price": "2616028.96"
+  },
+  {
+    "date": "2022-01-24",
+    "transactions_count": "1",
+    "total_value": "92283.41",
+    "average_price": "92283.41"
+  },
+  {
+    "date": "2022-02-02",
+    "transactions_count": "2",
+    "total_value": "234479.85",
+    "average_price": "117239.925"
+  },
+  {
+    "date": "2022-02-04",
+    "transactions_count": "1",
+    "total_value": "207394.35",
+    "average_price": "207394.35"
+  },
+  {
+    "date": "2022-03-11",
+    "transactions_count": "1",
+    "total_value": "23729.96",
+    "average_price": "23729.96"
+  },
+  {
+    "date": "2022-03-24",
+    "transactions_count": "1",
+    "total_value": "5974.41",
+    "average_price": "5974.41"
+  },
+  {
+    "date": "2022-03-28",
+    "transactions_count": "1",
+    "total_value": "1124127.2",
+    "average_price": "1124127.2"
+  },
+  {
+    "date": "2022-03-30",
+    "transactions_count": "2",
+    "total_value": "3103152.03",
+    "average_price": "1551576.015"
+  },
+  {
+    "date": "2022-03-31",
+    "transactions_count": "1",
+    "total_value": "176430.43",
+    "average_price": "176430.43"
+  },
+  {
+    "date": "2022-04-17",
+    "transactions_count": "1",
+    "total_value": "3504647.12",
+    "average_price": "3504647.12"
+  },
+  {
+    "date": "2022-04-29",
+    "transactions_count": "1",
+    "total_value": "11378.99",
+    "average_price": "11378.99"
+  },
+  {
+    "date": "2022-05-02",
+    "transactions_count": "1",
+    "total_value": "120470.56",
+    "average_price": "120470.56"
+  },
+  {
+    "date": "2022-05-03",
+    "transactions_count": "1",
+    "total_value": "298770.8",
+    "average_price": "298770.8"
+  },
+  {
+    "date": "2022-05-06",
+    "transactions_count": "1",
+    "total_value": "3663847.15",
+    "average_price": "3663847.15"
+  },
+  {
+    "date": "2022-05-19",
+    "transactions_count": "1",
+    "total_value": "78902.57",
+    "average_price": "78902.57"
+  },
+  {
+    "date": "2022-05-20",
+    "transactions_count": "1",
+    "total_value": "103002.44",
+    "average_price": "103002.44"
+  },
+  {
+    "date": "2022-05-25",
+    "transactions_count": "1",
+    "total_value": "120885.94",
+    "average_price": "120885.94"
+  },
+  {
+    "date": "2022-06-16",
+    "transactions_count": "1",
+    "total_value": "262275.55",
+    "average_price": "262275.55"
+  },
+  {
+    "date": "2022-06-27",
+    "transactions_count": "1",
+    "total_value": "160570.25",
+    "average_price": "160570.25"
+  },
+  {
+    "date": "2022-06-28",
+    "transactions_count": "1",
+    "total_value": "53276.36",
+    "average_price": "53276.36"
+  },
+  {
+    "date": "2022-06-30",
+    "transactions_count": "1",
+    "total_value": "14598.68",
+    "average_price": "14598.68"
+  },
+  {
+    "date": "2022-07-15",
+    "transactions_count": "1",
+    "total_value": "5339243.97",
+    "average_price": "5339243.97"
+  },
+  {
+    "date": "2022-08-02",
+    "transactions_count": "1",
+    "total_value": "215442.49",
+    "average_price": "215442.49"
+  },
+  {
+    "date": "2022-08-20",
+    "transactions_count": "2",
+    "total_value": "2352232.13",
+    "average_price": "1176116.065"
+  },
+  {
+    "date": "2022-08-22",
+    "transactions_count": "1",
+    "total_value": "66343.81",
+    "average_price": "66343.81"
+  },
+  {
+    "date": "2022-08-28",
+    "transactions_count": "1",
+    "total_value": "1053156.25",
+    "average_price": "1053156.25"
+  },
+  {
+    "date": "2022-09-11",
+    "transactions_count": "1",
+    "total_value": "76358.38",
+    "average_price": "76358.38"
+  },
+  {
+    "date": "2022-09-13",
+    "transactions_count": "1",
+    "total_value": "2017153.97",
+    "average_price": "2017153.97"
+  },
+  {
+    "date": "2022-09-25",
+    "transactions_count": "1",
+    "total_value": "3022808.07",
+    "average_price": "3022808.07"
+  },
+  {
+    "date": "2022-09-27",
+    "transactions_count": "1",
+    "total_value": "206891.16",
+    "average_price": "206891.16"
+  },
+  {
+    "date": "2022-09-29",
+    "transactions_count": "1",
+    "total_value": "106818.99",
+    "average_price": "106818.99"
+  },
+  {
+    "date": "2022-10-12",
+    "transactions_count": "1",
+    "total_value": "65834.37",
+    "average_price": "65834.37"
+  },
+  {
+    "date": "2022-10-26",
+    "transactions_count": "1",
+    "total_value": "2659965.53",
+    "average_price": "2659965.53"
+  },
+  {
+    "date": "2022-10-28",
+    "transactions_count": "1",
+    "total_value": "1834536.24",
+    "average_price": "1834536.24"
+  },
+  {
+    "date": "2022-11-02",
+    "transactions_count": "1",
+    "total_value": "1367380.95",
+    "average_price": "1367380.95"
+  },
+  {
+    "date": "2022-11-04",
+    "transactions_count": "1",
+    "total_value": "3421636.67",
+    "average_price": "3421636.67"
+  },
+  {
+    "date": "2022-11-10",
+    "transactions_count": "1",
+    "total_value": "81206.82",
+    "average_price": "81206.82"
+  },
+  {
+    "date": "2022-11-13",
+    "transactions_count": "1",
+    "total_value": "164746.27",
+    "average_price": "164746.27"
+  },
+  {
+    "date": "2022-11-15",
+    "transactions_count": "2",
+    "total_value": "5548341.01",
+    "average_price": "2774170.505"
+  },
+  {
+    "date": "2022-11-16",
+    "transactions_count": "1",
+    "total_value": "1889608.71",
+    "average_price": "1889608.71"
+  },
+  {
+    "date": "2022-11-26",
+    "transactions_count": "1",
+    "total_value": "629482.2",
+    "average_price": "629482.2"
+  },
+  {
+    "date": "2022-11-29",
+    "transactions_count": "1",
+    "total_value": "36496.98",
+    "average_price": "36496.98"
+  },
+  {
+    "date": "2022-12-02",
+    "transactions_count": "1",
+    "total_value": "92454.63",
+    "average_price": "92454.63"
+  },
+  {
+    "date": "2022-12-09",
+    "transactions_count": "1",
+    "total_value": "784149.98",
+    "average_price": "784149.98"
+  },
+  {
+    "date": "2022-12-12",
+    "transactions_count": "1",
+    "total_value": "600153.97",
+    "average_price": "600153.97"
+  },
+  {
+    "date": "2022-12-18",
+    "transactions_count": "1",
+    "total_value": "869319.26",
+    "average_price": "869319.26"
+  },
+  {
+    "date": "2023-01-03",
+    "transactions_count": "1",
+    "total_value": "89337.07",
+    "average_price": "89337.07"
+  },
+  {
+    "date": "2023-01-21",
+    "transactions_count": "1",
+    "total_value": "116272.08",
+    "average_price": "116272.08"
+  },
+  {
+    "date": "2023-01-27",
+    "transactions_count": "1",
+    "total_value": "152809.68",
+    "average_price": "152809.68"
+  },
+  {
+    "date": "2023-01-30",
+    "transactions_count": "1",
+    "total_value": "47913.04",
+    "average_price": "47913.04"
+  },
+  {
+    "date": "2023-02-01",
+    "transactions_count": "1",
+    "total_value": "4702085.0",
+    "average_price": "4702085.0"
+  },
+  {
+    "date": "2023-02-10",
+    "transactions_count": "1",
+    "total_value": "2153474.75",
+    "average_price": "2153474.75"
+  },
+  {
+    "date": "2023-02-24",
+    "transactions_count": "1",
+    "total_value": "119718.82",
+    "average_price": "119718.82"
+  },
+  {
+    "date": "2023-03-10",
+    "transactions_count": "1",
+    "total_value": "31650.51",
+    "average_price": "31650.51"
+  },
+  {
+    "date": "2023-03-17",
+    "transactions_count": "1",
+    "total_value": "23566.49",
+    "average_price": "23566.49"
+  },
+  {
+    "date": "2023-03-25",
+    "transactions_count": "1",
+    "total_value": "907325.07",
+    "average_price": "907325.07"
+  },
+  {
+    "date": "2023-03-29",
+    "transactions_count": "1",
+    "total_value": "5265543.29",
+    "average_price": "5265543.29"
+  },
+  {
+    "date": "2023-04-04",
+    "transactions_count": "1",
+    "total_value": "1095673.27",
+    "average_price": "1095673.27"
+  },
+  {
+    "date": "2023-04-21",
+    "transactions_count": "1",
+    "total_value": "9644.25",
+    "average_price": "9644.25"
+  },
+  {
+    "date": "2023-04-24",
+    "transactions_count": "1",
+    "total_value": "13025.0",
+    "average_price": "13025.0"
+  },
+  {
+    "date": "2023-04-29",
+    "transactions_count": "1",
+    "total_value": "149144.79",
+    "average_price": "149144.79"
+  },
+  {
+    "date": "2023-05-02",
+    "transactions_count": "1",
+    "total_value": "18584.82",
+    "average_price": "18584.82"
+  },
+  {
+    "date": "2023-05-09",
+    "transactions_count": "1",
+    "total_value": "5305227.95",
+    "average_price": "5305227.95"
+  },
+  {
+    "date": "2023-06-02",
+    "transactions_count": "1",
+    "total_value": "638854.02",
+    "average_price": "638854.02"
+  },
+  {
+    "date": "2023-06-03",
+    "transactions_count": "1",
+    "total_value": "980832.36",
+    "average_price": "980832.36"
+  },
+  {
+    "date": "2023-06-04",
+    "transactions_count": "1",
+    "total_value": "2359480.95",
+    "average_price": "2359480.95"
+  },
+  {
+    "date": "2023-06-07",
+    "transactions_count": "1",
+    "total_value": "1854300.75",
+    "average_price": "1854300.75"
+  },
+  {
+    "date": "2023-06-28",
+    "transactions_count": "1",
+    "total_value": "1626904.43",
+    "average_price": "1626904.43"
+  },
+  {
+    "date": "2023-06-29",
+    "transactions_count": "1",
+    "total_value": "985413.91",
+    "average_price": "985413.91"
+  },
+  {
+    "date": "2023-07-04",
+    "transactions_count": "1",
+    "total_value": "998213.47",
+    "average_price": "998213.47"
+  },
+  {
+    "date": "2023-07-18",
+    "transactions_count": "1",
+    "total_value": "5174981.8",
+    "average_price": "5174981.8"
+  },
+  {
+    "date": "2023-07-31",
+    "transactions_count": "1",
+    "total_value": "1524859.27",
+    "average_price": "1524859.27"
+  },
+  {
+    "date": "2023-08-01",
+    "transactions_count": "2",
+    "total_value": "1710383.1",
+    "average_price": "855191.55"
+  },
+  {
+    "date": "2023-08-09",
+    "transactions_count": "1",
+    "total_value": "131959.61",
+    "average_price": "131959.61"
+  },
+  {
+    "date": "2023-08-11",
+    "transactions_count": "1",
+    "total_value": "28901.63",
+    "average_price": "28901.63"
+  },
+  {
+    "date": "2023-08-13",
+    "transactions_count": "1",
+    "total_value": "96776.48",
+    "average_price": "96776.48"
+  },
+  {
+    "date": "2023-08-21",
+    "transactions_count": "1",
+    "total_value": "18061.98",
+    "average_price": "18061.98"
+  },
+  {
+    "date": "2023-09-04",
+    "transactions_count": "1",
+    "total_value": "89069.44",
+    "average_price": "89069.44"
+  },
+  {
+    "date": "2023-09-09",
+    "transactions_count": "1",
+    "total_value": "78654.38",
+    "average_price": "78654.38"
+  },
+  {
+    "date": "2023-09-25",
+    "transactions_count": "1",
+    "total_value": "16339.69",
+    "average_price": "16339.69"
+  },
+  {
+    "date": "2023-09-26",
+    "transactions_count": "1",
+    "total_value": "842384.58",
+    "average_price": "842384.58"
+  },
+  {
+    "date": "2023-09-28",
+    "transactions_count": "1",
+    "total_value": "10403.47",
+    "average_price": "10403.47"
+  },
+  {
+    "date": "2023-09-29",
+    "transactions_count": "1",
+    "total_value": "2151496.85",
+    "average_price": "2151496.85"
+  },
+  {
+    "date": "2023-10-04",
+    "transactions_count": "1",
+    "total_value": "1445152.87",
+    "average_price": "1445152.87"
+  },
+  {
+    "date": "2023-10-05",
+    "transactions_count": "1",
+    "total_value": "213381.97",
+    "average_price": "213381.97"
+  },
+  {
+    "date": "2023-10-06",
+    "transactions_count": "1",
+    "total_value": "128743.98",
+    "average_price": "128743.98"
+  },
+  {
+    "date": "2023-10-09",
+    "transactions_count": "2",
+    "total_value": "6453147.1",
+    "average_price": "3226573.55"
+  },
+  {
+    "date": "2023-10-25",
+    "transactions_count": "1",
+    "total_value": "267089.91",
+    "average_price": "267089.91"
+  },
+  {
+    "date": "2023-11-05",
+    "transactions_count": "1",
+    "total_value": "80206.63",
+    "average_price": "80206.63"
+  },
+  {
+    "date": "2023-11-13",
+    "transactions_count": "1",
+    "total_value": "789184.45",
+    "average_price": "789184.45"
+  },
+  {
+    "date": "2023-11-16",
+    "transactions_count": "1",
+    "total_value": "298839.41",
+    "average_price": "298839.41"
+  },
+  {
+    "date": "2023-11-21",
+    "transactions_count": "1",
+    "total_value": "97286.72",
+    "average_price": "97286.72"
+  },
+  {
+    "date": "2023-12-13",
+    "transactions_count": "1",
+    "total_value": "120513.98",
+    "average_price": "120513.98"
+  },
+  {
+    "date": "2023-12-28",
+    "transactions_count": "1",
+    "total_value": "2008299.32",
+    "average_price": "2008299.32"
+  },
+  {
+    "date": "2023-12-29",
+    "transactions_count": "1",
+    "total_value": "67134.86",
+    "average_price": "67134.86"
+  }
+]

@@ -1,0 +1,949 @@
+{
+  "metadata": {
+    "timestamp": "2026-04-16T22:54:28.345611",
+    "total_settlements": 15,
+    "analysis_type": "Settlement Expansion Risk Analysis",
+    "region": "Palestine",
+    "model": "Composite (XGBoost + Time Series + Spatial)"
+  },
+  "summary": {
+    "total_settlements": 15,
+    "critical_count": 0,
+    "high_count": 7,
+    "medium_count": 5,
+    "low_count": 3,
+    "average_risk": 0.5108729738302106,
+    "max_risk": 0.6851763690486277,
+    "min_risk": 0.28453536069747754,
+    "total_growth_m2yr": 1570326.1396549344,
+    "total_confiscations": 40,
+    "total_leaked_parcels": 4.119515238221065,
+    "avg_zone_c_coverage": 0.6533455438678802
+  },
+  "risk_distribution": {
+    "by_severity": {
+      "critical": 0,
+      "high": 7,
+      "medium": 5,
+      "low": 3
+    },
+    "by_type": {
+      "settlement": 13,
+      "outpost": 2
+    }
+  },
+  "top_rankings": {
+    "highest_risk": [
+      {
+        "settlement_id": 3,
+        "name": "Ofra",
+        "type": "settlement",
+        "severity": "high",
+        "composite_risk": 0.6851763690486277,
+        "rank": 1
+      },
+      {
+        "settlement_id": 11,
+        "name": "Givat Ze'ev",
+        "type": "settlement",
+        "severity": "high",
+        "composite_risk": 0.6521241703903901,
+        "rank": 2
+      },
+      {
+        "settlement_id": 1,
+        "name": "Beit El",
+        "type": "settlement",
+        "severity": "high",
+        "composite_risk": 0.6381431248821803,
+        "rank": 3
+      },
+      {
+        "settlement_id": 2,
+        "name": "Psagot",
+        "type": "settlement",
+        "severity": "high",
+        "composite_risk": 0.6380664167560588,
+        "rank": 4
+      },
+      {
+        "settlement_id": 7,
+        "name": "Kochav Yaakov",
+        "type": "settlement",
+        "severity": "high",
+        "composite_risk": 0.599747062989487,
+        "rank": 5
+      },
+      {
+        "settlement_id": 10,
+        "name": "Givon HaHadasha",
+        "type": "settlement",
+        "severity": "high",
+        "composite_risk": 0.5816006918223402,
+        "rank": 6
+      },
+      {
+        "settlement_id": 12,
+        "name": "Adam",
+        "type": "settlement",
+        "severity": "high",
+        "composite_risk": 0.5694234527863666,
+        "rank": 7
+      },
+      {
+        "settlement_id": 15,
+        "name": "Kfar HaOranim",
+        "type": "settlement",
+        "severity": "medium",
+        "composite_risk": 0.5289867474179661,
+        "rank": 8
+      },
+      {
+        "settlement_id": 13,
+        "name": "Kochav HaShachar",
+        "type": "outpost",
+        "severity": "medium",
+        "composite_risk": 0.5177030033786182,
+        "rank": 9
+      },
+      {
+        "settlement_id": 9,
+        "name": "Ateret",
+        "type": "outpost",
+        "severity": "medium",
+        "composite_risk": 0.4993828282302691,
+        "rank": 10
+      }
+    ],
+    "highest_growth": [
+      {
+        "settlement_id": 12,
+        "name": "Adam",
+        "type": "settlement",
+        "severity": "high",
+        "growth_rate_m2yr": 114129.05239528068,
+        "rank": 1
+      },
+      {
+        "settlement_id": 3,
+        "name": "Ofra",
+        "type": "settlement",
+        "severity": "high",
+        "growth_rate_m2yr": 112682.09861105541,
+        "rank": 2
+      },
+      {
+        "settlement_id": 7,
+        "name": "Kochav Yaakov",
+        "type": "settlement",
+        "severity": "high",
+        "growth_rate_m2yr": 110181.63151694485,
+        "rank": 3
+      },
+      {
+        "settlement_id": 11,
+        "name": "Givat Ze'ev",
+        "type": "settlement",
+        "severity": "high",
+        "growth_rate_m2yr": 110161.74634570954,
+        "rank": 4
+      },
+      {
+        "settlement_id": 1,
+        "name": "Beit El",
+        "type": "settlement",
+        "severity": "high",
+        "growth_rate_m2yr": 110092.06264312658,
+        "rank": 5
+      },
+      {
+        "settlement_id": 6,
+        "name": "Halamish",
+        "type": "settlement",
+        "severity": "medium",
+        "growth_rate_m2yr": 110062.11064348067,
+        "rank": 6
+      },
+      {
+        "settlement_id": 13,
+        "name": "Kochav HaShachar",
+        "type": "outpost",
+        "severity": "medium",
+        "growth_rate_m2yr": 110030.6266895188,
+        "rank": 7
+      },
+      {
+        "settlement_id": 2,
+        "name": "Psagot",
+        "type": "settlement",
+        "severity": "high",
+        "growth_rate_m2yr": 104907.16947666765,
+        "rank": 8
+      },
+      {
+        "settlement_id": 14,
+        "name": "Ma'ale Michmas",
+        "type": "settlement",
+        "severity": "medium",
+        "growth_rate_m2yr": 104904.96267025231,
+        "rank": 9
+      },
+      {
+        "settlement_id": 4,
+        "name": "Beit Aryeh",
+        "type": "settlement",
+        "severity": "low",
+        "growth_rate_m2yr": 104801.00218100566,
+        "rank": 10
+      }
+    ],
+    "most_confiscations": [
+      {
+        "settlement_id": 3,
+        "name": "Ofra",
+        "type": "settlement",
+        "severity": "high",
+        "n_conf_total": 6.0,
+        "rank": 1
+      },
+      {
+        "settlement_id": 2,
+        "name": "Psagot",
+        "type": "settlement",
+        "severity": "high",
+        "n_conf_total": 6.0,
+        "rank": 2
+      },
+      {
+        "settlement_id": 15,
+        "name": "Kfar HaOranim",
+        "type": "settlement",
+        "severity": "medium",
+        "n_conf_total": 6.0,
+        "rank": 3
+      },
+      {
+        "settlement_id": 11,
+        "name": "Givat Ze'ev",
+        "type": "settlement",
+        "severity": "high",
+        "n_conf_total": 5.0,
+        "rank": 4
+      },
+      {
+        "settlement_id": 1,
+        "name": "Beit El",
+        "type": "settlement",
+        "severity": "high",
+        "n_conf_total": 5.0,
+        "rank": 5
+      },
+      {
+        "settlement_id": 10,
+        "name": "Givon HaHadasha",
+        "type": "settlement",
+        "severity": "high",
+        "n_conf_total": 5.0,
+        "rank": 6
+      },
+      {
+        "settlement_id": 7,
+        "name": "Kochav Yaakov",
+        "type": "settlement",
+        "severity": "high",
+        "n_conf_total": 3.0,
+        "rank": 7
+      },
+      {
+        "settlement_id": 9,
+        "name": "Ateret",
+        "type": "outpost",
+        "severity": "medium",
+        "n_conf_total": 3.0,
+        "rank": 8
+      },
+      {
+        "settlement_id": 13,
+        "name": "Kochav HaShachar",
+        "type": "outpost",
+        "severity": "medium",
+        "n_conf_total": 1.0,
+        "rank": 9
+      },
+      {
+        "settlement_id": 12,
+        "name": "Adam",
+        "type": "settlement",
+        "severity": "high",
+        "n_conf_total": 0.0,
+        "rank": 10
+      }
+    ],
+    "highest_zone_c": [
+      {
+        "settlement_id": 7,
+        "name": "Kochav Yaakov",
+        "type": "settlement",
+        "severity": "high",
+        "zone_c_coverage": 0.9670386600712761,
+        "rank": 1
+      },
+      {
+        "settlement_id": 15,
+        "name": "Kfar HaOranim",
+        "type": "settlement",
+        "severity": "medium",
+        "zone_c_coverage": 0.9486329971197963,
+        "rank": 2
+      },
+      {
+        "settlement_id": 11,
+        "name": "Givat Ze'ev",
+        "type": "settlement",
+        "severity": "high",
+        "zone_c_coverage": 0.9278564431051131,
+        "rank": 3
+      },
+      {
+        "settlement_id": 10,
+        "name": "Givon HaHadasha",
+        "type": "settlement",
+        "severity": "high",
+        "zone_c_coverage": 0.9101467133865649,
+        "rank": 4
+      },
+      {
+        "settlement_id": 4,
+        "name": "Beit Aryeh",
+        "type": "settlement",
+        "severity": "low",
+        "zone_c_coverage": 0.8872190450755476,
+        "rank": 5
+      },
+      {
+        "settlement_id": 12,
+        "name": "Adam",
+        "type": "settlement",
+        "severity": "high",
+        "zone_c_coverage": 0.8098453695953337,
+        "rank": 6
+      },
+      {
+        "settlement_id": 2,
+        "name": "Psagot",
+        "type": "settlement",
+        "severity": "high",
+        "zone_c_coverage": 0.7772756121173962,
+        "rank": 7
+      },
+      {
+        "settlement_id": 14,
+        "name": "Ma'ale Michmas",
+        "type": "settlement",
+        "severity": "medium",
+        "zone_c_coverage": 0.6763434682493208,
+        "rank": 8
+      },
+      {
+        "settlement_id": 6,
+        "name": "Halamish",
+        "type": "settlement",
+        "severity": "medium",
+        "zone_c_coverage": 0.6399791468006498,
+        "rank": 9
+      },
+      {
+        "settlement_id": 3,
+        "name": "Ofra",
+        "type": "settlement",
+        "severity": "high",
+        "zone_c_coverage": 0.6143603807202621,
+        "rank": 10
+      }
+    ]
+  },
+  "detailed_settlements": [
+    {
+      "settlement_id": 3,
+      "name": "Ofra",
+      "type": "settlement",
+      "established_year": 1975,
+      "coordinates": {
+        "lat": 31.970000000000002,
+        "lon": 35.27000000000001,
+        "geom_type": "MultiPolygon"
+      },
+      "risk_assessment": {
+        "composite_risk": 0.6851763690486277,
+        "severity": "high",
+        "xgb_risk": 0.9270419478416443,
+        "ts_risk": 0.07218469914091259,
+        "spatial_risk": 0.9999999269276587
+      },
+      "expansion_metrics": {
+        "growth_rate_m2yr": 112682.09861105541,
+        "area_latest_m2": 5073104.819566522,
+        "area_latest_km2": 5.073104819566522,
+        "forecast_5yr_area_m2": 6056856.923994791,
+        "forecast_5yr_area_km2": 6.056856923994791
+      },
+      "threat_indicators": {
+        "confiscation_orders": 6,
+        "recent_confiscations": 0,
+        "leaked_parcel_ratio": 0.6744186046511628,
+        "zone_c_coverage": 0.6143603807202621
+      },
+      "connectivity": {
+        "road_length_m": 14585.841597930155,
+        "transactions_count": 47,
+        "price_trend": -35535.08523217449
+      }
+    },
+    {
+      "settlement_id": 11,
+      "name": "Givat Ze'ev",
+      "type": "settlement",
+      "established_year": 1977,
+      "coordinates": {
+        "lat": 31.869999999999994,
+        "lon": 35.17,
+        "geom_type": "MultiPolygon"
+      },
+      "risk_assessment": {
+        "composite_risk": 0.6521241703903901,
+        "severity": "high",
+        "xgb_risk": 0.9309579730033875,
+        "ts_risk": 0.07385351800241848,
+        "spatial_risk": 0.8224456424398542
+      },
+      "expansion_metrics": {
+        "growth_rate_m2yr": 110161.74634570954,
+        "area_latest_m2": 4850222.674007293,
+        "area_latest_km2": 4.850222674007293,
+        "forecast_5yr_area_m2": 5812498.4514898565,
+        "forecast_5yr_area_km2": 5.812498451489857
+      },
+      "threat_indicators": {
+        "confiscation_orders": 5,
+        "recent_confiscations": 0,
+        "leaked_parcel_ratio": 0.24358974358974358,
+        "zone_c_coverage": 0.9278564431051131
+      },
+      "connectivity": {
+        "road_length_m": 21873.721838771027,
+        "transactions_count": 78,
+        "price_trend": -19321.927050974096
+      }
+    },
+    {
+      "settlement_id": 1,
+      "name": "Beit El",
+      "type": "settlement",
+      "established_year": 1977,
+      "coordinates": {
+        "lat": 31.942200000000003,
+        "lon": 35.2186,
+        "geom_type": "MultiPolygon"
+      },
+      "risk_assessment": {
+        "composite_risk": 0.6381431248821803,
+        "severity": "high",
+        "xgb_risk": 0.9287869930267334,
+        "ts_risk": 0.07393017612598683,
+        "spatial_risk": 0.7578528776550877
+      },
+      "expansion_metrics": {
+        "growth_rate_m2yr": 110092.06264312658,
+        "area_latest_m2": 4846682.186188836,
+        "area_latest_km2": 4.846682186188835,
+        "forecast_5yr_area_m2": 5809253.629214773,
+        "forecast_5yr_area_km2": 5.809253629214773
+      },
+      "threat_indicators": {
+        "confiscation_orders": 5,
+        "recent_confiscations": 0,
+        "leaked_parcel_ratio": 0.26865671641791045,
+        "zone_c_coverage": 0.5753456921645748
+      },
+      "connectivity": {
+        "road_length_m": 25700.516727046917,
+        "transactions_count": 69,
+        "price_trend": 75652.64607416811
+      }
+    },
+    {
+      "settlement_id": 2,
+      "name": "Psagot",
+      "type": "settlement",
+      "established_year": 1981,
+      "coordinates": {
+        "lat": 31.91,
+        "lon": 35.235,
+        "geom_type": "MultiPolygon"
+      },
+      "risk_assessment": {
+        "composite_risk": 0.6380664167560588,
+        "severity": "high",
+        "xgb_risk": 0.8938365578651428,
+        "ts_risk": 0.07758405842667124,
+        "spatial_risk": 0.8393646014774299
+      },
+      "expansion_metrics": {
+        "growth_rate_m2yr": 104907.16947666765,
+        "area_latest_m2": 4407831.436111612,
+        "area_latest_km2": 4.407831436111612,
+        "forecast_5yr_area_m2": 5326511.2222940065,
+        "forecast_5yr_area_km2": 5.326511222294006
+      },
+      "threat_indicators": {
+        "confiscation_orders": 6,
+        "recent_confiscations": 1,
+        "leaked_parcel_ratio": 0.17647058823529413,
+        "zone_c_coverage": 0.7772756121173962
+      },
+      "connectivity": {
+        "road_length_m": 34895.376424049115,
+        "transactions_count": 99,
+        "price_trend": 52126.94929066478
+      }
+    },
+    {
+      "settlement_id": 7,
+      "name": "Kochav Yaakov",
+      "type": "settlement",
+      "established_year": 1977,
+      "coordinates": {
+        "lat": 31.88,
+        "lon": 35.24000000000001,
+        "geom_type": "MultiPolygon"
+      },
+      "risk_assessment": {
+        "composite_risk": 0.599747062989487,
+        "severity": "high",
+        "xgb_risk": 0.9049460291862488,
+        "ts_risk": 0.07389127092456306,
+        "spatial_risk": 0.6255333355949684
+      },
+      "expansion_metrics": {
+        "growth_rate_m2yr": 110181.63151694485,
+        "area_latest_m2": 4849848.0293923365,
+        "area_latest_km2": 4.849848029392336,
+        "forecast_5yr_area_m2": 5812541.341620921,
+        "forecast_5yr_area_km2": 5.812541341620921
+      },
+      "threat_indicators": {
+        "confiscation_orders": 3,
+        "recent_confiscations": 1,
+        "leaked_parcel_ratio": 0.15789473684210525,
+        "zone_c_coverage": 0.9670386600712761
+      },
+      "connectivity": {
+        "road_length_m": 9194.859697002197,
+        "transactions_count": 54,
+        "price_trend": 56675.80856723203
+      }
+    },
+    {
+      "settlement_id": 10,
+      "name": "Givon HaHadasha",
+      "type": "settlement",
+      "established_year": 1991,
+      "coordinates": {
+        "lat": 31.849999999999998,
+        "lon": 35.16,
+        "geom_type": "MultiPolygon"
+      },
+      "risk_assessment": {
+        "composite_risk": 0.5816006918223402,
+        "severity": "high",
+        "xgb_risk": 0.8337615728378296,
+        "ts_risk": 0.08815217621346107,
+        "spatial_risk": 0.6913712626969352
+      },
+      "expansion_metrics": {
+        "growth_rate_m2yr": 91822.93060544704,
+        "area_latest_m2": 3400352.5321209007,
+        "area_latest_km2": 3.4003525321209005,
+        "forecast_5yr_area_m2": 4205589.438621554,
+        "forecast_5yr_area_km2": 4.205589438621554
+      },
+      "threat_indicators": {
+        "confiscation_orders": 5,
+        "recent_confiscations": 0,
+        "leaked_parcel_ratio": 0.25,
+        "zone_c_coverage": 0.9101467133865649
+      },
+      "connectivity": {
+        "road_length_m": 7287.880240840873,
+        "transactions_count": 10,
+        "price_trend": -45890.68778527684
+      }
+    },
+    {
+      "settlement_id": 12,
+      "name": "Adam",
+      "type": "settlement",
+      "established_year": 1974,
+      "coordinates": {
+        "lat": 31.860000000000003,
+        "lon": 35.25,
+        "geom_type": "MultiPolygon"
+      },
+      "risk_assessment": {
+        "composite_risk": 0.5694234527863666,
+        "severity": "high",
+        "xgb_risk": 0.9052345752716064,
+        "ts_risk": 0.07150962826338128,
+        "spatial_risk": 0.47676638335774507
+      },
+      "expansion_metrics": {
+        "growth_rate_m2yr": 114129.05239528068,
+        "area_latest_m2": 5195243.0826684395,
+        "area_latest_km2": 5.19524308266844,
+        "forecast_5yr_area_m2": 6193258.1158081805,
+        "forecast_5yr_area_km2": 6.193258115808181
+      },
+      "threat_indicators": {
+        "confiscation_orders": 0,
+        "recent_confiscations": 0,
+        "leaked_parcel_ratio": 0.18181818181818182,
+        "zone_c_coverage": 0.8098453695953337
+      },
+      "connectivity": {
+        "road_length_m": 4822.326417871533,
+        "transactions_count": 11,
+        "price_trend": 20109.405925906947
+      }
+    },
+    {
+      "settlement_id": 15,
+      "name": "Kfar HaOranim",
+      "type": "settlement",
+      "established_year": 1996,
+      "coordinates": {
+        "lat": 31.889999999999997,
+        "lon": 35.11,
+        "geom_type": "MultiPolygon"
+      },
+      "risk_assessment": {
+        "composite_risk": 0.5289867474179661,
+        "severity": "medium",
+        "xgb_risk": 0.8335726857185364,
+        "ts_risk": 0.09478381331015291,
+        "spatial_risk": 0.41882630282826044
+      },
+      "expansion_metrics": {
+        "growth_rate_m2yr": 85243.65789528831,
+        "area_latest_m2": 2943300.207556079,
+        "area_latest_km2": 2.9433002075560792,
+        "forecast_5yr_area_m2": 3692737.7213185113,
+        "forecast_5yr_area_km2": 3.6927377213185113
+      },
+      "threat_indicators": {
+        "confiscation_orders": 6,
+        "recent_confiscations": 1,
+        "leaked_parcel_ratio": 0.6666666666666666,
+        "zone_c_coverage": 0.9486329971197963
+      },
+      "connectivity": {
+        "road_length_m": 0.0,
+        "transactions_count": 4,
+        "price_trend": 206986.42155039404
+      }
+    },
+    {
+      "settlement_id": 13,
+      "name": "Kochav HaShachar",
+      "type": "outpost",
+      "established_year": 1977,
+      "coordinates": {
+        "lat": 31.979999999999997,
+        "lon": 35.31,
+        "geom_type": "MultiPolygon"
+      },
+      "risk_assessment": {
+        "composite_risk": 0.5177030033786182,
+        "severity": "medium",
+        "xgb_risk": 0.9056227803230286,
+        "ts_risk": 0.07393609910996353,
+        "spatial_risk": 0.2135539174205742
+      },
+      "expansion_metrics": {
+        "growth_rate_m2yr": 110030.6266895188,
+        "area_latest_m2": 4844572.039599537,
+        "area_latest_km2": 4.844572039599537,
+        "forecast_5yr_area_m2": 5806801.482343391,
+        "forecast_5yr_area_km2": 5.80680148234339
+      },
+      "threat_indicators": {
+        "confiscation_orders": 1,
+        "recent_confiscations": 0,
+        "leaked_parcel_ratio": 0.75,
+        "zone_c_coverage": 0.4335100414776763
+      },
+      "connectivity": {
+        "road_length_m": 0.0,
+        "transactions_count": 7,
+        "price_trend": 5864.916216216969
+      }
+    },
+    {
+      "settlement_id": 9,
+      "name": "Ateret",
+      "type": "outpost",
+      "established_year": 1981,
+      "coordinates": {
+        "lat": 32.01,
+        "lon": 35.22,
+        "geom_type": "MultiPolygon"
+      },
+      "risk_assessment": {
+        "composite_risk": 0.4993828282302691,
+        "severity": "medium",
+        "xgb_risk": 0.8281479477882385,
+        "ts_risk": 0.07756812193593422,
+        "spatial_risk": 0.3101920887768477
+      },
+      "expansion_metrics": {
+        "growth_rate_m2yr": 104782.97665085737,
+        "area_latest_m2": 4403118.84855665,
+        "area_latest_km2": 4.40311884855665,
+        "forecast_5yr_area_m2": 5320627.933566417,
+        "forecast_5yr_area_km2": 5.320627933566417
+      },
+      "threat_indicators": {
+        "confiscation_orders": 3,
+        "recent_confiscations": 0,
+        "leaked_parcel_ratio": 0.75,
+        "zone_c_coverage": 0.14074157586842437
+      },
+      "connectivity": {
+        "road_length_m": 0.0,
+        "transactions_count": 17,
+        "price_trend": 60428.50205555346
+      }
+    },
+    {
+      "settlement_id": 14,
+      "name": "Ma'ale Michmas",
+      "type": "settlement",
+      "established_year": 1981,
+      "coordinates": {
+        "lat": 31.889999999999997,
+        "lon": 35.29,
+        "geom_type": "MultiPolygon"
+      },
+      "risk_assessment": {
+        "composite_risk": 0.4846064673467626,
+        "severity": "medium",
+        "xgb_risk": 0.7491305470466614,
+        "ts_risk": 0.07759079574512885,
+        "spatial_risk": 0.43381977549946643
+      },
+      "expansion_metrics": {
+        "growth_rate_m2yr": 104904.96267025231,
+        "area_latest_m2": 4408753.998264963,
+        "area_latest_km2": 4.408753998264963,
+        "forecast_5yr_area_m2": 5327705.856811918,
+        "forecast_5yr_area_km2": 5.327705856811918
+      },
+      "threat_indicators": {
+        "confiscation_orders": 0,
+        "recent_confiscations": 0,
+        "leaked_parcel_ratio": 0.0,
+        "zone_c_coverage": 0.6763434682493208
+      },
+      "connectivity": {
+        "road_length_m": 4822.326417871533,
+        "transactions_count": 0,
+        "price_trend": 0.0
+      }
+    },
+    {
+      "settlement_id": 6,
+      "name": "Halamish",
+      "type": "settlement",
+      "established_year": 1977,
+      "coordinates": {
+        "lat": 31.960000000000004,
+        "lon": 35.09,
+        "geom_type": "MultiPolygon"
+      },
+      "risk_assessment": {
+        "composite_risk": 0.39039036203060645,
+        "severity": "medium",
+        "xgb_risk": 0.7363991737365723,
+        "ts_risk": 0.07396925054106769,
+        "spatial_risk": 0.0
+      },
+      "expansion_metrics": {
+        "growth_rate_m2yr": 110062.11064348067,
+        "area_latest_m2": 4845703.34367331,
+        "area_latest_km2": 4.845703343673311,
+        "forecast_5yr_area_m2": 5808589.030349953,
+        "forecast_5yr_area_km2": 5.808589030349953
+      },
+      "threat_indicators": {
+        "confiscation_orders": 0,
+        "recent_confiscations": 0,
+        "leaked_parcel_ratio": 0.0,
+        "zone_c_coverage": 0.6399791468006498
+      },
+      "connectivity": {
+        "road_length_m": 0.0,
+        "transactions_count": 0,
+        "price_trend": 0.0
+      }
+    },
+    {
+      "settlement_id": 4,
+      "name": "Beit Aryeh",
+      "type": "settlement",
+      "established_year": 1981,
+      "coordinates": {
+        "lat": 31.990000000000002,
+        "lon": 35.03,
+        "geom_type": "MultiPolygon"
+      },
+      "risk_assessment": {
+        "composite_risk": 0.3067420284196322,
+        "severity": "low",
+        "xgb_risk": 0.5669769048690796,
+        "ts_risk": 0.07751191995030803,
+        "spatial_risk": 0.0
+      },
+      "expansion_metrics": {
+        "growth_rate_m2yr": 104801.00218100566,
+        "area_latest_m2": 4403990.012398881,
+        "area_latest_km2": 4.403990012398881,
+        "forecast_5yr_area_m2": 5321015.716502355,
+        "forecast_5yr_area_km2": 5.321015716502355
+      },
+      "threat_indicators": {
+        "confiscation_orders": 0,
+        "recent_confiscations": 0,
+        "leaked_parcel_ratio": 0.0,
+        "zone_c_coverage": 0.8872190450755476
+      },
+      "connectivity": {
+        "road_length_m": 0.0,
+        "transactions_count": 0,
+        "price_trend": 0.0
+      }
+    },
+    {
+      "settlement_id": 8,
+      "name": "Talmon",
+      "type": "settlement",
+      "established_year": 1989,
+      "coordinates": {
+        "lat": 31.990000000000002,
+        "lon": 35.08,
+        "geom_type": "MultiPolygon"
+      },
+      "risk_assessment": {
+        "composite_risk": 0.28646652125637556,
+        "severity": "low",
+        "xgb_risk": 0.5214186906814575,
+        "ts_risk": 0.08585725305215602,
+        "spatial_risk": 0.0
+      },
+      "expansion_metrics": {
+        "growth_rate_m2yr": 94339.99354376202,
+        "area_latest_m2": 3586632.153650187,
+        "area_latest_km2": 3.586632153650187,
+        "forecast_5yr_area_m2": 4413870.229839579,
+        "forecast_5yr_area_km2": 4.4138702298395796
+      },
+      "threat_indicators": {
+        "confiscation_orders": 0,
+        "recent_confiscations": 0,
+        "leaked_parcel_ratio": 0.0,
+        "zone_c_coverage": 0.0780530751311851
+      },
+      "connectivity": {
+        "road_length_m": 0.0,
+        "transactions_count": 0,
+        "price_trend": 0.0
+      }
+    },
+    {
+      "settlement_id": 5,
+      "name": "Dolev",
+      "type": "settlement",
+      "established_year": 1983,
+      "coordinates": {
+        "lat": 31.970000000000002,
+        "lon": 35.099999999999994,
+        "geom_type": "MultiPolygon"
+      },
+      "risk_assessment": {
+        "composite_risk": 0.28453536069747754,
+        "severity": "low",
+        "xgb_risk": 0.5214186906814575,
+        "ts_risk": 0.07942005118916268,
+        "spatial_risk": 0.0
+      },
+      "expansion_metrics": {
+        "growth_rate_m2yr": 102184.11778653739,
+        "area_latest_m2": 4192697.4906422347,
+        "area_latest_km2": 4.192697490642234,
+        "forecast_5yr_area_m2": 5087218.159776608,
+        "forecast_5yr_area_km2": 5.087218159776609
+      },
+      "threat_indicators": {
+        "confiscation_orders": 0,
+        "recent_confiscations": 0,
+        "leaked_parcel_ratio": 0.0,
+        "zone_c_coverage": 0.4138349371350816
+      },
+      "connectivity": {
+        "road_length_m": 0.0,
+        "transactions_count": 0,
+        "price_trend": 0.0
+      }
+    }
+  ],
+  "statistical_analysis": {
+    "risk_scores": {
+      "composite": {
+        "mean": 0.5108729738302106,
+        "median": 0.5289867474179661,
+        "std": 0.13575392506568967,
+        "min": 0.28453536069747754,
+        "max": 0.6851763690486277,
+        "q25": 0.43749841468868456,
+        "q75": 0.6189067398727729
+      },
+      "xgb": {
+        "mean": 0.7991501092910767,
+        "median": 0.8337615728378296,
+        "std": 0.14907363057136536
+      },
+      "timeseries": {
+        "mean": 0.07811618879541789,
+        "median": 0.07751191995030803,
+        "std": 0.00659232267607423
+      },
+      "spatial": {
+        "mean": 0.4393150743116552,
+        "median": 0.43381977549946643,
+        "std": 0.3445863387049985
+      }
+    },
+    "growth_analysis": {
+      "mean_m2yr": 104688.40931032896,
+      "median_m2yr": 104907.16947666765,
+      "total_m2yr": 1570326.1396549344,
+      "std_m2yr": 8267.274543171774
+    },
+    "area_analysis": {
+      "mean_latest_m2": 4416803.523626518,
+      "total_latest_m2": 66252052.85439778,
+      "total_latest_km2": 66.25205285439777,
+      "mean_forecast_5yr_m2": 5333005.0169035215,
+      "total_forecast_5yr_m2": 79995075.25355282,
+      "total_forecast_5yr_km2": 79.99507525355283
+    }
+  }
+}

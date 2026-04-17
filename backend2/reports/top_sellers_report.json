@@ -1,0 +1,1451 @@
+[
+  {
+    "seller_id": "222",
+    "seller_name": "Rami Haddad",
+    "sales_count": "14",
+    "total_sales_value": "4815300.88",
+    "average_sale": "343950.0628571428"
+  },
+  {
+    "seller_id": "254",
+    "seller_name": "Samir Hamdan",
+    "sales_count": "14",
+    "total_sales_value": "2300026.29",
+    "average_sale": "164287.59214285715"
+  },
+  {
+    "seller_id": "100",
+    "seller_name": "Amer Nassar",
+    "sales_count": "12",
+    "total_sales_value": "11238062.17",
+    "average_sale": "936505.1808333333"
+  },
+  {
+    "seller_id": "117",
+    "seller_name": "Sara Zubaidi",
+    "sales_count": "12",
+    "total_sales_value": "2292139.09",
+    "average_sale": "191011.59083333332"
+  },
+  {
+    "seller_id": "239",
+    "seller_name": "Faris Zubaidi",
+    "sales_count": "11",
+    "total_sales_value": "12866598.18",
+    "average_sale": "1169690.7436363637"
+  },
+  {
+    "seller_id": "274",
+    "seller_name": "Rami Srour",
+    "sales_count": "9",
+    "total_sales_value": "17974387.75",
+    "average_sale": "1997154.1944444445"
+  },
+  {
+    "seller_id": "203",
+    "seller_name": "Faris Rimawi",
+    "sales_count": "9",
+    "total_sales_value": "5655541.9",
+    "average_sale": "628393.5444444445"
+  },
+  {
+    "seller_id": "85",
+    "seller_name": "Bassam Barakat",
+    "sales_count": "8",
+    "total_sales_value": "7441657.37",
+    "average_sale": "930207.17125"
+  },
+  {
+    "seller_id": "235",
+    "seller_name": "Ziad Odeh",
+    "sales_count": "8",
+    "total_sales_value": "6645145.43",
+    "average_sale": "830643.17875"
+  },
+  {
+    "seller_id": "164",
+    "seller_name": "Faris Nassar",
+    "sales_count": "8",
+    "total_sales_value": "4819136.43",
+    "average_sale": "602392.05375"
+  },
+  {
+    "seller_id": "61",
+    "seller_name": "Maryam Musleh",
+    "sales_count": "8",
+    "total_sales_value": "2656969.64",
+    "average_sale": "332121.205"
+  },
+  {
+    "seller_id": "238",
+    "seller_name": "Khaled Daraghmeh",
+    "sales_count": "7",
+    "total_sales_value": "18002120.11",
+    "average_sale": "2571731.444285714"
+  },
+  {
+    "seller_id": "103",
+    "seller_name": "Mohammed Barghouti",
+    "sales_count": "7",
+    "total_sales_value": "10448425.86",
+    "average_sale": "1492632.2657142857"
+  },
+  {
+    "seller_id": "99",
+    "seller_name": "Samer Barakat",
+    "sales_count": "7",
+    "total_sales_value": "6692675.91",
+    "average_sale": "956096.5585714286"
+  },
+  {
+    "seller_id": "107",
+    "seller_name": "Wissam Hamdan",
+    "sales_count": "7",
+    "total_sales_value": "3274954.0100000002",
+    "average_sale": "467850.5728571429"
+  },
+  {
+    "seller_id": "297",
+    "seller_name": "Ziad Zubaidi",
+    "sales_count": "6",
+    "total_sales_value": "22501069.28",
+    "average_sale": "3750178.2133333334"
+  },
+  {
+    "seller_id": "208",
+    "seller_name": "Karim Qasim",
+    "sales_count": "6",
+    "total_sales_value": "15833982.21",
+    "average_sale": "2638997.035"
+  },
+  {
+    "seller_id": "299",
+    "seller_name": "Wissam Awad",
+    "sales_count": "6",
+    "total_sales_value": "12817078.99",
+    "average_sale": "2136179.8316666665"
+  },
+  {
+    "seller_id": "74",
+    "seller_name": "Hassan Abu Hamid",
+    "sales_count": "6",
+    "total_sales_value": "10732554.43",
+    "average_sale": "1788759.0716666665"
+  },
+  {
+    "seller_id": "183",
+    "seller_name": "Dina Jaber",
+    "sales_count": "6",
+    "total_sales_value": "8684892.66",
+    "average_sale": "1447482.11"
+  },
+  {
+    "seller_id": "150",
+    "seller_name": "Maryam Tamimi",
+    "sales_count": "6",
+    "total_sales_value": "7326387.72",
+    "average_sale": "1221064.6199999999"
+  },
+  {
+    "seller_id": "54",
+    "seller_name": "Ibrahim Odeh",
+    "sales_count": "6",
+    "total_sales_value": "7285204.15",
+    "average_sale": "1214200.6916666667"
+  },
+  {
+    "seller_id": "240",
+    "seller_name": "Rana Saleh",
+    "sales_count": "6",
+    "total_sales_value": "4496349.03",
+    "average_sale": "749391.505"
+  },
+  {
+    "seller_id": "248",
+    "seller_name": "Dina Bishara",
+    "sales_count": "6",
+    "total_sales_value": "4293016.95",
+    "average_sale": "715502.8250000001"
+  },
+  {
+    "seller_id": "153",
+    "seller_name": "Ziad Daraghmeh",
+    "sales_count": "6",
+    "total_sales_value": "2882443.2",
+    "average_sale": "480407.2"
+  },
+  {
+    "seller_id": "287",
+    "seller_name": "Maryam Jaber",
+    "sales_count": "6",
+    "total_sales_value": "2738757.0399999996",
+    "average_sale": "456459.5066666666"
+  },
+  {
+    "seller_id": "193",
+    "seller_name": "Ziad Awad",
+    "sales_count": "6",
+    "total_sales_value": "2697513.6199999996",
+    "average_sale": "449585.6033333333"
+  },
+  {
+    "seller_id": "216",
+    "seller_name": "Samir Barghouti",
+    "sales_count": "6",
+    "total_sales_value": "1614106.25",
+    "average_sale": "269017.7083333333"
+  },
+  {
+    "seller_id": "246",
+    "seller_name": "Bassam Srour",
+    "sales_count": "6",
+    "total_sales_value": "1600826.0299999998",
+    "average_sale": "266804.3383333333"
+  },
+  {
+    "seller_id": "151",
+    "seller_name": "Omar Hamdan",
+    "sales_count": "6",
+    "total_sales_value": "808251.34",
+    "average_sale": "134708.55666666667"
+  },
+  {
+    "seller_id": "95",
+    "seller_name": "Nidal Bishara",
+    "sales_count": "6",
+    "total_sales_value": "593496.89",
+    "average_sale": "98916.14833333333"
+  },
+  {
+    "seller_id": "17",
+    "seller_name": "Omar Saleh",
+    "sales_count": "6",
+    "total_sales_value": "547137.5700000001",
+    "average_sale": "91189.59500000002"
+  },
+  {
+    "seller_id": "237",
+    "seller_name": "Yousef Musleh",
+    "sales_count": "5",
+    "total_sales_value": "17175397.72",
+    "average_sale": "3435079.5439999998"
+  },
+  {
+    "seller_id": "180",
+    "seller_name": "Omar Tamimi",
+    "sales_count": "5",
+    "total_sales_value": "11769285.67",
+    "average_sale": "2353857.134"
+  },
+  {
+    "seller_id": "63",
+    "seller_name": "Hassan Awad",
+    "sales_count": "5",
+    "total_sales_value": "11455080.69",
+    "average_sale": "2291016.138"
+  },
+  {
+    "seller_id": "219",
+    "seller_name": "Yousef Irshaid",
+    "sales_count": "5",
+    "total_sales_value": "11341294.82",
+    "average_sale": "2268258.964"
+  },
+  {
+    "seller_id": "200",
+    "seller_name": "Khaled Saleh",
+    "sales_count": "5",
+    "total_sales_value": "9190317.44",
+    "average_sale": "1838063.488"
+  },
+  {
+    "seller_id": "145",
+    "seller_name": "Layla Mansour",
+    "sales_count": "5",
+    "total_sales_value": "8151713.33",
+    "average_sale": "1630342.666"
+  },
+  {
+    "seller_id": "80",
+    "seller_name": "Ahmad Barakat",
+    "sales_count": "5",
+    "total_sales_value": "8052064.06",
+    "average_sale": "1610412.812"
+  },
+  {
+    "seller_id": "98",
+    "seller_name": "Walid Musleh",
+    "sales_count": "5",
+    "total_sales_value": "7987482.08",
+    "average_sale": "1597496.416"
+  },
+  {
+    "seller_id": "225",
+    "seller_name": "Nour Bishara",
+    "sales_count": "5",
+    "total_sales_value": "7733339.1",
+    "average_sale": "1546667.8199999998"
+  },
+  {
+    "seller_id": "201",
+    "seller_name": "Faris Jaber",
+    "sales_count": "5",
+    "total_sales_value": "7197360.09",
+    "average_sale": "1439472.018"
+  },
+  {
+    "seller_id": "178",
+    "seller_name": "Layla Nabulsi",
+    "sales_count": "5",
+    "total_sales_value": "6729377.8100000005",
+    "average_sale": "1345875.5620000002"
+  },
+  {
+    "seller_id": "55",
+    "seller_name": "Ibrahim Shahin",
+    "sales_count": "5",
+    "total_sales_value": "6556355.9",
+    "average_sale": "1311271.1800000002"
+  },
+  {
+    "seller_id": "154",
+    "seller_name": "Ibrahim Abu Ayyash",
+    "sales_count": "5",
+    "total_sales_value": "5221876.07",
+    "average_sale": "1044375.214"
+  },
+  {
+    "seller_id": "281",
+    "seller_name": "Raed Zubaidi",
+    "sales_count": "5",
+    "total_sales_value": "5044475.3",
+    "average_sale": "1008895.0599999999"
+  },
+  {
+    "seller_id": "168",
+    "seller_name": "Ibrahim Shahin",
+    "sales_count": "5",
+    "total_sales_value": "5026426.39",
+    "average_sale": "1005285.2779999999"
+  },
+  {
+    "seller_id": "163",
+    "seller_name": "Wissam Awad",
+    "sales_count": "5",
+    "total_sales_value": "4507571.73",
+    "average_sale": "901514.3460000001"
+  },
+  {
+    "seller_id": "184",
+    "seller_name": "Dina Rimawi",
+    "sales_count": "5",
+    "total_sales_value": "2906747.9699999997",
+    "average_sale": "581349.5939999999"
+  },
+  {
+    "seller_id": "116",
+    "seller_name": "Nour Abu Hamid",
+    "sales_count": "5",
+    "total_sales_value": "1927479.65",
+    "average_sale": "385495.93"
+  },
+  {
+    "seller_id": "173",
+    "seller_name": "Karim Daraghmeh",
+    "sales_count": "5",
+    "total_sales_value": "553824.38",
+    "average_sale": "110764.876"
+  },
+  {
+    "seller_id": "295",
+    "seller_name": "Nidal Rimawi",
+    "sales_count": "5",
+    "total_sales_value": "351994.13",
+    "average_sale": "70398.826"
+  },
+  {
+    "seller_id": "128",
+    "seller_name": "Bilal Nassar",
+    "sales_count": "5",
+    "total_sales_value": "261126.15000000002",
+    "average_sale": "52225.23"
+  },
+  {
+    "seller_id": "105",
+    "seller_name": "Yousef Bishara",
+    "sales_count": "4",
+    "total_sales_value": "13792318.469999999",
+    "average_sale": "3448079.6174999997"
+  },
+  {
+    "seller_id": "179",
+    "seller_name": "Raed Jaber",
+    "sales_count": "4",
+    "total_sales_value": "9038365.969999999",
+    "average_sale": "2259591.4924999997"
+  },
+  {
+    "seller_id": "214",
+    "seller_name": "Hiba Odeh",
+    "sales_count": "4",
+    "total_sales_value": "8392960.05",
+    "average_sale": "2098240.0125"
+  },
+  {
+    "seller_id": "197",
+    "seller_name": "Layla Nabulsi",
+    "sales_count": "4",
+    "total_sales_value": "8128792.949999999",
+    "average_sale": "2032198.2374999998"
+  },
+  {
+    "seller_id": "262",
+    "seller_name": "Fatima Tawil",
+    "sales_count": "4",
+    "total_sales_value": "7980596.15",
+    "average_sale": "1995149.0375"
+  },
+  {
+    "seller_id": "162",
+    "seller_name": "Bassam Irshaid",
+    "sales_count": "4",
+    "total_sales_value": "5797308.08",
+    "average_sale": "1449327.02"
+  },
+  {
+    "seller_id": "205",
+    "seller_name": "Abeer Barakat",
+    "sales_count": "4",
+    "total_sales_value": "5723576.33",
+    "average_sale": "1430894.0825"
+  },
+  {
+    "seller_id": "292",
+    "seller_name": "Rana Hamdan",
+    "sales_count": "4",
+    "total_sales_value": "4850827.27",
+    "average_sale": "1212706.8175"
+  },
+  {
+    "seller_id": "75",
+    "seller_name": "Jad Nabulsi",
+    "sales_count": "4",
+    "total_sales_value": "4815364.15",
+    "average_sale": "1203841.0375"
+  },
+  {
+    "seller_id": "289",
+    "seller_name": "Ahmad Odeh",
+    "sales_count": "4",
+    "total_sales_value": "4735167.96",
+    "average_sale": "1183791.99"
+  },
+  {
+    "seller_id": "58",
+    "seller_name": "Nasser Saleh",
+    "sales_count": "4",
+    "total_sales_value": "4162269.96",
+    "average_sale": "1040567.49"
+  },
+  {
+    "seller_id": "213",
+    "seller_name": "Dina Haddad",
+    "sales_count": "4",
+    "total_sales_value": "3644507.88",
+    "average_sale": "911126.97"
+  },
+  {
+    "seller_id": "196",
+    "seller_name": "Sana Barakat",
+    "sales_count": "4",
+    "total_sales_value": "2815585.61",
+    "average_sale": "703896.4025"
+  },
+  {
+    "seller_id": "118",
+    "seller_name": "Sana Bishara",
+    "sales_count": "4",
+    "total_sales_value": "2054193.0199999998",
+    "average_sale": "513548.25499999995"
+  },
+  {
+    "seller_id": "161",
+    "seller_name": "Hassan Irshaid",
+    "sales_count": "4",
+    "total_sales_value": "2052595.37",
+    "average_sale": "513148.8425"
+  },
+  {
+    "seller_id": "157",
+    "seller_name": "Reem Musleh",
+    "sales_count": "4",
+    "total_sales_value": "1722570.84",
+    "average_sale": "430642.71"
+  },
+  {
+    "seller_id": "277",
+    "seller_name": "Ziad Haddad",
+    "sales_count": "4",
+    "total_sales_value": "1661519.1800000002",
+    "average_sale": "415379.79500000004"
+  },
+  {
+    "seller_id": "141",
+    "seller_name": "Hana Mansour",
+    "sales_count": "4",
+    "total_sales_value": "1510130.11",
+    "average_sale": "377532.5275"
+  },
+  {
+    "seller_id": "285",
+    "seller_name": "Sara Nabulsi",
+    "sales_count": "4",
+    "total_sales_value": "1415302.2",
+    "average_sale": "353825.55"
+  },
+  {
+    "seller_id": "169",
+    "seller_name": "Layla Musleh",
+    "sales_count": "4",
+    "total_sales_value": "1349866.33",
+    "average_sale": "337466.5825"
+  },
+  {
+    "seller_id": "136",
+    "seller_name": "Rana Abu Hamid",
+    "sales_count": "4",
+    "total_sales_value": "984348.14",
+    "average_sale": "246087.035"
+  },
+  {
+    "seller_id": "120",
+    "seller_name": "Rami Daraghmeh",
+    "sales_count": "4",
+    "total_sales_value": "902575.0399999999",
+    "average_sale": "225643.75999999998"
+  },
+  {
+    "seller_id": "172",
+    "seller_name": "Dina Haddad",
+    "sales_count": "4",
+    "total_sales_value": "848583.4099999999",
+    "average_sale": "212145.85249999998"
+  },
+  {
+    "seller_id": "247",
+    "seller_name": "Raed Barakat",
+    "sales_count": "4",
+    "total_sales_value": "811923.3",
+    "average_sale": "202980.825"
+  },
+  {
+    "seller_id": "129",
+    "seller_name": "Maryam Jaber",
+    "sales_count": "4",
+    "total_sales_value": "793879.8",
+    "average_sale": "198469.95"
+  },
+  {
+    "seller_id": "72",
+    "seller_name": "Mahmoud Tamimi",
+    "sales_count": "4",
+    "total_sales_value": "616051.25",
+    "average_sale": "154012.8125"
+  },
+  {
+    "seller_id": "110",
+    "seller_name": "Layla Saleh",
+    "sales_count": "4",
+    "total_sales_value": "464673.44",
+    "average_sale": "116168.36"
+  },
+  {
+    "seller_id": "195",
+    "seller_name": "Abeer Shahin",
+    "sales_count": "4",
+    "total_sales_value": "183607.72",
+    "average_sale": "45901.93"
+  },
+  {
+    "seller_id": "121",
+    "seller_name": "Lina Hamdan",
+    "sales_count": "3",
+    "total_sales_value": "11018873.1",
+    "average_sale": "3672957.6999999997"
+  },
+  {
+    "seller_id": "190",
+    "seller_name": "Rami Srour",
+    "sales_count": "3",
+    "total_sales_value": "10798348.06",
+    "average_sale": "3599449.3533333335"
+  },
+  {
+    "seller_id": "70",
+    "seller_name": "Sara Awad",
+    "sales_count": "3",
+    "total_sales_value": "9677218.95",
+    "average_sale": "3225739.65"
+  },
+  {
+    "seller_id": "210",
+    "seller_name": "Tariq Tamimi",
+    "sales_count": "3",
+    "total_sales_value": "9500464.81",
+    "average_sale": "3166821.6033333335"
+  },
+  {
+    "seller_id": "114",
+    "seller_name": "Hana Musleh",
+    "sales_count": "3",
+    "total_sales_value": "9135889.36",
+    "average_sale": "3045296.453333333"
+  },
+  {
+    "seller_id": "106",
+    "seller_name": "Hiba Rimawi",
+    "sales_count": "3",
+    "total_sales_value": "9118841.84",
+    "average_sale": "3039613.946666667"
+  },
+  {
+    "seller_id": "232",
+    "seller_name": "Walid Abu Ayyash",
+    "sales_count": "3",
+    "total_sales_value": "7727149.7",
+    "average_sale": "2575716.566666667"
+  },
+  {
+    "seller_id": "59",
+    "seller_name": "Samir Zubaidi",
+    "sales_count": "3",
+    "total_sales_value": "7521495.33",
+    "average_sale": "2507165.11"
+  },
+  {
+    "seller_id": "182",
+    "seller_name": "Wissam Jaber",
+    "sales_count": "3",
+    "total_sales_value": "6413035.32",
+    "average_sale": "2137678.44"
+  },
+  {
+    "seller_id": "76",
+    "seller_name": "Nidal Zubaidi",
+    "sales_count": "3",
+    "total_sales_value": "5922427.63",
+    "average_sale": "1974142.5433333332"
+  },
+  {
+    "seller_id": "221",
+    "seller_name": "Hiba Odeh",
+    "sales_count": "3",
+    "total_sales_value": "5645008.7",
+    "average_sale": "1881669.5666666667"
+  },
+  {
+    "seller_id": "119",
+    "seller_name": "Reem Bishara",
+    "sales_count": "3",
+    "total_sales_value": "5417945.04",
+    "average_sale": "1805981.68"
+  },
+  {
+    "seller_id": "148",
+    "seller_name": "Hana Jaber",
+    "sales_count": "3",
+    "total_sales_value": "5319312.9399999995",
+    "average_sale": "1773104.3133333332"
+  },
+  {
+    "seller_id": "266",
+    "seller_name": "Ahmad Musleh",
+    "sales_count": "3",
+    "total_sales_value": "5263523.49",
+    "average_sale": "1754507.83"
+  },
+  {
+    "seller_id": "65",
+    "seller_name": "Hana Shahin",
+    "sales_count": "3",
+    "total_sales_value": "4222963.0200000005",
+    "average_sale": "1407654.34"
+  },
+  {
+    "seller_id": "66",
+    "seller_name": "Ziad Saleh",
+    "sales_count": "3",
+    "total_sales_value": "4204872.11",
+    "average_sale": "1401624.0366666669"
+  },
+  {
+    "seller_id": "227",
+    "seller_name": "Hiba Abu Hamid",
+    "sales_count": "3",
+    "total_sales_value": "4132924.34",
+    "average_sale": "1377641.4466666665"
+  },
+  {
+    "seller_id": "165",
+    "seller_name": "Rami Haddad",
+    "sales_count": "3",
+    "total_sales_value": "3677505.32",
+    "average_sale": "1225835.1066666667"
+  },
+  {
+    "seller_id": "212",
+    "seller_name": "Tariq Daraghmeh",
+    "sales_count": "3",
+    "total_sales_value": "3371504.07",
+    "average_sale": "1123834.69"
+  },
+  {
+    "seller_id": "263",
+    "seller_name": "Hana Nassar",
+    "sales_count": "3",
+    "total_sales_value": "3250938.18",
+    "average_sale": "1083646.06"
+  },
+  {
+    "seller_id": "251",
+    "seller_name": "Mohammed Nassar",
+    "sales_count": "3",
+    "total_sales_value": "3065119.06",
+    "average_sale": "1021706.3533333334"
+  },
+  {
+    "seller_id": "286",
+    "seller_name": "Yousef Tamimi",
+    "sales_count": "3",
+    "total_sales_value": "2736936.4",
+    "average_sale": "912312.1333333333"
+  },
+  {
+    "seller_id": "236",
+    "seller_name": "Samer Srour",
+    "sales_count": "3",
+    "total_sales_value": "2572947.45",
+    "average_sale": "857649.15"
+  },
+  {
+    "seller_id": "175",
+    "seller_name": "Layla Qasim",
+    "sales_count": "3",
+    "total_sales_value": "2515338.7600000002",
+    "average_sale": "838446.2533333334"
+  },
+  {
+    "seller_id": "298",
+    "seller_name": "Nidal Nabulsi",
+    "sales_count": "3",
+    "total_sales_value": "2023758.82",
+    "average_sale": "674586.2733333333"
+  },
+  {
+    "seller_id": "257",
+    "seller_name": "Dina Nassar",
+    "sales_count": "3",
+    "total_sales_value": "1997599.5",
+    "average_sale": "665866.5"
+  },
+  {
+    "seller_id": "278",
+    "seller_name": "Mahmoud Daraghmeh",
+    "sales_count": "3",
+    "total_sales_value": "1901690.77",
+    "average_sale": "633896.9233333333"
+  },
+  {
+    "seller_id": "146",
+    "seller_name": "Samir Barghouti",
+    "sales_count": "3",
+    "total_sales_value": "1253618.02",
+    "average_sale": "417872.67333333334"
+  },
+  {
+    "seller_id": "69",
+    "seller_name": "Raed Shahin",
+    "sales_count": "3",
+    "total_sales_value": "912042.95",
+    "average_sale": "304014.31666666665"
+  },
+  {
+    "seller_id": "255",
+    "seller_name": "Nour Tamimi",
+    "sales_count": "3",
+    "total_sales_value": "603317.4400000001",
+    "average_sale": "201105.81333333335"
+  },
+  {
+    "seller_id": "115",
+    "seller_name": "Sana Abu Hamid",
+    "sales_count": "3",
+    "total_sales_value": "396747.02999999997",
+    "average_sale": "132249.00999999998"
+  },
+  {
+    "seller_id": "147",
+    "seller_name": "Wissam Jaber",
+    "sales_count": "3",
+    "total_sales_value": "389758.80000000005",
+    "average_sale": "129919.60000000002"
+  },
+  {
+    "seller_id": "280",
+    "seller_name": "Samer Barakat",
+    "sales_count": "3",
+    "total_sales_value": "362176.25",
+    "average_sale": "120725.41666666667"
+  },
+  {
+    "seller_id": "199",
+    "seller_name": "Hana Tamimi",
+    "sales_count": "3",
+    "total_sales_value": "327087.47",
+    "average_sale": "109029.15666666666"
+  },
+  {
+    "seller_id": "258",
+    "seller_name": "Jad Zubaidi",
+    "sales_count": "3",
+    "total_sales_value": "320938.39",
+    "average_sale": "106979.46333333333"
+  },
+  {
+    "seller_id": "226",
+    "seller_name": "Abeer Zubaidi",
+    "sales_count": "3",
+    "total_sales_value": "119391.39",
+    "average_sale": "39797.13"
+  },
+  {
+    "seller_id": "204",
+    "seller_name": "Reem Tamimi",
+    "sales_count": "2",
+    "total_sales_value": "8305942.77",
+    "average_sale": "4152971.385"
+  },
+  {
+    "seller_id": "215",
+    "seller_name": "Reem Bishara",
+    "sales_count": "2",
+    "total_sales_value": "7836928.91",
+    "average_sale": "3918464.455"
+  },
+  {
+    "seller_id": "275",
+    "seller_name": "Bassam Tawil",
+    "sales_count": "2",
+    "total_sales_value": "6539194.17",
+    "average_sale": "3269597.085"
+  },
+  {
+    "seller_id": "166",
+    "seller_name": "Bassam Musleh",
+    "sales_count": "2",
+    "total_sales_value": "6170511.380000001",
+    "average_sale": "3085255.6900000004"
+  },
+  {
+    "seller_id": "68",
+    "seller_name": "Raed Nassar",
+    "sales_count": "2",
+    "total_sales_value": "5536961.25",
+    "average_sale": "2768480.625"
+  },
+  {
+    "seller_id": "160",
+    "seller_name": "Mahmoud Qasim",
+    "sales_count": "2",
+    "total_sales_value": "5343676.11",
+    "average_sale": "2671838.055"
+  },
+  {
+    "seller_id": "132",
+    "seller_name": "Abeer Srour",
+    "sales_count": "2",
+    "total_sales_value": "5275370.73",
+    "average_sale": "2637685.365"
+  },
+  {
+    "seller_id": "241",
+    "seller_name": "Nasser Tamimi",
+    "sales_count": "2",
+    "total_sales_value": "5030569.399999999",
+    "average_sale": "2515284.6999999997"
+  },
+  {
+    "seller_id": "111",
+    "seller_name": "Lina Bishara",
+    "sales_count": "2",
+    "total_sales_value": "4046205.16",
+    "average_sale": "2023102.58"
+  },
+  {
+    "seller_id": "279",
+    "seller_name": "Nasser Hamdan",
+    "sales_count": "2",
+    "total_sales_value": "3585448.74",
+    "average_sale": "1792724.37"
+  },
+  {
+    "seller_id": "67",
+    "seller_name": "Faris Awad",
+    "sales_count": "2",
+    "total_sales_value": "3338506.92",
+    "average_sale": "1669253.46"
+  },
+  {
+    "seller_id": "209",
+    "seller_name": "Ahmad Srour",
+    "sales_count": "2",
+    "total_sales_value": "3209467.73",
+    "average_sale": "1604733.865"
+  },
+  {
+    "seller_id": "276",
+    "seller_name": "Sana Zubaidi",
+    "sales_count": "2",
+    "total_sales_value": "3128538.0",
+    "average_sale": "1564269.0"
+  },
+  {
+    "seller_id": "282",
+    "seller_name": "Reem Hamdan",
+    "sales_count": "2",
+    "total_sales_value": "3083777.1399999997",
+    "average_sale": "1541888.5699999998"
+  },
+  {
+    "seller_id": "259",
+    "seller_name": "Nidal Musleh",
+    "sales_count": "2",
+    "total_sales_value": "2206699.56",
+    "average_sale": "1103349.78"
+  },
+  {
+    "seller_id": "290",
+    "seller_name": "Bassam Irshaid",
+    "sales_count": "2",
+    "total_sales_value": "1375245.71",
+    "average_sale": "687622.855"
+  },
+  {
+    "seller_id": "194",
+    "seller_name": "Rami Odeh",
+    "sales_count": "2",
+    "total_sales_value": "1310942.2",
+    "average_sale": "655471.1"
+  },
+  {
+    "seller_id": "294",
+    "seller_name": "Rana Awad",
+    "sales_count": "2",
+    "total_sales_value": "1275087.5",
+    "average_sale": "637543.75"
+  },
+  {
+    "seller_id": "158",
+    "seller_name": "Hiba Rimawi",
+    "sales_count": "2",
+    "total_sales_value": "1145042.88",
+    "average_sale": "572521.44"
+  },
+  {
+    "seller_id": "264",
+    "seller_name": "Khaled Jaber",
+    "sales_count": "2",
+    "total_sales_value": "1115209.71",
+    "average_sale": "557604.855"
+  },
+  {
+    "seller_id": "284",
+    "seller_name": "Wissam Rimawi",
+    "sales_count": "2",
+    "total_sales_value": "1075222.93",
+    "average_sale": "537611.465"
+  },
+  {
+    "seller_id": "283",
+    "seller_name": "Hana Tawil",
+    "sales_count": "2",
+    "total_sales_value": "1035746.43",
+    "average_sale": "517873.215"
+  },
+  {
+    "seller_id": "167",
+    "seller_name": "Mahmoud Irshaid",
+    "sales_count": "2",
+    "total_sales_value": "1028378.93",
+    "average_sale": "514189.465"
+  },
+  {
+    "seller_id": "189",
+    "seller_name": "Dina Tawil",
+    "sales_count": "2",
+    "total_sales_value": "994339.74",
+    "average_sale": "497169.87"
+  },
+  {
+    "seller_id": "291",
+    "seller_name": "Dina Mansour",
+    "sales_count": "2",
+    "total_sales_value": "682673.6000000001",
+    "average_sale": "341336.80000000005"
+  },
+  {
+    "seller_id": "138",
+    "seller_name": "Layla Hamdan",
+    "sales_count": "2",
+    "total_sales_value": "547159.82",
+    "average_sale": "273579.91"
+  },
+  {
+    "seller_id": "82",
+    "seller_name": "Faris Shahin",
+    "sales_count": "2",
+    "total_sales_value": "533901.79",
+    "average_sale": "266950.895"
+  },
+  {
+    "seller_id": "198",
+    "seller_name": "Amer Shahin",
+    "sales_count": "2",
+    "total_sales_value": "486499.3",
+    "average_sale": "243249.65"
+  },
+  {
+    "seller_id": "112",
+    "seller_name": "Sana Saleh",
+    "sales_count": "2",
+    "total_sales_value": "458369.17000000004",
+    "average_sale": "229184.58500000002"
+  },
+  {
+    "seller_id": "265",
+    "seller_name": "Fatima Barakat",
+    "sales_count": "2",
+    "total_sales_value": "426891.61",
+    "average_sale": "213445.805"
+  },
+  {
+    "seller_id": "293",
+    "seller_name": "Amer Tawil",
+    "sales_count": "2",
+    "total_sales_value": "332862.15",
+    "average_sale": "166431.075"
+  },
+  {
+    "seller_id": "159",
+    "seller_name": "Khaled Shahin",
+    "sales_count": "2",
+    "total_sales_value": "263346.1",
+    "average_sale": "131673.05"
+  },
+  {
+    "seller_id": "152",
+    "seller_name": "Rana Barghouti",
+    "sales_count": "2",
+    "total_sales_value": "236070.50999999998",
+    "average_sale": "118035.25499999999"
+  },
+  {
+    "seller_id": "125",
+    "seller_name": "Nidal Tawil",
+    "sales_count": "2",
+    "total_sales_value": "187243.88999999998",
+    "average_sale": "93621.94499999999"
+  },
+  {
+    "seller_id": "191",
+    "seller_name": "Dina Bishara",
+    "sales_count": "2",
+    "total_sales_value": "186832.37000000002",
+    "average_sale": "93416.18500000001"
+  },
+  {
+    "seller_id": "228",
+    "seller_name": "Hassan Rimawi",
+    "sales_count": "2",
+    "total_sales_value": "167206.77000000002",
+    "average_sale": "83603.38500000001"
+  },
+  {
+    "seller_id": "156",
+    "seller_name": "Nasser Saleh",
+    "sales_count": "2",
+    "total_sales_value": "154553.16",
+    "average_sale": "77276.58"
+  },
+  {
+    "seller_id": "87",
+    "seller_name": "Samer Tawil",
+    "sales_count": "2",
+    "total_sales_value": "146815.65",
+    "average_sale": "73407.825"
+  },
+  {
+    "seller_id": "127",
+    "seller_name": "Wissam Srour",
+    "sales_count": "2",
+    "total_sales_value": "128040.42",
+    "average_sale": "64020.21"
+  },
+  {
+    "seller_id": "133",
+    "seller_name": "Hiba Awad",
+    "sales_count": "2",
+    "total_sales_value": "117445.06",
+    "average_sale": "58722.53"
+  },
+  {
+    "seller_id": "244",
+    "seller_name": "Hiba Odeh",
+    "sales_count": "2",
+    "total_sales_value": "100607.95999999999",
+    "average_sale": "50303.979999999996"
+  },
+  {
+    "seller_id": "134",
+    "seller_name": "Ahmad Shahin",
+    "sales_count": "2",
+    "total_sales_value": "22391.48",
+    "average_sale": "11195.74"
+  },
+  {
+    "seller_id": "186",
+    "seller_name": "Raed Tawil",
+    "sales_count": "1",
+    "total_sales_value": "6163612.44",
+    "average_sale": "6163612.44"
+  },
+  {
+    "seller_id": "88",
+    "seller_name": "Faris Zubaidi",
+    "sales_count": "1",
+    "total_sales_value": "5566152.68",
+    "average_sale": "5566152.68"
+  },
+  {
+    "seller_id": "137",
+    "seller_name": "Dina Saleh",
+    "sales_count": "1",
+    "total_sales_value": "4656635.46",
+    "average_sale": "4656635.46"
+  },
+  {
+    "seller_id": "260",
+    "seller_name": "Walid Jaber",
+    "sales_count": "1",
+    "total_sales_value": "3948958.78",
+    "average_sale": "3948958.78"
+  },
+  {
+    "seller_id": "71",
+    "seller_name": "Rana Jaber",
+    "sales_count": "1",
+    "total_sales_value": "3891201.81",
+    "average_sale": "3891201.81"
+  },
+  {
+    "seller_id": "83",
+    "seller_name": "Yousef Musleh",
+    "sales_count": "1",
+    "total_sales_value": "3835818.91",
+    "average_sale": "3835818.91"
+  },
+  {
+    "seller_id": "140",
+    "seller_name": "Fatima Nabulsi",
+    "sales_count": "1",
+    "total_sales_value": "3550889.48",
+    "average_sale": "3550889.48"
+  },
+  {
+    "seller_id": "242",
+    "seller_name": "Nasser Nassar",
+    "sales_count": "1",
+    "total_sales_value": "2230195.53",
+    "average_sale": "2230195.53"
+  },
+  {
+    "seller_id": "217",
+    "seller_name": "Reem Haddad",
+    "sales_count": "1",
+    "total_sales_value": "2030274.52",
+    "average_sale": "2030274.52"
+  },
+  {
+    "seller_id": "139",
+    "seller_name": "Wissam Jaber",
+    "sales_count": "1",
+    "total_sales_value": "2017153.97",
+    "average_sale": "2017153.97"
+  },
+  {
+    "seller_id": "270",
+    "seller_name": "Khalil Rimawi",
+    "sales_count": "1",
+    "total_sales_value": "1688050.86",
+    "average_sale": "1688050.86"
+  },
+  {
+    "seller_id": "86",
+    "seller_name": "Maryam Jaber",
+    "sales_count": "1",
+    "total_sales_value": "1484077.29",
+    "average_sale": "1484077.29"
+  },
+  {
+    "seller_id": "269",
+    "seller_name": "Dina Daraghmeh",
+    "sales_count": "1",
+    "total_sales_value": "1418734.08",
+    "average_sale": "1418734.08"
+  },
+  {
+    "seller_id": "176",
+    "seller_name": "Lina Daraghmeh",
+    "sales_count": "1",
+    "total_sales_value": "1307101.23",
+    "average_sale": "1307101.23"
+  },
+  {
+    "seller_id": "268",
+    "seller_name": "Faris Barakat",
+    "sales_count": "1",
+    "total_sales_value": "1177470.23",
+    "average_sale": "1177470.23"
+  },
+  {
+    "seller_id": "155",
+    "seller_name": "Faris Abu Ayyash",
+    "sales_count": "1",
+    "total_sales_value": "1091315.18",
+    "average_sale": "1091315.18"
+  },
+  {
+    "seller_id": "77",
+    "seller_name": "Sara Haddad",
+    "sales_count": "1",
+    "total_sales_value": "1057539.15",
+    "average_sale": "1057539.15"
+  },
+  {
+    "seller_id": "144",
+    "seller_name": "Mohammed Nassar",
+    "sales_count": "1",
+    "total_sales_value": "978210.16",
+    "average_sale": "978210.16"
+  },
+  {
+    "seller_id": "97",
+    "seller_name": "Sara Hamdan",
+    "sales_count": "1",
+    "total_sales_value": "957650.96",
+    "average_sale": "957650.96"
+  },
+  {
+    "seller_id": "300",
+    "seller_name": "Nasser Hamdan",
+    "sales_count": "1",
+    "total_sales_value": "868438.35",
+    "average_sale": "868438.35"
+  },
+  {
+    "seller_id": "122",
+    "seller_name": "Rami Tamimi",
+    "sales_count": "1",
+    "total_sales_value": "695650.65",
+    "average_sale": "695650.65"
+  },
+  {
+    "seller_id": "234",
+    "seller_name": "Reem Odeh",
+    "sales_count": "1",
+    "total_sales_value": "683993.03",
+    "average_sale": "683993.03"
+  },
+  {
+    "seller_id": "64",
+    "seller_name": "Reem Saleh",
+    "sales_count": "1",
+    "total_sales_value": "628407.41",
+    "average_sale": "628407.41"
+  },
+  {
+    "seller_id": "79",
+    "seller_name": "Ibrahim Srour",
+    "sales_count": "1",
+    "total_sales_value": "619252.48",
+    "average_sale": "619252.48"
+  },
+  {
+    "seller_id": "60",
+    "seller_name": "Samir Nabulsi",
+    "sales_count": "1",
+    "total_sales_value": "603232.7",
+    "average_sale": "603232.7"
+  },
+  {
+    "seller_id": "202",
+    "seller_name": "Rana Srour",
+    "sales_count": "1",
+    "total_sales_value": "417894.88",
+    "average_sale": "417894.88"
+  },
+  {
+    "seller_id": "261",
+    "seller_name": "Dina Odeh",
+    "sales_count": "1",
+    "total_sales_value": "324995.31",
+    "average_sale": "324995.31"
+  },
+  {
+    "seller_id": "104",
+    "seller_name": "Reem Abu Hamid",
+    "sales_count": "1",
+    "total_sales_value": "299100.26",
+    "average_sale": "299100.26"
+  },
+  {
+    "seller_id": "229",
+    "seller_name": "Bilal Tamimi",
+    "sales_count": "1",
+    "total_sales_value": "262275.55",
+    "average_sale": "262275.55"
+  },
+  {
+    "seller_id": "93",
+    "seller_name": "Bilal Zubaidi",
+    "sales_count": "1",
+    "total_sales_value": "213381.97",
+    "average_sale": "213381.97"
+  },
+  {
+    "seller_id": "250",
+    "seller_name": "Nidal Abu Hamid",
+    "sales_count": "1",
+    "total_sales_value": "204291.15",
+    "average_sale": "204291.15"
+  },
+  {
+    "seller_id": "271",
+    "seller_name": "Sana Mansour",
+    "sales_count": "1",
+    "total_sales_value": "171895.7",
+    "average_sale": "171895.7"
+  },
+  {
+    "seller_id": "267",
+    "seller_name": "Hana Zubaidi",
+    "sales_count": "1",
+    "total_sales_value": "157220.92",
+    "average_sale": "157220.92"
+  },
+  {
+    "seller_id": "273",
+    "seller_name": "Mahmoud Abu Ayyash",
+    "sales_count": "1",
+    "total_sales_value": "147552.64",
+    "average_sale": "147552.64"
+  },
+  {
+    "seller_id": "143",
+    "seller_name": "Abeer Irshaid",
+    "sales_count": "1",
+    "total_sales_value": "142063.42",
+    "average_sale": "142063.42"
+  },
+  {
+    "seller_id": "28",
+    "seller_name": "Emirates Land Group",
+    "sales_count": "1",
+    "total_sales_value": "135345.62",
+    "average_sale": "135345.62"
+  },
+  {
+    "seller_id": "272",
+    "seller_name": "Nour Srour",
+    "sales_count": "1",
+    "total_sales_value": "120787.91",
+    "average_sale": "120787.91"
+  },
+  {
+    "seller_id": "233",
+    "seller_name": "Nour Srour",
+    "sales_count": "1",
+    "total_sales_value": "92454.63",
+    "average_sale": "92454.63"
+  },
+  {
+    "seller_id": "130",
+    "seller_name": "Hana Zubaidi",
+    "sales_count": "1",
+    "total_sales_value": "89337.07",
+    "average_sale": "89337.07"
+  },
+  {
+    "seller_id": "124",
+    "seller_name": "Rami Tamimi",
+    "sales_count": "1",
+    "total_sales_value": "78902.57",
+    "average_sale": "78902.57"
+  },
+  {
+    "seller_id": "171",
+    "seller_name": "Amer Abu Ayyash",
+    "sales_count": "1",
+    "total_sales_value": "74565.38",
+    "average_sale": "74565.38"
+  },
+  {
+    "seller_id": "90",
+    "seller_name": "Samir Abu Hamid",
+    "sales_count": "1",
+    "total_sales_value": "54914.31",
+    "average_sale": "54914.31"
+  },
+  {
+    "seller_id": "231",
+    "seller_name": "Samir Tawil",
+    "sales_count": "1",
+    "total_sales_value": "41861.6",
+    "average_sale": "41861.6"
+  },
+  {
+    "seller_id": "170",
+    "seller_name": "Yousef Barakat",
+    "sales_count": "1",
+    "total_sales_value": "37946.32",
+    "average_sale": "37946.32"
+  },
+  {
+    "seller_id": "177",
+    "seller_name": "Rana Hamdan",
+    "sales_count": "1",
+    "total_sales_value": "34442.18",
+    "average_sale": "34442.18"
+  },
+  {
+    "seller_id": "102",
+    "seller_name": "Ziad Rimawi",
+    "sales_count": "1",
+    "total_sales_value": "30461.65",
+    "average_sale": "30461.65"
+  },
+  {
+    "seller_id": "188",
+    "seller_name": "Rami Nabulsi",
+    "sales_count": "1",
+    "total_sales_value": "27642.67",
+    "average_sale": "27642.67"
+  },
+  {
+    "seller_id": "207",
+    "seller_name": "Faris Odeh",
+    "sales_count": "1",
+    "total_sales_value": "11378.99",
+    "average_sale": "11378.99"
+  }
+]

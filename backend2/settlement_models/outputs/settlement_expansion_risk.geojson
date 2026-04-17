@@ -1,0 +1,650 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                35.261,
+                31.961
+              ],
+              [
+                35.279,
+                31.961
+              ],
+              [
+                35.279,
+                31.979
+              ],
+              [
+                35.261,
+                31.979
+              ],
+              [
+                35.261,
+                31.961
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "settlement_id": 3,
+        "name": "Ofra",
+        "composite_risk": 0.6851763690486277,
+        "severity": "high",
+        "xgb_risk": 0.9270419478416443,
+        "ts_risk": 0.07218469914091259,
+        "growth_rate_m2yr": 112682.09861105541,
+        "area_latest_m2": 5073104.819566522,
+        "n_conf_total": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                35.161,
+                31.861
+              ],
+              [
+                35.179,
+                31.861
+              ],
+              [
+                35.179,
+                31.879
+              ],
+              [
+                35.161,
+                31.879
+              ],
+              [
+                35.161,
+                31.861
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "settlement_id": 11,
+        "name": "Givat Ze'ev",
+        "composite_risk": 0.6521241703903901,
+        "severity": "high",
+        "xgb_risk": 0.9309579730033875,
+        "ts_risk": 0.07385351800241848,
+        "growth_rate_m2yr": 110161.74634570954,
+        "area_latest_m2": 4850222.674007293,
+        "n_conf_total": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                35.2096,
+                31.9332
+              ],
+              [
+                35.2276,
+                31.9332
+              ],
+              [
+                35.2276,
+                31.9512
+              ],
+              [
+                35.2096,
+                31.9512
+              ],
+              [
+                35.2096,
+                31.9332
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "settlement_id": 1,
+        "name": "Beit El",
+        "composite_risk": 0.6381431248821803,
+        "severity": "high",
+        "xgb_risk": 0.9287869930267334,
+        "ts_risk": 0.07393017612598683,
+        "growth_rate_m2yr": 110092.06264312658,
+        "area_latest_m2": 4846682.186188836,
+        "n_conf_total": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                35.226,
+                31.901
+              ],
+              [
+                35.244,
+                31.901
+              ],
+              [
+                35.244,
+                31.919
+              ],
+              [
+                35.226,
+                31.919
+              ],
+              [
+                35.226,
+                31.901
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "settlement_id": 2,
+        "name": "Psagot",
+        "composite_risk": 0.6380664167560588,
+        "severity": "high",
+        "xgb_risk": 0.8938365578651428,
+        "ts_risk": 0.07758405842667124,
+        "growth_rate_m2yr": 104907.16947666765,
+        "area_latest_m2": 4407831.436111612,
+        "n_conf_total": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                35.231,
+                31.871
+              ],
+              [
+                35.249,
+                31.871
+              ],
+              [
+                35.249,
+                31.889
+              ],
+              [
+                35.231,
+                31.889
+              ],
+              [
+                35.231,
+                31.871
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "settlement_id": 7,
+        "name": "Kochav Yaakov",
+        "composite_risk": 0.599747062989487,
+        "severity": "high",
+        "xgb_risk": 0.9049460291862488,
+        "ts_risk": 0.07389127092456306,
+        "growth_rate_m2yr": 110181.63151694485,
+        "area_latest_m2": 4849848.0293923365,
+        "n_conf_total": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                35.150999999999996,
+                31.841
+              ],
+              [
+                35.169,
+                31.841
+              ],
+              [
+                35.169,
+                31.859
+              ],
+              [
+                35.150999999999996,
+                31.859
+              ],
+              [
+                35.150999999999996,
+                31.841
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "settlement_id": 10,
+        "name": "Givon HaHadasha",
+        "composite_risk": 0.5816006918223402,
+        "severity": "high",
+        "xgb_risk": 0.8337615728378296,
+        "ts_risk": 0.08815217621346107,
+        "growth_rate_m2yr": 91822.93060544704,
+        "area_latest_m2": 3400352.5321209007,
+        "n_conf_total": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                35.241,
+                31.851
+              ],
+              [
+                35.259,
+                31.851
+              ],
+              [
+                35.259,
+                31.869
+              ],
+              [
+                35.241,
+                31.869
+              ],
+              [
+                35.241,
+                31.851
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "settlement_id": 12,
+        "name": "Adam",
+        "composite_risk": 0.5694234527863666,
+        "severity": "high",
+        "xgb_risk": 0.9052345752716064,
+        "ts_risk": 0.07150962826338128,
+        "growth_rate_m2yr": 114129.05239528068,
+        "area_latest_m2": 5195243.0826684395,
+        "n_conf_total": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                35.101,
+                31.881
+              ],
+              [
+                35.119,
+                31.881
+              ],
+              [
+                35.119,
+                31.899
+              ],
+              [
+                35.101,
+                31.899
+              ],
+              [
+                35.101,
+                31.881
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "settlement_id": 15,
+        "name": "Kfar HaOranim",
+        "composite_risk": 0.5289867474179661,
+        "severity": "medium",
+        "xgb_risk": 0.8335726857185364,
+        "ts_risk": 0.09478381331015291,
+        "growth_rate_m2yr": 85243.65789528831,
+        "area_latest_m2": 2943300.207556079,
+        "n_conf_total": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                35.301,
+                31.971
+              ],
+              [
+                35.319,
+                31.971
+              ],
+              [
+                35.319,
+                31.989
+              ],
+              [
+                35.301,
+                31.989
+              ],
+              [
+                35.301,
+                31.971
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "settlement_id": 13,
+        "name": "Kochav HaShachar",
+        "composite_risk": 0.5177030033786182,
+        "severity": "medium",
+        "xgb_risk": 0.9056227803230286,
+        "ts_risk": 0.07393609910996353,
+        "growth_rate_m2yr": 110030.6266895188,
+        "area_latest_m2": 4844572.039599537,
+        "n_conf_total": 1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                35.211,
+                32.001
+              ],
+              [
+                35.229,
+                32.001
+              ],
+              [
+                35.229,
+                32.019
+              ],
+              [
+                35.211,
+                32.019
+              ],
+              [
+                35.211,
+                32.001
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "settlement_id": 9,
+        "name": "Ateret",
+        "composite_risk": 0.4993828282302691,
+        "severity": "medium",
+        "xgb_risk": 0.8281479477882385,
+        "ts_risk": 0.07756812193593422,
+        "growth_rate_m2yr": 104782.97665085737,
+        "area_latest_m2": 4403118.84855665,
+        "n_conf_total": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                35.281,
+                31.881
+              ],
+              [
+                35.299,
+                31.881
+              ],
+              [
+                35.299,
+                31.899
+              ],
+              [
+                35.281,
+                31.899
+              ],
+              [
+                35.281,
+                31.881
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "settlement_id": 14,
+        "name": "Ma'ale Michmas",
+        "composite_risk": 0.4846064673467626,
+        "severity": "medium",
+        "xgb_risk": 0.7491305470466614,
+        "ts_risk": 0.07759079574512885,
+        "growth_rate_m2yr": 104904.96267025231,
+        "area_latest_m2": 4408753.998264963,
+        "n_conf_total": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                35.081,
+                31.951
+              ],
+              [
+                35.099000000000004,
+                31.951
+              ],
+              [
+                35.099000000000004,
+                31.969
+              ],
+              [
+                35.081,
+                31.969
+              ],
+              [
+                35.081,
+                31.951
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "settlement_id": 6,
+        "name": "Halamish",
+        "composite_risk": 0.39039036203060645,
+        "severity": "medium",
+        "xgb_risk": 0.7363991737365723,
+        "ts_risk": 0.07396925054106769,
+        "growth_rate_m2yr": 110062.11064348067,
+        "area_latest_m2": 4845703.34367331,
+        "n_conf_total": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                35.021,
+                31.980999999999998
+              ],
+              [
+                35.039,
+                31.980999999999998
+              ],
+              [
+                35.039,
+                31.999
+              ],
+              [
+                35.021,
+                31.999
+              ],
+              [
+                35.021,
+                31.980999999999998
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "settlement_id": 4,
+        "name": "Beit Aryeh",
+        "composite_risk": 0.3067420284196322,
+        "severity": "low",
+        "xgb_risk": 0.5669769048690796,
+        "ts_risk": 0.07751191995030803,
+        "growth_rate_m2yr": 104801.00218100566,
+        "area_latest_m2": 4403990.012398881,
+        "n_conf_total": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                35.071,
+                31.980999999999998
+              ],
+              [
+                35.089,
+                31.980999999999998
+              ],
+              [
+                35.089,
+                31.999
+              ],
+              [
+                35.071,
+                31.999
+              ],
+              [
+                35.071,
+                31.980999999999998
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "settlement_id": 8,
+        "name": "Talmon",
+        "composite_risk": 0.28646652125637556,
+        "severity": "low",
+        "xgb_risk": 0.5214186906814575,
+        "ts_risk": 0.08585725305215602,
+        "growth_rate_m2yr": 94339.99354376202,
+        "area_latest_m2": 3586632.153650187,
+        "n_conf_total": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                35.091,
+                31.961
+              ],
+              [
+                35.109,
+                31.961
+              ],
+              [
+                35.109,
+                31.979
+              ],
+              [
+                35.091,
+                31.979
+              ],
+              [
+                35.091,
+                31.961
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "settlement_id": 5,
+        "name": "Dolev",
+        "composite_risk": 0.28453536069747754,
+        "severity": "low",
+        "xgb_risk": 0.5214186906814575,
+        "ts_risk": 0.07942005118916268,
+        "growth_rate_m2yr": 102184.11778653739,
+        "area_latest_m2": 4192697.4906422347,
+        "n_conf_total": 0
+      }
+    }
+  ]
+}

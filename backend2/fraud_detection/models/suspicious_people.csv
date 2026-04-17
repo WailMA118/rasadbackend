@@ -1,0 +1,134 @@
+owner_id,full_name,identity_group,involvement_type,is_suspicious,fraud_probability,confidence,risk_level,risk_description
+3,Yosef Mizrahi,FOREIGN,seller,1,0.9517,0.9517,High,خطر عالي جداً - seller مشبوه جداً
+5,Emirates Land Group,FOREIGN,none,1,0.5754,0.5754,Medium,خطر متوسط - none يتطلب مراقبة
+9,Hiba Irshaid,FOREIGN,buyer,1,0.9607,0.9607,High,خطر عالي جداً - buyer مشبوه جداً
+11,Jad Zubaidi,FOREIGN,none,1,0.5036,0.5036,Medium,خطر متوسط - none يتطلب مراقبة
+13,Amer Haddad,FOREIGN,buyer,1,0.9687,0.9687,High,خطر عالي جداً - buyer مشبوه جداً
+15,International Holdings Ltd,FOREIGN,seller,1,0.9824,0.9824,High,خطر عالي جداً - seller مشبوه جداً
+16,Sana Haddad,FOREIGN,buyer,1,0.9545,0.9545,High,خطر عالي جداً - buyer مشبوه جداً
+17,Omar Saleh,FOREIGN,buyer,1,0.9455,0.9455,High,خطر عالي جداً - buyer مشبوه جداً
+18,Bilal Awad,FOREIGN,buyer,1,0.7693,0.7693,High,خطر عالي جداً - buyer مشبوه جداً
+19,International Holdings Ltd,FOREIGN,buyer,1,0.7688,0.7688,High,خطر عالي جداً - buyer مشبوه جداً
+23,International Holdings Ltd,FOREIGN,buyer,1,0.9458,0.9458,High,خطر عالي جداً - buyer مشبوه جداً
+26,Hiba Saleh,FOREIGN,none,1,0.6512,0.6512,Medium,خطر متوسط - none يتطلب مراقبة
+31,Hassan Nassar,FOREIGN,none,1,0.9218,0.9218,High,خطر عالي جداً - none مشبوه جداً
+32,Emirates Land Group,FOREIGN,none,1,0.559,0.559,Medium,خطر متوسط - none يتطلب مراقبة
+34,Bassam Abu Hamid,JR,none,1,0.6774,0.6774,Medium,خطر متوسط - none يتطلب مراقبة
+35,Lina Abu Ayyash,JR,buyer,1,0.7603,0.7603,High,خطر عالي جداً - buyer مشبوه جداً
+36,Sana Odeh,JR,none,1,0.7071,0.7071,High,خطر عالي جداً - none مشبوه جداً
+37,Hassan Mansour,JR,seller,1,0.9387,0.9387,High,خطر عالي جداً - seller مشبوه جداً
+38,Mahmoud Haddad,JR,seller,1,0.9422,0.9422,High,خطر عالي جداً - seller مشبوه جداً
+41,Amer Rimawi,JR,none,1,0.6445,0.6445,Medium,خطر متوسط - none يتطلب مراقبة
+43,Khaled Barghouti,JR,buyer,1,0.9308,0.9308,High,خطر عالي جداً - buyer مشبوه جداً
+45,Ahmad Jaber,JR,none,1,0.7513,0.7513,High,خطر عالي جداً - none مشبوه جداً
+47,Walid Musleh,JR,buyer,1,0.9304,0.9304,High,خطر عالي جداً - buyer مشبوه جداً
+50,Yousef Srour,JR,buyer,1,0.8828,0.8828,High,خطر عالي جداً - buyer مشبوه جداً
+51,Rana Barghouti,JR,buyer,1,0.7052,0.7052,High,خطر عالي جداً - buyer مشبوه جداً
+52,Karim Irshaid,JR,seller,1,0.961,0.961,High,خطر عالي جداً - seller مشبوه جداً
+53,Nasser Zubaidi,JR,none,1,0.7053,0.7053,High,خطر عالي جداً - none مشبوه جداً
+56,Rami Nabulsi,WB,seller,1,0.8933,0.8933,High,خطر عالي جداً - seller مشبوه جداً
+58,Nasser Saleh,WB,buyer,1,0.5191,0.5191,Medium,خطر متوسط - buyer يتطلب مراقبة
+59,Samir Zubaidi,WB,seller,1,0.9433,0.9433,High,خطر عالي جداً - seller مشبوه جداً
+62,Rami Tamimi,WB,seller,1,0.8981,0.8981,High,خطر عالي جداً - seller مشبوه جداً
+67,Faris Awad,WB,buyer,1,0.8313,0.8313,High,خطر عالي جداً - buyer مشبوه جداً
+68,Raed Nassar,WB,seller,1,0.9046,0.9046,High,خطر عالي جداً - seller مشبوه جداً
+74,Layla Shahin,WB,seller,1,0.5721,0.5721,Medium,خطر متوسط - seller يتطلب مراقبة
+77,Hiba Rimawi,WB,seller,1,0.9055,0.9055,High,خطر عالي جداً - seller مشبوه جداً
+78,Ibrahim Srour,WB,buyer,1,0.9336,0.9336,High,خطر عالي جداً - buyer مشبوه جداً
+86,Samer Tawil,WB,buyer,1,0.7063,0.7063,High,خطر عالي جداً - buyer مشبوه جداً
+91,Ahmad Odeh,WB,none,1,0.5407,0.5407,Medium,خطر متوسط - none يتطلب مراقبة
+96,Walid Nabulsi,WB,buyer,1,0.9437,0.9437,High,خطر عالي جداً - buyer مشبوه جداً
+100,Ziad Rimawi,WB,seller,1,0.9548,0.9548,High,خطر عالي جداً - seller مشبوه جداً
+101,Mohammed Barghouti,WB,seller,1,0.7293,0.7293,High,خطر عالي جداً - seller مشبوه جداً
+103,Yousef Bishara,WB,buyer,1,0.94,0.94,High,خطر عالي جداً - buyer مشبوه جداً
+105,Wissam Hamdan,WB,none,1,0.5283,0.5283,Medium,خطر متوسط - none يتطلب مراقبة
+106,Rami Mansour,WB,none,1,0.6353,0.6353,Medium,خطر متوسط - none يتطلب مراقبة
+107,Ahmad Haddad,WB,seller,1,0.9865,0.9865,High,خطر عالي جداً - seller مشبوه جداً
+108,Layla Saleh,WB,none,1,0.6912,0.6912,Medium,خطر متوسط - none يتطلب مراقبة
+109,Lina Bishara,WB,none,1,0.621,0.621,Medium,خطر متوسط - none يتطلب مراقبة
+110,Sana Saleh,WB,buyer,1,0.8258,0.8258,High,خطر عالي جداً - buyer مشبوه جداً
+112,Hana Nabulsi,WB,buyer,1,0.9484,0.9484,High,خطر عالي جداً - buyer مشبوه جداً
+116,Sana Bishara,WB,buyer,1,0.9435,0.9435,High,خطر عالي جداً - buyer مشبوه جداً
+117,Reem Bishara,WB,buyer,1,0.9277,0.9277,High,خطر عالي جداً - buyer مشبوه جداً
+118,Rami Daraghmeh,WB,none,1,0.6441,0.6441,Medium,خطر متوسط - none يتطلب مراقبة
+121,Yousef Srour,WB,none,1,0.6775,0.6775,Medium,خطر متوسط - none يتطلب مراقبة
+123,Nidal Tawil,WB,buyer,1,0.9095,0.9095,High,خطر عالي جداً - buyer مشبوه جداً
+124,Tariq Mansour,WB,seller,1,0.7499,0.7499,High,خطر عالي جداً - seller مشبوه جداً
+127,Maryam Jaber,WB,buyer,1,0.6614,0.6614,Medium,خطر متوسط - buyer يتطلب مراقبة
+128,Hana Zubaidi,WB,none,1,0.8914,0.8914,High,خطر عالي جداً - none مشبوه جداً
+129,Bilal Zubaidi,WB,none,1,0.7902,0.7902,High,خطر عالي جداً - none مشبوه جداً
+130,Mohammed Irshaid,WB,seller,1,0.7012,0.7012,High,خطر عالي جداً - seller مشبوه جداً
+133,Maryam Tawil,WB,seller,1,0.9394,0.9394,High,خطر عالي جداً - seller مشبوه جداً
+134,Rana Abu Hamid,WB,none,1,0.8218,0.8218,High,خطر عالي جداً - none مشبوه جداً
+136,Layla Hamdan,WB,buyer,1,0.8464,0.8464,High,خطر عالي جداً - buyer مشبوه جداً
+138,Fatima Musleh,WB,buyer,1,0.9826,0.9826,High,خطر عالي جداً - buyer مشبوه جداً
+139,Hana Mansour,WB,none,1,0.7065,0.7065,High,خطر عالي جداً - none مشبوه جداً
+140,Rana Abu Ayyash,WB,seller,1,0.5972,0.5972,Medium,خطر متوسط - seller يتطلب مراقبة
+145,Nidal Rimawi,WB,none,1,0.5779,0.5779,Medium,خطر متوسط - none يتطلب مراقبة
+148,Maryam Tamimi,WB,none,1,0.5312,0.5312,Medium,خطر متوسط - none يتطلب مراقبة
+149,Omar Hamdan,WB,seller,1,0.9727,0.9727,High,خطر عالي جداً - seller مشبوه جداً
+150,Rana Barghouti,WB,seller,1,0.9588,0.9588,High,خطر عالي جداً - seller مشبوه جداً
+151,Ziad Daraghmeh,WB,buyer,1,0.9583,0.9583,High,خطر عالي جداً - buyer مشبوه جداً
+152,Ibrahim Abu Ayyash,WB,none,1,0.5913,0.5913,Medium,خطر متوسط - none يتطلب مراقبة
+153,Faris Abu Ayyash,WB,none,1,0.6322,0.6322,Medium,خطر متوسط - none يتطلب مراقبة
+154,Nasser Saleh,WB,buyer,1,0.8188,0.8188,High,خطر عالي جداً - buyer مشبوه جداً
+156,Hiba Rimawi,WB,seller,1,0.9685,0.9685,High,خطر عالي جداً - seller مشبوه جداً
+157,Khaled Shahin,WB,none,1,0.7398,0.7398,High,خطر عالي جداً - none مشبوه جداً
+158,Mahmoud Qasim,WB,buyer,1,0.9417,0.9417,High,خطر عالي جداً - buyer مشبوه جداً
+160,Bassam Irshaid,WB,none,1,0.7203,0.7203,High,خطر عالي جداً - none مشبوه جداً
+163,Rami Haddad,WB,none,1,0.549,0.549,Medium,خطر متوسط - none يتطلب مراقبة
+164,Bassam Nabulsi,WB,seller,1,0.9891,0.9891,High,خطر عالي جداً - seller مشبوه جداً
+165,Mahmoud Irshaid,WB,seller,1,0.9162,0.9162,High,خطر عالي جداً - seller مشبوه جداً
+169,Amer Abu Ayyash,WB,seller,1,0.7156,0.7156,High,خطر عالي جداً - seller مشبوه جداً
+170,Dina Haddad,WB,none,1,0.5183,0.5183,Medium,خطر متوسط - none يتطلب مراقبة
+171,Karim Daraghmeh,WB,seller,1,0.6913,0.6913,Medium,خطر متوسط - seller يتطلب مراقبة
+172,Hana Srour,WB,none,1,0.563,0.563,Medium,خطر متوسط - none يتطلب مراقبة
+175,Rana Hamdan,WB,buyer,1,0.8717,0.8717,High,خطر عالي جداً - buyer مشبوه جداً
+182,Dina Rimawi,WB,none,1,0.7234,0.7234,High,خطر عالي جداً - none مشبوه جداً
+186,Rami Musleh,WB,buyer,1,0.9507,0.9507,High,خطر عالي جداً - buyer مشبوه جداً
+187,Dina Tawil,WB,buyer,1,0.9714,0.9714,High,خطر عالي جداً - buyer مشبوه جداً
+189,Dina Bishara,WB,none,1,0.5108,0.5108,Medium,خطر متوسط - none يتطلب مراقبة
+191,Ziad Awad,WB,none,1,0.5334,0.5334,Medium,خطر متوسط - none يتطلب مراقبة
+193,Karim Hamdan,WB,buyer,1,0.9508,0.9508,High,خطر عالي جداً - buyer مشبوه جداً
+194,Lina Shahin,WB,buyer,1,0.9421,0.9421,High,خطر عالي جداً - buyer مشبوه جداً
+195,Sana Jaber,WB,none,1,0.779,0.779,High,خطر عالي جداً - none مشبوه جداً
+197,Khaled Saleh,WB,none,1,0.686,0.686,Medium,خطر متوسط - none يتطلب مراقبة
+201,Reem Tamimi,WB,seller,1,0.9842,0.9842,High,خطر عالي جداً - seller مشبوه جداً
+207,Ibrahim Barghouti,WB,seller,1,0.8375,0.8375,High,خطر عالي جداً - seller مشبوه جداً
+208,Samer Srour,WB,none,1,0.7013,0.7013,High,خطر عالي جداً - none مشبوه جداً
+209,Dina Haddad,WB,seller,1,0.8943,0.8943,High,خطر عالي جداً - seller مشبوه جداً
+210,Hiba Odeh,WB,seller,1,0.9637,0.9637,High,خطر عالي جداً - seller مشبوه جداً
+211,Reem Bishara,WB,none,1,0.5317,0.5317,Medium,خطر متوسط - none يتطلب مراقبة
+212,Samir Barghouti,WB,seller,1,0.6848,0.6848,Medium,خطر متوسط - seller يتطلب مراقبة
+215,Yousef Irshaid,WB,buyer,1,0.9118,0.9118,High,خطر عالي جداً - buyer مشبوه جداً
+218,Rami Haddad,WB,none,1,0.5125,0.5125,Medium,خطر متوسط - none يتطلب مراقبة
+219,Maryam Abu Hamid,WB,buyer,1,0.6194,0.6194,Medium,خطر متوسط - buyer يتطلب مراقبة
+220,Ziad Barakat,WB,none,1,0.7056,0.7056,High,خطر عالي جداً - none مشبوه جداً
+221,Nour Bishara,WB,none,1,0.5994,0.5994,Medium,خطر متوسط - none يتطلب مراقبة
+224,Hassan Rimawi,WB,seller,1,0.9637,0.9637,High,خطر عالي جداً - seller مشبوه جداً
+228,Walid Abu Ayyash,WB,none,1,0.7577,0.7577,High,خطر عالي جداً - none مشبوه جداً
+230,Reem Odeh,WB,none,1,0.7117,0.7117,High,خطر عالي جداً - none مشبوه جداً
+233,Yousef Nabulsi,WB,seller,1,0.9377,0.9377,High,خطر عالي جداً - seller مشبوه جداً
+236,Rana Saleh,WB,seller,1,0.9805,0.9805,High,خطر عالي جداً - seller مشبوه جداً
+243,Raed Barakat,WB,buyer,1,0.8801,0.8801,High,خطر عالي جداً - buyer مشبوه جداً
+246,Nidal Abu Hamid,WB,none,1,0.5888,0.5888,Medium,خطر متوسط - none يتطلب مراقبة
+247,Mohammed Nassar,WB,seller,1,0.9058,0.9058,High,خطر عالي جداً - seller مشبوه جداً
+254,Jad Zubaidi,WB,none,1,0.6236,0.6236,Medium,خطر متوسط - none يتطلب مراقبة
+256,Walid Jaber,WB,none,1,0.6565,0.6565,Medium,خطر متوسط - none يتطلب مراقبة
+257,Dina Odeh,WB,seller,1,0.9681,0.9681,High,خطر عالي جداً - seller مشبوه جداً
+259,Hana Nassar,WB,seller,1,0.8698,0.8698,High,خطر عالي جداً - seller مشبوه جداً
+264,Faris Barakat,WB,none,1,0.5547,0.5547,Medium,خطر متوسط - none يتطلب مراقبة
+268,Nour Srour,WB,buyer,1,0.8322,0.8322,High,خطر عالي جداً - buyer مشبوه جداً
+269,Mahmoud Abu Ayyash,WB,seller,1,0.9183,0.9183,High,خطر عالي جداً - seller مشبوه جداً
+273,Ziad Haddad,WB,none,1,0.7221,0.7221,High,خطر عالي جداً - none مشبوه جداً
+278,Reem Hamdan,WB,buyer,1,0.8619,0.8619,High,خطر عالي جداً - buyer مشبوه جداً
+282,Yousef Tamimi,WB,none,1,0.5798,0.5798,Medium,خطر متوسط - none يتطلب مراقبة
+283,Maryam Jaber,WB,none,1,0.7751,0.7751,High,خطر عالي جداً - none مشبوه جداً
+284,Sara Tamimi,WB,seller,1,0.9626,0.9626,High,خطر عالي جداً - seller مشبوه جداً
+290,Rana Awad,WB,seller,1,0.8178,0.8178,High,خطر عالي جداً - seller مشبوه جداً
+293,Ziad Zubaidi,WB,buyer,1,0.5426,0.5426,Medium,خطر متوسط - buyer يتطلب مراقبة
+294,Nidal Musleh,WB,seller,1,0.7282,0.7282,High,خطر عالي جداً - seller مشبوه جداً
+295,Wissam Awad,WB,none,1,0.6613,0.6613,Medium,خطر متوسط - none يتطلب مراقبة
+297,Tariq Barakat,WB,seller,1,0.9726,0.9726,High,خطر عالي جداً - seller مشبوه جداً
+298,Amer Haddad,WB,seller,1,0.6437,0.6437,Medium,خطر متوسط - seller يتطلب مراقبة
+299,Hassan Barakat,WB,none,1,0.6013,0.6013,Medium,خطر متوسط - none يتطلب مراقبة
