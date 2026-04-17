@@ -20,7 +20,7 @@ def get_engine():
     return _engine
 
 
-# ─── الجداول وأعمدتها مع تحويل Geometry → WKT ──────────────────────────────
+# ─── الجداول وأعمدتها مع تحويل Geometry -> WKT ──────────────────────────────
 
 _QUERIES = {
     "parcels": """
@@ -139,7 +139,7 @@ _QUERIES = {
 
 
 def _clean_df(df: pd.DataFrame) -> pd.DataFrame:
-    """تحويل bytearray/bytes → str لتجنب أخطاء الهاش."""
+    """تحويل bytearray/bytes -> str لتجنب أخطاء الهاش."""
     for col in df.columns:
         if df[col].dtype == "object":
             df[col] = df[col].apply(
@@ -161,7 +161,7 @@ def load_data() -> dict[str, pd.DataFrame]:
                 df = pd.read_sql(text(query), conn)
                 data[key] = _clean_df(df)
             except Exception as e:
-                print(f"[data_loader] ⚠️  تعذّر تحميل '{key}': {e}")
+                print(f"[data_loader] تعذّر تحميل '{key}': {e}")
                 data[key] = pd.DataFrame()
 
     _print_summary(data)
@@ -185,9 +185,9 @@ def load_single_parcel(parcel_id: int) -> dict[str, pd.DataFrame]:
 
 
 def _print_summary(data: dict[str, pd.DataFrame]):
-    print("\n[data_loader] ✅ تم التحميل:")
+    print("\n[data_loader] تم التحميل:")
     for k, v in data.items():
-        print(f"   {k:<20} → {v.shape}")
+        print(f"   {k:<20} -> {v.shape}")
 
 
 def get_parcel_by_composite_key(basin_number: str, parcel_number: str, locality_id: str) -> pd.DataFrame:

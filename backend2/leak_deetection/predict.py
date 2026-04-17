@@ -29,10 +29,10 @@ def _load_artifacts():
  
 try:
     _model, _feature_cols = _load_artifacts()
-    print(f"[predict] ✅ النموذج محمّل ({len(_feature_cols)} ميزة)")
+    print(f"[predict] النموذج محمّل ({len(_feature_cols)} ميزة)")
 except FileNotFoundError:
     _model, _feature_cols = None, None
-    print("[predict] ⚠️  لم يُعثر على النموذج. شغّل train_model.py أولًا.")
+    print("[predict] لم يُعثر على النموذج. شغّل train_model.py أولًا.")
  
  
 # ─── تجهيز مصفوفة الميزات (مع ضمان التوافق) ──────────────────────────────
@@ -57,14 +57,14 @@ def batch_predict(save_csv: bool = True) -> pd.DataFrame:
     if _model is None:
         raise RuntimeError("النموذج غير محمّل. شغّل train_model.py أولًا.")
  
-    print("\n📦 تحميل البيانات …")
+    print("\nتحميل البيانات ...")
     data = load_data()
  
-    print("\n⚙️  بناء الميزات …")
+    print("\nبناء الميزات ...")
     df = build_dataset(data)
  
     if not data["parcels"].empty and not data["settlements"].empty:
-        print("\n🗺️  الميزات الجغرافية …")
+        print("\nالميزات الجغرافية ...")
         geo_eng = GeoFeatureEngineer(
             parcels_df    =data["parcels"],
             settlements_df=data["settlements"],
@@ -101,9 +101,9 @@ def batch_predict(save_csv: bool = True) -> pd.DataFrame:
     if save_csv:
         out_path = "predictions.csv"
         result.to_csv(out_path, index=False)
-        print(f"\n✅ النتائج محفوظة → {out_path}")
+        print(f"\nالنتائج محفوظة → {out_path}")
  
-    print(f"\n📊 توزيع التنبؤات:\n{result['prediction'].value_counts()}")
+    print(f"\nتوزيع التنبؤات:\n{result['prediction'].value_counts()}")
     print(result[["parcel_id", "risk_score", "prediction", "confidence"]].head(10))
     return result
  

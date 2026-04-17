@@ -238,5 +238,5 @@ def build_dataset(data: dict) -> pd.DataFrame:
 
     df.fillna(0, inplace=True)
 
-    print(f"[feature_engineering] ✅ Dataset: {df.shape[0]} rows × {df.shape[1]} cols")
+    print(f"[feature_engineering] Dataset: {df.shape[0]} rows x {df.shape[1]} cols")
     return df

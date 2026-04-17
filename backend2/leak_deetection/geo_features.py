@@ -149,5 +149,5 @@ class GeoFeatureEngineer:
         available = [c for c in cols if c in self.parcels.columns]
         result = self.parcels[available].copy()
  
-        print(f"[geo_features] ✅ Geo features computed for {len(result)} parcels")
+        print(f"[geo_features] Geo features computed for {len(result)} parcels")
         return result

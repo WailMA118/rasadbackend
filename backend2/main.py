@@ -301,29 +301,32 @@ async def get_all_detected_leaks(period: str = "آخر شهر"):
         days = period_map.get(period, 30)
         
         # تصفية التنبؤات حسب الفترة الزمنية
-        if isinstance(predictions, pd.DataFrame):
-            leaked_parcels = predictions[predictions["prediction"] == "leaked"].copy()
-            suspected_parcels = predictions[predictions["prediction"] == "suspected"].copy()
-            
-            return {
-                "status": "success",
-                "message": f"التسريبات المكتشفة خلال {period}",
-                "period": period,
-                "days": days,
-                "statistics": {
-                    "total_parcels": len(predictions),
-                    "leaked_count": len(leaked_parcels),
-                    "suspected_count": len(suspected_parcels),
-                    "safe_count": len(predictions[predictions["prediction"] == "safe"]),
-                },
-                "leaked_parcels": leaked_parcels[["parcel_id", "risk_score", "confidence"]].to_dict(orient="records") if len(leaked_parcels) > 0 else [],
-                "suspected_parcels": suspected_parcels[["parcel_id", "risk_score", "suspected_score", "confidence"]].to_dict(orient="records") if len(suspected_parcels) > 0 else [],
-            }
-        else:
-            return {
-                "status": "error",
-                "message": "صيغة البيانات غير متوقعة - يجب أن تكون DataFrame"
-            }
+        if not isinstance(predictions, pd.DataFrame):
+            try:
+                predictions = pd.DataFrame(predictions)
+            except Exception:
+                return {
+                    "status": "error",
+                    "message": "صيغة البيانات غير متوقعة - يجب أن تكون DataFrame أو قابل للتحويل إلى DataFrame"
+                }
+
+        leaked_parcels = predictions[predictions["prediction"] == "leaked"].copy()
+        suspected_parcels = predictions[predictions["prediction"] == "suspected"].copy()
+        
+        return {
+            "status": "success",
+            "message": f"التسريبات المكتشفة خلال {period}",
+            "period": period,
+            "days": days,
+            "statistics": {
+                "total_parcels": len(predictions),
+                "leaked_count": len(leaked_parcels),
+                "suspected_count": len(suspected_parcels),
+                "safe_count": len(predictions[predictions["prediction"] == "safe"]),
+            },
+            "leaked_parcels": leaked_parcels[["parcel_id", "risk_score", "confidence"]].to_dict(orient="records") if len(leaked_parcels) > 0 else [],
+            "suspected_parcels": suspected_parcels[["parcel_id", "risk_score", "suspected_score", "confidence"]].to_dict(orient="records") if len(suspected_parcels) > 0 else [],
+        }
     
     except Exception as e:
         return {
