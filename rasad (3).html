@@ -1,0 +1,3260 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رصد — نظام تحليل الأراضي</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --bg2: #161b22;
+      --bg3: #1c2333;
+      --bg4: #21262d;
+      --border: rgba(255, 255, 255, 0.08);
+      --border2: rgba(255, 255, 255, 0.14);
+      --text: #e6edf3;
+      --text2: #8b949e;
+      --text3: #484f58;
+      --accent: #1d9e75;
+      --accent2: #0f6e56;
+      --red: #e24b4a;
+      --red2: #f09595;
+      --amber: #ef9f27;
+      --amber2: #fac775;
+      --blue: #378add;
+      --blue2: #85b7eb;
+      --purple: #7f77dd;
+      --font: 'IBM Plex Sans Arabic', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --radius: 8px;
+      --radius-lg: 12px;
+      --sidebar-w: 220px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+    }
+
+    .app {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--bg2);
+      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .main {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      display: none;
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    .page.active {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .logo-area {
+      padding: 18px 16px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 2px;
+    }
+
+    .logo-icon {
+      width: 30px;
+      height: 30px;
+      background: var(--accent);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: white;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .logo-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -.02em;
+    }
+
+    .logo-sub {
+      font-size: 11px;
+      color: var(--text3);
+      margin-right: 40px;
+    }
+
+    .nav {
+      padding: 10px 8px;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .nav-section {
+      margin-bottom: 18px;
+    }
+
+    .nav-section-label {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text3);
+      padding: 0 8px;
+      margin-bottom: 4px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 10px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      color: var(--text2);
+      font-size: 13px;
+      transition: all .15s;
+      position: relative;
+    }
+
+    .nav-item:hover {
+      background: var(--bg3);
+      color: var(--text);
+    }
+
+    .nav-item.active {
+      background: var(--bg4);
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .nav-item.active::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: var(--accent);
+      border-radius: 2px 0 0 2px;
+    }
+
+    .nav-item svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      flex-shrink: 0;
+    }
+
+    .nav-badge {
+      margin-right: auto;
+      background: var(--red);
+      color: white;
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+
+    .nav-badge.amber {
+      background: var(--amber);
+    }
+
+    .sidebar-footer {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .user-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--accent2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .user-name {
+      font-size: 12px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .user-role {
+      font-size: 10px;
+      color: var(--text3);
+    }
+
+    .topbar {
+      height: 52px;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .page-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      flex: 1;
+    }
+
+    .topbar-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .tb-btn {
+      height: 30px;
+      padding: 0 12px;
+      border-radius: var(--radius);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text2);
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font);
+      transition: all .15s;
+    }
+
+    .tb-btn:hover {
+      border-color: var(--border2);
+      color: var(--text);
+    }
+
+    .tb-btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .tb-btn.danger {
+      background: rgba(226, 75, 74, .15);
+      border-color: rgba(226, 75, 74, .3);
+      color: var(--red2);
+    }
+
+    .tb-btn svg {
+      width: 13px;
+      height: 13px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .search-wrap {
+      position: relative;
+    }
+
+
+    .search-icon {
+      position: absolute;
+      left: 9px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text3);
+    }
+
+    .search-icon svg {
+      width: 13px;
+      height: 13px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .metric-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 2px;
+    }
+
+    .metric-card.red::after {
+      background: var(--red);
+    }
+
+    .metric-card.amber::after {
+      background: var(--amber);
+    }
+
+    .metric-card.blue::after {
+      background: var(--blue);
+    }
+
+    .metric-card.green::after {
+      background: var(--accent);
+    }
+
+    .m-label {
+      font-size: 11px;
+      color: var(--text3);
+      margin-bottom: 8px;
+    }
+
+    .m-value {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .m-change {
+      font-size: 11px;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .m-change.up {
+      color: var(--red);
+    }
+
+    .m-change.down {
+      color: var(--accent);
+    }
+
+    .m-icon {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      opacity: .12;
+    }
+
+    .m-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.2;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .card-action {
+      font-size: 11px;
+      color: var(--text3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-action:hover {
+      color: var(--text2);
+    }
+
+    .card-action svg {
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .badge {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 10px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .badge.red {
+      background: rgba(226, 75, 74, .15);
+      color: var(--red2);
+    }
+
+    .badge.amber {
+      background: rgba(239, 159, 39, .15);
+      color: var(--amber2);
+    }
+
+    .badge.green {
+      background: rgba(29, 158, 117, .15);
+      color: #5dcaa5;
+    }
+
+    .badge.blue {
+      background: rgba(55, 138, 221, .15);
+      color: var(--blue2);
+    }
+
+    .badge.purple {
+      background: rgba(127, 119, 221, .15);
+      color: #afa9ec;
+    }
+
+    .badge.gray {
+      background: var(--bg4);
+      color: var(--text2);
+    }
+
+    .badge svg {
+      width: 9px;
+      height: 9px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    th {
+      text-align: right;
+      padding: 8px 12px;
+      color: var(--text3);
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, .02);
+    }
+
+    .td-muted {
+      color: var(--text3);
+      font-size: 11px;
+    }
+
+    .td-mono {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text2);
+    }
+
+    .td-link {
+      color: var(--blue);
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .td-link:hover {
+      text-decoration: underline;
+    }
+
+    .alert-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .alert-row {
+      display: flex;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--bg3);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color .15s;
+    }
+
+    .alert-row:hover {
+      border-color: var(--border2);
+    }
+
+    .alert-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .alert-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .alert-title {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .alert-desc {
+      font-size: 11px;
+      color: var(--text3);
+      line-height: 1.5;
+    }
+
+    .alert-meta {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+      align-items: center;
+    }
+
+    .alert-time {
+      font-size: 10px;
+      color: var(--text3);
+    }
+
+    .bar-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .bar-label {
+      font-size: 12px;
+      color: var(--text);
+      width: 72px;
+      flex-shrink: 0;
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 6px;
+      background: var(--bg4);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width .5s ease;
+    }
+
+    .bar-val {
+      font-size: 11px;
+      color: var(--text3);
+      width: 24px;
+      text-align: left;
+      flex-shrink: 0;
+    }
+
+    .map-layout {
+      display: flex;
+      gap: 0;
+      height: calc(100vh - 52px);
+      overflow: hidden;
+    }
+
+    .map-sidebar {
+      width: 250px;
+      background: var(--bg2);
+      border-left: 1px solid var(--border);
+      overflow-y: auto;
+      flex-shrink: 0;
+    }
+
+    .map-container {
+      flex: 1;
+      position: relative;
+      background: #1a2820;
+    }
+
+    .map-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .map-topbar {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      left: 10px;
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .map-input {
+      flex: 1;
+      height: 34px;
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 0 10px;
+      color: var(--text);
+      font-size: 12px;
+      font-family: var(--font);
+    }
+
+    .map-input::placeholder {
+      color: var(--text3);
+    }
+
+    .map-ctrl {
+      position: absolute;
+      bottom: 80px;
+      left: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      z-index: 10;
+    }
+
+    .map-ctrl-btn {
+      width: 32px;
+      height: 32px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s;
+    }
+
+    .map-ctrl-btn:hover {
+      background: var(--bg3);
+    }
+
+    .map-legend {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 12px 14px;
+      z-index: 10;
+    }
+
+    .map-stats {
+      position: absolute;
+      bottom: 10px;
+      left: 50px;
+      right: 180px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 10px 18px;
+      z-index: 10;
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+    }
+
+    .ms-item {
+      text-align: center;
+    }
+
+    .ms-num {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .ms-lbl {
+      font-size: 10px;
+      color: var(--text3);
+      margin-top: 1px;
+    }
+
+    .map-parcel-panel {
+      position: absolute;
+      top: 54px;
+      left: 10px;
+      width: 230px;
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      z-index: 10;
+      display: none;
+    }
+
+    .pp-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .pp-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pp-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .pp-key {
+      font-size: 11px;
+      color: var(--text3);
+    }
+
+    .pp-val {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .map-sb-section {
+      padding: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .map-sb-label {
+      font-size: 10px;
+      color: var(--text3);
+      font-weight: 500;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .layer-toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      cursor: pointer;
+    }
+
+    .layer-name {
+      font-size: 12px;
+      color: var(--text2);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .layer-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    .layer-sq {
+      width: 9px;
+      height: 9px;
+      border-radius: 2px;
+    }
+
+    .toggle-sw {
+      width: 28px;
+      height: 15px;
+      border-radius: 8px;
+      position: relative;
+      transition: background .2s;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .toggle-sw.on {
+      background: var(--accent);
+    }
+
+    .toggle-sw.off {
+      background: var(--bg4);
+    }
+
+    .toggle-sw::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: white;
+      transition: .2s;
+    }
+
+    .toggle-sw.on::after {
+      right: 2px;
+    }
+
+    .toggle-sw.off::after {
+      left: 2px;
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: var(--radius);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text3);
+      cursor: pointer;
+      transition: all .15s;
+    }
+
+    .pill.active {
+      background: rgba(29, 158, 117, .15);
+      border-color: rgba(29, 158, 117, .3);
+      color: #5dcaa5;
+    }
+
+    .pill:hover {
+      border-color: var(--border2);
+      color: var(--text2);
+    }
+
+    .leg-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      color: var(--text2);
+      margin-bottom: 5px;
+    }
+
+    .leg-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .profile-header {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .profile-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--bg4);
+      border: 2px solid var(--border2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text2);
+      flex-shrink: 0;
+    }
+
+    .profile-info {
+      flex: 1;
+    }
+
+    .profile-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .profile-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .profile-meta-item {
+      font-size: 12px;
+      color: var(--text3);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .profile-meta-item svg {
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .risk-meter {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .risk-bar {
+      flex: 1;
+      height: 6px;
+      background: var(--bg4);
+      border-radius: 3px;
+      overflow: hidden;
+      max-width: 180px;
+    }
+
+    .risk-fill {
+      height: 100%;
+      border-radius: 3px;
+    }
+
+    .risk-label {
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .chain-wrap {
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .chain {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      min-width: max-content;
+    }
+
+    .chain-node {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      text-align: center;
+      min-width: 110px;
+    }
+
+    .chain-node.suspect {
+      border-color: rgba(226, 75, 74, .4);
+      background: rgba(226, 75, 74, .07);
+    }
+
+    .chain-node.final {
+      border-color: rgba(127, 119, 221, .4);
+      background: rgba(127, 119, 221, .07);
+    }
+
+    .chain-arrow {
+      width: 40px;
+      height: 2px;
+      background: var(--border2);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .chain-arrow::after {
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: -4px;
+      border: 5px solid transparent;
+      border-right: none;
+      border-left: 8px solid var(--border2);
+    }
+
+    .chain-role {
+      font-size: 10px;
+      color: var(--text3);
+      margin-bottom: 3px;
+    }
+
+    .chain-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .chain-loc {
+      font-size: 10px;
+      color: var(--text3);
+      margin-top: 2px;
+    }
+
+    .chain-date {
+      font-size: 10px;
+      color: var(--accent);
+      margin-top: 4px;
+      font-family: var(--mono);
+    }
+
+    .report-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-size: 12px;
+      color: var(--text2);
+      font-weight: 500;
+    }
+
+    .form-control {
+      height: 36px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0 10px;
+      color: var(--text);
+      font-size: 13px;
+      font-family: var(--font);
+      width: 100%;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    select.form-control option {
+      background: var(--bg3);
+    }
+
+    .form-group.full {
+      grid-column: 1/-1;
+    }
+
+    .report-preview {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-top: 16px;
+    }
+
+    .report-preview-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .report-preview-sub {
+      font-size: 11px;
+      color: var(--text3);
+      margin-bottom: 14px;
+    }
+
+    .invest-search {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .invest-input {
+      flex: 1;
+      height: 40px;
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 0 14px;
+      color: var(--text);
+      font-size: 13px;
+      font-family: var(--font);
+    }
+
+    .invest-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .invest-select {
+      height: 40px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0 10px;
+      color: var(--text);
+      font-size: 13px;
+      font-family: var(--font);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .stat-mini {
+      background: var(--bg3);
+      border-radius: var(--radius);
+      padding: 12px;
+      text-align: center;
+    }
+
+    .stat-mini-num {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .stat-mini-lbl {
+      font-size: 10px;
+      color: var(--text3);
+      margin-top: 4px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--bg4);
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text3);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .page.active {
+      animation: fadeIn .2s ease;
+    }
+
+    .admin-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .source-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .source-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .source-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: white;
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .source-info {
+      flex: 1;
+    }
+
+    .source-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .source-meta {
+      font-size: 11px;
+      color: var(--text3);
+    }
+
+    .source-status {
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .dot-online {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    .dot-offline {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: .4
+      }
+
+      ;
+    }
+
+    .threshold-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .threshold-row:last-child {
+      border-bottom: none;
+    }
+
+    .threshold-label {
+      font-size: 12px;
+      color: var(--text2);
+      flex: 1;
+    }
+
+    .threshold-input {
+      width: 70px;
+      height: 28px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0 8px;
+      color: var(--text);
+      font-size: 12px;
+      font-family: var(--mono);
+      text-align: center;
+    }
+
+    .log-row {
+      display: flex;
+      gap: 14px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      align-items: flex-start;
+    }
+
+    .log-row:last-child {
+      border-bottom: none;
+    }
+
+    .log-time {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text3);
+      white-space: nowrap;
+      min-width: 100px;
+    }
+
+    .log-user {
+      color: var(--blue2);
+      min-width: 90px;
+    }
+
+    .log-action {
+      color: var(--text2);
+    }
+
+    .log-target {
+      color: var(--text3);
+    }
+
+    .notif-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      position: absolute;
+      top: 4px;
+      right: 4px;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text3);
+    }
+
+    .empty svg {
+      width: 40px;
+      height: 40px;
+      stroke: var(--text3);
+      fill: none;
+      stroke-width: 1;
+      margin: 0 auto 12px;
+      display: block;
+    }
+
+    .empty p {
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="logo-area">
+        <div class="logo-mark">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24">
+              <polygon points="3 11 22 2 13 21 11 13 3 11" />
+            </svg>
+          </div>
+          <span class="logo-name">رصد</span>
+        </div>
+        <div class="logo-sub">نظام تحليل الأراضي</div>
+      </div>
+
+      <nav class="nav">
+        <div class="nav-section">
+          <div class="nav-section-label">الرئيسية</div>
+          <div class="nav-item active" onclick="gotoPage('dashboard')">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="7" height="7" />
+              <rect x="14" y="3" width="7" height="7" />
+              <rect x="3" y="14" width="7" height="7" />
+              <rect x="14" y="14" width="7" height="7" />
+            </svg>
+            لوحة التحكم
+          </div>
+          <div class="nav-item" onclick="gotoPage('map')">
+            <svg viewBox="0 0 24 24">
+              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+              <line x1="8" y1="2" x2="8" y2="18" />
+              <line x1="16" y1="6" x2="16" y2="22" />
+            </svg>
+            خريطة GIS
+          </div>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-section-label">البيانات</div>
+          <div class="nav-item" onclick="gotoPage('parcels')">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            قطع الأراضي
+          </div>
+          <div class="nav-item" onclick="gotoPage('owners')">
+            <svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            المالكون
+          </div>
+          <div class="nav-item" onclick="gotoPage('transactions')">
+            <svg viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+            المعاملات
+          </div>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-section-label">التحليل</div>
+          <div class="nav-item" onclick="gotoPage('cases')">
+            <svg viewBox="0 0 24 24">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+            قضايا التسريب
+            <span class="nav-badge">31</span>
+          </div>
+          <div class="nav-item" onclick="gotoPage('alerts')">
+            <svg viewBox="0 0 24 24">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>
+            تنبيهات AI
+            <span class="nav-badge amber">7</span>
+          </div>
+          <div class="nav-item" onclick="gotoPage('investigation')">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            التحقيق
+          </div>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-section-label">التقارير</div>
+          <div class="nav-item" onclick="gotoPage('reports')">
+            <svg viewBox="0 0 24 24">
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+            </svg>
+            التقارير الإحصائية
+          </div>
+          <div class="nav-item" onclick="gotoPage('custom-report')">
+            <svg viewBox="0 0 24 24">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+            </svg>
+            تقرير مخصص
+          </div>
+        </div>
+
+        <div class="nav-section">
+          <div class="nav-section-label">الإدارة</div>
+          <div class="nav-item" onclick="gotoPage('admin-users')">
+            <svg viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            إدارة المستخدمين
+          </div>
+          <div class="nav-item" onclick="gotoPage('admin-sources')">
+            <svg viewBox="0 0 24 24">
+              <ellipse cx="12" cy="5" rx="9" ry="3" />
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+            </svg>
+            مصادر البيانات
+          </div>
+          <div class="nav-item" onclick="gotoPage('admin-ai')">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-1H1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73A2 2 0 0 1 10 4a2 2 0 0 1 2-2z" />
+            </svg>
+            نماذج الذكاء الاصطناعي
+          </div>
+          <div class="nav-item" onclick="gotoPage('admin-logs')">
+            <svg viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+            </svg>
+            السجلات والتدقيق
+          </div>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-row">
+          <div class="avatar">م.أ</div>
+          <div>
+            <div class="user-name">PTUK_IKW</div>
+            <div class="user-role">مدير النظام</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main">
+      <div class="topbar">
+        <div class="page-title" id="pageTitle">لوحة التحكم الرئيسية</div>
+        <div class="topbar-actions">
+
+          <button class="tb-btn" onclick="gotoPage('custom-report')">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            تصدير PDF
+          </button>
+          <button class="tb-btn primary" onclick="gotoPage('alerts')">
+            <svg viewBox="0 0 24 24">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+            </svg>
+            7 تنبيهات
+          </button>
+        </div>
+      </div>
+
+      <div class="page active" id="page-dashboard">
+        <div class="metrics-grid">
+          <div class="metric-card red">
+            <div class="m-icon"><svg viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              </svg></div>
+            <div class="m-label">عمليات البيع — هذا الشهر</div>
+            <div class="m-value">143</div>
+            <div class="m-change up">↑ 18% مقارنة بالشهر الماضي</div>
+          </div>
+          <div class="metric-card amber">
+            <div class="m-icon"><svg viewBox="0 0 24 24">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+              </svg></div>
+            <div class="m-label">حالات مشبوهة نشطة</div>
+            <div class="m-value">31</div>
+            <div class="m-change up">↑ 5 حالات جديدة هذا الأسبوع</div>
+          </div>
+          <div class="metric-card blue">
+            <div class="m-icon"><svg viewBox="0 0 24 24">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg></div>
+            <div class="m-label">عمليات تسريب مكتشفة</div>
+            <div class="m-value">12</div>
+            <div class="m-change down">↓ 2 مقارنة بالشهر الماضي</div>
+          </div>
+          <div class="metric-card green">
+            <div class="m-icon"><svg viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              </svg></div>
+            <div class="m-label">مالكون تحت المراقبة</div>
+            <div class="m-value">89</div>
+            <div class="m-change up">↑ 11 مالك جديد هذا الشهر</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">trend عمليات البيع — آخر 6 أشهر</span>
+              <span class="card-action" onclick="gotoPage('reports')">تفاصيل <svg viewBox="0 0 24 24">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg></span>
+            </div>
+            <div style="position:relative;width:100%;height:190px;"><canvas id="trendChart"></canvas></div>
+            <div style="display:flex;gap:16px;margin-top:10px;">
+              <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text3);"><span
+                  style="width:12px;height:3px;background:var(--red);border-radius:2px;display:inline-block;"></span>عمليات
+                البيع</span>
+              <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text3);"><span
+                  style="width:12px;height:3px;background:var(--amber);border-radius:2px;display:inline-block;"></span>مشبوهة</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">أعلى المحافظات تسريباً</span>
+              <span class="card-action" onclick="gotoPage('map')">على الخريطة <svg viewBox="0 0 24 24">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg></span>
+            </div>
+            <div class="bar-list">
+              <div class="bar-row"><span class="bar-label">الخليل</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:87%;background:var(--red);"></div>
+                </div><span class="bar-val">34</span>
+              </div>
+              <div class="bar-row"><span class="bar-label">نابلس</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:67%;background:var(--amber);"></div>
+                </div><span class="bar-val">26</span>
+              </div>
+              <div class="bar-row"><span class="bar-label">رام الله</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:54%;background:var(--amber);"></div>
+                </div><span class="bar-val">21</span>
+              </div>
+              <div class="bar-row"><span class="bar-label">جنين</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:41%;background:var(--accent);"></div>
+                </div><span class="bar-val">16</span>
+              </div>
+              <div class="bar-row"><span class="bar-label">طولكرم</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:28%;background:var(--accent);"></div>
+                </div><span class="bar-val">11</span>
+              </div>
+              <div class="bar-row"><span class="bar-label">بيت لحم</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:20%;background:var(--blue);"></div>
+                </div><span class="bar-val">8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">آخر تنبيهات الذكاء الاصطناعي</span>
+              <span class="card-action" onclick="gotoPage('alerts')">عرض الكل <svg viewBox="0 0 24 24">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg></span>
+            </div>
+            <div class="alert-list">
+              <div class="alert-row" onclick="gotoPage('alerts')">
+                <div class="alert-dot" style="background:var(--red);"></div>
+                <div class="alert-content">
+                  <div class="alert-title">نمط بيع متسلسل مشبوه — الخليل</div>
+                  <div class="alert-desc">5 قطع متجاورة بيعت لمشترين مقيمين خارج البلاد خلال 30 يوم</div>
+                  <div class="alert-meta"><span class="badge red">حرج</span><span class="alert-time">منذ ساعتين</span>
+                  </div>
+                </div>
+              </div>
+              <div class="alert-row" onclick="gotoPage('alerts')">
+                <div class="alert-dot" style="background:var(--amber);"></div>
+                <div class="alert-content">
+                  <div class="alert-title">مالك risk_score مرتفع — نابلس</div>
+                  <div class="alert-desc">أحمد م. — 4 صفقات بيع خلال 3 أشهر، الوكالة ممنوحة لغير مقيم</div>
+                  <div class="alert-meta"><span class="badge amber">متوسط</span><span class="alert-time">منذ 5
+                      ساعات</span></div>
+                </div>
+              </div>
+              <div class="alert-row" onclick="gotoPage('alerts')">
+                <div class="alert-dot" style="background:var(--amber);"></div>
+                <div class="alert-content">
+                  <div class="alert-title">cluster بيع — رام الله الشمال</div>
+                  <div class="alert-desc">ارتفاع 240% في عمليات البيع بمنطقة بيتين خلال هذا الشهر</div>
+                  <div class="alert-meta"><span class="badge amber">متوسط</span><span class="alert-time">منذ يوم</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">آخر المعاملات المشبوهة</span>
+              <span class="card-action" onclick="gotoPage('transactions')">عرض الكل <svg viewBox="0 0 24 24">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg></span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>البائع</th>
+                    <th>المنطقة</th>
+                    <th>المساحة</th>
+                    <th>الشك</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr onclick="gotoPage('owners')">
+                    <td>
+                      <div style="font-size:12px;font-weight:500;">محمد ع.</div>
+                      <div class="td-muted">يسكن الأردن</div>
+                    </td>
+                    <td>الخليل / يطا</td>
+                    <td>3,200 م²</td>
+                    <td><span class="badge red">94%</span></td>
+                  </tr>
+                  <tr onclick="gotoPage('owners')">
+                    <td>
+                      <div style="font-size:12px;font-weight:500;">خالد س.</div>
+                      <div class="td-muted">يسكن الخليج</div>
+                    </td>
+                    <td>نابلس / حوارة</td>
+                    <td>1,800 م²</td>
+                    <td><span class="badge red">87%</span></td>
+                  </tr>
+                  <tr onclick="gotoPage('owners')">
+                    <td>
+                      <div style="font-size:12px;font-weight:500;">يوسف ح.</div>
+                      <div class="td-muted">رام الله</div>
+                    </td>
+                    <td>رام الله / بيتين</td>
+                    <td>2,500 م²</td>
+                    <td><span class="badge amber">61%</span></td>
+                  </tr>
+                  <tr onclick="gotoPage('owners')">
+                    <td>
+                      <div style="font-size:12px;font-weight:500;">سامر ق.</div>
+                      <div class="td-muted">الضفة الغربية</div>
+                    </td>
+                    <td>جنين / برقين</td>
+                    <td>980 م²</td>
+                    <td><span class="badge green">23%</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-map" style="padding:0;gap:0;">
+        <div class="map-layout">
+          <div class="map-sidebar">
+            <div class="map-sb-section">
+              <div class="map-sb-label">الطبقات</div>
+              <div class="layer-toggle">
+                <div class="layer-name">
+                  <div class="layer-dot" style="background:var(--red);"></div>قطع مشبوهة
+                </div><button class="toggle-sw on" onclick="toggleMapLayer(this,'suspicious')"></button>
+              </div>
+              <div class="layer-toggle">
+                <div class="layer-name">
+                  <div class="layer-dot" style="background:var(--amber);"></div>قطع عادية
+                </div><button class="toggle-sw on" onclick="toggleMapLayer(this,'normal')"></button>
+              </div>
+              <div class="layer-toggle">
+                <div class="layer-name">
+                  <div class="layer-sq" style="background:var(--purple);border:1px solid #534AB7;"></div>مستوطنات
+                </div><button class="toggle-sw on" onclick="toggleMapLayer(this,'settlements')"></button>
+              </div>
+              <div class="layer-toggle">
+                <div class="layer-name">
+                  <div class="layer-sq" style="background:var(--red);height:4px;border-radius:0;"></div>شوارع استيطانية
+                </div><button class="toggle-sw on" onclick="toggleMapLayer(this,'roads')"></button>
+              </div>
+              <div class="layer-toggle">
+                <div class="layer-name">
+                  <div class="layer-sq" style="background:var(--blue);opacity:.5;"></div>مناطق Oslo
+                </div><button class="toggle-sw off" onclick="toggleMapLayer(this,'oslo')"></button>
+              </div>
+              <div class="layer-toggle">
+                <div class="layer-name">
+                  <div class="layer-dot"
+                    style="background:var(--red);opacity:.4;width:12px;height:12px;border-radius:3px;"></div>Hotspots
+                </div><button class="toggle-sw on" onclick="toggleMapLayer(this,'hotspots')"></button>
+              </div>
+            </div>
+            <div class="map-sb-section">
+              <div class="map-sb-label">فلترة الخطورة</div>
+              <div class="filter-pills">
+                <span class="pill active" onclick="setMapFilter(this,'risk','all')">الكل</span>
+                <span class="pill" onclick="setMapFilter(this,'risk','high')">عالية</span>
+                <span class="pill" onclick="setMapFilter(this,'risk','med')">متوسطة</span>
+                <span class="pill" onclick="setMapFilter(this,'risk','low')">منخفضة</span>
+              </div>
+            </div>
+            <div class="map-sb-section">
+              <div class="map-sb-label">فلترة زمنية</div>
+              <div class="filter-pills">
+                <span class="pill active" onclick="setMapFilter(this,'time','all')">الكل</span>
+                <span class="pill" onclick="setMapFilter(this,'time','month')">شهر</span>
+                <span class="pill" onclick="setMapFilter(this,'time','quarter')">3 أشهر</span>
+                <span class="pill" onclick="setMapFilter(this,'time','year')">سنة</span>
+              </div>
+            </div>
+            <div class="map-sb-section">
+              <div class="map-sb-label">المحافظة</div>
+              <div class="filter-pills">
+                <span class="pill active" onclick="setMapFilter(this,'gov','all')">الكل</span>
+                <span class="pill" onclick="setMapFilter(this,'gov','nablus')">نابلس</span>
+                <span class="pill" onclick="setMapFilter(this,'gov','hebron')">الخليل</span>
+                <span class="pill" onclick="setMapFilter(this,'gov','ramallah')">رام الله</span>
+                <span class="pill" onclick="setMapFilter(this,'gov','jenin')">جنين</span>
+                <span class="pill" onclick="setMapFilter(this,'gov','tulkarm')">طولكرم</span>
+              </div>
+            </div>
+          </div>
+          <div class="map-container">
+            <div class="map-topbar">
+              <input class="map-input" type="text" placeholder="ابحث عن قطعة أرض أو مالك..." id="mapSearch"
+                oninput="handleMapSearch(this.value)">
+              <button class="tb-btn primary" onclick="gotoPage('custom-report')">تقرير عن المنطقة</button>
+
+            </div>
+            <canvas class="map-canvas" id="mapCanvas"></canvas>
+            <div class="map-ctrl">
+              <button class="map-ctrl-btn" onclick="mapZoom(1.25)">+</button>
+              <button class="map-ctrl-btn" onclick="mapZoom(0.8)">−</button>
+            </div>
+            <div class="map-parcel-panel" id="mapParcelPanel">
+              <div class="pp-title" id="mppTitle">قطعة أرض</div>
+              <div class="pp-row"><span class="pp-key">رقم القطعة</span><span class="pp-val" id="mppId">—</span></div>
+              <div class="pp-row"><span class="pp-key">المساحة</span><span class="pp-val" id="mppArea">—</span></div>
+              <div class="pp-row"><span class="pp-key">المحافظة</span><span class="pp-val" id="mppGov">—</span></div>
+              <div class="pp-row"><span class="pp-key">المالك الحالي</span><span class="pp-val" id="mppOwner">—</span>
+              </div>
+              <div class="pp-row"><span class="pp-key">آخر معاملة</span><span class="pp-val" id="mppTxn">—</span></div>
+              <div class="pp-row"><span class="pp-key">أقرب مستوطنة</span><span class="pp-val" id="mppDist">—</span>
+              </div>
+              <div class="pp-row"><span class="pp-key">مستوى الخطر</span><span class="pp-val" id="mppRisk">—</span>
+              </div>
+              <button class="tb-btn primary" style="width:100%;margin-top:10px;justify-content:center;"
+                onclick="viewParcelOwner()">عرض ملف المالك</button>
+            </div>
+            <div class="map-legend">
+              <div
+                style="font-size:10px;color:var(--text3);margin-bottom:6px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;">
+                دليل الألوان</div>
+              <div class="leg-row">
+                <div class="layer-dot" style="background:var(--red);"></div>مشبوهة / خطر عالٍ
+              </div>
+              <div class="leg-row">
+                <div class="layer-dot" style="background:var(--amber);"></div>تحت المراقبة
+              </div>
+              <div class="leg-row">
+                <div class="layer-dot" style="background:var(--accent);"></div>عادية / آمنة
+              </div>
+              <div class="leg-row">
+                <div class="layer-sq" style="background:var(--purple);border:1px solid #534AB7;"></div>مستوطنة
+              </div>
+              <div class="leg-row">
+                <div style="width:18px;height:3px;background:#D85A30;"></div>شارع استيطاني
+              </div>
+            </div>
+            <div class="map-stats" id="mapStats">
+              <div class="ms-item">
+                <div class="ms-num" id="msTotal">19</div>
+                <div class="ms-lbl">إجمالي القطع</div>
+              </div>
+              <div class="ms-item">
+                <div class="ms-num" style="color:var(--red);" id="msHigh">7</div>
+                <div class="ms-lbl">خطر عالٍ</div>
+              </div>
+              <div class="ms-item">
+                <div class="ms-num" style="color:var(--amber);" id="msMed">7</div>
+                <div class="ms-lbl">مراقبة</div>
+              </div>
+              <div class="ms-item">
+                <div class="ms-num" style="color:var(--accent);" id="msLow">5</div>
+                <div class="ms-lbl">عادية</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-parcels">
+        <div class="metrics-grid" style="grid-template-columns:repeat(3,1fr);">
+          <div class="metric-card red">
+            <div class="m-label">إجمالي القطع المسجلة</div>
+            <div class="m-value">4,821</div>
+          </div>
+          <div class="metric-card amber">
+            <div class="m-label">قطع تحت المراقبة</div>
+            <div class="m-value">247</div>
+          </div>
+          <div class="metric-card green">
+            <div class="m-label">قطع موثقة بالكامل</div>
+            <div class="m-value">3,902</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">سجل قطع الأراضي</span>
+            <div style="display:flex;gap:8px;">
+              <select class="form-control" style="height:28px;font-size:11px;width:auto;padding:0 8px;">
+                <option>كل المحافظات</option>
+                <option>نابلس</option>
+                <option>الخليل</option>
+                <option>رام الله</option>
+                <option>جنين</option>
+              </select>
+              <select class="form-control" style="height:28px;font-size:11px;width:auto;padding:0 8px;">
+                <option>كل مستويات الخطر</option>
+                <option>عالٍ</option>
+                <option>متوسط</option>
+                <option>منخفض</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>رقم القطعة</th>
+                  <th>الموقع</th>
+                  <th>المساحة</th>
+                  <th>نوع الأرض</th>
+                  <th>حالة التسجيل</th>
+                  <th>المالك الحالي</th>
+                  <th>آخر معاملة</th>
+                  <th>أقرب مستوطنة</th>
+                  <th>الخطورة</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="parcelsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-owners">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">سجل المالكين</span>
+            <div style="display:flex;gap:8px;">
+              <select class="form-control" style="height:28px;font-size:11px;width:auto;padding:0 8px;"
+                onchange="filterOwners(this.value)">
+                <option value="all">كل المالكين</option>
+                <option value="high">خطورة عالية</option>
+                <option value="med">خطورة متوسطة</option>
+                <option value="abroad">مقيمون خارج البلاد</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>الاسم</th>
+                  <th>رقم الهوية</th>
+                  <th>نوع المالك</th>
+                  <th>مكان الإقامة</th>
+                  <th>عدد القطع</th>
+                  <th>عدد المعاملات</th>
+                  <th>مستوى الخطر</th>
+                  <th>ملاحظات</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="ownersTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-owner-profile">
+        <div class="profile-header">
+          <div class="profile-avatar" id="profAvatar">م.ع</div>
+          <div class="profile-info">
+            <div class="profile-name" id="profName">محمد عبد الرحمن</div>
+            <div class="profile-meta">
+              <span class="profile-meta-item"><svg viewBox="0 0 24 24">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>يسكن الأردن</span>
+              <span class="profile-meta-item"><svg viewBox="0 0 24 24">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                </svg>رقم هوية: 987654321</span>
+              <span class="profile-meta-item"><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>غير متاح</span>
+            </div>
+            <div class="risk-meter">
+              <span style="font-size:11px;color:var(--text3);">مستوى الخطر:</span>
+              <div class="risk-bar">
+                <div class="risk-fill" style="width:87%;background:var(--red);"></div>
+              </div>
+              <span class="risk-label" style="color:var(--red);">87 / 100</span>
+              <span class="badge red">عالٍ جداً</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <button class="tb-btn danger">إصدار تقرير</button>
+            <button class="tb-btn" onclick="gotoPage('investigation')">فتح التحقيق</button>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="stat-mini">
+            <div class="stat-mini-num" style="color:var(--red);">4</div>
+            <div class="stat-mini-lbl">قطع يمتلكها حالياً</div>
+          </div>
+          <div class="stat-mini">
+            <div class="stat-mini-num" style="color:var(--amber);">7</div>
+            <div class="stat-mini-lbl">معاملات بيع منفذة</div>
+          </div>
+          <div class="stat-mini">
+            <div class="stat-mini-num" style="color:var(--blue);">2</div>
+            <div class="stat-mini-lbl">وكالات ممنوحة</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><span class="card-title">سلسلة المعاملات — تتبع البيع</span><span
+              class="badge red">مشبوه</span></div>
+          <div class="chain-wrap">
+            <div class="chain">
+              <div class="chain-node">
+                <div class="chain-role">البائع الأصلي</div>
+                <div class="chain-name">محمد عبد الرحمن</div>
+                <div class="chain-loc">الضفة — نابلس</div>
+                <div class="chain-date">2024/08/12</div>
+              </div>
+              <div class="chain-arrow"></div>
+              <div class="chain-node suspect">
+                <div class="chain-role">المشتري الأول</div>
+                <div class="chain-name">خالد سمير</div>
+                <div class="chain-loc">الأردن — عمان</div>
+                <div class="chain-date">2024/09/05</div>
+              </div>
+              <div class="chain-arrow"></div>
+              <div class="chain-node suspect">
+                <div class="chain-role">المشتري الثاني</div>
+                <div class="chain-name">David Cohen LLC</div>
+                <div class="chain-loc">قبرص</div>
+                <div class="chain-date">2025/02/18</div>
+              </div>
+              <div class="chain-arrow"></div>
+              <div class="chain-node final">
+                <div class="chain-role">المالك الحالي</div>
+                <div class="chain-name">غير معروف</div>
+                <div class="chain-loc">— مستوطنة —</div>
+                <div class="chain-date">2025/06/30</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header"><span class="card-title">قطع الأراضي المرتبطة</span></div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>رقم القطعة</th>
+                    <th>الموقع</th>
+                    <th>المساحة</th>
+                    <th>الحالة</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="td-mono">NB-142</td>
+                    <td>نابلس / حوارة</td>
+                    <td>3,200 م²</td>
+                    <td><span class="badge red">مباعة</span></td>
+                  </tr>
+                  <tr>
+                    <td class="td-mono">NB-087</td>
+                    <td>نابلس / بيتا</td>
+                    <td>1,800 م²</td>
+                    <td><span class="badge red">مباعة</span></td>
+                  </tr>
+                  <tr>
+                    <td class="td-mono">NB-334</td>
+                    <td>نابلس / حوسان</td>
+                    <td>950 م²</td>
+                    <td><span class="badge amber">مراقبة</span></td>
+                  </tr>
+                  <tr>
+                    <td class="td-mono">NB-412</td>
+                    <td>نابلس / قريوت</td>
+                    <td>1,400 م²</td>
+                    <td><span class="badge green">محتفظ بها</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">التنبيهات المرتبطة</span></div>
+            <div class="alert-list">
+              <div class="alert-row">
+                <div class="alert-dot" style="background:var(--red);"></div>
+                <div class="alert-content">
+                  <div class="alert-title">نمط بيع متسلسل مشبوه</div>
+                  <div class="alert-desc">تتسلسل بيع 3 قطع لنفس المشتري في الخارج</div>
+                  <div class="alert-meta"><span class="badge red">حرج</span><span class="alert-time">2026/03/28</span>
+                  </div>
+                </div>
+              </div>
+              <div class="alert-row">
+                <div class="alert-dot" style="background:var(--amber);"></div>
+                <div class="alert-content">
+                  <div class="alert-title">وكالة مشبوهة</div>
+                  <div class="alert-desc">وكالة بيع ممنوحة لشخص مقيم خارج البلاد</div>
+                  <div class="alert-meta"><span class="badge amber">متوسط</span><span
+                      class="alert-time">2026/02/14</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-transactions">
+        <div class="metrics-grid">
+          <div class="metric-card red">
+            <div class="m-label">إجمالي المعاملات</div>
+            <div class="m-value">143</div>
+          </div>
+          <div class="metric-card amber">
+            <div class="m-label">معاملات مشبوهة</div>
+            <div class="m-value">31</div>
+          </div>
+          <div class="metric-card blue">
+            <div class="m-label">متوسط سعر البيع</div>
+            <div class="m-value">85K$</div>
+          </div>
+          <div class="metric-card green">
+            <div class="m-label">معاملات موثقة</div>
+            <div class="m-value">112</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">سجل المعاملات</span>
+            <div style="display:flex;gap:8px;">
+              <select class="form-control" style="height:28px;font-size:11px;width:auto;padding:0 8px;">
+                <option>كل أنواع المعاملات</option>
+                <option>بيع</option>
+                <option>شراء</option>
+                <option>وكالة</option>
+                <option>إرث</option>
+              </select>
+              <select class="form-control" style="height:28px;font-size:11px;width:auto;padding:0 8px;">
+                <option>آخر 3 أشهر</option>
+                <option>آخر 6 أشهر</option>
+                <option>هذا العام</option>
+                <option>كل الفترات</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>رقم</th>
+                  <th>التاريخ</th>
+                  <th>البائع</th>
+                  <th>المشتري</th>
+                  <th>القطعة</th>
+                  <th>النوع</th>
+                  <th>السعر</th>
+                  <th>الوثيقة</th>
+                  <th>نسبة الشك</th>
+                </tr>
+              </thead>
+              <tbody id="txnTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-cases">
+        <div class="metrics-grid" style="grid-template-columns:repeat(4,1fr);">
+          <div class="metric-card red">
+            <div class="m-label">قضايا نشطة</div>
+            <div class="m-value">31</div>
+          </div>
+          <div class="metric-card amber">
+            <div class="m-label">تحت التحقيق</div>
+            <div class="m-value">14</div>
+          </div>
+          <div class="metric-card blue">
+            <div class="m-label">محالة للقضاء</div>
+            <div class="m-value">8</div>
+          </div>
+          <div class="metric-card green">
+            <div class="m-label">مغلقة هذا العام</div>
+            <div class="m-value">23</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">قضايا التسريب المكتشفة</span></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>رقم القضية</th>
+                  <th>القطعة</th>
+                  <th>الموقع</th>
+                  <th>نسبة الاشتباه</th>
+                  <th>الحالة</th>
+                  <th>تاريخ الاكتشاف</th>
+                  <th>المتورطون</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="casesTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-alerts">
+        <div class="metrics-grid" style="grid-template-columns:repeat(3,1fr);">
+          <div class="metric-card red">
+            <div class="m-label">تنبيهات حرجة</div>
+            <div class="m-value">7</div>
+          </div>
+          <div class="metric-card amber">
+            <div class="m-label">تنبيهات متوسطة</div>
+            <div class="m-value">12</div>
+          </div>
+          <div class="metric-card blue">
+            <div class="m-label">تنبيهات منخفضة</div>
+            <div class="m-value">23</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">تنبيهات الذكاء الاصطناعي</span>
+            <div style="display:flex;gap:8px;">
+              <select class="form-control" style="height:28px;font-size:11px;width:auto;padding:0 8px;"
+                onchange="filterAlerts(this.value)">
+                <option value="all">كل التنبيهات</option>
+                <option value="critical">حرجة</option>
+                <option value="medium">متوسطة</option>
+                <option value="low">منخفضة</option>
+              </select>
+            </div>
+          </div>
+          <div class="alert-list" id="alertsList"></div>
+        </div>
+      </div>
+
+
+      <div class="page" id="page-investigation">
+        <div class="card">
+          <div class="card-header"><span class="card-title">بحث التحقيق والتتبع</span></div>
+          <div class="invest-search">
+            <select class="invest-select">
+              <option>شخص / مالك</option>
+              <option>قطعة أرض</option>
+              <option>حالة توسع مستوطنة </option>
+              
+            </select>
+            <input class="invest-input" type="text" id="investInput"
+              placeholder="أدخل اسم المالك أو رقم القطعة أو رقم الهوية..." oninput="runInvestigation(this.value)">
+            <button class="tb-btn primary" onclick="runInvestigation(document.getElementById('investInput').value)">بحث
+              وتحليل</button>
+          </div>
+          <div id="investResults">
+            <div class="empty">
+              <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <p>أدخل اسم شخص أو رقم قطعة أرض لبدء التحقيق وتتبع سلسلة البيع</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2" id="investCards" style="display:none;">
+          <div class="card">
+            <div class="card-header"><span class="card-title">سلسلة الملكية — تتبع كامل</span><span class="badge red">4
+                حلقات</span></div>
+            <div class="chain-wrap">
+              <div class="chain">
+                <div class="chain-node">
+                  <div class="chain-role">المالك الأصلي</div>
+                  <div class="chain-name">أحمد محمود</div>
+                  <div class="chain-loc">نابلس / الضفة</div>
+                  <div class="chain-date">2022/01/15</div>
+                </div>
+                <div class="chain-arrow"></div>
+                <div class="chain-node suspect">
+                  <div class="chain-role">بيع #1</div>
+                  <div class="chain-name">سمير خليل</div>
+                  <div class="chain-loc">الأردن — عمان</div>
+                  <div class="chain-date">2023/06/20</div>
+                </div>
+                <div class="chain-arrow"></div>
+                <div class="chain-node suspect">
+                  <div class="chain-role">بيع #2</div>
+                  <div class="chain-name">Hadley Trust</div>
+                  <div class="chain-loc">قبرص</div>
+                  <div class="chain-date">2024/02/08</div>
+                </div>
+                <div class="chain-arrow"></div>
+                <div class="chain-node final">
+                  <div class="chain-role">المالك الحالي</div>
+                  <div class="chain-name">غير معروف</div>
+                  <div class="chain-loc">مستوطنة أريئيل</div>
+                  <div class="chain-date">2024/09/30</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">ملخص التحليل الذكي</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div
+                style="background:rgba(226,75,74,.08);border:1px solid rgba(226,75,74,.2);border-radius:var(--radius);padding:12px;">
+                <div style="font-size:12px;font-weight:500;color:var(--red2);margin-bottom:4px;">تحذير — نمط تسريب محتمل
+                </div>
+                <div style="font-size:11px;color:var(--text3);line-height:1.6;">الأرض انتقلت عبر 3 وسطاء خلال 2.5 سنة.
+                  المشتري النهائي كيان قانوني مقيم في قبرص مرتبط بشركات استيطانية معروفة.</div>
+              </div>
+              <div class="stat-grid">
+                <div class="stat-mini">
+                  <div class="stat-mini-num" style="color:var(--red);">94%</div>
+                  <div class="stat-mini-lbl">نسبة الاشتباه</div>
+                </div>
+                <div class="stat-mini">
+                  <div class="stat-mini-num">3</div>
+                  <div class="stat-mini-lbl">وسطاء</div>
+                </div>
+                <div class="stat-mini">
+                  <div class="stat-mini-num" style="color:var(--amber);">2.5</div>
+                  <div class="stat-mini-lbl">سنوات</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-reports">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header"><span class="card-title">التقرير الشهري — مارس 2026</span><button
+                class="tb-btn">تحميل PDF</button></div>
+            <div class="bar-list" style="margin-bottom:16px;">
+              <div class="bar-row"><span class="bar-label" style="width:80px;">الخليل</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:87%;background:var(--red);"></div>
+                </div><span class="bar-val">34</span>
+              </div>
+              <div class="bar-row"><span class="bar-label" style="width:80px;">نابلس</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:67%;background:var(--amber);"></div>
+                </div><span class="bar-val">26</span>
+              </div>
+              <div class="bar-row"><span class="bar-label" style="width:80px;">رام الله</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:54%;background:var(--amber);"></div>
+                </div><span class="bar-val">21</span>
+              </div>
+              <div class="bar-row"><span class="bar-label" style="width:80px;">جنين</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:41%;background:var(--accent);"></div>
+                </div><span class="bar-val">16</span>
+              </div>
+              <div class="bar-row"><span class="bar-label" style="width:80px;">طولكرم</span>
+                <div class="bar-track">
+                  <div class="bar-fill" style="width:28%;background:var(--accent);"></div>
+                </div><span class="bar-val">11</span>
+              </div>
+            </div>
+            <div style="position:relative;width:100%;height:160px;"><canvas id="reportChart"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">إحصائيات سنوية — 2025</span><button class="tb-btn">تحميل
+                PDF</button></div>
+            <div class="stat-grid" style="margin-bottom:16px;">
+              <div class="stat-mini">
+                <div class="stat-mini-num">1,247</div>
+                <div class="stat-mini-lbl">إجمالي المعاملات</div>
+              </div>
+              <div class="stat-mini">
+                <div class="stat-mini-num" style="color:var(--red);">187</div>
+                <div class="stat-mini-lbl">مشبوهة</div>
+              </div>
+              <div class="stat-mini">
+                <div class="stat-mini-num" style="color:var(--amber);">43</div>
+                <div class="stat-mini-lbl">قضايا مكتشفة</div>
+              </div>
+            </div>
+            <div style="position:relative;width:100%;height:160px;"><canvas id="reportChart2"></canvas></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">أكثر الأشخاص تورطاً — هذا العام</span></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>الاسم</th>
+                  <th>عدد المعاملات</th>
+                  <th>مجموع المساحة المباعة</th>
+                  <th>مكان الإقامة</th>
+                  <th>نسبة الخطر</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td style="font-weight:500;">محمد عبد الرحمن</td>
+                  <td>7</td>
+                  <td>12,400 م²</td>
+                  <td>الأردن</td>
+                  <td><span class="badge red">87%</span></td>
+                  <td><button class="tb-btn" style="height:24px;font-size:11px;" onclick="gotoPage('owner-profile')">عرض
+                      الملف</button></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td style="font-weight:500;">خالد سمير الحاج</td>
+                  <td>5</td>
+                  <td>8,200 م²</td>
+                  <td>الخليج</td>
+                  <td><span class="badge red">82%</span></td>
+                  <td><button class="tb-btn" style="height:24px;font-size:11px;" onclick="gotoPage('owner-profile')">عرض
+                      الملف</button></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td style="font-weight:500;">أحمد فوزي منصور</td>
+                  <td>4</td>
+                  <td>6,100 م²</td>
+                  <td>الأردن</td>
+                  <td><span class="badge amber">71%</span></td>
+                  <td><button class="tb-btn" style="height:24px;font-size:11px;" onclick="gotoPage('owner-profile')">عرض
+                      الملف</button></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td style="font-weight:500;">يوسف حسن الطيراوي</td>
+                  <td>4</td>
+                  <td>5,800 م²</td>
+                  <td>رام الله</td>
+                  <td><span class="badge amber">68%</span></td>
+                  <td><button class="tb-btn" style="height:24px;font-size:11px;" onclick="gotoPage('owner-profile')">عرض
+                      الملف</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-custom-report">
+        <div class="card">
+          <div class="card-header"><span class="card-title">بناء تقرير مخصص</span></div>
+          <div class="report-form">
+            <div class="form-group">
+              <label class="form-label">نوع التقرير</label>
+              <select class="form-control" id="reportType" onchange="updateReportPreview()">
+                <option value="person">تقرير عن شخص / مالك</option>
+                <option value="parcel">تقرير عن قطعة أرض</option>
+                <option value="region">تقرير عن منطقة جغرافية</option>
+                <option value="period">تقرير فترة زمنية</option>
+                <option value="monthly">تقرير شهري</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">المدى الزمني</label>
+              <select class="form-control" id="reportPeriod" onchange="updateReportPreview()">
+                <option>آخر شهر</option>
+                <option>آخر 3 أشهر</option>
+                <option>آخر 6 أشهر</option>
+                <option>هذا العام</option>
+                <option>مخصص</option>
+              </select>
+            </div>
+            <div class="form-group" id="reportEntityGroup">
+              <label class="form-label">الشخص / الكيان</label>
+              <input class="form-control" type="text" placeholder="اسم المالك أو رقم الهوية..." id="reportEntity"
+                oninput="updateReportPreview()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">المحافظة</label>
+              <select class="form-control" onchange="updateReportPreview()">
+                <option>كل المحافظات</option>
+                <option>نابلس</option>
+                <option>الخليل</option>
+                <option>رام الله</option>
+                <option>جنين</option>
+                <option>طولكرم</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label class="form-label">ملاحظات إضافية</label>
+              <textarea class="form-control" style="height:60px;padding:8px;resize:none;"
+                placeholder="أي تفاصيل أو طلبات خاصة للتقرير..."></textarea>
+            </div>
+          </div>
+          <div class="report-preview">
+            <div class="report-preview-title" id="rpTitle">تقرير عن شخص — آخر شهر</div>
+            <div class="report-preview-sub" id="rpSub">سيتضمن التقرير: كل معاملات البيع، سجل الملكية الكامل، التنبيهات
+              المرتبطة، خريطة توزيع الأراضي</div>
+            <button class="tb-btn primary" style="margin-top:12px;" onclick="generateReport()">توليد التقرير
+              الآن</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-admin-users">
+        <div class="card">
+          <div class="card-header"><span class="card-title">إدارة المستخدمين</span><button class="tb-btn primary">+
+              إضافة مستخدم</button></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>الاسم</th>
+                  <th>البريد الإلكتروني</th>
+                  <th>الدور</th>
+                  <th>الحالة</th>
+                  <th>آخر دخول</th>
+                  <th>الصلاحيات</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                      <div class="avatar" style="width:26px;height:26px;font-size:10px;">م.أ</div><span>
+                        PTUK_IKW
+                      </span>
+                    </div>
+                  </td>
+                  <td class="td-muted">PTU@gmai.com</td>
+                  <td><span class="badge blue">مدير</span></td>
+                  <td><span class="badge green">نشط</span></td>
+                  <td class="td-muted">اليوم 09:14</td>
+                  <td><span class="badge gray">كاملة</span></td>
+                  <td><button class="tb-btn" style="height:24px;font-size:11px;">تعديل</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-admin-sources">
+        <div class="admin-grid">
+          <div class="source-card">
+            <div class="source-icon" style="background:var(--accent2);"><svg viewBox="0 0 24 24">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              </svg></div>
+            <div class="source-info">
+              <div class="source-name">دائرة الأراضي والطابو</div>
+              <div class="source-meta">آخر مزامنة: اليوم 08:00 | 4,821 سجل</div>
+              <div class="source-status">
+                <div class="dot-online"></div><span style="color:var(--accent);">متصل ومتزامن</span>
+              </div>
+            </div>
+            <button class="tb-btn">إعدادات</button>
+          </div>
+          <div class="source-card">
+            <div class="source-icon" style="background:var(--blue);"><svg viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+              </svg></div>
+            <div class="source-info">
+              <div class="source-name">البلديات والمجالس المحلية</div>
+              <div class="source-meta">آخر مزامنة: أمس 22:00 | 11 بلدية</div>
+              <div class="source-status">
+                <div class="dot-online"></div><span style="color:var(--accent);">متصل ومتزامن</span>
+              </div>
+            </div>
+            <button class="tb-btn">إعدادات</button>
+          </div>
+          <div class="source-card">
+            <div class="source-icon" style="background:var(--amber);"><svg viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              </svg></div>
+            <div class="source-info">
+              <div class="source-name">المحاكم المختصة</div>
+              <div class="source-meta">آخر مزامنة: اليوم 06:30 | 893 قضية</div>
+              <div class="source-status">
+                <div class="dot-online"></div><span style="color:var(--accent);">متصل ومتزامن</span>
+              </div>
+            </div>
+            <button class="tb-btn">إعدادات</button>
+          </div>
+          <div class="source-card">
+            <div class="source-icon" style="background:var(--red);"><svg viewBox="0 0 24 24">
+                <ellipse cx="12" cy="5" rx="9" ry="3" />
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+              </svg></div>
+            <div class="source-info">
+              <div class="source-name">قاعدة بيانات الهجرة</div>
+              <div class="source-meta">لم يتم الربط بعد</div>
+              <div class="source-status">
+                <div class="dot-offline"></div><span style="color:var(--red);">غير متصل</span>
+              </div>
+            </div>
+            <button class="tb-btn primary">ربط</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-admin-ai">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header"><span class="card-title">عتبات مستوى الخطر (Risk Score)</span></div>
+            <div class="threshold-row"><span class="threshold-label">الحد الأدنى لتنبيه حرج</span><input
+                class="threshold-input" type="number" value="80"><span style="font-size:11px;color:var(--text3);">/
+                100</span></div>
+            <div class="threshold-row"><span class="threshold-label">الحد الأدنى لتنبيه متوسط</span><input
+                class="threshold-input" type="number" value="55"><span style="font-size:11px;color:var(--text3);">/
+                100</span></div>
+            <div class="threshold-row"><span class="threshold-label">حد cluster (عدد قطع في km²)</span><input
+                class="threshold-input" type="number" value="3"><span
+                style="font-size:11px;color:var(--text3);">قطع</span></div>
+            <div class="threshold-row"><span class="threshold-label">الحد الأقصى للمسافة من مستوطنة</span><input
+                class="threshold-input" type="number" value="2"><span
+                style="font-size:11px;color:var(--text3);">كم</span></div>
+            <div class="threshold-row"><span class="threshold-label">عدد المعاملات المشبوهة / شخص</span><input
+                class="threshold-input" type="number" value="3"><span
+                style="font-size:11px;color:var(--text3);">معاملة</span></div>
+            <button class="tb-btn primary" style="margin-top:12px;">حفظ التغييرات</button>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">إدارة نماذج AI</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="background:var(--bg3);border-radius:var(--radius);padding:12px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                  <span style="font-size:12px;font-weight:500;color:var(--text);">نموذج كشف التسريب</span>
+                  <span class="badge green">نشط</span>
+                </div>
+                <div style="font-size:11px;color:var(--text3);">آخر تدريب: 2026/03/01 | دقة: 91.3%</div>
+                <button class="tb-btn" style="margin-top:8px;height:26px;font-size:11px;">إعادة تدريب</button>
+              </div>
+              <div style="background:var(--bg3);border-radius:var(--radius);padding:12px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                  <span style="font-size:12px;font-weight:500;color:var(--text);">نموذج التنبؤ بالمستوطنات</span>
+                  <span class="badge green">نشط</span>
+                </div>
+                <div style="font-size:11px;color:var(--text3);">آخر تدريب: 2026/02/15 | دقة: 78.6%</div>
+                <button class="tb-btn" style="margin-top:8px;height:26px;font-size:11px;">إعادة تدريب</button>
+              </div>
+              <div style="background:var(--bg3);border-radius:var(--radius);padding:12px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                  <span style="font-size:12px;font-weight:500;color:var(--text);">نموذج تحليل risk_score</span>
+                  <span class="badge amber">يحتاج تحديث</span>
+                </div>
+                <div style="font-size:11px;color:var(--text3);">آخر تدريب: 2025/11/10 | دقة: 84.1%</div>
+                <button class="tb-btn primary" style="margin-top:8px;height:26px;font-size:11px;">تحديث الآن</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-admin-logs">
+        <div class="card">
+          <div class="card-header"><span class="card-title">سجل التدقيق — آخر 24 ساعة</span>
+          </div>
+          <div id="logsContainer"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+
+    const PARCELS = [
+      { id: 'NB-142', basin: '14', parcel: '142', locality: 'حوارة', gov: 'نابلس', area: '3,200', type: 'زراعية', status: 'مسجلة', owner: 'محمد عبد الرحمن', txn: '2026/03/28', dist: '1.2 كم', risk: 'high' },
+      { id: 'NB-087', basin: '8', parcel: '87', locality: 'بيتا', gov: 'نابلس', area: '1,800', type: 'زراعية', status: 'مسجلة', owner: 'خالد سمير', txn: '2026/03/20', dist: '0.8 كم', risk: 'high' },
+      { id: 'NB-201', basin: '20', parcel: '201', locality: 'قريوت', gov: 'نابلس', area: '2,100', type: 'متنوعة', status: 'مسجلة', owner: 'سامر قاسم', txn: '2026/02/14', dist: '2.1 كم', risk: 'med' },
+      { id: 'HB-055', basin: '5', parcel: '55', locality: 'يطا', gov: 'الخليل', area: '4,800', type: 'زراعية', status: 'مسجلة', owner: 'حسن الرجبي', txn: '2026/04/01', dist: '0.4 كم', risk: 'high' },
+      { id: 'HB-112', basin: '11', parcel: '112', locality: 'دورا', gov: 'الخليل', area: '2,600', type: 'زراعية', status: 'مسجلة', owner: 'عمر فريد', txn: '2026/03/15', dist: '0.9 كم', risk: 'high' },
+      { id: 'RM-066', basin: '6', parcel: '66', locality: 'بيتين', gov: 'رام الله', area: '3,000', type: 'مختلطة', status: 'قيد التسجيل', owner: 'إياد ناصر', txn: '2026/03/30', dist: '0.7 كم', risk: 'high' },
+      { id: 'JN-033', basin: '3', parcel: '33', locality: 'برقين', gov: 'جنين', area: '5,200', type: 'زراعية', status: 'مسجلة', owner: 'صالح مصطفى', txn: '2026/03/25', dist: '0.5 كم', risk: 'high' },
+      { id: 'TK-017', basin: '1', parcel: '17', locality: 'عنبتا', gov: 'طولكرم', area: '2,900', type: 'زراعية', status: 'مسجلة', owner: 'كمال زيدان', txn: '2026/04/02', dist: '0.3 كم', risk: 'high' },
+      { id: 'NB-334', basin: '33', parcel: '334', locality: 'حوسان', gov: 'نابلس', area: '950', type: 'سكنية', status: 'مسجلة', owner: 'علي مروان', txn: '2025/11/03', dist: '4.5 كم', risk: 'low' },
+      { id: 'NB-412', basin: '41', parcel: '412', locality: 'قريوت', gov: 'نابلس', area: '1,400', type: 'زراعية', status: 'مسجلة', owner: 'ياسر التميمي', txn: '2026/01/09', dist: '1.9 كم', risk: 'med' },
+      { id: 'HB-230', basin: '23', parcel: '230', locality: 'الظاهرية', gov: 'الخليل', area: '1,750', type: 'زراعية', status: 'مسجلة', owner: 'نضال خليل', txn: '2026/02/22', dist: '2.3 كم', risk: 'med' },
+      { id: 'RM-188', basin: '18', parcel: '188', locality: 'البيرة', gov: 'رام الله', area: '1,500', type: 'تجارية', status: 'مسجلة', owner: 'باسم عرفة', txn: '2026/02/05', dist: '2.8 كم', risk: 'med' },
+    ];
+
+    const OWNERS = [
+      { name: 'محمد عبد الرحمن', id: '987654321', type: 'فرد', residence: 'الأردن — عمان', parcels: 4, txns: 7, risk: 'high', score: 87, notes: 'مقيم خارج البلاد، وكالة بيع مشبوهة' },
+      { name: 'خالد سمير الحاج', id: '876543210', type: 'فرد', residence: 'الإمارات — دبي', parcels: 3, txns: 5, risk: 'high', score: 82, notes: 'معاملات متكررة لمشترين في الخارج' },
+      { name: 'أحمد فوزي منصور', id: '765432109', type: 'فرد', residence: 'الأردن — عمان', parcels: 2, txns: 4, risk: 'high', score: 71, notes: 'وكيل لعدة مالكين' },
+      { name: 'يوسف حسن الطيراوي', id: '654321098', type: 'فرد', residence: 'رام الله', parcels: 4, txns: 4, risk: 'med', score: 68, notes: 'ارتفاع مشبوه في عمليات البيع' },
+      { name: 'نضال محمود خليل', id: '543210987', type: 'فرد', residence: 'الخليل', parcels: 2, txns: 3, risk: 'med', score: 61, notes: '' },
+      { name: 'سامر إبراهيم قاسم', id: '432109876', type: 'فرد', residence: 'نابلس', parcels: 3, txns: 2, risk: 'low', score: 23, notes: '' },
+      { name: 'شركة النجمة للعقارات', id: '321098765', type: 'شركة', residence: 'رام الله', parcels: 8, txns: 12, risk: 'med', score: 55, notes: 'شركة محلية، تحت المراقبة' },
+    ];
+
+    const TRANSACTIONS = [
+      { num: 'TXN-2026-0401', date: '2026/04/01', seller: 'حسن الرجبي', buyer: 'شركة مجهولة', parcel: 'HB-055', type: 'بيع', price: '$145,000', doc: 'D-8821', suspicion: 'high' },
+      { num: 'TXN-2026-0389', date: '2026/03/30', seller: 'إياد ناصر', buyer: 'Hadley Trust', parcel: 'RM-066', type: 'بيع', price: '$98,000', doc: 'D-8809', suspicion: 'high' },
+      { num: 'TXN-2026-0375', date: '2026/03/28', seller: 'محمد عبد الرحمن', buyer: 'خالد سمير', parcel: 'NB-142', type: 'بيع', price: '$112,000', doc: 'D-8795', suspicion: 'high' },
+      { num: 'TXN-2026-0360', date: '2026/03/25', seller: 'صالح مصطفى', buyer: 'غير معروف', parcel: 'JN-033', type: 'بيع', price: '$187,000', doc: 'D-8780', suspicion: 'high' },
+      { num: 'TXN-2026-0341', date: '2026/03/20', seller: 'خالد سمير', buyer: 'Cohen LLC', parcel: 'NB-087', type: 'بيع', price: '$76,000', doc: 'D-8761', suspicion: 'high' },
+      { num: 'TXN-2026-0298', date: '2026/03/15', seller: 'عمر فريد', buyer: 'وسيط مجهول', parcel: 'HB-112', type: 'بيع', price: '$93,000', doc: 'D-8718', suspicion: 'high' },
+      { num: 'TXN-2026-0244', date: '2026/02/22', seller: 'نضال خليل', buyer: 'سامر قاسم', parcel: 'HB-230', type: 'بيع', price: '$62,000', doc: 'D-8664', suspicion: 'med' },
+      { num: 'TXN-2026-0210', date: '2026/02/14', seller: 'سامر قاسم', buyer: 'يوسف الطيراوي', parcel: 'NB-201', type: 'بيع', price: '$71,000', doc: 'D-8630', suspicion: 'med' },
+      { num: 'TXN-2026-0180', date: '2026/02/05', seller: 'باسم عرفة', buyer: 'شركة محلية', parcel: 'RM-188', type: 'بيع', price: '$55,000', doc: 'D-8600', suspicion: 'low' },
+      { num: 'TXN-2026-0099', date: '2026/01/09', seller: 'ياسر التميمي', buyer: 'فرد محلي', parcel: 'NB-412', type: 'بيع', price: '$48,000', doc: 'D-8519', suspicion: 'low' },
+    ];
+
+    const CASES = [
+      { id: 'CASE-2026-031', parcel: 'HB-055', location: 'الخليل / يطا', score: 96, status: 'نشطة', date: '2026/04/01', persons: 3 },
+      { id: 'CASE-2026-028', parcel: 'RM-066', location: 'رام الله / بيتين', score: 91, status: 'نشطة', date: '2026/03/30', persons: 2 },
+      { id: 'CASE-2026-025', parcel: 'NB-142', location: 'نابلس / حوارة', score: 87, status: 'تحت التحقيق', date: '2026/03/28', persons: 4 },
+      { id: 'CASE-2026-019', parcel: 'JN-033', location: 'جنين / برقين', score: 84, status: 'تحت التحقيق', date: '2026/03/25', persons: 2 },
+      { id: 'CASE-2026-014', parcel: 'NB-087', location: 'نابلس / بيتا', score: 79, status: 'محالة للقضاء', date: '2026/03/20', persons: 3 },
+      { id: 'CASE-2026-009', parcel: 'TK-017', location: 'طولكرم / عنبتا', score: 76, status: 'نشطة', date: '2026/04/02', persons: 1 },
+      { id: 'CASE-2026-003', parcel: 'HB-112', location: 'الخليل / دورا', score: 72, status: 'تحت التحقيق', date: '2026/03/15', persons: 2 },
+    ];
+
+    const ALERTS_DATA = [
+      { id: 'ALT-001', type: 'نمط بيع متسلسل', title: 'نمط بيع متسلسل مشبوه — الخليل', desc: '5 قطع متجاورة بيعت لمشترين مقيمين خارج البلاد خلال 30 يوم. المشترون مرتبطون بكيان قانوني مسجل في قبرص.', severity: 'critical', entity: 'قطعة HB-055', time: 'منذ ساعتين', status: 'جديد' },
+      { id: 'ALT-002', type: 'risk_score مرتفع', title: 'مالك risk_score مرتفع — نابلس', desc: 'أحمد فوزي منصور — 4 صفقات بيع خلال 3 أشهر. الوكالة الممنوحة لشخص مقيم في الأردن، بدون مبرر واضح.', severity: 'critical', entity: 'مالك: أحمد فوزي', time: 'منذ 5 ساعات', status: 'جديد' },
+      { id: 'ALT-003', type: 'cluster', title: 'cluster بيع — رام الله الشمال', desc: 'ارتفاع 240% في عمليات البيع بمنطقة بيتين خلال هذا الشهر. 7 قطع في نطاق 2كم مربع.', severity: 'critical', entity: 'منطقة: بيتين', time: 'منذ يوم', status: 'مراجعة' },
+      { id: 'ALT-004', type: 'وكالة مشبوهة', title: 'وكالة بيع مشبوهة — جنين', desc: 'وكالة ممنوحة من مالك مقيم داخل البلاد لشخص مقيم في الخارج دون سبب مُعلن. القطعة قريبة من مستوطنة كدوميم.', severity: 'medium', entity: 'قطعة JN-033', time: 'منذ يومين', status: 'جديد' },
+      { id: 'ALT-005', type: 'سعر مشبوه', title: 'سعر بيع أقل من السوق بكثير — طولكرم', desc: 'قطعة 2,900م² بيعت بـ $93,000 رغم أن سعر السوق يتجاوز $200,000. مؤشر على بيع وهمي أو تحت الضغط.', severity: 'medium', entity: 'قطعة TK-017', time: 'منذ 3 أيام', status: 'مراجعة' },
+      { id: 'ALT-006', type: 'تداخل ملكية', title: 'تداخل في سجلات الملكية — الخليل', desc: 'قطعة HB-230 مسجلة باسمين مختلفين في قاعدتي بيانات الطابو والبلدية. يحتاج للمراجعة اليدوية.', severity: 'low', entity: 'قطعة HB-230', time: 'منذ 5 أيام', status: 'مراجعة' },
+      { id: 'ALT-007', type: 'بيع بعد وفاة', title: 'معاملة بيع بعد وفاة المالك', desc: 'سجل وفاة المالك يسبق تاريخ معاملة البيع بـ 3 أشهر. احتمال استخدام وثائق مزورة.', severity: 'low', entity: 'مالك: ياسر التميمي', time: 'منذ أسبوع', status: 'مغلق' },
+    ];
+
+    const LOGS = [
+      { time: '2026/04/04 09:14', user: 'PTUK_IKW', action: 'دخل النظام', target: '' },
+      { time: '2026/04/04 09:18', user: 'PTUK_IKW', action: 'فتح ملف المالك', target: 'محمد عبد الرحمن (987654321)' },
+      { time: '2026/04/04 10:03', user: 'PTUK_IKW', action: 'أغلق تنبيه', target: 'ALT-007' },
+      { time: '2026/04/04 10:44', user: 'PTUK_IKW', action: 'عدّل إعدادات AI', target: 'عتبة التنبيه الحرج: 80 → 75' },
+    ];
+
+
+    const pageTitles = {
+      dashboard: 'لوحة التحكم الرئيسية', map: 'خريطة GIS التفاعلية',
+      parcels: 'قطع الأراضي', owners: 'سجل المالكين',
+      'owner-profile': 'ملف المالك', transactions: 'سجل المعاملات',
+      cases: 'قضايا التسريب المكتشفة', alerts: 'تنبيهات الذكاء الاصطناعي',
+      investigation: 'التحقيق والبحث المتقدم', reports: 'التقارير الإحصائية',
+      'custom-report': 'بناء تقرير مخصص', 'admin-users': 'إدارة المستخدمين',
+      'admin-sources': 'إدارة مصادر البيانات', 'admin-ai': 'إدارة نماذج الذكاء الاصطناعي',
+      'admin-logs': 'السجلات والتدقيق',
+    };
+
+    function gotoPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      const page = document.getElementById('page-' + id);
+      if (page) page.classList.add('active');
+      document.getElementById('pageTitle').textContent = pageTitles[id] || id;
+      document.querySelectorAll('.nav-item').forEach(n => {
+        if (n.getAttribute('onclick') && n.getAttribute('onclick').includes("'" + id + "'")) n.classList.add('active');
+      });
+      if (id === 'map') initMap();
+      if (id === 'parcels') renderParcels();
+      if (id === 'owners') renderOwners('all');
+      if (id === 'transactions') renderTransactions();
+      if (id === 'cases') renderCases();
+      if (id === 'alerts') renderAlerts('all');
+      if (id === 'admin-logs') renderLogs();
+      if (id === 'reports') renderReportCharts();
+    }
+
+
+    function riskBadge(r) {
+      if (r === 'high') return '<span class="badge red">عالٍ</span>';
+      if (r === 'med') return '<span class="badge amber">متوسط</span>';
+      return '<span class="badge green">منخفض</span>';
+    }
+    function suspBadge(s) {
+      if (s === 'high') return '<span class="badge red">مشبوه</span>';
+      if (s === 'med') return '<span class="badge amber">مراقبة</span>';
+      return '<span class="badge green">عادي</span>';
+    }
+
+    function renderParcels() {
+      const tbody = document.getElementById('parcelsTableBody');
+      tbody.innerHTML = PARCELS.map(p => `
+    <tr style="cursor:pointer;" onclick="gotoPage('owner-profile')">
+      <td class="td-mono td-link">${p.id}</td>
+      <td>${p.locality} <span class="td-muted">/ ${p.gov}</span></td>
+      <td>${p.area} م²</td>
+      <td>${p.type}</td>
+      <td><span class="badge ${p.status.includes('قيد') ? 'amber' : 'blue'}">${p.status}</span></td>
+      <td style="font-weight:500;">${p.owner}</td>
+      <td class="td-muted">${p.txn}</td>
+      <td>${p.dist}</td>
+      <td>${riskBadge(p.risk)}</td>
+      <td><button class="tb-btn" style="height:24px;font-size:11px;" onclick="event.stopPropagation();gotoPage('owner-profile')">ملف المالك</button></td>
+    </tr>`).join('');
+    }
+
+    function renderOwners(filter) {
+      let data = OWNERS;
+      if (filter === 'high') data = data.filter(o => o.risk === 'high');
+      else if (filter === 'med') data = data.filter(o => o.risk === 'med');
+      else if (filter === 'abroad') data = data.filter(o => !o.residence.includes('رام الله') && !o.residence.includes('نابلس') && !o.residence.includes('الخليل') && !o.residence.includes('جنين'));
+      const tbody = document.getElementById('ownersTableBody');
+      tbody.innerHTML = data.map(o => `
+    <tr style="cursor:pointer;" onclick="gotoPage('owner-profile')">
+      <td style="font-weight:500;">${o.name}</td>
+      <td class="td-mono">${o.id}</td>
+      <td><span class="badge ${o.type === 'شركة' ? 'blue' : 'gray'}">${o.type}</span></td>
+      <td>${o.residence}</td>
+      <td>${o.parcels}</td>
+      <td>${o.txns}</td>
+      <td>${riskBadge(o.risk)} <span class="td-muted">${o.score}/100</span></td>
+      <td class="td-muted" style="max-width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${o.notes}</td>
+      <td><button class="tb-btn" style="height:24px;font-size:11px;" onclick="event.stopPropagation();gotoPage('owner-profile')">الملف</button></td>
+    </tr>`).join('');
+    }
+
+    function filterOwners(val) { renderOwners(val); }
+
+    function renderTransactions() {
+      const tbody = document.getElementById('txnTableBody');
+      tbody.innerHTML = TRANSACTIONS.map(t => `
+    <tr>
+      <td class="td-mono td-link">${t.num}</td>
+      <td class="td-muted">${t.date}</td>
+      <td style="font-weight:500;">${t.seller}</td>
+      <td>${t.buyer}</td>
+      <td class="td-mono">${t.parcel}</td>
+      <td><span class="badge gray">${t.type}</span></td>
+      <td style="font-weight:500;">${t.price}</td>
+      <td class="td-mono">${t.doc}</td>
+      <td>${suspBadge(t.suspicion)}</td>
+    </tr>`).join('');
+    }
+
+    function renderCases() {
+      const tbody = document.getElementById('casesTableBody');
+      const statusMap = { 'نشطة': 'red', 'تحت التحقيق': 'amber', 'محالة للقضاء': 'blue' };
+      tbody.innerHTML = CASES.map(c => `
+    <tr style="cursor:pointer;" onclick="gotoPage('investigation')">
+      <td class="td-mono td-link">${c.id}</td>
+      <td class="td-mono">${c.parcel}</td>
+      <td>${c.location}</td>
+      <td><span class="badge ${c.score > 85 ? 'red' : c.score > 70 ? 'amber' : 'green'}">${c.score}%</span></td>
+      <td><span class="badge ${statusMap[c.status] || 'gray'}">${c.status}</span></td>
+      <td class="td-muted">${c.date}</td>
+      <td>${c.persons} أشخاص</td>
+      <td><button class="tb-btn" style="height:24px;font-size:11px;" onclick="event.stopPropagation();gotoPage('investigation')">تحقيق</button></td>
+    </tr>`).join('');
+    }
+
+    function renderAlerts(filter) {
+      let data = ALERTS_DATA;
+      if (filter === 'critical') data = data.filter(a => a.severity === 'critical');
+      else if (filter === 'medium') data = data.filter(a => a.severity === 'medium');
+      else if (filter === 'low') data = data.filter(a => a.severity === 'low');
+      const container = document.getElementById('alertsList');
+      const sevMap = { critical: 'red', medium: 'amber', low: 'blue' };
+      const sevLabel = { critical: 'حرج', medium: 'متوسط', low: 'منخفض' };
+      const dotColors = { critical: 'var(--red)', medium: 'var(--amber)', low: 'var(--blue)' };
+      const statusMap = { 'جديد': 'red', 'مراجعة': 'amber', 'مغلق': 'gray' };
+      container.innerHTML = data.map(a => `
+    <div class="alert-row">
+      <div class="alert-dot" style="background:${dotColors[a.severity]};"></div>
+      <div class="alert-content">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div class="alert-title">${a.title}</div>
+          <span class="badge ${sevMap[a.severity]}">${sevLabel[a.severity]}</span>
+        </div>
+        <div class="alert-desc" style="margin-top:4px;">${a.desc}</div>
+        <div class="alert-meta">
+          <span class="badge gray">${a.type}</span>
+          <span style="font-size:11px;color:var(--blue2);">${a.entity}</span>
+          <span class="alert-time">${a.time}</span>
+          <span class="badge ${statusMap[a.status] || 'gray'}" style="margin-right:auto;">${a.status}</span>
+        </div>
+      </div>
+    </div>`).join('');
+    }
+
+    function filterAlerts(val) { renderAlerts(val); }
+
+    function renderLogs() {
+      const container = document.getElementById('logsContainer');
+      container.innerHTML = LOGS.map(l => `
+    <div class="log-row">
+      <span class="log-time">${l.time}</span>
+      <span class="log-user">${l.user}</span>
+      <span class="log-action">${l.action}</span>
+      <span class="log-target">${l.target}</span>
+    </div>`).join('');
+    }
+
+
+    function initDashboardChart() {
+      const ctx = document.getElementById('trendChart');
+      if (!ctx || ctx._chartInit) return;
+      ctx._chartInit = true;
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['نوفمبر', 'ديسمبر', 'يناير', 'فبراير', 'مارس', 'أبريل'],
+          datasets: [
+            { label: 'عمليات البيع', data: [78, 91, 105, 118, 121, 143], borderColor: '#e24b4a', backgroundColor: 'rgba(226,75,74,.08)', fill: true, tension: .4, pointBackgroundColor: '#e24b4a', pointRadius: 4, borderWidth: 2 },
+            { label: 'مشبوهة', data: [14, 18, 22, 25, 26, 31], borderColor: '#ef9f27', backgroundColor: 'rgba(239,159,39,.06)', fill: true, tension: .4, pointBackgroundColor: '#ef9f27', pointRadius: 4, borderWidth: 2, borderDash: [5, 3] },
+          ]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#8b949e', font: { size: 11 } }, grid: { color: 'rgba(255,255,255,.04)' } }, y: { ticks: { color: '#8b949e', font: { size: 11 } }, grid: { color: 'rgba(255,255,255,.04)' }, beginAtZero: true } } }
+      });
+    }
+
+    function renderReportCharts() {
+      const ctx1 = document.getElementById('reportChart');
+      if (ctx1 && !ctx1._chartInit) {
+        ctx1._chartInit = true;
+        new Chart(ctx1, {
+          type: 'bar',
+          data: { labels: ['الخليل', 'نابلس', 'رام الله', 'جنين', 'طولكرم', 'بيت لحم'], datasets: [{ data: [34, 26, 21, 16, 11, 8], backgroundColor: ['#e24b4a', '#ef9f27', '#ef9f27', '#1d9e75', '#1d9e75', '#378add'], borderRadius: 4 }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#8b949e', font: { size: 10 } }, grid: { display: false } }, y: { ticks: { color: '#8b949e', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,.04)' } } } }
+        });
+      }
+      const ctx2 = document.getElementById('reportChart2');
+      if (ctx2 && !ctx2._chartInit) {
+        ctx2._chartInit = true;
+        new Chart(ctx2, {
+          type: 'line',
+          data: { labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'], datasets: [{ label: 'معاملات', data: [88, 95, 102, 91, 110, 130, 115, 128, 145, 138, 155, 150], borderColor: '#378add', backgroundColor: 'rgba(55,138,221,.08)', fill: true, tension: .4, pointRadius: 3, borderWidth: 2 }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#8b949e', font: { size: 9 }, maxRotation: 45, autoSkip: false }, grid: { color: 'rgba(255,255,255,.04)' } }, y: { ticks: { color: '#8b949e', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,.04)' } } } }
+        });
+      }
+    }
+
+    function updateReportPreview() {
+      const type = document.getElementById('reportType').value;
+      const period = document.getElementById('reportPeriod').value;
+      const entity = document.getElementById('reportEntity').value;
+      const typeLabels = { person: 'تقرير عن شخص', parcel: 'تقرير عن قطعة أرض', region: 'تقرير عن منطقة', period: 'تقرير فترة زمنية', monthly: 'تقرير شهري' };
+      document.getElementById('rpTitle').textContent = typeLabels[type] + ' — ' + period + (entity ? ' — ' + entity : '');
+      const contentMap = {
+        person: 'كل معاملات البيع، سجل الملكية الكامل، التنبيهات المرتبطة، خريطة توزيع الأراضي، سلسلة البيع',
+        parcel: 'سجل نقل الملكية، كل المالكين السابقين، المعاملات المرتبطة، القضايا القانونية، المسافة من أقرب مستوطنة',
+        region: 'إحصائيات المنطقة، توزيع عمليات البيع، Hotspots، مقارنة بالفترات السابقة',
+        period: 'تحليل شامل للفترة المحددة، المعاملات، القضايا المكتشفة، التوصيات',
+        monthly: 'ملخص شهري، أبرز الحالات، إحصائيات المحافظات، التنبيهات',
+      };
+      document.getElementById('rpSub').textContent = 'سيتضمن التقرير: ' + contentMap[type];
+    }
+
+    function generateReport() {
+      alert('جاري توليد التقرير... سيكون جاهزاً خلال لحظات.');
+    }
+
+
+    function runInvestigation(val) {
+      const results = document.getElementById('investResults');
+      const cards = document.getElementById('investCards');
+      if (val.length < 2) {
+        results.innerHTML = '<div class="empty"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><p>أدخل اسم شخص أو رقم قطعة أرض لبدء التحقيق وتتبع سلسلة البيع</p></div>';
+        cards.style.display = 'none';
+        return;
+      }
+      results.innerHTML = '<div style="padding:12px 0;font-size:12px;color:var(--text3);">تحليل البيانات... تتبع سلسلة الملكية...</div>';
+      setTimeout(() => {
+        results.innerHTML = '<div style="padding:8px;background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.2);border-radius:var(--radius);font-size:12px;color:#5dcaa5;">تم إيجاد نتائج مرتبطة بـ "<strong>' + val + '</strong>"</div>';
+        cards.style.display = 'grid';
+      }, 600);
+    }
+
+    let mapCanvas, mapCtx, mapScale = 1, mapOffX = 0, mapOffY = 0, mapDragging = false, mapLastX = 0, mapLastY = 0, mapSelected = null;
+    const mapLayers = { suspicious: true, normal: true, settlements: true, roads: true, oslo: false, hotspots: true };
+    let mapRiskFilter = 'all', mapGovFilter = 'all';
+    let mapInitialized = false;
+
+    const MAP_PARCELS = [
+      { id: 'NB-142', x: .52, y: .18, r: 8, risk: 'high', gov: 'nablus', area: '3,200 م²', owner: 'محمد عبد الرحمن', txn: '2026/03/28', dist: '1.2 كم' },
+      { id: 'NB-087', x: .48, y: .22, r: 6, risk: 'high', gov: 'nablus', area: '1,800 م²', owner: 'خالد سمير', txn: '2026/03/20', dist: '0.8 كم' },
+      { id: 'NB-201', x: .55, y: .25, r: 7, risk: 'med', gov: 'nablus', area: '2,100 م²', owner: 'سامر قاسم', txn: '2026/02/14', dist: '2.1 كم' },
+      { id: 'NB-334', x: .44, y: .15, r: 5, risk: 'low', gov: 'nablus', area: '950 م²', owner: 'علي مروان', txn: '2025/11/03', dist: '4.5 كم' },
+      { id: 'NB-412', x: .58, y: .19, r: 6, risk: 'med', gov: 'nablus', area: '1,400 م²', owner: 'ياسر التميمي', txn: '2026/01/09', dist: '1.9 كم' },
+      { id: 'HB-055', x: .45, y: .72, r: 9, risk: 'high', gov: 'hebron', area: '4,800 م²', owner: 'حسن الرجبي', txn: '2026/04/01', dist: '0.4 كم' },
+      { id: 'HB-112', x: .50, y: .68, r: 7, risk: 'high', gov: 'hebron', area: '2,600 م²', owner: 'عمر فريد', txn: '2026/03/15', dist: '0.9 كم' },
+      { id: 'HB-230', x: .40, y: .75, r: 6, risk: 'med', gov: 'hebron', area: '1,750 م²', owner: 'نضال خليل', txn: '2026/02/22', dist: '2.3 كم' },
+      { id: 'HB-301', x: .55, y: .78, r: 5, risk: 'low', gov: 'hebron', area: '800 م²', owner: 'وليد حسين', txn: '2025/12/10', dist: '5.1 كم' },
+      { id: 'RM-066', x: .38, y: .42, r: 7, risk: 'high', gov: 'ramallah', area: '3,000 م²', owner: 'إياد ناصر', txn: '2026/03/30', dist: '0.7 كم' },
+      { id: 'RM-188', x: .43, y: .38, r: 6, risk: 'med', gov: 'ramallah', area: '1,500 م²', owner: 'باسم عرفة', txn: '2026/02/05', dist: '2.8 كم' },
+      { id: 'JN-033', x: .50, y: .08, r: 8, risk: 'high', gov: 'jenin', area: '5,200 م²', owner: 'صالح مصطفى', txn: '2026/03/25', dist: '0.5 كم' },
+      { id: 'TK-017', x: .32, y: .28, r: 6, risk: 'high', gov: 'tulkarm', area: '2,900 م²', owner: 'كمال زيدان', txn: '2026/04/02', dist: '0.3 كم' },
+      { id: 'TK-081', x: .27, y: .32, r: 5, risk: 'med', gov: 'tulkarm', area: '1,050 م²', owner: 'رامي جمال', txn: '2026/02/28', dist: '2.6 كم' },
+    ];
+    const MAP_SETTLEMENTS = [
+      { x: .62, y: .20, w: 28, h: 18, name: 'أريئيل' }, { x: .65, y: .15, w: 20, h: 14, name: 'إيمانوئيل' },
+      { x: .30, y: .38, w: 24, h: 16, name: 'ألفي منشيه' }, { x: .58, y: .70, w: 30, h: 22, name: 'كريات أربع' },
+      { x: .52, y: .65, w: 22, h: 15, name: 'إفرات' }, { x: .70, y: .30, w: 18, h: 12, name: 'شيلو' },
+    ];
+    const MAP_ROADS = [
+      [{ x: .62, y: .20 }, { x: .65, y: .15 }, { x: .70, y: .30 }],
+      [{ x: .30, y: .38 }, { x: .35, y: .45 }],
+      [{ x: .52, y: .65 }, { x: .55, y: .70 }, { x: .58, y: .70 }],
+    ];
+    const MAP_HOTSPOTS = [
+      { x: .50, y: .20, r: 45, gov: 'nablus' }, { x: .47, y: .73, r: 50, gov: 'hebron' },
+      { x: .40, y: .42, r: 35, gov: 'ramallah' }, { x: .50, y: .09, r: 32, gov: 'jenin' },
+      { x: .30, y: .30, r: 30, gov: 'tulkarm' },
+    ];
+    const GOV_NAMES = { nablus: 'نابلس', hebron: 'الخليل', ramallah: 'رام الله', jenin: 'جنين', tulkarm: 'طولكرم' };
+
+    function initMap() {
+      if (mapInitialized) { mapDraw(); return; }
+      mapCanvas = document.getElementById('mapCanvas');
+      mapCtx = mapCanvas.getContext('2d');
+      mapInitialized = true;
+      function resize() { mapCanvas.width = mapCanvas.offsetWidth; mapCanvas.height = mapCanvas.offsetHeight; mapDraw(); }
+      new ResizeObserver(resize).observe(mapCanvas);
+      setTimeout(resize, 50);
+      mapCanvas.addEventListener('mousedown', e => { mapDragging = true; mapLastX = e.clientX; mapLastY = e.clientY; });
+      mapCanvas.addEventListener('mousemove', e => { if (mapDragging) { mapOffX += (e.clientX - mapLastX) / mapScale; mapOffY += (e.clientY - mapLastY) / mapScale; mapLastX = e.clientX; mapLastY = e.clientY; mapDraw(); } });
+      mapCanvas.addEventListener('mouseup', () => mapDragging = false);
+      mapCanvas.addEventListener('mouseleave', () => mapDragging = false);
+      mapCanvas.addEventListener('wheel', e => { e.preventDefault(); mapZoom(e.deltaY < 0 ? 1.1 : .9); }, { passive: false });
+      mapCanvas.addEventListener('click', e => {
+        const rect = mapCanvas.getBoundingClientRect(), mx = e.clientX - rect.left, my = e.clientY - rect.top;
+        let hit = null;
+        getVisibleParcels().forEach(p => { const cx = mpx(p.x, 'x'), cy = mpx(p.y, 'y'), d = Math.sqrt((mx - cx) ** 2 + (my - cy) ** 2); if (d < p.r * mapScale * 1.5) hit = p; });
+        if (hit) { mapSelected = hit; showMapPanel(hit); } else { mapSelected = null; document.getElementById('mapParcelPanel').style.display = 'none'; }
+        mapDraw();
+      });
+    }
+
+    function mpx(p, axis) { const C = axis === 'x' ? mapCanvas.width : mapCanvas.height; return (p * C * .9 + C * .05 + mapOffX) * mapScale; }
+
+    function getVisibleParcels() {
+      return MAP_PARCELS.filter(p => {
+        if (mapRiskFilter !== 'all' && p.risk !== mapRiskFilter) return false;
+        if (mapGovFilter !== 'all' && p.gov !== mapGovFilter) return false;
+        return true;
+      });
+    }
+
+    function mapDraw() {
+      if (!mapCanvas || !mapCtx) return;
+      const ctx = mapCtx, W = mapCanvas.width, H = mapCanvas.height;
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = '#1a2820'; ctx.fillRect(0, 0, W, H);
+      ctx.strokeStyle = 'rgba(255,255,255,.03)'; ctx.lineWidth = .5;
+      for (let i = 0; i < 10; i++) { ctx.beginPath(); ctx.moveTo(0, (i / 10) * H); ctx.lineTo(W, (i / 10) * H); ctx.stroke(); }
+      for (let i = 0; i < 10; i++) { ctx.beginPath(); ctx.moveTo((i / 10) * W, 0); ctx.lineTo((i / 10) * W, H); ctx.stroke(); }
+
+      if (mapLayers.oslo) {
+        [[.35, .15, .30, .25, 'A'], [.30, .40, .20, .20, 'B'], [.40, .60, .25, .25, 'C']].forEach(z => {
+          ctx.fillStyle = 'rgba(55,138,221,.1)'; ctx.strokeStyle = 'rgba(55,138,221,.25)'; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.rect(mpx(z[0], 'x'), mpx(z[1], 'y'), z[2] * W * .9 * mapScale, z[3] * H * .9 * mapScale);
+          ctx.fill(); ctx.stroke();
+        });
+      }
+      if (mapLayers.hotspots) {
+        MAP_HOTSPOTS.forEach(h => {
+          if (mapGovFilter !== 'all' && h.gov !== mapGovFilter) return;
+          const cx = mpx(h.x, 'x'), cy = mpx(h.y, 'y'), r = h.r * mapScale;
+          ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fillStyle = 'rgba(226,75,74,.10)'; ctx.fill();
+          ctx.beginPath(); ctx.arc(cx, cy, r * .55, 0, Math.PI * 2); ctx.fillStyle = 'rgba(226,75,74,.08)'; ctx.fill();
+        });
+      }
+      if (mapLayers.roads) {
+        MAP_ROADS.forEach(road => {
+          ctx.beginPath(); ctx.moveTo(mpx(road[0].x, 'x'), mpx(road[0].y, 'y'));
+          road.slice(1).forEach(pt => ctx.lineTo(mpx(pt.x, 'x'), mpx(pt.y, 'y')));
+          ctx.strokeStyle = '#D85A30'; ctx.lineWidth = 2.5 * mapScale; ctx.setLineDash([6, 3]); ctx.stroke(); ctx.setLineDash([]);
+        });
+      }
+      if (mapLayers.settlements) {
+        MAP_SETTLEMENTS.forEach(s => {
+          const sx = mpx(s.x, 'x'), sy = mpx(s.y, 'y'), sw = s.w * mapScale, sh = s.h * mapScale;
+          ctx.fillStyle = 'rgba(127,119,221,.2)'; ctx.strokeStyle = '#7F77DD'; ctx.lineWidth = 1.5 * mapScale;
+          ctx.beginPath(); ctx.rect(sx, sy, sw, sh); ctx.fill(); ctx.stroke();
+          if (mapScale > .7) { ctx.fillStyle = '#afa9ec'; ctx.font = `${Math.round(10 * mapScale)}px IBM Plex Sans Arabic`; ctx.textAlign = 'center'; ctx.fillText(s.name, sx + sw / 2, sy + sh / 2 + 3); ctx.textAlign = 'right'; }
+        });
+      }
+      getVisibleParcels().forEach(p => {
+        if (!mapLayers.suspicious && p.risk === 'high') return;
+        if (!mapLayers.normal && p.risk !== 'high') return;
+        const cx = mpx(p.x, 'x'), cy = mpx(p.y, 'y'), r = p.r * mapScale, sel = mapSelected && mapSelected.id === p.id;
+        const col = p.risk === 'high' ? '#E24B4A' : p.risk === 'med' ? '#EF9F27' : '#1D9E75';
+        ctx.beginPath(); ctx.arc(cx, cy, r * (sel ? 1.5 : 1), 0, Math.PI * 2);
+        ctx.fillStyle = col + (sel ? '' : 'bb'); ctx.fill();
+        if (sel) { ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.stroke(); }
+        if (mapScale > .8 && r > 5) { ctx.fillStyle = 'white'; ctx.font = `bold ${Math.round(8 * mapScale)}px monospace`; ctx.textAlign = 'center'; ctx.fillText(p.id.split('-')[1], cx, cy + 3); ctx.textAlign = 'right'; }
+      });
+      updateMapStats();
+    }
+
+    function showMapPanel(p) {
+      const panel = document.getElementById('mapParcelPanel');
+      document.getElementById('mppTitle').textContent = 'قطعة ' + p.id;
+      document.getElementById('mppId').textContent = p.id;
+      document.getElementById('mppArea').textContent = p.area;
+      document.getElementById('mppGov').textContent = GOV_NAMES[p.gov] || p.gov;
+      document.getElementById('mppOwner').textContent = p.owner;
+      document.getElementById('mppTxn').textContent = p.txn;
+      document.getElementById('mppDist').textContent = p.dist;
+      const rEl = document.getElementById('mppRisk');
+      rEl.textContent = p.risk === 'high' ? 'عالٍ' : p.risk === 'med' ? 'متوسط' : 'منخفض';
+      rEl.style.color = p.risk === 'high' ? 'var(--red)' : p.risk === 'med' ? 'var(--amber)' : 'var(--accent)';
+      panel.style.display = 'block';
+    }
+
+    function viewParcelOwner() { gotoPage('owner-profile'); }
+
+    function mapZoom(f) { mapScale = Math.max(.4, Math.min(4, mapScale * f)); mapDraw(); }
+    function resetMapView() { mapScale = 1; mapOffX = 0; mapOffY = 0; mapDraw(); }
+
+    function toggleMapLayer(btn, name) {
+      mapLayers[name] = !mapLayers[name];
+      btn.className = 'toggle-sw ' + (mapLayers[name] ? 'on' : 'off');
+      mapDraw();
+    }
+
+    function setMapFilter(el, type, val) {
+      const group = el.parentNode;
+      group.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+      el.classList.add('active');
+      if (type === 'risk') mapRiskFilter = val;
+      if (type === 'gov') mapGovFilter = val;
+      mapDraw();
+    }
+
+    function updateMapStats() {
+      const vp = getVisibleParcels();
+      document.getElementById('msTotal').textContent = vp.length;
+      document.getElementById('msHigh').textContent = vp.filter(p => p.risk === 'high').length;
+      document.getElementById('msMed').textContent = vp.filter(p => p.risk === 'med').length;
+      document.getElementById('msLow').textContent = vp.filter(p => p.risk === 'low').length;
+    }
+
+    function handleMapSearch(v) {
+      if (!v) { mapSelected = null; mapDraw(); return; }
+      const found = MAP_PARCELS.find(p => p.id.toLowerCase().includes(v.toLowerCase()) || p.owner.includes(v));
+      if (found) { mapSelected = found; showMapPanel(found); }
+      mapDraw();
+    }
+
+
+    setTimeout(() => {
+      initDashboardChart();
+    }, 100);
+  </script>
+</body>
+
+</html>
