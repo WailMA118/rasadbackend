@@ -7,7 +7,7 @@
 
 import pandas as pd
 from sqlalchemy import create_engine, text
-from config import DB_URI
+from config import DB_URL 
 
 
 _engine = None
@@ -16,7 +16,7 @@ _engine = None
 def get_engine():
     global _engine
     if _engine is None:
-        _engine = create_engine(DB_URI, pool_pre_ping=True)
+        _engine = create_engine(DB_URL, pool_pre_ping=True)
     return _engine
 
 

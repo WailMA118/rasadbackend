@@ -12,6 +12,9 @@ import json
 import os
 import sys
 import pandas as pd
+from fastapi.middleware.cors import CORSMiddleware
+
+
 
 # إضافة settlement_models إلى المسار
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'settlement_models'))
@@ -49,7 +52,15 @@ async def get_db():
         yield session
 
 
-app = FastAPI()
+app = FastAPI(redirect_slashes=False)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # للتجربة
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # ربط مجلدات الرسوم البيانية
 if not os.path.exists("charts"):
@@ -167,40 +178,6 @@ async def generate_custom_report_endpoint(request: CustomReportRequest):
             "message": f"خطأ في توليد التقرير: {str(e)}"
         }
 
-@app.get("/custom-reports/{report_name}")
-async def get_custom_report(report_name: str):
-    """
-    إرجاع تقرير مخصص محفوظ
-    """
-    try:
-        with open(f"custom_reports/{report_name}.json", "r", encoding="utf-8") as f:
-            report = json.load(f)
-        
-        return {
-            "status": "success",
-            "report_name": report_name,
-            "data": report
-        }
-    except FileNotFoundError:
-        return {
-            "status": "error",
-            "message": f"التقرير '{report_name}' غير موجود"
-        }
-
-@app.get("/custom-charts/{chart_name}")
-async def get_custom_chart(chart_name: str):
-    """
-    إرجاع الرسم البياني المخصص
-    """
-    chart_path = f"custom_charts/{chart_name}"
-    if os.path.exists(chart_path):
-        return FileResponse(chart_path, media_type="image/png")
-    else:
-        return {
-            "status": "error",
-            "message": f"الرسم البياني '{chart_name}' غير موجود"
-        }
-
 @app.get("/settlement_expansion/json")
 async def get_settlement_expansion_json():
     """
@@ -248,7 +225,7 @@ async def predict_settlement_by_id(settlement_id: int):
     """
     التنبؤ بخطر توسع المستوطنة حسب المعرف
     """
-    from predict import predict_settlement
+    from settlement_models.predict import predict_settlement
     
     result = predict_settlement(settlement_id=settlement_id)
     return result
@@ -258,7 +235,7 @@ async def predict_settlement_by_name(name: str):
     """
     التنبؤ بخطر توسع المستوطنة حسب الاسم
     """
-    from predict import predict_settlement
+    from settlement_models.predict import predict_settlement
     
     result = predict_settlement(name=name)
     return result
@@ -284,7 +261,7 @@ async def get_all_detected_leaks(period: str = "آخر شهر"):
         if leak_path not in sys.path:
             sys.path.insert(0, leak_path)
         
-        from predict import batch_predict
+        from leak_deetection.predict import batch_predict
         import asyncio
         
         # تنفيذ التنبؤ في thread منفصل
@@ -348,12 +325,9 @@ async def check_parcel_leakage(basin_number: str, parcel_number: str, locality_i
         import sys
         import os as os_module
         
-        leak_path = os_module.path.join(os_module.path.dirname(__file__), 'leak_deetection')
-        if leak_path not in sys.path:
-            sys.path.insert(0, leak_path)
         
-        from data_loader import get_parcel_by_composite_key
-        from predict import predict_parcel
+        from leak_deetection.data_loader import get_parcel_by_composite_key
+        from leak_deetection.predict import predict_parcel
         import asyncio
         
         # البحث عن parcel_id من المفتاح المركب
@@ -426,7 +400,7 @@ async def get_all_suspicious_people():
         if fraud_det_path not in sys.path:
             sys.path.insert(0, fraud_det_path)
         
-        from predict import batch_predict
+        from fraud_deetection.predict import batch_predict
         import asyncio
         
         # تنفيذ التنبؤ في thread منفصل
@@ -463,7 +437,7 @@ async def get_owner_involvement(owner_id: int):
         if fraud_det_path not in sys.path:
             sys.path.insert(0, fraud_det_path)
         
-        from predict import predict_person
+        from fraud_deetection.predict import predict_person
         import asyncio
         
         # التنبؤ للشخص المحدد

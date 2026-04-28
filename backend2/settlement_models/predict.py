@@ -11,7 +11,7 @@ import pandas as pd
 import os
 from pathlib import Path
 
-from config import THR_CRITICAL, THR_HIGH, THR_MEDIUM, SEVERITY_COLOR, OUTPUT_DIR
+from settlement_models.config import THR_CRITICAL, THR_HIGH, THR_MEDIUM, SEVERITY_COLOR, OUTPUT_DIR ,DB_URL
 
 
 # ── Prediction runner ─────────────────────────────────────────

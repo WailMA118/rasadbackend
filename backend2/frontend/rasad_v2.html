@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رصد — نظام تحليل الأراضي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root{
+  --bg:#0d1117;--bg2:#161b22;--bg3:#1c2333;--bg4:#21262d;
+  --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.14);
+  --text:#e6edf3;--text2:#8b949e;--text3:#484f58;
+  --accent:#1d9e75;--accent2:#0f6e56;
+  --red:#e24b4a;--red2:#f09595;--amber:#ef9f27;--amber2:#fac775;
+  --blue:#378add;--blue2:#85b7eb;--purple:#7f77dd;
+  --font:'IBM Plex Sans Arabic',sans-serif;--mono:'JetBrains Mono',monospace;
+  --radius:8px;--radius-lg:12px;--sidebar-w:220px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;}
+.app{display:flex;height:100vh;}
+.sidebar{width:var(--sidebar-w);background:var(--bg2);border-left:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;overflow:hidden;}
+.main{flex:1;overflow:hidden;display:flex;flex-direction:column;}
+
+/* ── PAGE VISIBILITY — class-only, no !important tricks ── */
+.page{display:none;flex:1;overflow-y:auto;padding:24px;flex-direction:column;gap:20px;}
+.page.active{display:flex;animation:fadeIn .2s ease;}
+
+.logo-area{padding:18px 16px 14px;border-bottom:1px solid var(--border);}
+.logo-mark{display:flex;align-items:center;gap:10px;margin-bottom:2px;}
+.logo-icon{width:30px;height:30px;background:var(--accent);border-radius:7px;display:flex;align-items:center;justify-content:center;}
+.logo-icon svg{width:16px;height:16px;stroke:white;fill:none;stroke-width:2;}
+.logo-name{font-size:16px;font-weight:600;color:var(--text);letter-spacing:-.02em;}
+.logo-sub{font-size:11px;color:var(--text3);margin-right:40px;}
+.nav{padding:10px 8px;flex:1;overflow-y:auto;}
+.nav-section{margin-bottom:18px;}
+.nav-section-label{font-size:10px;font-weight:500;color:var(--text3);padding:0 8px;margin-bottom:4px;letter-spacing:.08em;text-transform:uppercase;}
+.nav-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:var(--radius);cursor:pointer;color:var(--text2);font-size:13px;transition:all .15s;position:relative;user-select:none;}
+.nav-item:hover{background:var(--bg3);color:var(--text);}
+.nav-item.active{background:var(--bg4);color:var(--text);font-weight:500;}
+.nav-item.active::before{content:'';position:absolute;right:0;top:6px;bottom:6px;width:2px;background:var(--accent);border-radius:2px 0 0 2px;}
+.nav-item svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5;flex-shrink:0;}
+.nav-badge{margin-right:auto;background:var(--red);color:white;font-size:10px;padding:1px 6px;border-radius:10px;font-weight:500;}
+.nav-badge.amber{background:var(--amber);}
+.nav-badge.blue{background:var(--blue);}
+.sidebar-footer{padding:12px 16px;border-top:1px solid var(--border);}
+.user-row{display:flex;align-items:center;gap:10px;}
+.avatar{width:30px;height:30px;border-radius:50%;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:white;flex-shrink:0;}
+.user-name{font-size:12px;color:var(--text);font-weight:500;}
+.user-role{font-size:10px;color:var(--text3);}
+.topbar{height:52px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;gap:16px;flex-shrink:0;}
+.page-title{font-size:14px;font-weight:500;color:var(--text);flex:1;}
+.topbar-actions{display:flex;gap:8px;align-items:center;}
+.tb-btn{height:30px;padding:0 12px;border-radius:var(--radius);background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-size:12px;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:var(--font);transition:all .15s;}
+.tb-btn:hover{border-color:var(--border2);color:var(--text);}
+.tb-btn.primary{background:var(--accent);border-color:var(--accent);color:white;}
+.tb-btn.danger{background:rgba(226,75,74,.15);border-color:rgba(226,75,74,.3);color:var(--red2);}
+.tb-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;}
+.tb-btn:disabled{opacity:.5;cursor:not-allowed;}
+.metrics-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;}
+.metrics-grid.col3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.metric-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;position:relative;overflow:hidden;}
+.metric-card::after{content:'';position:absolute;top:0;right:0;left:0;height:2px;}
+.metric-card.red::after{background:var(--red);}
+.metric-card.amber::after{background:var(--amber);}
+.metric-card.blue::after{background:var(--blue);}
+.metric-card.green::after{background:var(--accent);}
+.metric-card.purple::after{background:var(--purple);}
+.m-label{font-size:11px;color:var(--text3);margin-bottom:8px;}
+.m-value{font-size:28px;font-weight:600;color:var(--text);line-height:1;font-variant-numeric:tabular-nums;}
+.m-change{font-size:11px;margin-top:6px;display:flex;align-items:center;gap:4px;}
+.m-change.up{color:var(--red);}
+.m-change.down{color:var(--accent);}
+.m-icon{position:absolute;top:14px;left:14px;opacity:.12;}
+.m-icon svg{width:32px;height:32px;stroke:currentColor;fill:none;stroke-width:1.2;}
+.grid-2{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:16px;}
+.grid-2-equal{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;}
+.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.card-title{font-size:13px;font-weight:500;color:var(--text);}
+.card-action{font-size:11px;color:var(--text3);cursor:pointer;display:flex;align-items:center;gap:4px;}
+.card-action:hover{color:var(--text2);}
+.card-action svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;}
+.badge{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:500;display:inline-flex;align-items:center;gap:3px;}
+.badge.red{background:rgba(226,75,74,.15);color:var(--red2);}
+.badge.amber{background:rgba(239,159,39,.15);color:var(--amber2);}
+.badge.green{background:rgba(29,158,117,.15);color:#5dcaa5;}
+.badge.blue{background:rgba(55,138,221,.15);color:var(--blue2);}
+.badge.purple{background:rgba(127,119,221,.15);color:#afa9ec;}
+.badge.gray{background:var(--bg4);color:var(--text2);}
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:12px;}
+th{text-align:right;padding:8px 12px;color:var(--text3);font-weight:500;border-bottom:1px solid var(--border);font-size:11px;white-space:nowrap;}
+td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(255,255,255,.02);}
+.td-muted{color:var(--text3);font-size:11px;}
+.td-mono{font-family:var(--mono);font-size:11px;color:var(--text2);}
+.td-link{color:var(--blue);cursor:pointer;font-weight:500;}
+.alert-list{display:flex;flex-direction:column;gap:8px;}
+.alert-row{display:flex;gap:10px;padding:10px 12px;background:var(--bg3);border-radius:var(--radius);border:1px solid var(--border);cursor:pointer;transition:border-color .15s;}
+.alert-row:hover{border-color:var(--border2);}
+.alert-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0;}
+.alert-content{flex:1;min-width:0;}
+.alert-title{font-size:12px;font-weight:500;color:var(--text);margin-bottom:2px;}
+.alert-desc{font-size:11px;color:var(--text3);line-height:1.5;}
+.alert-meta{display:flex;gap:8px;margin-top:4px;align-items:center;}
+.alert-time{font-size:10px;color:var(--text3);}
+.bar-list{display:flex;flex-direction:column;gap:10px;}
+.bar-row{display:flex;align-items:center;gap:10px;}
+.bar-label{font-size:12px;color:var(--text);width:72px;flex-shrink:0;}
+.bar-track{flex:1;height:6px;background:var(--bg4);border-radius:3px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:3px;transition:width .5s ease;}
+.bar-val{font-size:11px;color:var(--text3);width:24px;text-align:left;flex-shrink:0;}
+.map-layout{display:flex;gap:0;height:calc(100vh - 52px);overflow:hidden;}
+.map-sidebar{width:250px;background:var(--bg2);border-left:1px solid var(--border);overflow-y:auto;flex-shrink:0;}
+.map-container{flex:1;position:relative;background:#1a2820;}
+.map-canvas{width:100%;height:100%;display:block;}
+.map-topbar{position:absolute;top:10px;right:10px;left:10px;display:flex;gap:8px;z-index:10;}
+.map-input{flex:1;height:34px;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius);padding:0 10px;color:var(--text);font-size:12px;font-family:var(--font);}
+.map-ctrl{position:absolute;bottom:80px;left:10px;display:flex;flex-direction:column;gap:3px;z-index:10;}
+.map-ctrl-btn{width:32px;height:32px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+.map-ctrl-btn:hover{background:var(--bg3);}
+.map-legend{position:absolute;bottom:10px;right:10px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px 14px;z-index:10;}
+.map-stats{position:absolute;bottom:10px;left:50px;right:180px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:10px 18px;z-index:10;display:flex;gap:24px;justify-content:center;}
+.ms-item{text-align:center;}
+.ms-num{font-size:18px;font-weight:600;color:var(--text);font-variant-numeric:tabular-nums;}
+.ms-lbl{font-size:10px;color:var(--text3);margin-top:1px;}
+.map-parcel-panel{position:absolute;top:54px;left:10px;width:230px;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:14px;z-index:10;display:none;}
+.pp-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;}
+.pp-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);}
+.pp-row:last-of-type{border-bottom:none;}
+.pp-key{font-size:11px;color:var(--text3);}
+.pp-val{font-size:11px;font-weight:500;color:var(--text);}
+.map-sb-section{padding:14px;border-bottom:1px solid var(--border);}
+.map-sb-label{font-size:10px;color:var(--text3);font-weight:500;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em;}
+.layer-toggle{display:flex;justify-content:space-between;align-items:center;padding:5px 0;cursor:pointer;}
+.layer-name{font-size:12px;color:var(--text2);display:flex;align-items:center;gap:7px;}
+.layer-dot{width:9px;height:9px;border-radius:50%;}
+.layer-sq{width:9px;height:9px;border-radius:2px;}
+.toggle-sw{width:28px;height:15px;border-radius:8px;position:relative;transition:background .2s;border:none;cursor:pointer;flex-shrink:0;}
+.toggle-sw.on{background:var(--accent);}
+.toggle-sw.off{background:var(--bg4);}
+.toggle-sw::after{content:'';position:absolute;top:2px;width:11px;height:11px;border-radius:50%;background:white;transition:.2s;}
+.toggle-sw.on::after{right:2px;}
+.toggle-sw.off::after{left:2px;}
+.filter-pills{display:flex;flex-wrap:wrap;gap:5px;}
+.pill{font-size:11px;padding:4px 8px;border-radius:var(--radius);background:var(--bg3);border:1px solid var(--border);color:var(--text3);cursor:pointer;transition:all .15s;}
+.pill.active{background:rgba(29,158,117,.15);border-color:rgba(29,158,117,.3);color:#5dcaa5;}
+.pill:hover{border-color:var(--border2);color:var(--text2);}
+.leg-row{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--text2);margin-bottom:5px;}
+.leg-row:last-child{margin-bottom:0;}
+.profile-header{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 24px;display:flex;gap:20px;align-items:flex-start;}
+.profile-avatar{width:56px;height:56px;border-radius:50%;background:var(--bg4);border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:var(--text2);flex-shrink:0;}
+.profile-name{font-size:18px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.profile-meta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;}
+.profile-meta-item{font-size:12px;color:var(--text3);display:flex;align-items:center;gap:4px;}
+.profile-meta-item svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;}
+.risk-meter{display:flex;align-items:center;gap:10px;margin-top:4px;}
+.risk-bar{flex:1;height:6px;background:var(--bg4);border-radius:3px;overflow:hidden;max-width:180px;}
+.risk-fill{height:100%;border-radius:3px;}
+.risk-label{font-size:12px;font-weight:500;}
+.chain-wrap{overflow-x:auto;padding-bottom:8px;}
+.chain{display:flex;align-items:center;gap:0;min-width:max-content;}
+.chain-node{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:10px 14px;text-align:center;min-width:110px;}
+.chain-node.suspect{border-color:rgba(226,75,74,.4);background:rgba(226,75,74,.07);}
+.chain-node.final{border-color:rgba(127,119,221,.4);background:rgba(127,119,221,.07);}
+.chain-arrow{width:40px;height:2px;background:var(--border2);position:relative;flex-shrink:0;}
+.chain-arrow::after{content:'';position:absolute;left:-1px;top:-4px;border:5px solid transparent;border-right:none;border-left:8px solid var(--border2);}
+.chain-role{font-size:10px;color:var(--text3);margin-bottom:3px;}
+.chain-name{font-size:12px;font-weight:500;color:var(--text);}
+.chain-loc{font-size:10px;color:var(--text3);margin-top:2px;}
+.chain-date{font-size:10px;color:var(--accent);margin-top:4px;font-family:var(--mono);}
+.report-form{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-label{font-size:12px;color:var(--text2);font-weight:500;}
+.form-control{height:36px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:0 10px;color:var(--text);font-size:13px;font-family:var(--font);width:100%;}
+.form-control:focus{outline:none;border-color:var(--accent);}
+select.form-control option{background:var(--bg3);}
+.form-group.full{grid-column:1/-1;}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.stat-mini{background:var(--bg3);border-radius:var(--radius);padding:12px;text-align:center;}
+.stat-mini-num{font-size:22px;font-weight:600;color:var(--text);line-height:1;}
+.stat-mini-lbl{font-size:10px;color:var(--text3);margin-top:4px;}
+.dot-online{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;}
+.dot-offline{width:6px;height:6px;border-radius:50%;background:var(--red);}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.threshold-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);}
+.threshold-row:last-child{border-bottom:none;}
+.threshold-label{font-size:12px;color:var(--text2);flex:1;}
+.threshold-input{width:70px;height:28px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:0 8px;color:var(--text);font-size:12px;font-family:var(--mono);text-align:center;}
+.log-row{display:flex;gap:14px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;align-items:flex-start;}
+.log-row:last-child{border-bottom:none;}
+.log-time{font-family:var(--mono);font-size:10px;color:var(--text3);white-space:nowrap;min-width:100px;}
+.log-user{color:var(--blue2);min-width:90px;}
+.log-action{color:var(--text2);}
+.log-target{color:var(--text3);}
+.empty{text-align:center;padding:60px 20px;color:var(--text3);}
+.empty svg{width:40px;height:40px;stroke:var(--text3);fill:none;stroke-width:1;margin:0 auto 12px;display:block;}
+.empty p{font-size:13px;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--border);margin-bottom:20px;}
+.tab{padding:8px 16px;font-size:12px;color:var(--text3);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;}
+.tab:hover{color:var(--text2);}
+.tab.active{color:var(--text);border-bottom-color:var(--accent);font-weight:500;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+.loading-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px;gap:12px;color:var(--text3);}
+.spinner{width:32px;height:32px;border:2px solid var(--bg4);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.invest-panel{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px;}
+.invest-panel-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.invest-panel-title svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2;}
+.result-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;margin-top:12px;}
+.result-box.hidden{display:none;}
+.result-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.result-name{font-size:16px;font-weight:600;color:var(--text);}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:14px;}
+.info-item{background:var(--bg3);border-radius:var(--radius);padding:10px 12px;}
+.info-label{font-size:10px;color:var(--text3);margin-bottom:4px;}
+.info-value{font-size:13px;font-weight:500;color:var(--text);}
+.settlement-frame{width:100%;height:calc(100vh - 200px);border:none;border-radius:var(--radius-lg);background:var(--bg3);}
+.progress-bar{height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;margin-top:4px;}
+.progress-fill{height:100%;border-radius:2px;transition:width .5s ease;}
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px;}
+::-webkit-scrollbar-thumb:hover{background:var(--text3);}
+.source-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;display:flex;gap:14px;align-items:flex-start;}
+.source-icon{width:36px;height:36px;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.source-icon svg{width:18px;height:18px;stroke:white;fill:none;stroke-width:1.5;}
+.source-info{flex:1;}
+.source-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px;}
+.source-meta{font-size:11px;color:var(--text3);}
+.source-status{margin-top:6px;display:flex;align-items:center;gap:6px;font-size:11px;}
+.admin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+/* ── TOAST ── */
+.toast-container{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:99999;display:flex;flex-direction:column;gap:8px;pointer-events:none;min-width:280px;}
+.toast{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius-lg);padding:10px 16px;font-size:12px;color:var(--text);box-shadow:0 4px 20px rgba(0,0,0,.5);pointer-events:all;max-width:420px;display:flex;align-items:center;gap:8px;animation:toastIn .2s ease;}
+.toast.error{border-color:rgba(226,75,74,.5);color:var(--red2);background:rgba(226,75,74,.1);}
+.toast.success{border-color:rgba(29,158,117,.5);color:#5dcaa5;background:rgba(29,158,117,.1);}
+.toast.warn{border-color:rgba(239,159,39,.5);color:var(--amber2);background:rgba(239,159,39,.1);}
+.toast-icon{font-size:14px;flex-shrink:0;}
+.toast-msg{flex:1;}
+.toast-close{cursor:pointer;opacity:.6;font-size:14px;flex-shrink:0;background:none;border:none;color:inherit;padding:0;}
+.toast-close:hover{opacity:1;}
+@keyframes toastIn{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
+/* ── ERROR BOX ── */
+.error-box{background:rgba(226,75,74,.08);border:1px solid rgba(226,75,74,.3);border-radius:var(--radius-lg);padding:20px;text-align:center;}
+.error-box-title{font-size:13px;font-weight:600;color:var(--red2);margin-bottom:8px;}
+.error-box-msg{font-size:11px;color:var(--text3);line-height:1.6;}
+.error-box-retry{margin-top:12px;background:rgba(226,75,74,.15);border:1px solid rgba(226,75,74,.3);color:var(--red2);height:30px;padding:0 16px;border-radius:var(--radius);font-size:12px;cursor:pointer;font-family:var(--font);}
+</style>
+</head>
+<body>
+<div class="app">
+<!-- ── SIDEBAR ── -->
+<aside class="sidebar">
+  <div class="logo-area">
+    <div class="logo-mark">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></div>
+      <span class="logo-name">رصد</span>
+    </div>
+    <div class="logo-sub">نظام تحليل الأراضي</div>
+  </div>
+  <nav class="nav">
+    <div class="nav-section">
+      <div class="nav-section-label">الرئيسية</div>
+      <div class="nav-item active" data-page="dashboard" onclick="gotoPage('dashboard')">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>لوحة التحكم
+      </div>
+      <div class="nav-item" data-page="map" onclick="gotoPage('map')">
+        <svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>خريطة GIS
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">البيانات</div>
+      <div class="nav-item" data-page="parcels" onclick="gotoPage('parcels')">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>قطع الأراضي
+      </div>
+      <div class="nav-item" data-page="owners" onclick="gotoPage('owners')">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>المالكون
+      </div>
+      <div class="nav-item" data-page="transactions" onclick="gotoPage('transactions')">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>المعاملات
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">التحليل</div>
+      <div class="nav-item" data-page="cases" onclick="gotoPage('cases')">
+        <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>قضايا التسريب<span class="nav-badge">31</span>
+      </div>
+      <div class="nav-item" data-page="alerts" onclick="gotoPage('alerts')">
+        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>تنبيهات AI<span class="nav-badge amber">7</span>
+      </div>
+      <div class="nav-item" data-page="reports" onclick="gotoPage('reports')">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>التقارير
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">الذكاء الاصطناعي</div>
+      <div class="nav-item" data-page="fraud-all" onclick="gotoPage('fraud-all')">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>كشف المحتالين<span class="nav-badge">AI</span>
+      </div>
+      <div class="nav-item" data-page="leak-all" onclick="gotoPage('leak-all')">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>كشف التسريبات<span class="nav-badge blue">AI</span>
+      </div>
+      <div class="nav-item" data-page="settlement-expansion" onclick="gotoPage('settlement-expansion')">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>توسع المستوطنات
+      </div>
+      <div class="nav-item" data-page="investigation" onclick="gotoPage('investigation')">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>التحقيق
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">الإدارة</div>
+      <div class="nav-item" data-page="admin-users" onclick="gotoPage('admin-users')">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>إدارة المستخدمين
+      </div>
+      <div class="nav-item" data-page="admin-sources" onclick="gotoPage('admin-sources')">
+        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>مصادر البيانات
+      </div>
+      <div class="nav-item" data-page="admin-ai" onclick="gotoPage('admin-ai')">
+        <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-1H1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73A2 2 0 0 1 10 4a2 2 0 0 1 2-2z"/></svg>نماذج AI
+      </div>
+      <div class="nav-item" data-page="admin-logs" onclick="gotoPage('admin-logs')">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>السجلات
+      </div>
+    </div>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="user-row">
+      <div class="avatar">م.أ</div>
+      <div><div class="user-name">PTUK_IKW</div><div class="user-role">مدير النظام</div></div>
+    </div>
+  </div>
+</aside>
+
+<!-- ── MAIN ── -->
+<div class="main">
+  <div class="topbar">
+    <div class="page-title" id="pageTitle">لوحة التحكم الرئيسية</div>
+    <div class="topbar-actions">
+      <button type="button" class="tb-btn" onclick="gotoPage('reports')">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>التقارير
+      </button>
+      <button type="button" class="tb-btn primary" onclick="gotoPage('alerts')">
+        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg>7 تنبيهات
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════ DASHBOARD ══════════════════ -->
+  <div class="page active" id="page-dashboard">
+    <div class="metrics-grid">
+      <div class="metric-card red"><div class="m-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></div><div class="m-label">عمليات البيع — هذا الشهر</div><div class="m-value">143</div><div class="m-change up">↑ 18% مقارنة بالشهر الماضي</div></div>
+      <div class="metric-card amber"><div class="m-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></div><div class="m-label">حالات مشبوهة نشطة</div><div class="m-value">31</div><div class="m-change up">↑ 5 حالات جديدة هذا الأسبوع</div></div>
+      <div class="metric-card blue"><div class="m-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/></svg></div><div class="m-label">عمليات تسريب مكتشفة</div><div class="m-value">12</div><div class="m-change down">↓ 2 مقارنة بالشهر الماضي</div></div>
+      <div class="metric-card green"><div class="m-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/></svg></div><div class="m-label">مالكون تحت المراقبة</div><div class="m-value">89</div><div class="m-change up">↑ 11 مالك جديد هذا الشهر</div></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><span class="card-title">عمليات البيع — آخر 6 أشهر</span><span class="card-action" onclick="gotoPage('reports')">تفاصيل <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+        <div style="position:relative;width:100%;height:190px;"><canvas id="trendChart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">أعلى المحافظات تسريباً</span></div>
+        <div class="bar-list">
+          <div class="bar-row"><span class="bar-label">الخليل</span><div class="bar-track"><div class="bar-fill" style="width:87%;background:var(--red);"></div></div><span class="bar-val">34</span></div>
+          <div class="bar-row"><span class="bar-label">نابلس</span><div class="bar-track"><div class="bar-fill" style="width:67%;background:var(--amber);"></div></div><span class="bar-val">26</span></div>
+          <div class="bar-row"><span class="bar-label">رام الله</span><div class="bar-track"><div class="bar-fill" style="width:54%;background:var(--amber);"></div></div><span class="bar-val">21</span></div>
+          <div class="bar-row"><span class="bar-label">جنين</span><div class="bar-track"><div class="bar-fill" style="width:41%;background:var(--accent);"></div></div><span class="bar-val">16</span></div>
+          <div class="bar-row"><span class="bar-label">طولكرم</span><div class="bar-track"><div class="bar-fill" style="width:28%;background:var(--accent);"></div></div><span class="bar-val">11</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><span class="card-title">آخر تنبيهات الذكاء الاصطناعي</span><span class="card-action" onclick="gotoPage('alerts')">عرض الكل <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span></div>
+        <div class="alert-list">
+          <div class="alert-row"><div class="alert-dot" style="background:var(--red);"></div><div class="alert-content"><div class="alert-title">نمط بيع متسلسل مشبوه — الخليل</div><div class="alert-desc">5 قطع متجاورة بيعت لمشترين مقيمين خارج البلاد خلال 30 يوم</div><div class="alert-meta"><span class="badge red">حرج</span><span class="alert-time">منذ ساعتين</span></div></div></div>
+          <div class="alert-row"><div class="alert-dot" style="background:var(--amber);"></div><div class="alert-content"><div class="alert-title">مالك risk_score مرتفع — نابلس</div><div class="alert-desc">أحمد م. — 4 صفقات بيع خلال 3 أشهر</div><div class="alert-meta"><span class="badge amber">متوسط</span><span class="alert-time">منذ 5 ساعات</span></div></div></div>
+          <div class="alert-row"><div class="alert-dot" style="background:var(--amber);"></div><div class="alert-content"><div class="alert-title">cluster بيع — رام الله الشمال</div><div class="alert-desc">ارتفاع 240% في عمليات البيع بمنطقة بيتين</div><div class="alert-meta"><span class="badge amber">متوسط</span><span class="alert-time">منذ يوم</span></div></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">آخر المعاملات المشبوهة</span></div>
+        <div class="table-wrap"><table><thead><tr><th>البائع</th><th>المنطقة</th><th>المساحة</th><th>الشك</th></tr></thead><tbody>
+          <tr><td><div style="font-size:12px;font-weight:500;">محمد ع.</div><div class="td-muted">يسكن الأردن</div></td><td>الخليل / يطا</td><td>3,200 م²</td><td><span class="badge red">94%</span></td></tr>
+          <tr><td><div style="font-size:12px;font-weight:500;">خالد س.</div><div class="td-muted">يسكن الخليج</div></td><td>نابلس / حوارة</td><td>1,800 م²</td><td><span class="badge red">87%</span></td></tr>
+          <tr><td><div style="font-size:12px;font-weight:500;">يوسف ح.</div><div class="td-muted">رام الله</div></td><td>رام الله / بيتين</td><td>2,500 م²</td><td><span class="badge amber">61%</span></td></tr>
+        </tbody></table></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ MAP ══════════════════ -->
+  <div class="page" id="page-map" style="padding:0;gap:0;">
+    <div class="map-layout">
+      <div class="map-sidebar">
+        <div class="map-sb-section">
+          <div class="map-sb-label">الطبقات</div>
+          <div class="layer-toggle"><div class="layer-name"><div class="layer-dot" style="background:var(--red);"></div>قطع مشبوهة</div><button type="button" class="toggle-sw on" onclick="toggleMapLayer(this,'suspicious')"></button></div>
+          <div class="layer-toggle"><div class="layer-name"><div class="layer-dot" style="background:var(--amber);"></div>قطع عادية</div><button type="button" class="toggle-sw on" onclick="toggleMapLayer(this,'normal')"></button></div>
+          <div class="layer-toggle"><div class="layer-name"><div class="layer-sq" style="background:var(--purple);"></div>مستوطنات</div><button type="button" class="toggle-sw on" onclick="toggleMapLayer(this,'settlements')"></button></div>
+          <div class="layer-toggle"><div class="layer-name"><div class="layer-dot" style="background:var(--red);opacity:.4;width:12px;height:12px;border-radius:3px;"></div>Hotspots</div><button type="button" class="toggle-sw on" onclick="toggleMapLayer(this,'hotspots')"></button></div>
+        </div>
+        <div class="map-sb-section">
+          <div class="map-sb-label">فلترة الخطورة</div>
+          <div class="filter-pills">
+            <span class="pill active" onclick="setMapFilter(this,'risk','all')">الكل</span>
+            <span class="pill" onclick="setMapFilter(this,'risk','high')">عالية</span>
+            <span class="pill" onclick="setMapFilter(this,'risk','med')">متوسطة</span>
+            <span class="pill" onclick="setMapFilter(this,'risk','low')">منخفضة</span>
+          </div>
+        </div>
+        <div class="map-sb-section">
+          <div class="map-sb-label">المحافظة</div>
+          <div class="filter-pills">
+            <span class="pill active" onclick="setMapFilter(this,'gov','all')">الكل</span>
+            <span class="pill" onclick="setMapFilter(this,'gov','nablus')">نابلس</span>
+            <span class="pill" onclick="setMapFilter(this,'gov','hebron')">الخليل</span>
+            <span class="pill" onclick="setMapFilter(this,'gov','ramallah')">رام الله</span>
+            <span class="pill" onclick="setMapFilter(this,'gov','jenin')">جنين</span>
+          </div>
+        </div>
+      </div>
+      <div class="map-container">
+        <div class="map-topbar">
+          <input class="map-input" type="text" placeholder="ابحث عن قطعة أرض أو مالك..." oninput="handleMapSearch(this.value)">
+        </div>
+        <canvas class="map-canvas" id="mapCanvas"></canvas>
+        <div class="map-ctrl">
+          <button type="button" class="map-ctrl-btn" onclick="mapZoom(1.25)">+</button>
+          <button type="button" class="map-ctrl-btn" onclick="mapZoom(0.8)">−</button>
+        </div>
+        <div class="map-parcel-panel" id="mapParcelPanel">
+          <div class="pp-title" id="mppTitle">قطعة أرض</div>
+          <div class="pp-row"><span class="pp-key">رقم القطعة</span><span class="pp-val" id="mppId">—</span></div>
+          <div class="pp-row"><span class="pp-key">المساحة</span><span class="pp-val" id="mppArea">—</span></div>
+          <div class="pp-row"><span class="pp-key">المحافظة</span><span class="pp-val" id="mppGov">—</span></div>
+          <div class="pp-row"><span class="pp-key">المالك الحالي</span><span class="pp-val" id="mppOwner">—</span></div>
+          <div class="pp-row"><span class="pp-key">مستوى الخطر</span><span class="pp-val" id="mppRisk">—</span></div>
+        </div>
+        <div class="map-legend">
+          <div style="font-size:10px;color:var(--text3);margin-bottom:6px;font-weight:500;text-transform:uppercase;">دليل الألوان</div>
+          <div class="leg-row"><div class="layer-dot" style="background:var(--red);"></div>خطر عالٍ</div>
+          <div class="leg-row"><div class="layer-dot" style="background:var(--amber);"></div>مراقبة</div>
+          <div class="leg-row"><div class="layer-dot" style="background:var(--accent);"></div>آمنة</div>
+          <div class="leg-row"><div class="layer-sq" style="background:var(--purple);"></div>مستوطنة</div>
+        </div>
+        <div class="map-stats">
+          <div class="ms-item"><div class="ms-num" id="msTotal">—</div><div class="ms-lbl">إجمالي القطع</div></div>
+          <div class="ms-item"><div class="ms-num" style="color:var(--red);" id="msHigh">—</div><div class="ms-lbl">خطر عالٍ</div></div>
+          <div class="ms-item"><div class="ms-num" style="color:var(--amber);" id="msMed">—</div><div class="ms-lbl">مراقبة</div></div>
+          <div class="ms-item"><div class="ms-num" style="color:var(--accent);" id="msLow">—</div><div class="ms-lbl">عادية</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ PARCELS ══════════════════ -->
+  <div class="page" id="page-parcels">
+    <div class="metrics-grid col3">
+      <div class="metric-card red"><div class="m-label">إجمالي القطع المسجلة</div><div class="m-value">4,821</div></div>
+      <div class="metric-card amber"><div class="m-label">قطع تحت المراقبة</div><div class="m-value">247</div></div>
+      <div class="metric-card green"><div class="m-label">قطع موثقة بالكامل</div><div class="m-value">3,902</div></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">سجل قطع الأراضي</span></div>
+      <div class="table-wrap"><table><thead><tr><th>رقم القطعة</th><th>الموقع</th><th>المساحة</th><th>نوع الأرض</th><th>المالك الحالي</th><th>آخر معاملة</th><th>الخطورة</th></tr></thead><tbody id="parcelsTableBody"></tbody></table></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ OWNERS ══════════════════ -->
+  <div class="page" id="page-owners">
+    <div class="card">
+      <div class="card-header"><span class="card-title">سجل المالكين</span>
+        <select class="form-control" style="height:28px;font-size:11px;width:auto;padding:0 8px;" onchange="filterOwners(this.value)">
+          <option value="all">كل المالكين</option><option value="high">خطورة عالية</option><option value="med">خطورة متوسطة</option><option value="abroad">مقيمون خارج البلاد</option>
+        </select>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>الاسم</th><th>رقم الهوية</th><th>مكان الإقامة</th><th>عدد القطع</th><th>عدد المعاملات</th><th>مستوى الخطر</th></tr></thead><tbody id="ownersTableBody"></tbody></table></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ TRANSACTIONS ══════════════════ -->
+  <div class="page" id="page-transactions">
+    <div class="metrics-grid">
+      <div class="metric-card red"><div class="m-label">إجمالي المعاملات</div><div class="m-value">143</div></div>
+      <div class="metric-card amber"><div class="m-label">معاملات مشبوهة</div><div class="m-value">31</div></div>
+      <div class="metric-card blue"><div class="m-label">متوسط سعر البيع</div><div class="m-value">85K$</div></div>
+      <div class="metric-card green"><div class="m-label">معاملات موثقة</div><div class="m-value">112</div></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">سجل المعاملات</span></div>
+      <div class="table-wrap"><table><thead><tr><th>رقم</th><th>التاريخ</th><th>البائع</th><th>المشتري</th><th>القطعة</th><th>النوع</th><th>السعر</th><th>نسبة الشك</th></tr></thead><tbody id="txnTableBody"></tbody></table></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ CASES ══════════════════ -->
+  <div class="page" id="page-cases">
+    <div class="metrics-grid">
+      <div class="metric-card red"><div class="m-label">قضايا نشطة</div><div class="m-value">31</div></div>
+      <div class="metric-card amber"><div class="m-label">تحت التحقيق</div><div class="m-value">14</div></div>
+      <div class="metric-card blue"><div class="m-label">محالة للقضاء</div><div class="m-value">8</div></div>
+      <div class="metric-card green"><div class="m-label">مغلقة هذا العام</div><div class="m-value">23</div></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">قضايا التسريب المكتشفة</span></div>
+      <div class="table-wrap"><table><thead><tr><th>رقم القضية</th><th>القطعة</th><th>الموقع</th><th>نسبة الاشتباه</th><th>الحالة</th><th>تاريخ الاكتشاف</th><th>المتورطون</th></tr></thead><tbody id="casesTableBody"></tbody></table></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ ALERTS ══════════════════ -->
+  <div class="page" id="page-alerts">
+    <div class="metrics-grid col3">
+      <div class="metric-card red"><div class="m-label">تنبيهات حرجة</div><div class="m-value">7</div></div>
+      <div class="metric-card amber"><div class="m-label">تنبيهات متوسطة</div><div class="m-value">12</div></div>
+      <div class="metric-card blue"><div class="m-label">تنبيهات منخفضة</div><div class="m-value">23</div></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">تنبيهات الذكاء الاصطناعي</span>
+        <select class="form-control" style="height:28px;font-size:11px;width:auto;padding:0 8px;" onchange="filterAlerts(this.value)">
+          <option value="all">كل التنبيهات</option><option value="critical">حرجة</option><option value="medium">متوسطة</option><option value="low">منخفضة</option>
+        </select>
+      </div>
+      <div class="alert-list" id="alertsList"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ REPORTS ══════════════════ -->
+  <div class="page" id="page-reports">
+    <div class="metrics-grid" id="reportMetrics">
+      <div class="metric-card blue"><div class="m-label">إجمالي السجلات</div><div class="m-value" id="totalRecords">—</div></div>
+      <div class="metric-card green"><div class="m-label">آخر معاملة</div><div class="m-value" style="font-size:16px;" id="lastTransaction">—</div></div>
+      <div class="metric-card amber"><div class="m-label">إجمالي القيمة الشهرية</div><div class="m-value" style="font-size:18px;" id="monthlyTotal">—</div></div>
+      <div class="metric-card red"><div class="m-label">متوسط سعر الصفقة</div><div class="m-value" style="font-size:18px;" id="avgValue">—</div></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><span class="card-title">المعاملات الشهرية</span>
+          <button type="button" class="tb-btn" style="height:26px;font-size:11px;" onclick="downloadMonthlyReport()">تحميل JSON</button>
+        </div>
+        <div style="position:relative;height:220px;"><canvas id="monthlyChart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">المعاملات حسب المحافظة</span></div>
+        <div style="position:relative;height:220px;"><canvas id="governorateChart"></canvas></div>
+      </div>
+    </div>
+    <div class="grid-2-equal">
+      <div class="card">
+        <div class="card-header"><span class="card-title">أكثر المشترين نشاطاً</span></div>
+        <div class="table-wrap"><table><thead><tr><th>#</th><th>الاسم</th><th>عدد الشراء</th><th>إجمالي المبالغ</th></tr></thead><tbody id="topBuyersTable"></tbody></table></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">أكثر البائعين نشاطاً</span></div>
+        <div class="table-wrap"><table><thead><tr><th>#</th><th>الاسم</th><th>عدد البيع</th><th>إجمالي المبيعات</th></tr></thead><tbody id="topSellersTable"></tbody></table></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">قائمة التقارير</span>
+        <button type="button" class="tb-btn primary" onclick="loadReportsData()">
+          <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>تحديث
+        </button>
+      </div>
+      <div id="reportCardsList" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;">
+        <div class="loading-state"><div class="spinner"></div><span>تحميل...</span></div>
+      </div>
+    </div>
+    <!-- ── CUSTOM REPORT FORM ── -->
+    <div class="card" style="border-top:2px solid var(--accent);">
+      <div class="card-header"><span class="card-title" style="font-size:14px;">🔧 التقارير المخصصة</span></div>
+      <div class="report-form">
+        <div class="form-group">
+          <label class="form-label">نوع التقرير</label>
+          <select class="form-control" id="reportType" onchange="updateCustomReportForm()">
+            <option value="person">تقرير عن شخص</option>
+            <option value="parcel">تقرير عن قطعة أرض</option>
+            <option value="region">تقرير عن منطقة</option>
+            <option value="period">تقرير فترة زمنية</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">المدى الزمني</label>
+          <select class="form-control" id="reportPeriod" onchange="updateCustomReportForm()">
+            <option>آخر شهر</option><option>آخر 3 أشهر</option><option>آخر 6 أشهر</option><option>هذا العام</option><option value="مخصص">مخصص</option>
+          </select>
+        </div>
+        <div class="form-group" id="entityGroup">
+          <label class="form-label" id="entityLabel">اسم الشخص / رقم الهوية</label>
+          <input type="text" class="form-control" id="reportEntity" placeholder="أدخل الاسم أو رقم الهوية...">
+        </div>
+        <div class="form-group" id="governorateGroup" style="display:none;">
+          <label class="form-label">المحافظة</label>
+          <select class="form-control" id="reportGovernorate">
+            <option>نابلس</option><option>الخليل</option><option>رام الله</option><option>جنين</option><option>طولكرم</option>
+          </select>
+        </div>
+        <div class="form-group" id="startDateGroup" style="display:none;">
+          <label class="form-label">تاريخ البداية</label>
+          <input type="date" class="form-control" id="customStartDate">
+        </div>
+        <div class="form-group" id="endDateGroup" style="display:none;">
+          <label class="form-label">تاريخ النهاية</label>
+          <input type="date" class="form-control" id="customEndDate">
+        </div>
+        <div class="form-group full">
+          <label class="form-label">ملاحظات إضافية</label>
+          <input type="text" class="form-control" id="reportNotes" placeholder="أي ملاحظات إضافية...">
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button type="button" class="tb-btn primary" id="generateReportBtn" onclick="generateCustomReport()" style="height:36px;padding:0 20px;">
+          <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg>توليد التقرير
+        </button>
+      </div>
+      <!-- نتيجة التقرير — تظهر في نفس الصفحة دون تنقل -->
+      <div id="customReportResult" style="display:none;margin-top:16px;">
+        <div id="customReportStatus" style="padding:10px 14px;border-radius:var(--radius);font-size:12px;"></div>
+        <div id="customReportOutput" style="margin-top:8px;font-size:12px;color:var(--text2);line-height:1.8;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ FRAUD DETECTION ══════════════════ -->
+  <div class="page" id="page-fraud-all">
+    <div id="fraudSummaryMetrics" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="metric-card blue"><div class="m-label">إجمالي الأشخاص المحللين</div><div class="m-value" id="fraudTotal">—</div></div>
+      <div class="metric-card red"><div class="m-label">مشبوهون</div><div class="m-value" id="fraudSuspicious">—</div></div>
+      <div class="metric-card amber"><div class="m-label">خطر عالٍ</div><div class="m-value" id="fraudHighRisk">—</div></div>
+      <div class="metric-card purple"><div class="m-label">نسبة الاشتباه</div><div class="m-value" style="font-size:20px;" id="fraudPct">—</div></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><span class="card-title">توزيع مستويات المخاطر</span></div>
+        <div style="position:relative;height:180px;"><canvas id="fraudRiskChart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">إحصائيات سريعة</span></div>
+        <div id="fraudStats"><div class="loading-state"><div class="spinner"></div><span>جاري التحليل...</span></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">قائمة الأشخاص المشبوهين</span>
+        <div style="display:flex;gap:8px;">
+          <select class="form-control" style="height:28px;font-size:11px;width:auto;padding:0 8px;" onchange="filterFraudList(this.value)">
+            <option value="all">الكل</option><option value="high">خطر عالٍ فقط</option><option value="medium">خطر متوسط</option>
+          </select>
+          <button type="button" class="tb-btn primary" onclick="loadFraudAllData()">
+            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>تحديث
+          </button>
+        </div>
+      </div>
+      <div id="fraudAllContent">
+        <div class="loading-state"><div class="spinner"></div><span>جاري تحليل جميع الأشخاص...</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ LEAK DETECTION ══════════════════ -->
+  <div class="page" id="page-leak-all">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+      <div class="metric-card blue"><div class="m-label">إجمالي القطع المحللة</div><div class="m-value" id="leakTotal">—</div></div>
+      <div class="metric-card red"><div class="m-label">قطع مسرّبة</div><div class="m-value" id="leakLeaked">—</div></div>
+      <div class="metric-card amber"><div class="m-label">قطع مشبوهة</div><div class="m-value" id="leakSuspected">—</div></div>
+      <div class="metric-card green"><div class="m-label">قطع آمنة</div><div class="m-value" id="leakSafe">—</div></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><span class="card-title">توزيع حالات القطع</span></div>
+        <div style="position:relative;height:180px;"><canvas id="leakDistChart"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">فلترة بالفترة الزمنية</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="filter-pills">
+            <span class="pill active" onclick="setLeakPeriod(this,'آخر شهر')">آخر شهر</span>
+            <span class="pill" onclick="setLeakPeriod(this,'آخر 3 أشهر')">آخر 3 أشهر</span>
+            <span class="pill" onclick="setLeakPeriod(this,'آخر 6 أشهر')">آخر 6 أشهر</span>
+            <span class="pill" onclick="setLeakPeriod(this,'هذا العام')">هذا العام</span>
+          </div>
+          <div id="leakPeriodInfo" style="font-size:12px;color:var(--text3);padding:8px;background:var(--bg3);border-radius:var(--radius);">يعرض التسريبات خلال آخر 30 يوم</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">القطع المسرّبة والمشبوهة</span>
+        <div style="display:flex;gap:8px;">
+          <select class="form-control" style="height:28px;font-size:11px;width:auto;padding:0 8px;" onchange="filterLeakTable(this.value)">
+            <option value="all">الكل</option><option value="leaked">مسرّبة فقط</option><option value="suspected">مشبوهة فقط</option>
+          </select>
+          <button type="button" class="tb-btn primary" onclick="loadLeakAllData()">
+            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>تحديث
+          </button>
+        </div>
+      </div>
+      <div id="leakAllContent"><div class="loading-state"><div class="spinner"></div><span>جاري تحميل بيانات التسريب...</span></div></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SETTLEMENT EXPANSION ══════════════════ -->
+  <div class="page" id="page-settlement-expansion">
+    <div style="display:flex;justify-content:space-between;align-items:center;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 20px;">
+      <div>
+        <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">تقرير توسع المستوطنات</div>
+        <div style="font-size:12px;color:var(--text3);">تحليل شامل — خرائط تفاعلية، درجات المخاطر، والتوقعات المستقبلية</div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button type="button" class="tb-btn" onclick="openSettlementExternal()">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>فتح في نافذة جديدة
+        </button>
+        <button type="button" class="tb-btn primary" onclick="loadSettlementFrame()">
+          <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>تحميل التقرير
+        </button>
+      </div>
+    </div>
+    <div id="settlementFrameContainer" style="display:none;">
+      <iframe id="settlementFrame" class="settlement-frame" src="about:blank" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+    </div>
+    <div id="settlementPlaceholder" class="card">
+      <div class="empty">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <p style="margin-bottom:12px;">اضغط على "تحميل التقرير" لعرض تحليل توسع المستوطنات</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ INVESTIGATION ══════════════════ -->
+  <div class="page" id="page-investigation">
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 20px;">
+      <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">مركز التحقيقات</div>
+      <div style="font-size:12px;color:var(--text3);">أداة متكاملة للتحقيق في الأشخاص والقطع الأرضية والمستوطنات</div>
+    </div>
+    <div class="tabs">
+      <div class="tab active" onclick="switchInvestTab(this,'person')"><span style="margin-left:6px;">👤</span> تحقيق عن شخص</div>
+      <div class="tab" onclick="switchInvestTab(this,'parcel')"><span style="margin-left:6px;">🗺️</span> تحقيق عن قطعة أرض</div>
+      <div class="tab" onclick="switchInvestTab(this,'settlement')"><span style="margin-left:6px;">🏘️</span> تحقيق عن مستوطنة</div>
+    </div>
+
+    <!-- TAB: Person -->
+    <div class="tab-panel active" id="investTab-person">
+      <div class="invest-panel">
+        <div class="invest-panel-title">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          التحقيق في احتمالية تورط شخص بعمليات تسريب
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-end;">
+          <div class="form-group" style="flex:1;margin:0;">
+            <label class="form-label">معرّف المالك (Owner ID)</label>
+            <input type="number" class="form-control" id="personInvestId" placeholder="مثال: 1024" onkeydown="if(event.key==='Enter') investigatePerson()">
+          </div>
+          <button type="button" class="tb-btn primary" style="height:36px;padding:0 20px;" onclick="investigatePerson()">
+            <svg viewBox="0 0 24 24" style="width:13px;height:13px;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>تحقيق
+          </button>
+        </div>
+      </div>
+      <!-- نتيجة الشخص -->
+      <div id="personResult" class="result-box hidden">
+        <div class="result-header">
+          <div>
+            <div class="result-name" id="personResultName">—</div>
+            <div style="font-size:11px;color:var(--text3);margin-top:4px;" id="personResultId">—</div>
+          </div>
+          <span id="personResultBadge" class="badge">—</span>
+        </div>
+        <div style="margin-bottom:16px;">
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-bottom:6px;">
+            <span>احتمالية الاحتيال</span><span id="personFraudPct">—</span>
+          </div>
+          <div class="progress-bar" style="height:8px;"><div class="progress-fill" id="personFraudBar" style="width:0%;background:var(--red);"></div></div>
+        </div>
+        <div class="info-grid" id="personInfoGrid"></div>
+        <div style="margin-top:12px;">
+          <div style="font-size:11px;color:var(--text3);margin-bottom:8px;font-weight:500;">السلوك التعاملي</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;" id="personBehavior"></div>
+        </div>
+        <div id="personRedFlags" style="margin-top:12px;display:none;">
+          <div style="font-size:11px;color:var(--text3);margin-bottom:8px;font-weight:500;">🚩 مؤشرات الخطر</div>
+          <div id="personRedFlagsList" style="display:flex;flex-direction:column;gap:4px;"></div>
+        </div>
+      </div>
+      <!-- خطأ الشخص — يظهر في نفس الصفحة -->
+      <div id="personError" class="error-box" style="display:none;">
+        <div class="error-box-title">⚠️ تعذر الاتصال بالخادم</div>
+        <div class="error-box-msg" id="personErrorMsg">تأكد من تشغيل الخادم على http://127.0.0.1:8000</div>
+        <button type="button" class="error-box-retry" onclick="investigatePerson()">إعادة المحاولة</button>
+      </div>
+    </div>
+
+    <!-- TAB: Parcel -->
+    <div class="tab-panel" id="investTab-parcel">
+      <div class="invest-panel">
+        <div class="invest-panel-title">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          التحقيق في احتمالية تسريب قطعة أرض
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;align-items:flex-end;">
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">رقم الحوض (Basin)</label>
+            <input type="text" class="form-control" id="parcelBasin" placeholder="مثال: 14">
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">رقم القطعة (Parcel)</label>
+            <input type="text" class="form-control" id="parcelNum" placeholder="مثال: 142">
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">معرّف المنطقة (Locality ID)</label>
+            <input type="text" class="form-control" id="parcelLocality" placeholder="مثال: 67">
+          </div>
+          <button type="button" class="tb-btn primary" style="height:36px;padding:0 20px;" onclick="investigateParcel()">
+            <svg viewBox="0 0 24 24" style="width:13px;height:13px;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>تحقيق
+          </button>
+        </div>
+      </div>
+      <div id="parcelResult" class="result-box hidden">
+        <div class="result-header">
+          <div>
+            <div class="result-name" id="parcelResultId">—</div>
+            <div style="font-size:11px;color:var(--text3);margin-top:4px;" id="parcelResultKey">—</div>
+          </div>
+          <span id="parcelResultBadge" class="badge">—</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">
+          <div>
+            <div style="font-size:10px;color:var(--text3);margin-bottom:4px;">درجة الخطر</div>
+            <div class="progress-bar"><div class="progress-fill" id="parcelRiskBar" style="width:0%;background:var(--red);"></div></div>
+            <div style="font-size:11px;color:var(--red);margin-top:2px;" id="parcelRiskVal">—</div>
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--text3);margin-bottom:4px;">درجة الاشتباه</div>
+            <div class="progress-bar"><div class="progress-fill" id="parcelSuspectBar" style="width:0%;background:var(--amber);"></div></div>
+            <div style="font-size:11px;color:var(--amber);margin-top:2px;" id="parcelSuspectVal">—</div>
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--text3);margin-bottom:4px;">درجة الأمان</div>
+            <div class="progress-bar"><div class="progress-fill" id="parcelSafeBar" style="width:0%;background:var(--accent);"></div></div>
+            <div style="font-size:11px;color:var(--accent);margin-top:2px;" id="parcelSafeVal">—</div>
+          </div>
+        </div>
+        <div class="info-grid" id="parcelInfoGrid"></div>
+      </div>
+      <div id="parcelError" class="error-box" style="display:none;">
+        <div class="error-box-title">⚠️ تعذر الاتصال بالخادم</div>
+        <div class="error-box-msg" id="parcelErrorMsg">تأكد من تشغيل الخادم على http://127.0.0.1:8000</div>
+        <button type="button" class="error-box-retry" onclick="investigateParcel()">إعادة المحاولة</button>
+      </div>
+    </div>
+
+    <!-- TAB: Settlement -->
+    <div class="tab-panel" id="investTab-settlement">
+      <div class="invest-panel">
+        <div class="invest-panel-title">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          التنبؤ بتوسع مستوطنة في المرحلة القادمة
+        </div>
+        <div style="display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:flex-end;">
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">اسم المستوطنة أو معرّفها (ID)</label>
+            <input type="text" class="form-control" id="settlementQuery" placeholder="مثال: أريئيل  أو  1" onkeydown="if(event.key==='Enter') investigateSettlement()">
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">نوع البحث</label>
+            <select class="form-control" id="settlementSearchType">
+              <option value="name">بالاسم</option>
+              <option value="id">بالمعرف (ID)</option>
+            </select>
+          </div>
+          <button type="button" class="tb-btn primary" style="height:36px;padding:0 20px;" onclick="investigateSettlement()">
+            <svg viewBox="0 0 24 24" style="width:13px;height:13px;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>تحليل
+          </button>
+        </div>
+      </div>
+      <div id="settlementResult" class="result-box hidden">
+        <div class="result-header">
+          <div>
+            <div class="result-name" id="settlementResultName">—</div>
+            <div style="font-size:11px;color:var(--text3);margin-top:4px;" id="settlementResultType">—</div>
+          </div>
+          <span id="settlementResultBadge" class="badge">—</span>
+        </div>
+        <div style="margin-bottom:16px;">
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-bottom:6px;">
+            <span>درجة الخطر المركّبة</span><span id="settlementRiskPct">—</span>
+          </div>
+          <div class="progress-bar" style="height:10px;"><div class="progress-fill" id="settlementRiskBar" style="width:0%;background:var(--red);border-radius:4px;"></div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;">
+          <div class="info-item" style="text-align:center;"><div class="info-label">XGBoost</div><div class="info-value" style="color:var(--blue);" id="sXgb">—</div></div>
+          <div class="info-item" style="text-align:center;"><div class="info-label">Time-Series</div><div class="info-value" style="color:var(--purple);" id="sTsRisk">—</div></div>
+          <div class="info-item" style="text-align:center;"><div class="info-label">Spatial</div><div class="info-value" style="color:var(--amber);" id="sSpatial">—</div></div>
+        </div>
+        <div class="info-grid" id="settlementInfoGrid"></div>
+        <div id="settlementForecastWrap" style="margin-top:14px;display:none;">
+          <div style="font-size:11px;color:var(--text3);margin-bottom:8px;font-weight:500;">توقعات التوسع المساحي (م²)</div>
+          <div style="position:relative;height:160px;"><canvas id="settlementForecastChart"></canvas></div>
+        </div>
+      </div>
+      <div id="settlementError" class="error-box" style="display:none;">
+        <div class="error-box-title">⚠️ تعذر الاتصال بالخادم</div>
+        <div class="error-box-msg" id="settlementErrorMsg">تأكد من تشغيل الخادم على http://127.0.0.1:8000</div>
+        <button type="button" class="error-box-retry" onclick="investigateSettlement()">إعادة المحاولة</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ ADMIN ══════════════════ -->
+  <div class="page" id="page-admin-users">
+    <div class="card">
+      <div class="card-header"><span class="card-title">إدارة المستخدمين</span><button type="button" class="tb-btn primary">+ إضافة مستخدم</button></div>
+      <div class="table-wrap"><table><thead><tr><th>الاسم</th><th>الدور</th><th>الحالة</th><th>آخر دخول</th><th></th></tr></thead><tbody>
+        <tr><td><div style="display:flex;align-items:center;gap:8px;"><div class="avatar" style="width:26px;height:26px;font-size:10px;">م.أ</div><span>PTUK_IKW</span></div></td><td><span class="badge blue">مدير</span></td><td><span class="badge green">نشط</span></td><td class="td-muted">اليوم 09:14</td><td><button type="button" class="tb-btn" style="height:24px;font-size:11px;">تعديل</button></td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+
+  <div class="page" id="page-admin-sources">
+    <div class="admin-grid">
+      <div class="source-card"><div class="source-icon" style="background:var(--accent2);"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="source-info"><div class="source-name">دائرة الأراضي والطابو</div><div class="source-meta">آخر مزامنة: اليوم 08:00</div><div class="source-status"><div class="dot-online"></div><span style="color:var(--accent);">متصل</span></div></div><button type="button" class="tb-btn">إعدادات</button></div>
+      <div class="source-card"><div class="source-icon" style="background:var(--red);"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div><div class="source-info"><div class="source-name">قاعدة بيانات الهجرة</div><div class="source-meta">لم يتم الربط بعد</div><div class="source-status"><div class="dot-offline"></div><span style="color:var(--red);">غير متصل</span></div></div><button type="button" class="tb-btn primary">ربط</button></div>
+    </div>
+  </div>
+
+  <div class="page" id="page-admin-ai">
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><span class="card-title">عتبات مستوى الخطر</span></div>
+        <div class="threshold-row"><span class="threshold-label">الحد الأدنى لتنبيه حرج</span><input class="threshold-input" type="number" value="80"><span style="font-size:11px;color:var(--text3);">/ 100</span></div>
+        <div class="threshold-row"><span class="threshold-label">الحد الأدنى لتنبيه متوسط</span><input class="threshold-input" type="number" value="55"><span style="font-size:11px;color:var(--text3);">/ 100</span></div>
+        <button type="button" class="tb-btn primary" style="margin-top:12px;">حفظ التغييرات</button>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">نماذج AI</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="background:var(--bg3);border-radius:var(--radius);padding:12px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><span style="font-size:12px;font-weight:500;color:var(--text);">نموذج كشف التسريب</span><span class="badge green">نشط</span></div><div style="font-size:11px;color:var(--text3);">XGBoost | دقة: 91.3%</div></div>
+          <div style="background:var(--bg3);border-radius:var(--radius);padding:12px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><span style="font-size:12px;font-weight:500;color:var(--text);">نموذج كشف الاحتيال</span><span class="badge green">نشط</span></div><div style="font-size:11px;color:var(--text3);">RandomForest | دقة: 91.6%</div></div>
+          <div style="background:var(--bg3);border-radius:var(--radius);padding:12px;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><span style="font-size:12px;font-weight:500;color:var(--text);">نموذج توسع المستوطنات</span><span class="badge amber">يحتاج تحديث</span></div><div style="font-size:11px;color:var(--text3);">XGBoost + Time Series | دقة: 78.6%</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-admin-logs">
+    <div class="card">
+      <div class="card-header"><span class="card-title">سجل التدقيق — آخر 24 ساعة</span></div>
+      <div id="logsContainer"></div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+</div><!-- /app -->
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// ═══════════════════════════════════════════════════
+//  CONSTANTS & STATE
+// ═══════════════════════════════════════════════════
+const API = 'http://127.0.0.1:8000';
+const TIMEOUT_MS = 10000; // 10 seconds
+
+// Auto-Reload Control (disabled by default)
+const AUTO_RELOAD_ENABLED = false; // ⚠️ مقفّل نهائياً
+
+// منع أي form submit
+document.addEventListener('submit', e => e.preventDefault(), true);
+
+// منع navigation للروابط الخطرة فقط
+document.addEventListener('click', e => {
+  const a = e.target.closest('a');
+  if (!a) return;
+
+  // السماح للروابط التي تفتح في نافذة جديدة أو تحميل ملفات
+  if (a.getAttribute('target') === '_blank' || a.getAttribute('download')) return;
+
+  // منع التنقل إذا كانت العلامة تحتوي onclick (تنفيذ JS فقط)
+  if (a.getAttribute('onclick')) { e.preventDefault(); return; }
+
+  // منع التنقل إذا كانت الرابط فارغًا أو يشير للصفحة نفسها أو مجرد '#'
+  const href = a.getAttribute('href');
+  if (!href || href === '#' || a.href === location.href) { e.preventDefault(); return; }
+}, true);
+
+const PAGE_TITLES = {
+  dashboard:'لوحة التحكم الرئيسية', map:'خريطة GIS التفاعلية',
+  parcels:'قطع الأراضي', owners:'سجل المالكين', transactions:'سجل المعاملات',
+  cases:'قضايا التسريب', alerts:'تنبيهات الذكاء الاصطناعي',
+  reports:'التقارير والإحصائيات', 'fraud-all':'كشف المحتالين — AI',
+  'leak-all':'كشف التسريبات — AI', 'settlement-expansion':'تحليل توسع المستوطنات',
+  investigation:'مركز التحقيقات', 'admin-users':'إدارة المستخدمين',
+  'admin-sources':'مصادر البيانات', 'admin-ai':'نماذج الذكاء الاصطناعي',
+  'admin-logs':'السجلات والتدقيق',
+};
+
+// ═══════════════════════════════════════════════════
+//  FETCH WITH TIMEOUT — لا تسبب إعادة توجيه أبداً
+// ═══════════════════════════════════════════════════
+async function apiFetch(url, options = {}) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  try {
+    const res = await fetch(url, { ...options, signal: controller.signal, redirect: 'error' });
+    clearTimeout(timer);
+    if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+    return await res.json();
+  } catch (err) {
+    clearTimeout(timer);
+    if (err.name === 'AbortError') throw new Error('انتهت مهلة الاتصال (10 ثوان). تأكد من تشغيل الخادم.');
+    if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
+      throw new Error('تعذر الوصول إلى الخادم على ' + API + ' — تأكد من تشغيله.');
+    }
+    throw err;
+  }
+}
+
+// ═══════════════════════════════════════════════════
+//  TOAST
+// ═══════════════════════════════════════════════════
+function showToast(msg, type = 'info', duration = 4000) {
+  const icons = { error:'❌', success:'✅', warn:'⚠️', info:'ℹ️' };
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.innerHTML = `<span class="toast-icon">${icons[type]||'ℹ️'}</span><span class="toast-msg">${msg}</span><button type="button" class="toast-close" onclick="this.parentElement.remove()">✕</button>`;
+  document.getElementById('toastContainer').appendChild(toast);
+  setTimeout(() => { if (toast.parentElement) toast.remove(); }, duration);
+}
+
+// ═══════════════════════════════════════════════════
+//  NAVIGATION — يستخدم classList فقط، لا style.display
+// ═══════════════════════════════════════════════════
+let _activePage = 'dashboard';
+
+function gotoPage(id) {
+  // إيقاف أي حدث افتراضي محتمل
+  event && event.preventDefault && event.preventDefault();
+
+  const page = document.getElementById('page-' + id);
+  if (!page) { console.warn('[gotoPage] لا توجد صفحة: page-' + id); return; }
+
+  // إخفاء الصفحة الحالية
+  const prev = document.getElementById('page-' + _activePage);
+  if (prev && prev !== page) prev.classList.remove('active');
+
+  // إلغاء تفعيل كل nav items
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+  // تفعيل الصفحة المطلوبة
+  page.classList.add('active');
+  _activePage = id;
+
+  // تحديث العنوان
+  const titleEl = document.getElementById('pageTitle');
+  if (titleEl) titleEl.textContent = PAGE_TITLES[id] || id;
+
+  // تفعيل nav item المطابق
+  const navItem = document.querySelector(`.nav-item[data-page="${id}"]`);
+  if (navItem) navItem.classList.add('active');
+
+  // تشغيل منطق الصفحة
+  _onPageEnter(id);
+}
+
+function _onPageEnter(id) {
+  if (id === 'map')           setTimeout(initMap, 50);
+  else if (id === 'parcels')  renderParcels();
+  else if (id === 'owners')   renderOwners('all');
+  else if (id === 'transactions') renderTransactions();
+  else if (id === 'cases')    renderCases();
+  else if (id === 'alerts')   renderAlerts('all');
+  else if (id === 'admin-logs') renderLogs();
+  else if (id === 'reports')  loadReportsData();
+  else if (id === 'fraud-all') loadFraudAllData();
+  else if (id === 'leak-all') loadLeakAllData();
+}
+
+// ═══════════════════════════════════════════════════
+//  STATIC DATA
+// ═══════════════════════════════════════════════════
+const PARCELS = [
+  {id:'NB-142',gov:'نابلس',locality:'حوارة',area:'3,200',type:'زراعية',owner:'محمد عبد الرحمن',txn:'2026/03/28',risk:'high'},
+  {id:'NB-087',gov:'نابلس',locality:'بيتا',area:'1,800',type:'زراعية',owner:'خالد سمير',txn:'2026/03/20',risk:'high'},
+  {id:'HB-055',gov:'الخليل',locality:'يطا',area:'4,800',type:'زراعية',owner:'حسن الرجبي',txn:'2026/04/01',risk:'high'},
+  {id:'RM-066',gov:'رام الله',locality:'بيتين',area:'3,000',type:'مختلطة',owner:'إياد ناصر',txn:'2026/03/30',risk:'high'},
+  {id:'NB-201',gov:'نابلس',locality:'قريوت',area:'2,100',type:'متنوعة',owner:'سامر قاسم',txn:'2026/02/14',risk:'med'},
+  {id:'HB-230',gov:'الخليل',locality:'الظاهرية',area:'1,750',type:'زراعية',owner:'نضال خليل',txn:'2026/02/22',risk:'med'},
+  {id:'NB-334',gov:'نابلس',locality:'حوسان',area:'950',type:'سكنية',owner:'علي مروان',txn:'2025/11/03',risk:'low'},
+];
+
+const OWNERS = [
+  {name:'محمد عبد الرحمن',id:'987654321',residence:'الأردن — عمان',parcels:4,txns:7,risk:'high',score:87},
+  {name:'خالد سمير الحاج',id:'876543210',residence:'الإمارات — دبي',parcels:3,txns:5,risk:'high',score:82},
+  {name:'أحمد فوزي منصور',id:'765432109',residence:'الأردن — عمان',parcels:2,txns:4,risk:'high',score:71},
+  {name:'يوسف حسن الطيراوي',id:'654321098',residence:'رام الله',parcels:4,txns:4,risk:'med',score:68},
+  {name:'سامر إبراهيم قاسم',id:'432109876',residence:'نابلس',parcels:3,txns:2,risk:'low',score:23},
+];
+
+const TRANSACTIONS = [
+  {num:'TXN-2026-0401',date:'2026/04/01',seller:'حسن الرجبي',buyer:'شركة مجهولة',parcel:'HB-055',type:'بيع',price:'$145,000',suspicion:'high'},
+  {num:'TXN-2026-0375',date:'2026/03/28',seller:'محمد عبد الرحمن',buyer:'خالد سمير',parcel:'NB-142',type:'بيع',price:'$112,000',suspicion:'high'},
+  {num:'TXN-2026-0244',date:'2026/02/22',seller:'نضال خليل',buyer:'سامر قاسم',parcel:'HB-230',type:'بيع',price:'$62,000',suspicion:'med'},
+  {num:'TXN-2026-0099',date:'2026/01/09',seller:'ياسر التميمي',buyer:'فرد محلي',parcel:'NB-412',type:'بيع',price:'$48,000',suspicion:'low'},
+];
+
+const CASES = [
+  {id:'CASE-2026-031',parcel:'HB-055',location:'الخليل / يطا',score:96,status:'نشطة',date:'2026/04/01',persons:3},
+  {id:'CASE-2026-025',parcel:'NB-142',location:'نابلس / حوارة',score:87,status:'تحت التحقيق',date:'2026/03/28',persons:4},
+  {id:'CASE-2026-014',parcel:'NB-087',location:'نابلس / بيتا',score:79,status:'محالة للقضاء',date:'2026/03/20',persons:3},
+];
+
+const ALERTS_DATA = [
+  {type:'نمط بيع',title:'نمط بيع متسلسل مشبوه — الخليل',desc:'5 قطع متجاورة بيعت لمشترين مقيمين خارج البلاد خلال 30 يوم.',severity:'critical',entity:'قطعة HB-055',time:'منذ ساعتين'},
+  {type:'risk_score',title:'مالك risk_score مرتفع — نابلس',desc:'أحمد فوزي منصور — 4 صفقات بيع خلال 3 أشهر.',severity:'critical',entity:'مالك: أحمد فوزي',time:'منذ 5 ساعات'},
+  {type:'cluster',title:'cluster بيع — رام الله الشمال',desc:'ارتفاع 240% في عمليات البيع بمنطقة بيتين خلال هذا الشهر.',severity:'critical',entity:'منطقة: بيتين',time:'منذ يوم'},
+  {type:'وكالة',title:'وكالة بيع مشبوهة — جنين',desc:'وكالة ممنوحة لشخص مقيم في الخارج دون سبب مُعلن.',severity:'medium',entity:'قطعة JN-033',time:'منذ يومين'},
+  {type:'سعر مشبوه',title:'سعر بيع أقل من السوق — طولكرم',desc:'قطعة 2,900م² بيعت بـ $93,000 رغم أن سعر السوق يتجاوز $200,000.',severity:'medium',entity:'قطعة TK-017',time:'منذ 3 أيام'},
+  {type:'تداخل',title:'تداخل في سجلات الملكية — الخليل',desc:'قطعة مسجلة باسمين مختلفين في قاعدتي بيانات.',severity:'low',entity:'قطعة HB-230',time:'منذ 5 أيام'},
+];
+
+const LOGS = [
+  {time:'2026/04/04 09:14',user:'PTUK_IKW',action:'دخل النظام',target:''},
+  {time:'2026/04/04 09:18',user:'PTUK_IKW',action:'فتح ملف المالك',target:'محمد عبد الرحمن'},
+  {time:'2026/04/04 10:03',user:'PTUK_IKW',action:'أغلق تنبيه',target:'ALT-006'},
+  {time:'2026/04/04 10:44',user:'PTUK_IKW',action:'عدّل إعدادات AI',target:'عتبة التنبيه الحرج: 80 → 75'},
+];
+
+// ═══════════════════════════════════════════════════
+//  HELPERS
+// ═══════════════════════════════════════════════════
+function riskBadge(r) {
+  if (r === 'high') return '<span class="badge red">عالٍ</span>';
+  if (r === 'med')  return '<span class="badge amber">متوسط</span>';
+  return '<span class="badge green">منخفض</span>';
+}
+function suspBadge(s) {
+  if (s === 'high') return '<span class="badge red">مشبوه</span>';
+  if (s === 'med')  return '<span class="badge amber">مراقبة</span>';
+  return '<span class="badge green">عادي</span>';
+}
+function setInnerHTML(id, html) {
+  const el = document.getElementById(id);
+  if (el) el.innerHTML = html;
+}
+function showEl(id)  { const el = document.getElementById(id); if (el) el.style.display = ''; }
+function hideEl(id)  { const el = document.getElementById(id); if (el) el.style.display = 'none'; }
+function setText(id, v) { const el = document.getElementById(id); if (el) el.textContent = v; }
+
+// ═══════════════════════════════════════════════════
+//  STATIC RENDERS
+// ═══════════════════════════════════════════════════
+function renderParcels() {
+  setInnerHTML('parcelsTableBody', PARCELS.map(p => `<tr>
+    <td class="td-mono td-link">${p.id}</td>
+    <td>${p.locality} <span class="td-muted">/ ${p.gov}</span></td>
+    <td>${p.area} م²</td><td>${p.type}</td>
+    <td style="font-weight:500;">${p.owner}</td>
+    <td class="td-muted">${p.txn}</td>
+    <td>${riskBadge(p.risk)}</td>
+  </tr>`).join(''));
+}
+
+function renderOwners(filter) {
+  let data = OWNERS;
+  if (filter === 'high')   data = data.filter(o => o.risk === 'high');
+  if (filter === 'med')    data = data.filter(o => o.risk === 'med');
+  if (filter === 'abroad') data = data.filter(o => !['رام الله','نابلس','الخليل'].some(c => o.residence.includes(c)));
+  setInnerHTML('ownersTableBody', data.map(o => `<tr>
+    <td style="font-weight:500;">${o.name}</td>
+    <td class="td-mono">${o.id}</td>
+    <td>${o.residence}</td><td>${o.parcels}</td><td>${o.txns}</td>
+    <td>${riskBadge(o.risk)} <span class="td-muted">${o.score}/100</span></td>
+  </tr>`).join(''));
+}
+function filterOwners(v) { renderOwners(v); }
+
+function renderTransactions() {
+  setInnerHTML('txnTableBody', TRANSACTIONS.map(t => `<tr>
+    <td class="td-mono">${t.num}</td><td class="td-muted">${t.date}</td>
+    <td style="font-weight:500;">${t.seller}</td><td>${t.buyer}</td>
+    <td class="td-mono">${t.parcel}</td>
+    <td><span class="badge gray">${t.type}</span></td>
+    <td style="font-weight:500;">${t.price}</td>
+    <td>${suspBadge(t.suspicion)}</td>
+  </tr>`).join(''));
+}
+
+function renderCases() {
+  const statusColors = {'نشطة':'red','تحت التحقيق':'amber','محالة للقضاء':'blue'};
+  setInnerHTML('casesTableBody', CASES.map(c => `<tr>
+    <td class="td-mono td-link">${c.id}</td><td class="td-mono">${c.parcel}</td>
+    <td>${c.location}</td>
+    <td><span class="badge ${c.score>85?'red':c.score>70?'amber':'green'}">${c.score}%</span></td>
+    <td><span class="badge ${statusColors[c.status]||'gray'}">${c.status}</span></td>
+    <td class="td-muted">${c.date}</td><td>${c.persons} أشخاص</td>
+  </tr>`).join(''));
+}
+
+function renderAlerts(filter) {
+  let data = ALERTS_DATA;
+  if (filter === 'critical') data = data.filter(a => a.severity === 'critical');
+  if (filter === 'medium')   data = data.filter(a => a.severity === 'medium');
+  if (filter === 'low')      data = data.filter(a => a.severity === 'low');
+  const sevMap = {critical:'red', medium:'amber', low:'blue'};
+  const sevAr  = {critical:'حرج', medium:'متوسط', low:'منخفض'};
+  const dots   = {critical:'var(--red)', medium:'var(--amber)', low:'var(--blue)'};
+  setInnerHTML('alertsList', data.map(a => `
+    <div class="alert-row">
+      <div class="alert-dot" style="background:${dots[a.severity]};"></div>
+      <div class="alert-content">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+          <div class="alert-title">${a.title}</div>
+          <span class="badge ${sevMap[a.severity]}">${sevAr[a.severity]}</span>
+        </div>
+        <div class="alert-desc">${a.desc}</div>
+        <div class="alert-meta">
+          <span class="badge gray">${a.type}</span>
+          <span style="font-size:11px;color:var(--blue2);">${a.entity}</span>
+          <span class="alert-time">${a.time}</span>
+        </div>
+      </div>
+    </div>`).join(''));
+}
+function filterAlerts(v) { renderAlerts(v); }
+
+function renderLogs() {
+  setInnerHTML('logsContainer', LOGS.map(l => `
+    <div class="log-row">
+      <span class="log-time">${l.time}</span>
+      <span class="log-user">${l.user}</span>
+      <span class="log-action">${l.action}</span>
+      <span class="log-target">${l.target}</span>
+    </div>`).join(''));
+}
+
+// ═══════════════════════════════════════════════════
+//  DASHBOARD CHART
+// ═══════════════════════════════════════════════════
+function initDashboardChart() {
+  const ctx = document.getElementById('trendChart');
+  if (!ctx || ctx._init) return;
+  ctx._init = true;
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['نوفمبر','ديسمبر','يناير','فبراير','مارس','أبريل'],
+      datasets: [
+        {label:'عمليات البيع',data:[78,91,105,118,121,143],borderColor:'#e24b4a',backgroundColor:'rgba(226,75,74,.08)',fill:true,tension:.4,pointRadius:4,borderWidth:2},
+        {label:'مشبوهة',data:[14,18,22,25,26,31],borderColor:'#ef9f27',backgroundColor:'rgba(239,159,39,.06)',fill:true,tension:.4,pointRadius:4,borderWidth:2,borderDash:[5,3]}
+      ]
+    },
+    options: {
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{x:{ticks:{color:'#8b949e',font:{size:11}},grid:{color:'rgba(255,255,255,.04)'}},
+              y:{ticks:{color:'#8b949e',font:{size:11}},grid:{color:'rgba(255,255,255,.04)'},beginAtZero:true}}
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════
+//  REPORTS
+// ═══════════════════════════════════════════════════
+let reportsData = null;
+const _charts = {};
+function destroyChart(id) { if (_charts[id]) { _charts[id].destroy(); delete _charts[id]; } }
+
+async function loadReportsData() {
+  setInnerHTML('reportCardsList', '<div class="loading-state"><div class="spinner"></div><span>تحميل التقارير...</span></div>');
+  try {
+    const resp = await apiFetch(`${API}/reports`);
+    reportsData = resp.data;
+    renderMetrics();
+    renderMonthlyChart();
+    renderGovernorateChart();
+    renderTopBuyersTable();
+    renderTopSellersTable();
+    renderReportCardsList();
+  } catch (e) {
+    setInnerHTML('reportCardsList', `<div style="grid-column:1/-1;" class="error-box">
+      <div class="error-box-title">⚠️ تعذر الاتصال بالخادم</div>
+      <div class="error-box-msg">${e.message}</div>
+      <button type="button" class="error-box-retry" onclick="loadReportsData()">إعادة المحاولة</button>
+    </div>`);
+  }
+}
+
+function renderMetrics() {
+  if (!reportsData) return;
+  const daily = reportsData.daily_report?.data || [];
+  const monthly = reportsData.monthly_report?.data || [];
+  setText('totalRecords', (reportsData.master_table?.total_records || daily.length).toLocaleString());
+  setText('lastTransaction', daily.length > 0 ? daily[daily.length-1].date : '—');
+  const lm = monthly.length > 0 ? parseFloat(monthly[monthly.length-1].total_value || 0) : 0;
+  setText('monthlyTotal', lm > 0 ? '$' + Math.round(lm).toLocaleString() : '—');
+  const avg = daily.length > 0 ? parseFloat(daily[daily.length-1].average_price || 0) : 0;
+  setText('avgValue', avg > 0 ? '$' + Math.round(avg).toLocaleString() : '—');
+}
+
+function renderMonthlyChart() {
+  if (!reportsData?.monthly_report) return;
+  const md = reportsData.monthly_report.data || [];
+  const canvas = document.getElementById('monthlyChart');
+  if (!canvas) return;
+  destroyChart('monthly');
+  const labels = md.map(m => { const [y,mo] = m.month.split('-'); return new Date(y,parseInt(mo)-1).toLocaleString('ar-SA',{month:'short',year:'2-digit'}); });
+  _charts.monthly = new Chart(canvas, {
+    type:'line',
+    data:{labels,datasets:[
+      {label:'عدد المعاملات',data:md.map(m=>parseInt(m.transactions_count)||0),borderColor:'#378add',backgroundColor:'rgba(55,138,221,.1)',fill:true,tension:.4,pointRadius:4,borderWidth:2,yAxisID:'y'},
+      {label:'إجمالي القيمة',data:md.map(m=>parseFloat(m.total_value)||0),borderColor:'#ef9f27',backgroundColor:'rgba(239,159,39,.05)',fill:true,tension:.4,pointRadius:4,borderWidth:2,yAxisID:'y1'}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{color:'#8b949e',font:{size:11}}}},
+      scales:{x:{ticks:{color:'#8b949e',font:{size:10}},grid:{color:'rgba(255,255,255,.04)'}},
+              y:{position:'left',ticks:{color:'#8b949e',font:{size:10}},grid:{color:'rgba(255,255,255,.04)'}},
+              y1:{position:'right',ticks:{color:'#ef9f27',font:{size:10}},grid:{display:false}}}}
+  });
+}
+
+function renderGovernorateChart() {
+  if (!reportsData?.governorate_report) return;
+  const govs = reportsData.governorate_report.data || [];
+  const canvas = document.getElementById('governorateChart');
+  if (!canvas) return;
+  destroyChart('gov');
+  const colors = ['#e24b4a','#ef9f27','#1d9e75','#378add','#7f77dd','#f97316'];
+  _charts.gov = new Chart(canvas, {
+    type:'bar',
+    data:{labels:govs.map(g=>g.governorate_name||'مجهولة'),datasets:[{label:'المعاملات',data:govs.map(g=>parseInt(g.transactions_count)||0),backgroundColor:colors.slice(0,govs.length),borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},
+      scales:{x:{ticks:{color:'#8b949e',font:{size:10}},grid:{color:'rgba(255,255,255,.04)'}},y:{ticks:{color:'#8b949e',font:{size:10}},grid:{display:false}}}}
+  });
+}
+
+function renderTopBuyersTable() {
+  if (!reportsData?.top_buyers_report) return;
+  const buyers = reportsData.top_buyers_report.data || [];
+  setInnerHTML('topBuyersTable', buyers.slice(0,8).map((b,i) => `<tr>
+    <td style="text-align:center;">${i+1}</td>
+    <td style="font-weight:500;">${b.buyer_name||'مجهول'}</td>
+    <td style="text-align:center;">${b.purchases_count||0}</td>
+    <td style="font-family:monospace;font-size:11px;">$${Math.round(parseFloat(b.total_spent||0)).toLocaleString()}</td>
+  </tr>`).join(''));
+}
+
+function renderTopSellersTable() {
+  if (!reportsData?.top_sellers_report) return;
+  const sellers = reportsData.top_sellers_report.data || [];
+  setInnerHTML('topSellersTable', sellers.slice(0,8).map((s,i) => `<tr>
+    <td style="text-align:center;">${i+1}</td>
+    <td style="font-weight:500;">${s.seller_name||'مجهول'}</td>
+    <td style="text-align:center;">${s.sales_count||0}</td>
+    <td style="font-family:monospace;font-size:11px;">$${Math.round(parseFloat(s.total_sales_value||0)).toLocaleString()}</td>
+  </tr>`).join(''));
+}
+
+function renderReportCardsList() {
+  const reportKeys = [
+    {key:'daily_report',label:'التقرير اليومي',icon:'📅',color:'blue'},
+    {key:'monthly_report',label:'التقرير الشهري',icon:'📆',color:'green'},
+    {key:'governorate_report',label:'تقرير المحافظات',icon:'🗺️',color:'amber'},
+    {key:'land_type_report',label:'تقرير أنواع الأراضي',icon:'🌾',color:'red'},
+    {key:'top_buyers_report',label:'أكثر المشترين نشاطاً',icon:'👥',color:'blue'},
+    {key:'top_sellers_report',label:'أكثر البائعين نشاطاً',icon:'💼',color:'amber'},
+  ];
+  setInnerHTML('reportCardsList', reportKeys.map(r => `
+    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:14px;cursor:pointer;transition:border-color .15s;"
+      onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'"
+      onclick="openReportViewer('${r.key}','${r.label}')">
+      <div style="font-size:20px;margin-bottom:8px;">${r.icon}</div>
+      <div style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;">${r.label}</div>
+      <span class="badge ${r.color}">${reportsData ? '✓ محمّل' : 'اضغط للعرض'}</span>
+    </div>`).join(''));
+}
+
+function openReportViewer(key, label) {
+  showToast('جاري تحميل التقرير: ' + label, 'info');
+  if (reportsData?.[key]) {
+    const blob = new Blob([JSON.stringify(reportsData[key], null, 2)], {type:'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = key + '.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+}
+
+function downloadMonthlyReport() {
+  if (!reportsData?.monthly_report) { showToast('لا توجد بيانات. اضغط تحديث أولاً.', 'warn'); return; }
+  const blob = new Blob([JSON.stringify(reportsData.monthly_report, null, 2)], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'monthly_report.json'; a.click(); URL.revokeObjectURL(a.href);
+}
+
+// ── Custom Report ──
+function updateCustomReportForm() {
+  const type   = document.getElementById('reportType')?.value;
+  const period = document.getElementById('reportPeriod')?.value;
+  const eg = document.getElementById('entityGroup');
+  const gg = document.getElementById('governorateGroup');
+  const sd = document.getElementById('startDateGroup');
+  const ed = document.getElementById('endDateGroup');
+  if (!eg) return;
+  eg.style.display = 'none'; gg.style.display = 'none'; sd.style.display = 'none'; ed.style.display = 'none';
+  if (type === 'person')  { eg.style.display = 'block'; document.getElementById('entityLabel').textContent = 'اسم الشخص / رقم الهوية'; }
+  if (type === 'parcel')  { eg.style.display = 'block'; document.getElementById('entityLabel').textContent = 'رقم القطعة'; }
+  if (type === 'region')  { gg.style.display = 'block'; }
+  if (period === 'مخصص') { sd.style.display = 'block'; ed.style.display = 'block'; }
+}
+
+// ─── FIX: لا return false، لا form submit، يعرض النتيجة في نفس الصفحة
+async function generateCustomReport() {
+  const btn = document.getElementById('generateReportBtn');
+  const statusEl = document.getElementById('customReportStatus');
+  const outputEl = document.getElementById('customReportOutput');
+  const resultEl = document.getElementById('customReportResult');
+
+  const type   = document.getElementById('reportType').value;
+  const period = document.getElementById('reportPeriod').value;
+  const entity = document.getElementById('reportEntity').value.trim();
+  const gov    = document.getElementById('reportGovernorate').value;
+  const sd     = document.getElementById('customStartDate').value;
+  const ed2    = document.getElementById('customEndDate').value;
+
+  // إظهار قسم النتائج والحالة الأولية
+  resultEl.style.display = 'block';
+  statusEl.style.cssText = 'padding:10px 14px;border-radius:var(--radius);font-size:12px;background:rgba(55,138,221,.1);border:1px solid rgba(55,138,221,.2);color:var(--blue2);';
+  statusEl.textContent = '⏳ جاري توليد التقرير...';
+  outputEl.innerHTML = '';
+  btn.disabled = true;
+  btn.textContent = 'جاري التوليد...';
+
+  const body = { report_type: type, period };
+  if (entity)          body.entity = entity;
+  if (gov)             body.governorate = gov;
+  if (period === 'مخصص') { body.custom_start_date = sd; body.custom_end_date = ed2; }
+
+  try {
+    const data = await apiFetch(`${API}/generate-custom-report`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+
+    if (data.status === 'success') {
+      statusEl.style.cssText = 'padding:10px 14px;border-radius:var(--radius);font-size:12px;background:rgba(29,158,117,.1);border:1px solid rgba(29,158,117,.25);color:#5dcaa5;';
+      statusEl.textContent = '✅ تم توليد التقرير بنجاح!';
+      outputEl.innerHTML = '';
+      if (data.report_file) {
+        const a = document.createElement('a');
+        a.href = API + data.report_file; a.target = '_blank';
+        a.textContent = '📄 عرض التقرير JSON';
+        a.style.cssText = 'color:var(--blue);text-decoration:underline;display:block;margin-top:4px;font-size:12px;';
+        outputEl.appendChild(a);
+      }
+      if (data.chart_file) {
+        const a = document.createElement('a');
+        a.href = API + data.chart_file; a.target = '_blank';
+        a.textContent = '📊 عرض الرسم البياني';
+        a.style.cssText = 'color:var(--accent);text-decoration:underline;display:block;margin-top:4px;font-size:12px;';
+        outputEl.appendChild(a);
+      }
+    } else {
+      statusEl.style.cssText = 'padding:10px 14px;border-radius:var(--radius);font-size:12px;background:rgba(226,75,74,.1);border:1px solid rgba(226,75,74,.25);color:var(--red2);';
+      statusEl.textContent = '❌ ' + (data.message || 'خطأ غير معروف');
+    }
+  } catch (e) {
+    statusEl.style.cssText = 'padding:10px 14px;border-radius:var(--radius);font-size:12px;background:rgba(226,75,74,.1);border:1px solid rgba(226,75,74,.25);color:var(--red2);';
+    statusEl.textContent = '⚠️ ' + e.message;
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:white;fill:none;stroke-width:2;"><path d="M12 2v20M2 12h20"/></svg>توليد التقرير';
+  }
+}
+
+// ═══════════════════════════════════════════════════
+//  FRAUD DETECTION
+// ═══════════════════════════════════════════════════
+let allFraudData = [];
+
+async function loadFraudAllData() {
+  // تحديث واجهة التحميل — لا يغير الصفحة
+  setInnerHTML('fraudAllContent', '<div class="loading-state"><div class="spinner"></div><span>جاري تحليل جميع الأشخاص...</span></div>');
+  setInnerHTML('fraudStats', '<div class="loading-state"><div class="spinner"></div></div>');
+  setText('fraudTotal', '—'); setText('fraudSuspicious', '—');
+  setText('fraudHighRisk', '—'); setText('fraudPct', '—');
+
+  try {
+    const data = await apiFetch(`${API}/fraud_detection/batch_predict`);
+
+    if (data.status === 'success') {
+      const s = data.statistics || {};
+      setText('fraudTotal',      (s.total_people || 0).toLocaleString());
+      setText('fraudSuspicious', (s.suspicious_count || 0).toLocaleString());
+      setText('fraudHighRisk',   (s.high_risk_count || 0).toLocaleString());
+      setText('fraudPct',        (s.suspicious_percentage || 0) + '%');
+
+      setInnerHTML('fraudStats', `<div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="pp-row"><span class="pp-key">متوسط احتمالية الاحتيال</span><span class="pp-val">${((s.avg_fraud_probability||0)*100).toFixed(1)}%</span></div>
+        <div class="pp-row"><span class="pp-key">خطر عالٍ (&gt;70%)</span><span class="pp-val" style="color:var(--red);">${s.high_risk_count||0}</span></div>
+        <div class="pp-row"><span class="pp-key">خطر متوسط (40-70%)</span><span class="pp-val" style="color:var(--amber);">${s.medium_risk_count||0}</span></div>
+        <div class="pp-row"><span class="pp-key">خطر منخفض (&lt;40%)</span><span class="pp-val" style="color:var(--accent);">${s.low_risk_count||0}</span></div>
+      </div>`);
+
+      destroyChart('fraudRisk');
+      const ctx = document.getElementById('fraudRiskChart');
+      if (ctx) {
+        _charts.fraudRisk = new Chart(ctx, {
+          type:'doughnut',
+          data:{labels:['خطر عالٍ','خطر متوسط','خطر منخفض'],datasets:[{data:[s.high_risk_count||0,s.medium_risk_count||0,s.low_risk_count||0],backgroundColor:['#e24b4a','#ef9f27','#1d9e75'],borderColor:'#161b22',borderWidth:2}]},
+          options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{color:'#8b949e',font:{size:10}}}}}
+        });
+      }
+
+      allFraudData = data.all_results || data.suspicious_people || [];
+      renderFraudTable(allFraudData);
+    } else {
+      _fraudError(data.message || 'خطأ في الاستجابة');
+    }
+  } catch (e) {
+    _fraudError(e.message);
+  }
+}
+
+function _fraudError(msg) {
+  setInnerHTML('fraudStats', `<div class="error-box"><div class="error-box-title">⚠️ خطأ</div><div class="error-box-msg">${msg}</div></div>`);
+  setInnerHTML('fraudAllContent', `<div class="error-box">
+    <div class="error-box-title">⚠️ تعذر تحميل البيانات</div>
+    <div class="error-box-msg">${msg}</div>
+    <button type="button" class="error-box-retry" onclick="loadFraudAllData()">إعادة المحاولة</button>
+  </div>`);
+}
+
+function renderFraudTable(data) {
+  if (!data || !data.length) {
+    setInnerHTML('fraudAllContent', '<div class="empty"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><p>لم يتم اكتشاف أشخاص مشبوهين</p></div>');
+    return;
+  }
+  setInnerHTML('fraudAllContent', `<div class="table-wrap"><table>
+    <thead><tr><th>المعرف</th><th>الاسم</th><th>المجموعة</th><th>نوع التورط</th><th>احتمالية الاحتيال</th><th>مستوى الخطر</th><th>الثقة</th><th></th></tr></thead>
+    <tbody>${data.map(p => {
+      const pct = ((p.fraud_probability||0)*100).toFixed(1);
+      const color = pct > 70 ? 'var(--red)' : pct > 40 ? 'var(--amber)' : 'var(--accent)';
+      const lvl = p.risk_level === 'High' ? 'red' : p.risk_level === 'Medium' ? 'amber' : 'green';
+      const lvlAr = p.risk_level === 'High' ? 'عالٍ' : p.risk_level === 'Medium' ? 'متوسط' : 'منخفض';
+      return `<tr>
+        <td class="td-mono">${p.owner_id}</td>
+        <td style="font-weight:500;">${p.full_name||'—'}</td>
+        <td><span class="badge gray">${p.identity_group||'—'}</span></td>
+        <td><span class="badge blue">${p.involvement_type||'—'}</span></td>
+        <td>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <div class="progress-bar" style="width:80px;height:4px;"><div class="progress-fill" style="width:${pct}%;background:${color};"></div></div>
+            <span style="font-size:11px;">${pct}%</span>
+          </div>
+        </td>
+        <td><span class="badge ${lvl}">${lvlAr}</span></td>
+        <td class="td-muted">${((p.confidence||0)*100).toFixed(0)}%</td>
+        <td><button type="button" class="tb-btn" style="height:24px;font-size:11px;" onclick="quickInvestPerson(${p.owner_id})">تحقيق</button></td>
+      </tr>`;
+    }).join('')}</tbody>
+  </table></div>`);
+}
+
+function filterFraudList(v) {
+  let data = allFraudData;
+  if (v === 'high')   data = data.filter(p => (p.fraud_probability||0) > 0.7);
+  if (v === 'medium') data = data.filter(p => { const pr = p.fraud_probability||0; return pr > 0.4 && pr <= 0.7; });
+  renderFraudTable(data);
+}
+
+function quickInvestPerson(id) {
+  gotoPage('investigation');
+  const firstTab = document.querySelector('#page-investigation .tab');
+  if (firstTab) switchInvestTab(firstTab, 'person');
+  const inp = document.getElementById('personInvestId');
+  if (inp) { inp.value = id; setTimeout(investigatePerson, 200); }
+}
+
+// ═══════════════════════════════════════════════════
+//  LEAK DETECTION
+// ═══════════════════════════════════════════════════
+let allLeakData = {};
+let currentLeakPeriod = 'آخر شهر';
+
+function setLeakPeriod(el, period) {
+  document.querySelectorAll('#page-leak-all .pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  currentLeakPeriod = period;
+  const days = {'آخر شهر':30,'آخر 3 أشهر':90,'آخر 6 أشهر':180,'هذا العام':365};
+  setText('leakPeriodInfo', `يعرض التسريبات المكتشفة خلال آخر ${days[period]||30} يوم`);
+  loadLeakAllData();
+}
+
+async function loadLeakAllData() {
+  setInnerHTML('leakAllContent', '<div class="loading-state"><div class="spinner"></div><span>جاري فحص القطع الأرضية...</span></div>');
+  setText('leakTotal','—'); setText('leakLeaked','—'); setText('leakSuspected','—'); setText('leakSafe','—');
+
+  try {
+    const period = encodeURIComponent(currentLeakPeriod);
+    const data = await apiFetch(`${API}/leak_detection/all?period=${period}`);
+
+    if (data.status === 'success') {
+      const s = data.statistics || {};
+      setText('leakTotal',     (s.total_parcels||0).toLocaleString());
+      setText('leakLeaked',    (s.leaked_count||0).toLocaleString());
+      setText('leakSuspected', (s.suspected_count||0).toLocaleString());
+      setText('leakSafe',      (s.safe_count||0).toLocaleString());
+
+      destroyChart('leakDist');
+      const ctx = document.getElementById('leakDistChart');
+      if (ctx) {
+        _charts.leakDist = new Chart(ctx, {
+          type:'pie',
+          data:{labels:['مسرّبة','مشبوهة','آمنة'],datasets:[{data:[s.leaked_count||0,s.suspected_count||0,s.safe_count||0],backgroundColor:['#e24b4a','#ef9f27','#1d9e75'],borderColor:'#161b22',borderWidth:2}]},
+          options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{color:'#8b949e',font:{size:10}}}}}
+        });
+      }
+      allLeakData = data;
+      renderLeakTable('all');
+    } else {
+      setInnerHTML('leakAllContent', `<div class="error-box">
+        <div class="error-box-title">⚠️ ${data.message||'خطأ'}</div>
+        <button type="button" class="error-box-retry" onclick="loadLeakAllData()">إعادة المحاولة</button>
+      </div>`);
+    }
+  } catch (e) {
+    setInnerHTML('leakAllContent', `<div class="error-box">
+      <div class="error-box-title">⚠️ تعذر الاتصال بالخادم</div>
+      <div class="error-box-msg">${e.message}</div>
+      <button type="button" class="error-box-retry" onclick="loadLeakAllData()">إعادة المحاولة</button>
+    </div>`);
+  }
+}
+
+function filterLeakTable(v) { renderLeakTable(v); }
+
+function renderLeakTable(filter) {
+  const leaked   = (allLeakData.leaked_parcels   || []).map(p => ({...p, _type:'leaked'}));
+  const suspected = (allLeakData.suspected_parcels || []).map(p => ({...p, _type:'suspected'}));
+  let rows = filter === 'leaked' ? leaked : filter === 'suspected' ? suspected : [...leaked, ...suspected];
+
+  if (!rows.length) {
+    setInnerHTML('leakAllContent', '<div class="empty"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><p>لا توجد نتائج للعرض</p></div>');
+    return;
+  }
+  setInnerHTML('leakAllContent', `<div class="table-wrap"><table>
+    <thead><tr><th>رقم القطعة</th><th>التصنيف</th><th>درجة الخطر %</th><th>درجة الاشتباه %</th><th>الثقة %</th><th></th></tr></thead>
+    <tbody>${rows.map(p => {
+      const riskPct = (p.risk_score||0).toFixed(1);
+      return `<tr>
+        <td class="td-mono">${p.parcel_id}</td>
+        <td><span class="badge ${p._type==='leaked'?'red':'amber'}">${p._type==='leaked'?'مسرّبة':'مشبوهة'}</span></td>
+        <td>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <div class="progress-bar" style="width:70px;height:4px;"><div class="progress-fill" style="width:${Math.min(riskPct,100)}%;background:var(--red);"></div></div>
+            <span style="font-size:11px;">${riskPct}%</span>
+          </div>
+        </td>
+        <td style="font-size:11px;color:var(--amber);">${(p.suspected_score||0).toFixed(1)}%</td>
+        <td style="font-size:11px;color:var(--text2);">${(p.confidence||0).toFixed(1)}%</td>
+        <td><button type="button" class="tb-btn" style="height:24px;font-size:11px;" onclick="gotoPage('investigation')">تحقيق</button></td>
+      </tr>`;
+    }).join('')}</tbody>
+  </table></div>`);
+}
+
+// ═══════════════════════════════════════════════════
+//  SETTLEMENT EXPANSION
+// ═══════════════════════════════════════════════════
+function openSettlementExternal() { window.open(`${API}/settlement_expansion/html`, '_blank'); }
+
+function loadSettlementFrame() {
+  hideEl('settlementPlaceholder');
+  showEl('settlementFrameContainer');
+  const f = document.getElementById('settlementFrame');
+  if (f && f.src === 'about:blank') f.src = `${API}/settlement_expansion/html`;
+}
+
+// ═══════════════════════════════════════════════════
+//  INVESTIGATION TABS
+// ═══════════════════════════════════════════════════
+function switchInvestTab(el, id) {
+  document.querySelectorAll('#page-investigation .tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('#page-investigation .tab-panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  const panel = document.getElementById('investTab-' + id);
+  if (panel) panel.classList.add('active');
+}
+
+// ── HELPERS عرض النتيجة / الخطأ في التحقيق ──
+function _investShowResult(boxId, errId) {
+  const r = document.getElementById(boxId);
+  const e = document.getElementById(errId);
+  if (r) r.classList.remove('hidden');
+  if (e) e.style.display = 'none';
+}
+function _investShowError(errId, boxId, msg) {
+  const r = document.getElementById(boxId);
+  const e = document.getElementById(errId);
+  const m = document.getElementById(errId + 'Msg');
+  if (r) r.classList.add('hidden');
+  if (e) e.style.display = 'block';
+  if (m) m.textContent = msg;
+}
+
+// ─── Person Investigation ───
+async function investigatePerson() {
+  const id = document.getElementById('personInvestId')?.value.trim();
+  if (!id) { showToast('أدخل معرّف المالك', 'warn'); return; }
+
+  document.getElementById('personResult')?.classList.add('hidden');
+  hideEl('personError');
+  showToast('جاري تحليل الشخص رقم ' + id + '...', 'info', 2000);
+
+  try {
+    const data = await apiFetch(`${API}/fraud_detection/owner/${id}`);
+
+    if (data.status === 'success') {
+      const p    = data.person || data.personal_info || {};
+      const pred = data.prediction || {};
+      const beh  = data.behavioral_features || data.behavior_analysis || {};
+
+      setText('personResultName', p.full_name || '—');
+      setText('personResultId', `ID: ${p.owner_id || id} | ${p.identity_group || p.id_type || '—'}`);
+
+      const prob = (pred.fraud_probability || 0) * 100;
+      const lvl  = pred.risk_level;
+      const lvlMap = {High:'red', Medium:'amber', Low:'green'};
+      const lvlAr  = {High:'خطر عالٍ', Medium:'خطر متوسط', Low:'خطر منخفض'};
+      const badge  = document.getElementById('personResultBadge');
+      if (badge) { badge.className = `badge ${lvlMap[lvl]||'gray'}`; badge.textContent = lvlAr[lvl] || '—'; }
+
+      setText('personFraudPct', prob.toFixed(1) + '%');
+      const bar = document.getElementById('personFraudBar');
+      if (bar) { bar.style.width = prob + '%'; bar.style.background = prob > 70 ? 'var(--red)' : prob > 40 ? 'var(--amber)' : 'var(--accent)'; }
+
+      setInnerHTML('personInfoGrid', [
+        {label:'احتمالية الاحتيال', value: prob.toFixed(1) + '%'},
+        {label:'درجة الثقة',        value: ((pred.confidence||0)*100).toFixed(0) + '%'},
+        {label:'وصف المخاطر',       value: pred.risk_description || '—'},
+        {label:'نوع التورط',        value: p.involvement_type || '—'},
+      ].map(i => `<div class="info-item"><div class="info-label">${i.label}</div><div class="info-value">${i.value}</div></div>`).join(''));
+
+      setInnerHTML('personBehavior', [
+        {label:'عدد البيع',       value: beh.seller_sales_count   || beh.sell_count || 0, color:'var(--red)'},
+        {label:'عدد الشراء',      value: beh.buyer_purchases_count || beh.buy_count || 0, color:'var(--blue)'},
+        {label:'درجة المخاطر',    value: beh.risk_score || 0,                              color:'var(--amber)'},
+        {label:'شركة',            value: beh.is_corporate ? 'نعم' : 'لا',                  color:'var(--purple)'},
+        {label:'مقيم خارجاً',    value: beh.is_foreign_resident ? 'نعم' : 'لا',           color:'var(--amber)'},
+        {label:'معاملات مشبوهة', value: beh.suspicious_transactions || 0,                 color:'var(--red)'},
+      ].map(i => `<div class="info-item"><div class="info-label">${i.label}</div><div class="info-value" style="color:${i.color};">${i.value}</div></div>`).join(''));
+
+      const flags = data.red_flags || [];
+      const flagsEl = document.getElementById('personRedFlags');
+      if (flags.length && flagsEl) {
+        flagsEl.style.display = 'block';
+        setInnerHTML('personRedFlagsList', flags.map(f => `<div style="font-size:11px;color:var(--red2);padding:4px 8px;background:rgba(226,75,74,.08);border-radius:4px;">🚩 ${f}</div>`).join(''));
+      } else if (flagsEl) { flagsEl.style.display = 'none'; }
+
+      _investShowResult('personResult', 'personError');
+      showToast('تم تحليل الشخص بنجاح', 'success', 2000);
+    } else {
+      _investShowError('personError', 'personResult', data.message || 'الشخص غير موجود أو خطأ في الخادم');
+    }
+  } catch (e) {
+    _investShowError('personError', 'personResult', e.message);
+  }
+}
+
+// ─── Parcel Investigation ───
+async function investigateParcel() {
+  const basin = document.getElementById('parcelBasin')?.value.trim();
+  const num   = document.getElementById('parcelNum')?.value.trim();
+  const loc   = document.getElementById('parcelLocality')?.value.trim();
+
+  if (!basin || !num || !loc) { showToast('أدخل جميع الحقول: الحوض، القطعة، المنطقة', 'warn'); return; }
+
+  document.getElementById('parcelResult')?.classList.add('hidden');
+  hideEl('parcelError');
+  showToast('جاري فحص القطعة...', 'info', 2000);
+
+  try {
+    const url  = `${API}/leak_detection/parcel?basin_number=${encodeURIComponent(basin)}&parcel_number=${encodeURIComponent(num)}&locality_id=${encodeURIComponent(loc)}`;
+    const data = await apiFetch(url);
+
+    if (data.status === 'success' || (data.parcel_id && data.prediction)) {
+      const pred    = data.prediction || 'unknown';
+      const predMap = {safe:'green', suspected:'amber', leaked:'red'};
+      const predAr  = {safe:'آمنة', suspected:'مشبوهة', leaked:'مسرّبة'};
+
+      setText('parcelResultId',  `قطعة رقم: ${data.parcel_id || '—'}`);
+      setText('parcelResultKey', `حوض: ${basin} | قطعة: ${num} | منطقة: ${loc}`);
+      const badge = document.getElementById('parcelResultBadge');
+      if (badge) { badge.className = `badge ${predMap[pred]||'gray'}`; badge.textContent = predAr[pred] || pred; }
+
+      const rPct = data.risk_score     || 0;
+      const sPct = data.suspected_score || 0;
+      const sfPct = data.safe_score    || 0;
+
+      const setBar = (barId, valId, pct, color) => {
+        const b = document.getElementById(barId); if (b) { b.style.width = pct + '%'; b.style.background = color; }
+        setText(valId, pct.toFixed(1) + '%');
+      };
+      setBar('parcelRiskBar',    'parcelRiskVal',    rPct,  'var(--red)');
+      setBar('parcelSuspectBar', 'parcelSuspectVal', sPct,  'var(--amber)');
+      setBar('parcelSafeBar',    'parcelSafeVal',    sfPct, 'var(--accent)');
+
+      const an = data.analysis || {};
+      setInnerHTML('parcelInfoGrid', [
+        {label:'التصنيف النهائي',  value: predAr[pred] || pred},
+        {label:'درجة الثقة',       value: (data.confidence||0).toFixed(1) + '%'},
+        {label:'آخر معاملة',       value: an.last_transaction || '—'},
+        {label:'إشارات حمراء',    value: an.red_flags || '—'},
+        {label:'سلسلة الملكية',   value: an.ownership_chain || '—'},
+        {label:'نمط المعاملات',   value: an.transaction_history || '—'},
+      ].map(i => `<div class="info-item"><div class="info-label">${i.label}</div><div class="info-value">${i.value}</div></div>`).join(''));
+
+      _investShowResult('parcelResult', 'parcelError');
+      showToast('تم تحليل القطعة بنجاح', 'success', 2000);
+    } else {
+      _investShowError('parcelError', 'parcelResult', data.message || 'القطعة غير موجودة أو بيانات غير مكتملة');
+    }
+  } catch (e) {
+    _investShowError('parcelError', 'parcelResult', e.message);
+  }
+}
+
+// ─── Settlement Investigation ───
+let settlForecastChart = null;
+
+async function investigateSettlement() {
+  const query = document.getElementById('settlementQuery')?.value.trim();
+  const stype = document.getElementById('settlementSearchType')?.value;
+  if (!query) { showToast('أدخل اسم المستوطنة أو معرّفها', 'warn'); return; }
+
+  document.getElementById('settlementResult')?.classList.add('hidden');
+  hideEl('settlementError');
+  showToast('جاري تحليل المستوطنة...', 'info', 2000);
+
+  try {
+    const url  = stype === 'id'
+      ? `${API}/settlement_expansion/predict/id/${encodeURIComponent(query)}`
+      : `${API}/settlement_expansion/predict/name/${encodeURIComponent(query)}`;
+    const data = await apiFetch(url);
+
+    if (data.status === 'success') {
+      const s  = data.settlement        || {};
+      const ra = data.risk_assessment   || {};
+      const sp = data.spatial_indicators || {};
+      const td = data.threat_indicators  || {};
+      const fc = data.forecast           || {};
+
+      setText('settlementResultName', s.name || query);
+      setText('settlementResultType', `نوع: ${s.type||'—'} | تأسست: ${s.established_year||'—'}`);
+
+      const sev    = ra.severity || 'low';
+      const sevMap = {critical:'red', high:'red', medium:'amber', low:'green'};
+      const sevAr  = {critical:'حرج جداً', high:'خطر عالٍ', medium:'خطر متوسط', low:'خطر منخفض'};
+      const badge  = document.getElementById('settlementResultBadge');
+      if (badge) { badge.className = `badge ${sevMap[sev]||'gray'}`; badge.textContent = sevAr[sev] || sev; }
+
+      const compRisk = ((ra.composite_risk||0)*100).toFixed(1);
+      setText('settlementRiskPct', compRisk + '%');
+      const rBar = document.getElementById('settlementRiskBar');
+      if (rBar) { rBar.style.width = compRisk + '%'; rBar.style.background = compRisk > 75 ? 'var(--red)' : compRisk > 55 ? 'var(--amber)' : 'var(--accent)'; }
+
+      setText('sXgb',    ((ra.xgb_risk    ||0)*100).toFixed(0) + '%');
+      setText('sTsRisk', ((ra.ts_risk     ||0)*100).toFixed(0) + '%');
+      setText('sSpatial',((ra.spatial_risk||0)*100).toFixed(0) + '%');
+
+      setInnerHTML('settlementInfoGrid', [
+        {label:'المساحة الحالية',       value: Math.round(sp.current_area_m2   ||0).toLocaleString() + ' م²'},
+        {label:'معدل النمو السنوي',     value: Math.round(sp.growth_rate_m2yr  ||0).toLocaleString() + ' م²/سنة'},
+        {label:'التوقع 5 سنوات',        value: Math.round(sp.forecast_5yr_area_m2||0).toLocaleString() + ' م²'},
+        {label:'أوامر المصادرة',        value: td.confiscation_orders || 0},
+        {label:'نسبة القطع المسرّبة',  value: ((td.leaked_parcel_ratio||0)*100).toFixed(1) + '%'},
+        {label:'تغطية Zone C',          value: ((td.zone_c_coverage   ||0)*100).toFixed(1) + '%'},
+      ].map(i => `<div class="info-item"><div class="info-label">${i.label}</div><div class="info-value">${i.value}</div></div>`).join(''));
+
+      const series = fc.series || {};
+      const years  = Object.keys(series).map(Number).sort();
+      const forecastWrap = document.getElementById('settlementForecastWrap');
+      if (years.length > 0 && forecastWrap) {
+        forecastWrap.style.display = 'block';
+        const ctx = document.getElementById('settlementForecastChart');
+        if (settlForecastChart) settlForecastChart.destroy();
+        settlForecastChart = new Chart(ctx, {
+          type:'line',
+          data:{labels:years,datasets:[{label:'المساحة المتوقعة (م²)',data:years.map(y=>series[y]||0),borderColor:'#7f77dd',backgroundColor:'rgba(127,119,221,.1)',fill:true,tension:.4,pointRadius:3,borderWidth:2}]},
+          options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+            scales:{x:{ticks:{color:'#8b949e',font:{size:10}},grid:{color:'rgba(255,255,255,.04)'}},
+                    y:{ticks:{color:'#8b949e',font:{size:10}},grid:{color:'rgba(255,255,255,.04)'},beginAtZero:false}}}
+        });
+      } else if (forecastWrap) { forecastWrap.style.display = 'none'; }
+
+      _investShowResult('settlementResult', 'settlementError');
+      showToast('تم تحليل المستوطنة بنجاح', 'success', 2000);
+    } else {
+      _investShowError('settlementError', 'settlementResult', data.message || 'المستوطنة غير موجودة أو خطأ في الخادم');
+    }
+  } catch (e) {
+    _investShowError('settlementError', 'settlementResult', e.message);
+  }
+}
+
+// ═══════════════════════════════════════════════════
+//  MAP
+// ═══════════════════════════════════════════════════
+let mapCanvas, mapCtx, mapScale = 1, mapOffX = 0, mapOffY = 0;
+let mapDragging = false, mapLastX = 0, mapLastY = 0, mapSelected = null;
+const mapLayers = {suspicious:true, normal:true, settlements:true, roads:true, hotspots:true};
+let mapRiskFilter = 'all', mapGovFilter = 'all', mapInitialized = false;
+
+const MAP_PARCELS = [
+  {id:'NB-142',x:.52,y:.18,r:8,risk:'high',gov:'nablus',area:'3,200 م²',owner:'محمد عبد الرحمن'},
+  {id:'NB-087',x:.48,y:.22,r:6,risk:'high',gov:'nablus',area:'1,800 م²',owner:'خالد سمير'},
+  {id:'NB-201',x:.55,y:.25,r:7,risk:'med', gov:'nablus',area:'2,100 م²',owner:'سامر قاسم'},
+  {id:'HB-055',x:.45,y:.72,r:9,risk:'high',gov:'hebron',area:'4,800 م²',owner:'حسن الرجبي'},
+  {id:'HB-112',x:.50,y:.68,r:7,risk:'high',gov:'hebron',area:'2,600 م²',owner:'عمر فريد'},
+  {id:'RM-066',x:.38,y:.42,r:7,risk:'high',gov:'ramallah',area:'3,000 م²',owner:'إياد ناصر'},
+  {id:'JN-033',x:.50,y:.08,r:8,risk:'high',gov:'jenin', area:'5,200 م²',owner:'صالح مصطفى'},
+  {id:'NB-334',x:.44,y:.15,r:5,risk:'low', gov:'nablus',area:'950 م²',  owner:'علي مروان'},
+  {id:'HB-230',x:.40,y:.75,r:6,risk:'med', gov:'hebron',area:'1,750 م²',owner:'نضال خليل'},
+];
+
+const MAP_SETTLEMENTS = [
+  {x:.62,y:.20,w:28,h:18,name:'أريئيل'},{x:.65,y:.15,w:20,h:14,name:'إيمانوئيل'},
+  {x:.30,y:.38,w:24,h:16,name:'ألفي منشيه'},{x:.58,y:.70,w:30,h:22,name:'كريات أربع'},
+];
+
+const GOV_AR = {nablus:'نابلس', hebron:'الخليل', ramallah:'رام الله', jenin:'جنين'};
+
+function initMap() {
+  if (mapInitialized) { mapDraw(); return; }
+  mapCanvas = document.getElementById('mapCanvas');
+  if (!mapCanvas) return;
+  mapCtx = mapCanvas.getContext('2d');
+  mapInitialized = true;
+
+  const ro = new ResizeObserver(() => { mapCanvas.width = mapCanvas.offsetWidth; mapCanvas.height = mapCanvas.offsetHeight; mapDraw(); });
+  ro.observe(mapCanvas);
+  setTimeout(() => { mapCanvas.width = mapCanvas.offsetWidth; mapCanvas.height = mapCanvas.offsetHeight; mapDraw(); }, 50);
+
+  mapCanvas.addEventListener('mousedown', e => { mapDragging = true; mapLastX = e.clientX; mapLastY = e.clientY; });
+  mapCanvas.addEventListener('mousemove', e => { if (mapDragging) { mapOffX += (e.clientX - mapLastX) / mapScale; mapOffY += (e.clientY - mapLastY) / mapScale; mapLastX = e.clientX; mapLastY = e.clientY; mapDraw(); } });
+  mapCanvas.addEventListener('mouseup',   () => { mapDragging = false; });
+  mapCanvas.addEventListener('mouseleave',() => { mapDragging = false; });
+  mapCanvas.addEventListener('wheel', e => { e.preventDefault(); mapZoom(e.deltaY < 0 ? 1.1 : .9); }, {passive:false});
+  mapCanvas.addEventListener('click', e => {
+    const rect = mapCanvas.getBoundingClientRect(), mx = e.clientX - rect.left, my = e.clientY - rect.top;
+    let hit = null;
+    getVisibleParcels().forEach(p => { const cx = mpx(p.x,'x'), cy = mpx(p.y,'y'); if (Math.sqrt((mx-cx)**2+(my-cy)**2) < p.r*mapScale*1.8) hit = p; });
+    mapSelected = hit; if (hit) showMapPanel(hit); else hideEl('mapParcelPanel');
+    mapDraw();
+  });
+}
+
+function mpx(p, axis) { const C = axis === 'x' ? mapCanvas.width : mapCanvas.height; return (p*C*.9 + C*.05 + mapOffX) * mapScale; }
+function getVisibleParcels() { return MAP_PARCELS.filter(p => (mapRiskFilter === 'all' || p.risk === mapRiskFilter) && (mapGovFilter === 'all' || p.gov === mapGovFilter)); }
+
+function mapDraw() {
+  if (!mapCanvas || !mapCtx) return;
+  const ctx = mapCtx, W = mapCanvas.width, H = mapCanvas.height;
+  ctx.clearRect(0,0,W,H); ctx.fillStyle='#1a2820'; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='rgba(255,255,255,.03)'; ctx.lineWidth=.5;
+  for (let i = 0; i < 10; i++) { ctx.beginPath(); ctx.moveTo(0,(i/10)*H); ctx.lineTo(W,(i/10)*H); ctx.stroke(); ctx.beginPath(); ctx.moveTo((i/10)*W,0); ctx.lineTo((i/10)*W,H); ctx.stroke(); }
+
+  if (mapLayers.settlements) MAP_SETTLEMENTS.forEach(s => {
+    const sx=mpx(s.x,'x'),sy=mpx(s.y,'y'),sw=s.w*mapScale,sh=s.h*mapScale;
+    ctx.fillStyle='rgba(127,119,221,.2)'; ctx.strokeStyle='#7F77DD'; ctx.lineWidth=1.5*mapScale;
+    ctx.beginPath(); ctx.rect(sx,sy,sw,sh); ctx.fill(); ctx.stroke();
+    if (mapScale > .7) { ctx.fillStyle='#afa9ec'; ctx.font=`${Math.round(10*mapScale)}px IBM Plex Sans Arabic`; ctx.textAlign='center'; ctx.fillText(s.name,sx+sw/2,sy+sh/2+3); ctx.textAlign='right'; }
+  });
+
+  getVisibleParcels().forEach(p => {
+    if (!mapLayers.suspicious && p.risk === 'high') return;
+    if (!mapLayers.normal     && p.risk !== 'high') return;
+    const cx=mpx(p.x,'x'),cy=mpx(p.y,'y'),r=p.r*mapScale,sel=mapSelected&&mapSelected.id===p.id;
+    const col = p.risk==='high'?'#E24B4A':p.risk==='med'?'#EF9F27':'#1D9E75';
+    ctx.beginPath(); ctx.arc(cx,cy,r*(sel?1.5:1),0,Math.PI*2);
+    ctx.fillStyle = col + (sel?'':'bb'); ctx.fill();
+    if (sel) { ctx.strokeStyle=col; ctx.lineWidth=2; ctx.stroke(); }
+  });
+
+  updateMapStats();
+}
+
+function showMapPanel(p) {
+  const panel = document.getElementById('mapParcelPanel'); if (!panel) return;
+  setText('mppTitle', ''); document.getElementById('mppTitle').textContent = 'قطعة ' + p.id;
+  setText('mppId', p.id); setText('mppArea', p.area);
+  setText('mppGov', GOV_AR[p.gov]||p.gov); setText('mppOwner', p.owner);
+  const rEl = document.getElementById('mppRisk');
+  if (rEl) { rEl.textContent = p.risk==='high'?'عالٍ':p.risk==='med'?'متوسط':'منخفض'; rEl.style.color = p.risk==='high'?'var(--red)':p.risk==='med'?'var(--amber)':'var(--accent)'; }
+  panel.style.display = 'block';
+}
+
+function mapZoom(f) { mapScale = Math.max(.4, Math.min(4, mapScale*f)); mapDraw(); }
+function toggleMapLayer(btn, name) { mapLayers[name] = !mapLayers[name]; btn.className = 'toggle-sw ' + (mapLayers[name] ? 'on' : 'off'); mapDraw(); }
+function setMapFilter(el, type, val) {
+  el.parentNode.querySelectorAll('.pill').forEach(p => p.classList.remove('active')); el.classList.add('active');
+  if (type === 'risk') mapRiskFilter = val; if (type === 'gov') mapGovFilter = val; mapDraw();
+}
+function updateMapStats() {
+  const vp = getVisibleParcels();
+  setText('msTotal', vp.length); setText('msHigh', vp.filter(p=>p.risk==='high').length);
+  setText('msMed', vp.filter(p=>p.risk==='med').length); setText('msLow', vp.filter(p=>p.risk==='low').length);
+}
+function handleMapSearch(v) {
+  if (!v) { mapSelected = null; mapDraw(); return; }
+  const found = MAP_PARCELS.find(p => p.id.toLowerCase().includes(v.toLowerCase()) || p.owner.includes(v));
+  if (found) { mapSelected = found; showMapPanel(found); } mapDraw();
+}
+
+// ═══════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  initDashboardChart();
+  renderAlerts('all');
+});
+</script>
+</body>
+</html>

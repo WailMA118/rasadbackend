@@ -13,10 +13,10 @@ import joblib
 import pandas as pd
 import numpy as np
  
-from data_loader import load_data, load_single_parcel
-from feature_engineering import build_dataset
-from geo_features import GeoFeatureEngineer
-from config import MODEL_PATH, COLS_PATH
+from leak_deetection.data_loader import load_data, load_single_parcel
+from leak_deetection.feature_engineering import build_dataset
+from leak_deetection.geo_features import GeoFeatureEngineer
+from leak_deetection.config import MODEL_PATH, COLS_PATH
  
 _LABEL_MAP = {0: "safe", 1: "suspected", 2: "leaked"}
  
@@ -151,7 +151,7 @@ def predict_parcel(parcel_id: int) -> dict:
     pred  = int(_model.predict(X)[0])
  
     return {
-        "parcel_id"      : parcel_id,
+        "parcel_id"      : int(parcel_id),
         "prediction"     : _LABEL_MAP[pred],
         "risk_score"     : round(float(probs[2]) * 100, 2),
         "suspected_score": round(float(probs[1]) * 100, 2),
